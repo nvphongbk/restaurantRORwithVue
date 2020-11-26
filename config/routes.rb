@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root "home#index"
   namespace :api do
     namespace :v1 do
       resources :dishes
@@ -7,8 +7,5 @@ Rails.application.routes.draw do
       resources :restaurants
     end
   end
-  
-  root "home#index"
-
-
+  match '/*path', to: 'home#index', format: false, via: :get
 end
