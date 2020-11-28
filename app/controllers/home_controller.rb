@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  def index
-    render plain: "I'm like everyone else."
-  end
+  layout false
+
+  def index; end
 end
