@@ -20,15 +20,6 @@ ActiveRecord::Schema.define(version: 2020_11_26_024601) do
     t.index ["restaurant_id"], name: "index_categories_on_restaurant_id"
   end
 
-  create_table "categories_dishes", force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.integer "dish_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_categories_dishes_on_category_id"
-    t.index ["dish_id"], name: "index_categories_dishes_on_dish_id"
-  end
-
   create_table "category_dishes", force: :cascade do |t|
     t.integer "category_id", null: false
     t.integer "dish_id", null: false
@@ -48,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_11_26_024601) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
+    t.string "address"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -55,15 +47,13 @@ ActiveRecord::Schema.define(version: 2020_11_26_024601) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password_degest"
+    t.string "email", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "categories", "restaurants"
-  add_foreign_key "categories_dishes", "categories"
-  add_foreign_key "categories_dishes", "dishes"
   add_foreign_key "category_dishes", "categories"
   add_foreign_key "category_dishes", "dishes"
   add_foreign_key "restaurants", "users"
