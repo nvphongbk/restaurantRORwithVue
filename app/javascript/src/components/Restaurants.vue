@@ -180,16 +180,17 @@
             } else {
               this.create(valuesSave)
             }
+            this.visible = false;
           } else {
             return false;
           }
         });
-        this.visible = false;
       },
       showModal() {
         this.visible = true
         this.editItem.address = ""
         this.editItem.name = ""
+        this.$refs.ruleForm.resetFields();
       },
     }
   }

@@ -1,62 +1,16 @@
 <template>
   <div id="app">
     <div v-if="layout=='SignIn'">
-      <router-view />
+      <router-view/>
     </div>
     <div v-else>
       <a-layout id="components-layout-demo-responsive" class="h-screen">
-        <a-layout-sider>
-          <div class="logo text-center">
-            <router-link :to="{name: 'HomePage'}">Dashboard</router-link>
-          </div>
-          <a-menu theme="dark" mode="inline" :default-selected-keys="['4']">
-            <a-menu-item key="Restaurant">
-              <router-link :to="{name: 'Restaurants'}">
-                <a-icon type="reconciliation"/>
-                <span class="nav-text">Restaurant</span>
-              </router-link>
-            </a-menu-item>
-            <a-menu-item key="Category">
-              <router-link :to="{name:'Categories'}">
-                <a-icon type="unordered-list"/>
-                <span class="nav-text">Category</span>
-              </router-link>
-            </a-menu-item>
-            <a-menu-item key="Dish">
-              <router-link :to="{name: 'Dishes'}">
-                <a-icon type="inbox"/>
-                <span class="nav-text">Dish</span>
-              </router-link>
-            </a-menu-item>
-          </a-menu>
-        </a-layout-sider>
+        <LeftMenu />
         <a-layout>
-          <!--header-->
-          <div class="header-">
-            <a-layout-header class="topbar">
-              <a-input-search placeholder="input search text" enter-button/>
-              <a-row class="float-right">
-                <a-popover placement="bottomRight">
-                  <template slot="content">
-                    <div>
-                      <a href="#">
-                        <a-icon type="poweroff" style="color: orangered"
-                                class="mr-2"/>
-                        Đăng xuất</a>
-                    </div>
-                  </template>
-                  <a-avatar style="backgroundColor:#87d068" icon="user"/>
-                </a-popover>
-              </a-row>
-            </a-layout-header>
-          </div>
-
+          <CompHeader />
           <a-layout-content class="content">
             <router-view></router-view>
           </a-layout-content>
-          <!--<a-layout-footer style="textAlign: center">-->
-            <!--Design by P-->
-          <!--</a-layout-footer>-->
         </a-layout>
       </a-layout>
     </div>
@@ -65,11 +19,15 @@
 
 <script>
   import SignIn from "./src/components/Signin";
+  import LeftMenu from "./src/components/common/LeftMenu"
+  import CompHeader from "./src/components/common/CompHeader"
 
   export default {
     name: 'App',
     components: {
-      SignIn
+      SignIn,
+      LeftMenu,
+      CompHeader,
     },
     data() {
       return {};
@@ -79,9 +37,7 @@
         return this.$route.meta.openKey || ""
       }
     },
-    methods: {
-
-    }
+    methods: {}
   }
 </script>
 <style scoped>

@@ -2,32 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7ca2a10-8e6c-4e89-b684-03f57eb79b00" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.rakeTasks" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Rails_restaurant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Rails_restaurant.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/categories_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/v1/categories_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/dishes_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/v1/dishes_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/restaurants_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/v1/restaurants_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/app.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/HomePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/HomePage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/category.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/category.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/dish.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/dish.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/restaurant.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/restaurant.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fixtures/categories.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test/fixtures/categories.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fixtures/dishes.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test/fixtures/dishes.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fixtures/restaurants.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test/fixtures/restaurants.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fixtures/users.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test/fixtures/users.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/models/category_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/category_test.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/models/dish_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/dish_test.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/models/restaurant_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/restaurant_test.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/models/user_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/user_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/Restaurants.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/Restaurants.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -61,14 +37,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/javascript/app.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+              <folding>
+                <element signature="e#571#616#0" expanded="true" />
+                <element signature="n#style#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Restaurants.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="83" column="21" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
+            <state>
+              <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
               <folding>
+                <element signature="e#1963#2169#0" />
+                <element signature="e#2190#2465#0" />
                 <element signature="n#style#0;n#!!top" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/javascript/src/components/forms/FormRestaurant.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -148,7 +148,6 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/Dishes.vue" />
-        <option value="$PROJECT_DIR$/app/javascript/app.vue" />
         <option value="$PROJECT_DIR$/app/models/category_dish.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/models/category.rb" />
@@ -157,6 +156,10 @@
         <option value="$PROJECT_DIR$/app/controllers/api/v1/restaurants_controller.rb" />
         <option value="$PROJECT_DIR$/app/javascript/packs/main.js" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/HomePage.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/common/LeftMenu.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/common/CompHeader.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/app.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/forms/FormRestaurant.vue" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/Restaurants.vue" />
       </list>
     </option>
@@ -211,7 +214,9 @@
               <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
               <item name="Rails_restaurant" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="javascript" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
@@ -405,18 +410,18 @@
       <workItem from="1606831470976" duration="1826000" />
       <workItem from="1606835575505" duration="96000" />
       <workItem from="1606835866014" duration="847000" />
-      <workItem from="1606871392368" duration="24068000" />
+      <workItem from="1606871392368" duration="28341000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114440000" />
+    <option name="totallyTimeSpent" value="118713000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17851374" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30533117" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -428,7 +433,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.75" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.1734104" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.39450866" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32803467" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32947975" />
@@ -604,13 +609,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Signin.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -622,26 +620,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
           <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Categories.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#a-select#0;n#a-form#0;n#a-modal#0;n#div#0;n#div#0;n#a-layout-content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Dishes.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-          <folding>
-            <element signature="n#style#0;n#a-select#0;n#a-form-item#1;n#a-form#0;n#a-modal#0;n#div#0;n#div#0;n#a-layout-content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -666,13 +644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="20" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -746,31 +717,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/v1/restaurants_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/application_record.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/restaurant.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="43" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/category.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -781,27 +731,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Dashboard.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-742">
-          <caret line="86" column="12" lean-forward="true" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/ant-design-vue/types/form/form.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
           <caret line="275" column="2" selection-start-line="275" selection-start-column="2" selection-end-line="275" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/app.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-777">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#a-icon#0;n#a#0;n#div#0;n#template#0;n#a-popover#0;n#a-row#0;n#a-layout-header#0;n#div#0;n#a-layout#0;n#a-layout#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -822,6 +755,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="28" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/category.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Dashboard.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="86" column="12" lean-forward="true" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/src/components/HomePage.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -829,11 +783,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Signin.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Categories.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Dishes.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+          <folding>
+            <element signature="n#style#0;n#a-select#0;n#a-form-item#1;n#a-form#0;n#a-modal#0;n#div#0;n#div#0;n#a-layout-content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/restaurant.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="3" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/v1/restaurants_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="29" column="39" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/CompHeader.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+          <folding>
+            <element signature="n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#a-icon#0;n#a#0;n#div#0;n#template#0;n#a-popover#0;n#a-row#0;n#a-layout-header#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/LeftMenu.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/app.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+          <folding>
+            <element signature="e#571#616#0" expanded="true" />
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/forms/FormRestaurant.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Restaurants.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="83" column="21" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
+        <state>
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
           <folding>
+            <element signature="e#1963#2169#0" />
+            <element signature="e#2190#2465#0" />
             <element signature="n#style#0;n#!!top" />
           </folding>
         </state>
