@@ -4,7 +4,10 @@ import '../src/assets/tailwind.min.css'
 import router from '../src/router.js'
 import Antd from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
+import { FormModel } from 'ant-design-vue';
+
 Vue.use(Antd);
+Vue.use(FormModel);
 Vue.config.productionTip = false;
 
 document.addEventListener('DOMContentLoaded', () => {
