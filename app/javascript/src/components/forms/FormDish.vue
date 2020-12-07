@@ -76,7 +76,6 @@
       editItem: {
         type: Object
       },
-
     },
     data() {
       return {
@@ -187,10 +186,6 @@
         this.fileList = [...this.fileList, file];
         return false;
       },
-
-
-
     },
   };
 </script>
-

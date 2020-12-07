@@ -187,10 +187,6 @@
       handleChange(value) {
         console.log(`id: ${value}`);
       },
-
-
-
-
     }
   }
 </script>
