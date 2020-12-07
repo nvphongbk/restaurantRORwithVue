@@ -11,7 +11,7 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     {
-      path: '/restaurant',
+      path: '/restaurants',
       name: 'Restaurants',
       component: Restaurants,
       meta: {
@@ -19,7 +19,7 @@ const router = new VueRouter({
       }
     },
     {
-      path: '/category',
+      path: '/categories',
       name: 'Categories',
       component: Categories,
       meta: {
@@ -27,7 +27,7 @@ const router = new VueRouter({
       }
     },
     {
-      path: '/dish',
+      path: '/dishes',
       name: 'Dishes',
       component: Dishes,
       meta: {

@@ -6,30 +6,37 @@
     :label-col="{ span: 5 }"
     :wrapper-col="{ span: 12 }">
     <a-form-model-item ref="name" label="Name" prop="name">
-      <a-input placeholder="Please input name Restaurant"
-               v-model="editItem.name" />
+      <a-input placeholder="Please input name category" :autoFocus="true"
+        v-model="editItem.name" />
     </a-form-model-item>
-    <a-form-model-item ref="address" label="Address" prop="address">
-      <a-input placeholder="Please input address restaurant"
-               v-model="editItem.address" />
+    <a-form-model-item  label="Restaurant" prop="restaurants">
+      <a-select show-search
+                option-filter-prop="children"
+                :filter-option="filterOption"
+                v-model="editItem.restaurant_id" placeholder="Select a Restaurant">
+        <a-select-option v-for="restaurant in restaurants" :value="restaurant.id" >
+          {{ restaurant.name }}
+        </a-select-option>
+      </a-select>
     </a-form-model-item>
-
     <a-form-model-item :wrapperCol="{ offset: 8 }">
       <a-button @click="handleSubmit" type="primary" html-type="submit">
         Submit
       </a-button>
-      <a-button style="margin-left: 10px;" @click="resetForm">
-        Reset
-      </a-button>
+      <!--<a-button style="margin-left: 10px;" @click="resetForm">-->
+        <!--Reset-->
+      <!--</a-button>-->
     </a-form-model-item>
   </a-form-model>
 </template>
-
 <script>
   import axios from "axios";
   export default {
-    name: "FormRestaurant",
+    name: "FormCategory",
     props: {
+      restaurants:{
+        type: Array
+      },
       rules:{
         type: Object
       },
@@ -44,20 +51,24 @@
       editItem: {
         type: Object
       },
+
     },
-    data(){
-      return{}
+    data() {
+      return {
+      };
     },
-    methods:{
+    mounted(){
+      this.callDataRestaurant()
+    },
+    methods: {
       create(item) {
         this.isEdit = false
         axios
-          .post("http://localhost:3000/api/v1/restaurants/", {
-            restaurant: item
+          .post("http://localhost:3000/api/v1/categories/", {
+            category: item
           })
           .then(response => {
             console.log(response);
-            console.log("Created!");
             this.$message.success('Created success');
             this.$emit('updateListAfterUpdated', this.editItem);
           })
@@ -68,18 +79,17 @@
       handleSubmit(e) {
         this.$refs.ruleForm.validate((valid) => {
           if (valid) {
-            let valuesSave = Object.assign({}, this.editItem, {user_id: 1})
+            let valuesSave = Object.assign({}, this.editItem)
             if (this.isEdit) {
               let idItem = this.editItem.id
               axios
-                .put(`http://localhost:3000/api/v1/restaurants/${idItem}`, {
-                  restaurant: valuesSave
+                .put(`http://localhost:3000/api/v1/categories/${idItem}`, {
+                  category: valuesSave
                 },{headers: {
                     'Content-Type': 'application/json'
                   }})
                 .then(response => {
                   console.log(response);
-                  console.log("Updated!");
                   this.$message.success('Updated success')
                   this.$emit('updateListAfterUpdated', this.editItem);
                 })
@@ -96,13 +106,18 @@
           }
         });
       },
-      resetForm() {
-        this.$refs.ruleForm.resetFields();
+      // resetForm() {
+      //   this.$refs.ruleForm.resetFields();
+      // },
+      callDataRestaurant(){
+        this.$emit('getDataRestaurant')
+      },
+      filterOption(input, option) {
+        return (
+          option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0
+        );
       },
     },
-  }
+  };
 </script>
 
-<style scoped>
-
-</style>

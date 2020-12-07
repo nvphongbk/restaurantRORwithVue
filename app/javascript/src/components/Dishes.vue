@@ -1,152 +1,264 @@
 <template>
-  <div id="dish">
-    <div class="dish-search">
-        <a-select  style="width: 120px" @change="handleRestaurantChange" placeholder="Select a Restaurant">
-          <a-select-option v-for="restaurant in restaurantData" :key="restaurant">
-            {{ restaurant }}
-          </a-select-option>
-        </a-select>
-        <a-select  v-model="secondCategory" style="width: 120px" placeholder="Select a Category">
-          <a-select-option v-for="category in categories" :key="category">
-            {{ category }}
-          </a-select-option>
-        </a-select>
-    </div>
-
-    <a-layout-content :style="{ margin: '24px 16px 0' }">
-      <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-        <!--data restaurant-->
-        <div>
-          <a-button class="editable-add-btn" type="primary" @click="showModal">
-            Add
-          </a-button>
-          <a-modal v-model="visible" title="Create New Dish" @ok="handleOk" okText="Save">
-            <a-form :form="form" @submit="handleSubmit">
-              <a-form-item label="Name Dish">
-                <a-input
-                />
-              </a-form-item>
-              <a-form-item>
-                <a-select mode="tags" style="width: 100%"
-                          placeholder="Select Category"
-                          @change="handleChange">
-                  <a-select-option v-for="i in 25"
-                                   :key="(i + 9).toString(36) + i">
-                    {{ (i + 9).toString(36) + i }}
-                  </a-select-option>
-                </a-select>
-              </a-form-item>
-
-              <a-form-item>
-                <a-button type="primary" html-type="submit">
-                  Submit
-                </a-button>
-              </a-form-item>
-            </a-form>
-          </a-modal>
-          <a-table bordered :data-source="dataSource" :columns="columns">
-            <template slot="name" slot-scope="text, record">
-            </template>
-            <template slot="operation" slot-scope="text, record">
-                <a class="dashboard-action m-3 hover:text-blue-700" href="#">Edit</a>
-                <a class="dashboard-action m-3 hover:text-blue-700" href="#">Delete</a>
-              </a-popconfirm>
-            </template>
-          </a-table>
+  <a-layout-content :style="{ margin: '24px 16px 0' }">
+    <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
+      <div>
+        <div class="my-5">
+          <a-select style="width: 300px"
+                    show-search
+                    option-filter-prop="children"
+                    :filter-option="filterOption"
+                    v-model="editItem.restaurant_id"
+                    placeholder="Select a Restaurant"
+                    @change="handleChange"
+          >
+            <a-select-option v-for="restaurant in restaurants" :value="restaurant.id">
+              {{ restaurant.name }}
+            </a-select-option>
+          </a-select>
         </div>
+        <a-button type="primary" class="editable-add-btn"
+                  @click="addDish">
+          Add
+        </a-button>
+        <a-modal v-model="visible" :title="titleModal" :footer="null">
+          <FormDish
+            ref="child"
+            :restaurants="restaurants"
+            :rules="rules"
+            :editItem="editItem"
+            :isEdit="isEdit"
+            @updateVisible="updateVisible"
+            @updateListAfterUpdated="updateListAfterUpdated"
+            @getDataRestaurant="getDataRestaurant"
+          />
+        </a-modal>
+        <a-table bordered :data-source="desserts"
+                 :columns="columns"
+                 :row-key="(record) => record.id"
+        >
+          <template slot="image" slot-scope="image">
+        <span>
+          <a-avatar shape="square" :size="100" :src="image.url" />
+        </span>
+          </template>
+          <template slot="action" slot-scope="text, record">
+            <a-button @click="editDish(record)" :size="'small'"
+                      :type="'primary'"
+            >
+              <a-icon type="edit"/>
+            </a-button>
+            <a-popconfirm
+              title="Delete this Category?"
+              ok-text="Delete"
+              cancel-text="Cancel"
+              @confirm="deleteDish(record)"
+            >
+              <a-button size="small" type="danger">
+                <a-icon type="delete"/>
+              </a-button>
+            </a-popconfirm>
+          </template>
+        </a-table>
       </div>
-    </a-layout-content>
-
-  </div>
+    </div>
+  </a-layout-content>
 </template>
 
 <script>
-  const restaurantData = ['Res1', 'Res2'];
-  const categoryData = {
-    Res1: ['sang', 'trua', 'chieu'],
-    Res2: ['fish', 'pig', 'chicken'],
-  };
+  import axios from "axios";
+  import FormDish from "./forms/FormDish"
+  const newDish = {
+    id: '',
+    name: '',
+    price:'',
+    image:'',
+  }
   export default {
     name: "Dishes",
     data() {
       return {
-        formLayout: 'horizontal',
-        form: this.$form.createForm(this, { name: 'coordinated' }),
+        restaurants: [],
+        rules: {
+          name: [
+            { required: true,
+              message: 'Please input name', trigger: 'blur' },
+            { min: 3,
+              message: 'Length should be 3',
+              trigger: 'blur' },
+          ],
+          restaurant: [{ required: false, message: 'Please select Restaurant', trigger: 'change' }],
+
+        },
+        editItem: {
+        },
+        isEdit: false,
+        desserts: [],
         visible: false,
-        restaurantData,
-        categoryData,
-        categories: categoryData[restaurantData[0]],
-        secondCategory: categoryData[restaurantData[0]][0],
-        dataSource: [
-          {
-            key: '0',
-            name: 'Edward King 0',
-            price: '10$'
-          },
-          {
-            key: '1',
-            name: 'Edward King 1',
-            price: '12$'
-          },
-          {
-            key: '2',
-            name: 'Edward King 3',
-            price: '14$'
-          },
-        ],
-        count: 2,
         columns: [
           {
             title: 'Name',
             dataIndex: 'name',
-
           },
           {
             title: 'Price',
-            dataIndex: 'price'
+            dataIndex: 'price',
           },
           {
             title: 'Image',
-            dataIndex: 'image'
+            dataIndex: 'image',
+            scopedSlots: { customRender: "image" },
           },
           {
             title: 'Action',
-            dataIndex: 'operation',
-            scopedSlots: { customRender: 'operation' },
+            dataIndex: 'action',
+            scopedSlots: {customRender: 'action'},
           },
         ],
       };
     },
+    components:{
+      FormDish,
+    },
+    computed: {
+      titleModal() {
+        return this.isEdit ? 'Edit Dish' : 'Create Dish'
+      }
+    },
+    mounted() {
+      this.initialize()
+      this.getDataRestaurant()
+    },
     methods: {
-      handleRestaurantChange(value) {
-        this.categories = categoryData[value];
-        this.secondCategory = categoryData[value][0];
+      initialize() {
+        return axios
+          .get("http://localhost:3000/api/v1/dishes/")
+          .then(response => {
+            console.log(response.data,"data");
+            this.desserts = response.data;
+          })
+          .catch(e => {
+            console.log(e);
+          });
       },
-      handleSubmit(e) {
-        e.preventDefault();
-        this.form.validateFields((err, values) => {
-          if (!err) {
-            console.log('Received values of form: ', values);
-          }
-        });
+      addDish(){
+        this.visible = true;
+        this.isEdit = false
+        this.editItem = Object.assign({}, newDish);
+      },
+      editDish(record) {
+        this.isEdit = true;
+        this.visible = true;
+        this.editItem = Object.assign({}, record);
+      },
+      updateVisible(value) {
+        this.visible = value;
+      },
+      deleteDish(item) {
+        axios
+          .delete(`http://localhost:3000/api/v1/dishes/${item.id}`)
+          .then((res) => {
+            console.log(res);
+            this.$message.success('Deleted success');
+            this.initialize()
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      },
+      updateListAfterUpdated() {
+        this.initialize()
+      },
+      getDataRestaurant(){
+        return axios
+          .get("http://localhost:3000/api/v1/restaurants/")
+          .then(response => {
+            console.log(response.data);
+            this.restaurants = response.data;
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      },
+      filterOption(input, option) {
+        return (
+          option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0
+        );
       },
       handleChange(value) {
-        console.log(`selected ${value}`);
+        console.log(`id: ${value}`);
       },
-      showModal() {
-        this.visible = true;
-      },
-      handleOk(e) {
-        console.log(e);
-        this.visible = false;
-      },
+
+
+
+
     }
   }
 </script>
 
 <style scoped>
-  #dish .dish-search .ant-select{
-    margin: 20px;
-    width: 200px !important;
+  .img-dashboard {
+    height: 32px;
+  }
+
+  #components-layout-demo-responsive .logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px;
+  }
+
+  .ant-input-search {
+    margin-top: 20px;
+    margin-left: 15px;
+  }
+
+  .ant-input-group-wrapper {
+    width: 90% !important;
+  }
+
+  .editable-cell {
+    position: relative;
+  }
+
+  .editable-cell-input-wrapper,
+  .editable-cell-text-wrapper {
+    padding-right: 24px;
+  }
+
+  .editable-cell-text-wrapper {
+    padding: 5px 24px 5px 5px;
+  }
+
+  .editable-cell-icon,
+  .editable-cell-icon-check {
+    position: absolute;
+    right: 0;
+    width: 20px;
+    cursor: pointer;
+  }
+
+  .editable-cell-icon {
+    line-height: 18px;
+    display: none;
+  }
+
+  .editable-cell-icon-check {
+    line-height: 28px;
+  }
+
+  .editable-cell:hover .editable-cell-icon {
+    display: inline-block;
+  }
+
+  .editable-cell-icon:hover,
+  .editable-cell-icon-check:hover {
+    color: #108ee9;
+  }
+
+  .editable-add-btn {
+    margin-bottom: 8px;
+  }
+
+  .ant-table-thead tr th {
+    text-align: center !important;
   }
 </style>

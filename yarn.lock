@@ -6659,6 +6659,11 @@ requires-port@^1.0.0:
   resolved "https://registry.npmjs.org/requires-port/-/requires-port-1.0.0.tgz"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
 
+reqwest@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.npmjs.org/reqwest/-/reqwest-2.0.5.tgz"
+  integrity sha1-APsVrEkYxBnKgrQ/JMeIguZgOaE=
+
 resize-observer-polyfill@^1.5.1:
   version "1.5.1"
   resolved "https://registry.npmjs.org/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz"
@@ -7852,6 +7857,13 @@ vue-ref@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/vue-ref/-/vue-ref-2.0.0.tgz"
   integrity sha512-uKNKpFOVeWNqS2mrBZqnpLyXJo5Q+vnkex6JvpENvhXHFNBW/SJTP8vJywLuVT3DpxwXcF9N0dyIiZ4/NpTexQ==
+
+vue-reqwest@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/vue-reqwest/-/vue-reqwest-1.2.1.tgz"
+  integrity sha512-sEVGM+aT4oxXnxvkzTjPO8S4p51xbcfsd55z5PsTi8ZOh1n6jS0TbWWJYhqCwhxouBAX/QkicVUBnDki2QpEfg==
+  dependencies:
+    reqwest "^2.0.5"
 
 vue-router@^3.4.9:
   version "3.4.9"
