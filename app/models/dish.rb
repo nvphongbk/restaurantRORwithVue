@@ -10,8 +10,9 @@
 #  updated_at :datetime         not null
 #
 class Dish < ApplicationRecord
+    mount_uploader :image, ImageUploader
     has_many :category_dishes
     has_many :categories, through: :category_dishes
 
-    validates :name, :price, presence: true
+    validates :name, :price, presence: false
 end

@@ -1,0 +1,122 @@
+<template>
+  <a-form-model
+    :rules="rules"
+    ref="ruleForm"
+    :model="editItem"
+    :label-col="{ span: 5 }"
+    :wrapper-col="{ span: 12 }">
+    <a-form-model-item ref="name" label="Name" prop="name">
+      <a-input placeholder="Please input name category" :autoFocus="true"
+        v-model="editItem.name" />
+    </a-form-model-item>
+    <a-form-model-item  label="Restaurant" prop="restaurants">
+      <a-select show-search
+                option-filter-prop="children"
+                :filter-option="filterOption"
+                v-model="editItem.restaurant_id" placeholder="Select a Restaurant">
+        <a-select-option v-for="restaurant in restaurants" :value="restaurant.id" >
+          {{ restaurant.name }}
+        </a-select-option>
+      </a-select>
+    </a-form-model-item>
+    <a-form-model-item :wrapperCol="{ offset: 8 }">
+      <a-button @click="handleSubmit" type="primary" html-type="submit">
+        Submit
+      </a-button>
+      <!--<a-button style="margin-left: 10px;" @click="resetForm">-->
+        <!--Reset-->
+      <!--</a-button>-->
+    </a-form-model-item>
+  </a-form-model>
+</template>
+<script>
+  import axios from "axios";
+  export default {
+    name: "FormCategory",
+    props: {
+      restaurants:{
+        type: Array
+      },
+      rules:{
+        type: Object
+      },
+      isEdit: {
+        type: Boolean,
+        default: false
+      },
+      visible: {
+        type: Boolean,
+        default: false
+      },
+      editItem: {
+        type: Object
+      },
+
+    },
+    data() {
+      return {
+      };
+    },
+    mounted(){
+      this.callDataRestaurant()
+    },
+    methods: {
+      create(item) {
+        this.isEdit = false
+        axios
+          .post("http://localhost:3000/api/v1/categories/", {
+            category: item
+          })
+          .then(response => {
+            console.log(response);
+            this.$message.success('Created success');
+            this.$emit('updateListAfterUpdated', this.editItem);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      },
+      handleSubmit(e) {
+        this.$refs.ruleForm.validate((valid) => {
+          if (valid) {
+            let valuesSave = Object.assign({}, this.editItem)
+            if (this.isEdit) {
+              let idItem = this.editItem.id
+              axios
+                .put(`http://localhost:3000/api/v1/categories/${idItem}`, {
+                  category: valuesSave
+                },{headers: {
+                    'Content-Type': 'application/json'
+                  }})
+                .then(response => {
+                  console.log(response);
+                  this.$message.success('Updated success')
+                  this.$emit('updateListAfterUpdated', this.editItem);
+                })
+                .catch(error => {
+                  console.log(error);
+                });
+            } else {
+              this.create(valuesSave)
+            }
+            this.$emit('updateVisible', false);
+            this.visible = false;
+          } else {
+            return false;
+          }
+        });
+      },
+      // resetForm() {
+      //   this.$refs.ruleForm.resetFields();
+      // },
+      callDataRestaurant(){
+        this.$emit('getDataRestaurant')
+      },
+      filterOption(input, option) {
+        return (
+          option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0
+        );
+      },
+    },
+  };
+</script>

@@ -1,1 +1,6 @@
-json.array! @restaurants, partial: "restaurants/restaurant", as: :restaurant
+json.array! @restaurants do |restaurant|
+  json.id restaurant.id
+  json.name restaurant.name
+  json.address restaurant.address
+  json.user_id restaurant.user_id
+end

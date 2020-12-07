@@ -41,6 +41,12 @@ module Api
         end
       end
 
+      def categories
+        @restaurant = Restaurant.find(params[:id])
+        @categories = @restaurant.categories
+        render json: @categories , status: 200
+      end
+
       private
 
       def restaurant_params

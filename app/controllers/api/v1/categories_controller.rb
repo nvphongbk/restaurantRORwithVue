@@ -6,7 +6,8 @@ module Api
         @categories = Category.all
       end
 
-      def show ;end
+      def show;
+      end
 
       def new
         @category = Category.new
@@ -43,9 +44,9 @@ module Api
 
       private
 
-        def category_params
+      def category_params
           params.require(:category).permit(:name, :restaurant_id)
-        end
+      end
     end
   end
 end
