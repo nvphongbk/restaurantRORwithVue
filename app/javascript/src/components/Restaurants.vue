@@ -44,6 +44,7 @@
 <script>
   import axios from "axios";
   import FormRestaurant from "./forms/FormRestaurant"
+  import {URLS} from "../utils/url"
   const newRestaurant = {
     id: '',
     name: '',
@@ -114,7 +115,7 @@
     methods: {
       initialize() {
         return axios
-          .get("http://localhost:3000/api/v1/restaurants/")
+          .get(URLS.RESTAURANTS())
           .then(response => {
             console.log(response.data);
             this.desserts = response.data;
@@ -141,7 +142,7 @@
       },
       deleteRestaurant(item) {
         axios
-          .delete(`http://localhost:3000/api/v1/restaurants/${item.id}`)
+          .delete(URLS.RESTAURANT(item.id))
           .then((res) => {
             console.log(res)
             this.$message.success('Deleted success');

@@ -3,7 +3,6 @@ class CreateDishes < ActiveRecord::Migration[6.0]
     create_table :dishes do |t|
       t.string :name
       t.integer :price
-      t.string :image
 
       t.timestamps
     end

@@ -27,6 +27,7 @@
 
 <script>
   import axios from "axios";
+  import {URLS} from "../../utils/url"
   export default {
     name: "FormRestaurant",
     props: {
@@ -52,7 +53,7 @@
       create(item) {
         this.isEdit = false
         axios
-          .post("http://localhost:3000/api/v1/restaurants/", {
+          .post(URLS.RESTAURANTS(), {
             restaurant: item
           })
           .then(response => {
@@ -72,7 +73,7 @@
             if (this.isEdit) {
               let idItem = this.editItem.id
               axios
-                .put(`http://localhost:3000/api/v1/restaurants/${idItem}`, {
+                .put(URLS.RESTAURANT(idItem), {
                   restaurant: valuesSave
                 },{headers: {
                     'Content-Type': 'application/json'

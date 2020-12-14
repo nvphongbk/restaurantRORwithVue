@@ -6,10 +6,9 @@ module Api
         if @image.save
           render json: @image, status: 200
         else
-          render json: {message: full_error(@image)}, status: 422
+          render json: {message: "Can't not create image"}, status: 422
         end
       end
     end
   end
 end
-

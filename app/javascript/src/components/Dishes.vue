@@ -7,12 +7,23 @@
                     show-search
                     option-filter-prop="children"
                     :filter-option="filterOption"
-                    v-model="editItem.restaurant_id"
                     placeholder="Select a Restaurant"
-                    @change="handleChange"
+                    @change="handleChangeRestaurant"
           >
             <a-select-option v-for="restaurant in restaurants" :value="restaurant.id">
               {{ restaurant.name }}
+            </a-select-option>
+          </a-select>
+
+          <a-select style="width: 300px"
+                    show-search
+                    option-filter-prop="children"
+                    :filter-option="filterOption"
+                    placeholder="Select a Category"
+                    @change="handleChangeCategory"
+          >
+            <a-select-option v-for="category in categories" :value="category.id">
+              {{ category.name }}
             </a-select-option>
           </a-select>
         </div>
@@ -20,10 +31,12 @@
                   @click="addDish">
           Add
         </a-button>
+        <a-button type="primary" class="editable-add-btn"
+                  @click="showAllDish">
+          All dish
+        </a-button>
         <a-modal v-model="visible" :title="titleModal" :footer="null">
           <FormDish
-            ref="child"
-            :restaurants="restaurants"
             :rules="rules"
             :editItem="editItem"
             :isEdit="isEdit"
@@ -38,7 +51,7 @@
         >
           <template slot="image" slot-scope="image">
         <span>
-          <a-avatar shape="square" :size="100" :src="image.url" />
+          <a-avatar shape="square" :size="100" :src="image" />
         </span>
           </template>
           <template slot="action" slot-scope="text, record">
@@ -66,17 +79,21 @@
 
 <script>
   import axios from "axios";
+  import {URLS} from "../utils/url"
   import FormDish from "./forms/FormDish"
   const newDish = {
     id: '',
     name: '',
     price:'',
-    image:'',
+    category_ids:[],
+    images_attributes: [],
+    images_ids: []
   }
   export default {
     name: "Dishes",
     data() {
       return {
+        categories:[],
         restaurants: [],
         rules: {
           name: [
@@ -89,8 +106,7 @@
           restaurant: [{ required: false, message: 'Please select Restaurant', trigger: 'change' }],
 
         },
-        editItem: {
-        },
+        editItem: {},
         isEdit: false,
         desserts: [],
         visible: false,
@@ -105,7 +121,7 @@
           },
           {
             title: 'Image',
-            dataIndex: 'image',
+            dataIndex: 'images_attributes[0].url',
             scopedSlots: { customRender: "image" },
           },
           {
@@ -119,6 +135,7 @@
     components:{
       FormDish,
     },
+    watch: {},
     computed: {
       titleModal() {
         return this.isEdit ? 'Edit Dish' : 'Create Dish'
@@ -131,13 +148,11 @@
     methods: {
       initialize() {
         return axios
-          .get("http://localhost:3000/api/v1/dishes/")
+          .get(URLS.DISHES())
           .then(response => {
-            console.log(response.data,"data");
             this.desserts = response.data;
           })
           .catch(e => {
-            console.log(e);
           });
       },
       addDish(){
@@ -155,14 +170,12 @@
       },
       deleteDish(item) {
         axios
-          .delete(`http://localhost:3000/api/v1/dishes/${item.id}`)
+          .delete(URLS.DISH(item.id))
           .then((res) => {
-            console.log(res);
             this.$message.success('Deleted success');
             this.initialize()
           })
           .catch(error => {
-            console.log(error);
           });
       },
       updateListAfterUpdated() {
@@ -170,13 +183,29 @@
       },
       getDataRestaurant(){
         return axios
-          .get("http://localhost:3000/api/v1/restaurants/")
+          .get(URLS.RESTAURANTS())
           .then(response => {
-            console.log(response.data);
             this.restaurants = response.data;
           })
           .catch(e => {
-            console.log(e);
+          });
+      },
+      getDataCategory(value){
+        return axios
+          .get(URLS.RESTAURANTSEARCH(value))
+          .then(response => {
+            this.categories = response.data;
+          })
+          .catch(e => {
+          });
+      },
+      searchDish(value){
+        return axios
+          .get(URLS.CATEGORYSEARCH(value))
+          .then(response => {
+            this.desserts = response.data;
+          })
+          .catch(e => {
           });
       },
       filterOption(input, option) {
@@ -184,8 +213,14 @@
           option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0
         );
       },
-      handleChange(value) {
-        console.log(`id: ${value}`);
+      handleChangeRestaurant(value) {
+        this.getDataCategory(value)
+      },
+      handleChangeCategory(value) {
+        this.searchDish(value)
+      },
+      showAllDish() {
+        this.initialize()
       },
     }
   }

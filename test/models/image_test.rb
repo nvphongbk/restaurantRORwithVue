@@ -1,16 +1,20 @@
 # == Schema Information
 #
-# Table name: dishes
+# Table name: images
 #
 #  id         :integer          not null, primary key
-#  name       :string
-#  price      :integer
+#  photo      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  dish_id    :integer
+#
+# Indexes
+#
+#  index_images_on_dish_id  (dish_id)
 #
 require 'test_helper'
 
-class DishTest < ActiveSupport::TestCase
+class ImageTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

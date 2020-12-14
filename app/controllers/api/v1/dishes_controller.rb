@@ -4,11 +4,10 @@ module Api
 
       def index
         @dishes = Dish.all
-        render json: @dishes, status: 200
+        render json: @dishes
       end
 
-      def show;
-      end
+      def show; end
 
       def new
         @dish = Dish.new
@@ -19,20 +18,20 @@ module Api
       end
 
       def create
-        @dish = Dish.new(dish_params)
-
-
-        if @dish.save
-          render json: @dish, status: 200
+        dish = Dish.new(dish_params)
+        if dish.save
+          InitServices::InitDish.new(dish, params[:dish][:images_ids]).perform
+          render json: dish, status: 200
         else
           render json: {message: "Can't create dish"}, status: 422
         end
       end
 
       def update
-        @dish = Dish.find(params[:id])
-        if @dish.update(dish_params)
-          render json: @dish, status: 200
+        dish = Dish.find(params[:id])
+        if dish.update(dish_params)
+          InitServices::InitDish.new(dish, params[:dish][:images_ids]).perform
+          render json: dish, status: 200
         else
           render json: {message: "Can't not update dish"}, status: 422
         end
@@ -48,7 +47,7 @@ module Api
       private
 
       def dish_params
-        params.require(:dish).permit(:name, :price, :image)
+        params.require(:dish).permit(:name, :price, category_ids: [])
       end
     end
   end

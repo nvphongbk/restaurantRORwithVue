@@ -23,14 +23,14 @@
       <a-button @click="handleSubmit" type="primary" html-type="submit">
         Submit
       </a-button>
-      <!--<a-button style="margin-left: 10px;" @click="resetForm">-->
-        <!--Reset-->
-      <!--</a-button>-->
+
     </a-form-model-item>
   </a-form-model>
 </template>
 <script>
   import axios from "axios";
+  import {URLS} from "../../utils/url";
+
   export default {
     name: "FormCategory",
     props: {
@@ -64,7 +64,7 @@
       create(item) {
         this.isEdit = false
         axios
-          .post("http://localhost:3000/api/v1/categories/", {
+          .post(URLS.CATEGORIES(), {
             category: item
           })
           .then(response => {
@@ -83,7 +83,7 @@
             if (this.isEdit) {
               let idItem = this.editItem.id
               axios
-                .put(`http://localhost:3000/api/v1/categories/${idItem}`, {
+                .put(URLS.CATEGORY(idItem), {
                   category: valuesSave
                 },{headers: {
                     'Content-Type': 'application/json'
@@ -106,9 +106,6 @@
           }
         });
       },
-      // resetForm() {
-      //   this.$refs.ruleForm.resetFields();
-      // },
       callDataRestaurant(){
         this.$emit('getDataRestaurant')
       },

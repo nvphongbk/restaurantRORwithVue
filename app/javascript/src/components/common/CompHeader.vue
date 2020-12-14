@@ -1,7 +1,6 @@
 <template>
   <div class="header-">
     <a-layout-header class="topbar">
-      <a-input-search placeholder="input search text" enter-button/>
       <a-row class="float-right">
         <a-popover placement="bottomRight">
           <template slot="content">

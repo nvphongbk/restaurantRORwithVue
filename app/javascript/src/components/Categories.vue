@@ -57,6 +57,8 @@
   import axios from "axios";
   import FormCategory from "./forms/FormCategory"
   import FilterRestaurant from  "./filters/FilterRestaurant"
+  import {URLS} from "../utils/url";
+
   const newCategory = {
     id: '',
     name: '',
@@ -113,7 +115,7 @@
     methods: {
       initialize() {
         return axios
-          .get("http://localhost:3000/api/v1/categories/")
+          .get(URLS.CATEGORIES())
           .then(response => {
             console.log(response.data);
             this.desserts = response.data;
@@ -137,9 +139,8 @@
       },
       deleteCategory(item) {
         axios
-          .delete(`http://localhost:3000/api/v1/categories/${item.id}`)
+          .delete(URLS.CATEGORY(item.id))
           .then((res) => {
-            console.log(res);
             this.$message.success('Deleted success');
             this.searchCategory(this.editItem.restaurant_id)
           })
@@ -152,7 +153,7 @@
       },
       searchCategory(value){
           return axios
-            .get(`http://localhost:3000/api/v1/restaurants/${value}/categories`)
+            .get(URLS.RESTAURANTSEARCH(value))
             .then(response => {
               console.log(response.data);
                 this.desserts = response.data;
@@ -163,7 +164,7 @@
       },
       getDataRestaurant(){
         return axios
-          .get("http://localhost:3000/api/v1/restaurants/")
+          .get(URLS.RESTAURANTS())
           .then(response => {
             console.log(response.data);
             this.restaurants = response.data;
