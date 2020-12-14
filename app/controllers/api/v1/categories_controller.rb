@@ -6,8 +6,7 @@ module Api
         @categories = Category.all
       end
 
-      def show;
-      end
+      def show; end
 
       def new
         @category = Category.new
@@ -40,6 +39,12 @@ module Api
         if @category.destroy
           render json: {status: "ok deleted"}, status: 200
         end
+      end
+
+      def dishes
+        @category = Category.find(params[:id])
+        @dishes = @category.dishes
+        render json: @dishes, status: 200
       end
 
       private
