@@ -1,8 +1,5 @@
 <template>
   <div class="clearfix">
-
-    {{this.editImages}}
-
     <a-upload
       accept=".jpg, .png, .jpeg"
       action="/api/v1/images"

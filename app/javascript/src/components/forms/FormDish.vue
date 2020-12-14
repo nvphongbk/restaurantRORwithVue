@@ -17,9 +17,9 @@
     <a-form-model-item label="Category">
 
       <a-checkbox-group v-model="editItem.category_ids" @change="onChange">
-        <a-checkbox :span="6" v-for="category in categories" :key="category.id"
+        <a-checkbox :span="6" v-for="category in categories"
                     name="category_ids[]" :value="category.id">
-          {{ category.name }} - {{ category.id }}
+          {{ category.name }}
         </a-checkbox>
       </a-checkbox-group>
     </a-form-model-item>
@@ -44,6 +44,7 @@
 
 
   import axios from "axios";
+  import {URLS} from "../../utils/url"
   import UploadImage from "../UploadImage"
   export default {
     name: "FormDish",
@@ -86,17 +87,14 @@
         this.isEdit = false
 
         axios
-          .post("http://localhost:3000/api/v1/dishes", {
+          .post(URLS.DISHES(), {
             dish: item
           })
           .then(response => {
-            console.log(response);
-            console.log("Created!");
             this.$message.success('Created success');
             this.$emit('updateListAfterUpdated', this.editItem);
           })
           .catch(error => {
-            console.log(error);
           });
       },
       handleSubmit(e) {
@@ -107,7 +105,7 @@
               let idItem = this.editItem.id
 
               axios
-                .put(`http://localhost:3000/api/v1/dishes/${idItem}`, {
+                .put(URLS.DISH(idItem), {
                   dish: valuesSave
                 })
                 .then(response => {
@@ -115,7 +113,6 @@
                   this.$emit('updateListAfterUpdated', this.editItem);
                 })
                 .catch(error => {
-                  console.log(error);
                 });
             } else {
               this.create(valuesSave)
@@ -140,17 +137,14 @@
       },
       getDataCategory() {
         return axios
-          .get(`http://localhost:3000/api/v1/categories`)
+          .get(URLS.CATEGORIES())
           .then(response => {
-            console.log(response.data);
             this.categories = response.data;
           })
           .catch(e => {
-            console.log(e);
           });
       },
       onChange(checkedValues) {
-        console.log(checkedValues)
       },
       updateImageList(list) {
         this.editItem.images_ids = list

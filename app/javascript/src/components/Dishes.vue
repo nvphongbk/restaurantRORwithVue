@@ -23,7 +23,7 @@
                     @change="handleChangeCategory"
           >
             <a-select-option v-for="category in categories" :value="category.id">
-              {{ category.name }}- {{category.id}}
+              {{ category.name }}
             </a-select-option>
           </a-select>
         </div>
@@ -79,6 +79,7 @@
 
 <script>
   import axios from "axios";
+  import {URLS} from "../utils/url"
   import FormDish from "./forms/FormDish"
   const newDish = {
     id: '',
@@ -147,13 +148,11 @@
     methods: {
       initialize() {
         return axios
-          .get("http://localhost:3000/api/v1/dishes/")
+          .get(URLS.DISHES())
           .then(response => {
-            console.log(response.data,"data");
             this.desserts = response.data;
           })
           .catch(e => {
-            console.log(e);
           });
       },
       addDish(){
@@ -165,21 +164,18 @@
         this.isEdit = true;
         this.visible = true;
         this.editItem = Object.assign({}, record);
-        console.log(this.editItem, "editItem la`")
       },
       updateVisible(value) {
         this.visible = value;
       },
       deleteDish(item) {
         axios
-          .delete(`http://localhost:3000/api/v1/dishes/${item.id}`)
+          .delete(URLS.DISH(item.id))
           .then((res) => {
-            console.log(res);
             this.$message.success('Deleted success');
             this.initialize()
           })
           .catch(error => {
-            console.log(error);
           });
       },
       updateListAfterUpdated() {
@@ -187,35 +183,29 @@
       },
       getDataRestaurant(){
         return axios
-          .get("http://localhost:3000/api/v1/restaurants/")
+          .get(URLS.RESTAURANTS())
           .then(response => {
-            console.log(response.data);
             this.restaurants = response.data;
           })
           .catch(e => {
-            console.log(e);
           });
       },
       getDataCategory(value){
         return axios
-          .get(`http://localhost:3000/api/v1/restaurants/${value}/categories`)
+          .get(URLS.RESTAURANTSEARCH(value))
           .then(response => {
-            console.log(response.data);
             this.categories = response.data;
           })
           .catch(e => {
-            console.log(e);
           });
       },
       searchDish(value){
         return axios
-          .get(`http://localhost:3000/api/v1/categories/${value}/dishes`)
+          .get(URLS.CATEGORYSEARCH(value))
           .then(response => {
-            console.log(response.data);
             this.desserts = response.data;
           })
           .catch(e => {
-            console.log(e);
           });
       },
       filterOption(input, option) {
