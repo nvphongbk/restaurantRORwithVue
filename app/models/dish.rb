@@ -9,6 +9,8 @@
 #  updated_at :datetime         not null
 #
 class Dish < ApplicationRecord
+    IMPORT_COLUMNS = { name: 'name', price: 'price', image: 'image'}
+
     has_many :images ,dependent: :destroy
     accepts_nested_attributes_for :images, allow_destroy: true
     has_many :category_dishes

@@ -1,7 +1,7 @@
 <template>
-  <div class="clearfix">
+  <div>
     <a-upload
-      accept=".jpg, .png, .jpeg"
+      accept=".jpg,.png,.jpeg"
       :action="imageUploadUrl"
       list-type="picture-card"
       :file-list="fileList"
@@ -9,7 +9,7 @@
       @preview="handlePreview"
       @change="handleChange"
     >
-      <div v-if="fileList.length < 5">
+      <div v-if="fileList.length < 50">
         <a-icon type="plus" />
         <div class="ant-upload-text">
           Upload
@@ -19,10 +19,17 @@
     <a-modal :visible="previewVisible" :footer="null" @cancel="handleCancel">
       <img alt="example" style="width: 100%" :src="previewImage" />
     </a-modal>
+      <div class="flex flex-wrap">
+        <div id="gallery" v-for="(image, i) in images">
+          <img class="image" :src="image">
+        </div>
+      </div>
   </div>
 </template>
+
 <script>
-  import {URLS} from "../utils/url";
+  import axios from 'axios'
+  import {URLS} from "../../utils/url";
   function getBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -32,33 +39,39 @@
     });
   }
   export default {
+    name: "ImportMedia",
     data() {
       return {
         previewVisible: false,
         previewImage: '',
         fileList: [],
+        desserts:'',
+        images: [],
+        index: 0,
         imageUploadUrl: URLS.IMAGES
-      };
-    },
-    props: {
-      editImages: {
-        type: Array
-      }
-    },
-    watch: {
-      editImages: {
-        handler: function () {
-          this.initializeImages()
-        }
       }
     },
     mounted() {
-      this.initializeImages()
+      this.initialize()
     },
     methods: {
+      initialize() {
+        return axios
+          .get(URLS.IMAGES())
+          .then(response => {
+            const arrUrl=[]
+            this.desserts = response.data;
+            this.desserts.forEach(function(item){
+                arrUrl.push(item.url)
+              }
+            )
+            this.images = arrUrl
+          })
+          .catch(e => {
+          });
+      },
       handleCancel() {
         this.previewVisible = false;
-        this.updateImageIds()
       },
       async handlePreview(file) {
         if (!file.url && !file.preview) {
@@ -69,26 +82,19 @@
       },
       handleChange({ fileList }) {
         this.fileList = fileList;
-        this.updateImageIds()
       },
-      initializeImages(){
-        this.fileList = JSON.parse(JSON.stringify(this.editImages))
-      },
-      updateImageIds() {
-        let images_ids = this.fileList.map((object) => {
-          if(object.status === 'done') {
-            return object.response.id
-          } else {
-            return object.id
-          }
-        })
-        this.$emit('updateImageList', images_ids)
-      }
-    },
-  };
+    }
+  }
 </script>
-<style>
-  /* you can make up upload button and sample style by using stylesheets */
+
+<style scoped>
+  #gallery{
+    display: flex;
+    max-width: 100px;
+  }
+  #gallery .image{
+    padding: 3px;
+  }
   .ant-upload-select-picture-card i {
     font-size: 32px;
     color: #999;

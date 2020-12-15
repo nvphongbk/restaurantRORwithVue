@@ -6,6 +6,7 @@ import Dashboard from "./components/Dashboard"
 import Restaurants from "./components/Restaurants"
 import Categories from "./components/Categories"
 import Dishes from "./components/Dishes"
+import ImportMedia from "./components/common/ImportMedia"
 Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
@@ -58,6 +59,14 @@ const router = new VueRouter({
         openKey: 'System'
       }
     },
+    {
+      path: '/import-media',
+      name: 'ImportMedia',
+      component: ImportMedia,
+      meta: {
+        openKey: 'import-media'
+      }
+    }
   ]
 })
 export default router

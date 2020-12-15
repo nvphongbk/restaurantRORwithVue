@@ -11,6 +11,7 @@
     "reqwest": "^2.0.5",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.12",
+    "vue-gallery-slideshow": "^1.5.2",
     "vue-loader": "^15.9.5",
     "vue-reqwest": "^1.2.1",
     "vue-router": "^3.4.9",
