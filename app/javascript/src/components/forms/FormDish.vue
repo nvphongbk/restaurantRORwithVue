@@ -46,6 +46,7 @@
   import axios from "axios";
   import {URLS} from "../../utils/url"
   import UploadImage from "../UploadImage"
+  import reqwest from 'reqwest'
   export default {
     name: "FormDish",
     props: {
@@ -82,7 +83,6 @@
     },
 
     methods: {
-
       create(item) {
         this.isEdit = false
 

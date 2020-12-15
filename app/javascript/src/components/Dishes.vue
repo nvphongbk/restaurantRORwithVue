@@ -35,6 +35,16 @@
                   @click="showAllDish">
           All dish
         </a-button>
+        <a-button type="dashed" class="editable-add-btn"
+                  @click="showModalImport">
+          Import
+        </a-button>
+
+        <a-modal v-model:visible="visibleImportDish" title="Import data" :footer="null">
+          <ImportDish @closeImportModal="visibleImportDish = false"/>
+        </a-modal>
+
+
         <a-modal v-model="visible" :title="titleModal" :footer="null">
           <FormDish
             :rules="rules"
@@ -81,6 +91,7 @@
   import axios from "axios";
   import {URLS} from "../utils/url"
   import FormDish from "./forms/FormDish"
+  import ImportDish from "./ImportDish"
   const newDish = {
     id: '',
     name: '',
@@ -93,6 +104,7 @@
     name: "Dishes",
     data() {
       return {
+        visibleImportDish: false,
         categories:[],
         restaurants: [],
         rules: {
@@ -133,7 +145,7 @@
       };
     },
     components:{
-      FormDish,
+      FormDish,ImportDish
     },
     watch: {},
     computed: {
@@ -159,6 +171,9 @@
         this.visible = true;
         this.isEdit = false
         this.editItem = Object.assign({}, newDish);
+      },
+      showModalImport(){
+        this.visibleImportDish = true
       },
       editDish(record) {
         this.isEdit = true;
@@ -192,7 +207,7 @@
       },
       getDataCategory(value){
         return axios
-          .get(URLS.RESTAURANTSEARCH(value))
+          .get(URLS.RESTAURANT_SEARCH(value))
           .then(response => {
             this.categories = response.data;
           })
@@ -201,7 +216,7 @@
       },
       searchDish(value){
         return axios
-          .get(URLS.CATEGORYSEARCH(value))
+          .get(URLS.CATEGORY_SEARCH(value))
           .then(response => {
             this.desserts = response.data;
           })

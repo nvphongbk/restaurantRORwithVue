@@ -153,7 +153,7 @@
       },
       searchCategory(value){
           return axios
-            .get(URLS.RESTAURANTSEARCH(value))
+            .get(URLS.RESTAURANT_SEARCH(value))
             .then(response => {
               console.log(response.data);
                 this.desserts = response.data;

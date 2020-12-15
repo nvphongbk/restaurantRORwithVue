@@ -4,13 +4,17 @@ export const getBaseUrl = () => {
 export const URLS = {
   RESTAURANTS: () => `${getBaseUrl()}/restaurants`,
   RESTAURANT: (id) => `${getBaseUrl()}/restaurants/${id}`,
-  RESTAURANTSEARCH: (id) => `${getBaseUrl()}/restaurants/${id}/categories`,
+  RESTAURANT_SEARCH: (id) => `${getBaseUrl()}/restaurants/${id}/categories`,
 
 
   CATEGORIES: () => `${getBaseUrl()}/categories`,
   CATEGORY: (id) => `${getBaseUrl()}/categories/${id}`,
-  CATEGORYSEARCH: (id) => `${getBaseUrl()}/categories/${id}/dishes`,
+  CATEGORY_SEARCH: (id) => `${getBaseUrl()}/categories/${id}/dishes`,
+
+  IMPORT_DATA: () => `${getBaseUrl()}/import_data`,
 
   DISHES: () => `${getBaseUrl()}/dishes`,
-  DISH: (id) => `${getBaseUrl()}/dishes/${id}`
+  DISH: (id) => `${getBaseUrl()}/dishes/${id}`,
+
+  IMAGES: () => `${getBaseUrl()}/images`,
 };

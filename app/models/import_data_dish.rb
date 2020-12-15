@@ -1,0 +1,2 @@
+class ImportDataDish < ApplicationRecord
+end

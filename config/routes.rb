@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root "home#index"
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      resources :import_data, only: %w[index create]
       resources :dishes
-      resources :images, only: %w[create]
+      resources :images, only: %w[create index]
       resources :categories do
         member do
           get :dishes

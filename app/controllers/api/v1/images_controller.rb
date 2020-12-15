@@ -1,6 +1,9 @@
 module Api
   module V1
     class ImagesController < ApplicationController
+      def index
+        @images = Image.all
+      end
       def create
         @image = Image.new(photo: params[:file])
         if @image.save

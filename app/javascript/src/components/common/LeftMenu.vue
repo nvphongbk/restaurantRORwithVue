@@ -22,6 +22,12 @@
           <span class="nav-text">Dish</span>
         </router-link>
       </a-menu-item>
+      <a-menu-item key="import-media">
+        <router-link :to="{name: 'ImportMedia'}">
+          <a-icon type="import"/>
+          <span class="nav-text">Import Media</span>
+        </router-link>
+      </a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>
