@@ -2,7 +2,7 @@
   <div class="clearfix">
     <a-upload
       accept=".jpg, .png, .jpeg"
-      action="/api/v1/images"
+      :action="imageUploadUrl"
       list-type="picture-card"
       :file-list="fileList"
       :multiple="true"
@@ -22,6 +22,7 @@
   </div>
 </template>
 <script>
+  import {URLS} from "../utils/url";
   function getBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -36,6 +37,7 @@
         previewVisible: false,
         previewImage: '',
         fileList: [],
+        imageUploadUrl: URLS.IMAGES
       };
     },
     props: {

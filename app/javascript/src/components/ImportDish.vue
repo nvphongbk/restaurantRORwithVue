@@ -75,7 +75,7 @@
       },
       downloadformdata(){
           axios({
-            url: 'form-data.xlsx',
+            url: URLS.FORM_DATA(),
             method: 'GET',
             responseType: 'blob',
           }).then((response) => {

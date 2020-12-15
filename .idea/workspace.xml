@@ -5,35 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9a3189e-9217-4436-9c46-d56438460f78" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.rakeTasks" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Rails_restaurant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Rails_restaurant.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/images_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/v1/images_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/Categories.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/Categories.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/Dishes.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/Dishes.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/HomePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/HomePage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/common/LeftMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/common/LeftMenu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/forms/FormDish.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/forms/FormDish.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/ImportDish.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/ImportDish.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/UploadImage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/UploadImage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/common/ImportMedia.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/common/ImportMedia.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/src/utils/url.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/utils/url.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/dish.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/dish.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/image.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/image.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/serializers/dish_serializer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/serializers/dish_serializer.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/serializers/image_serializer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/serializers/image_serializer.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/services/init_services/init_dish.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/init_services/init_dish.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/application.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/initializers/mime_types.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/mime_types.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fixtures/images.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test/fixtures/images.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/models/image_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/image_test.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
@@ -71,14 +48,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/ImportMedia.vue">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/javascript/src/components/ImportDish.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+            <state relative-caret-position="34">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
               <folding>
-                <element signature="e#823#848#0" expanded="true" />
+                <element signature="n#style#0;n#a-button#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#681#707#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/javascript/src/utils/url.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="38" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/javascript/src/components/UploadImage.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#a-modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/services/init_services/init_dish.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -86,26 +95,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Signin.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="213">
               <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/javascript/app.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/LeftMenu.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -113,20 +104,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/javascript/src/components/HomePage.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/javascript/src/router.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="48" column="25" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="119">
+              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -143,10 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>editI</find>
-      <find>category_ids</find>
-      <find>add</find>
-      <find>console</find>
       <find>console.log</find>
       <find>Search</find>
       <find>All dish</find>
@@ -172,7 +147,11 @@
       <find>image_name</find>
       <find>editImage</find>
       <find>media</find>
+      <find>click</find>
       <find>impo</find>
+      <find>images</find>
+      <find>action</find>
+      <find>action=</find>
     </findStrings>
     <replaceStrings>
       <replace>RESTAURANT_SEARCH</replace>
@@ -204,7 +183,6 @@
         <option value="$PROJECT_DIR$/db/migrate/20201211065508_remove_dish_foreign_key.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20201209072648_create_images.rb" />
         <option value="$PROJECT_DIR$/app/serializers/dish_serializer.rb" />
-        <option value="$PROJECT_DIR$/app/javascript/src/components/UploadImage.vue" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/forms/FormRestaurant.vue" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/Restaurants.vue" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/forms/FormCategory.vue" />
@@ -217,7 +195,6 @@
         <option value="$PROJECT_DIR$/app/controllers/api/v1/import_data_dish_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/api/v1/import_data/index.jbuilder" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/common/ImportData.vue" />
-        <option value="$PROJECT_DIR$/app/javascript/src/components/ImportDish.vue" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/Dishes.vue" />
@@ -229,17 +206,19 @@
         <option value="$PROJECT_DIR$/app/controllers/api/v1/dishes_controller.rb" />
         <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
         <option value="$PROJECT_DIR$/app/controllers/api/v1/import_data_controller.rb" />
-        <option value="$PROJECT_DIR$/app/services/init_services/init_dish.rb" />
         <option value="$PROJECT_DIR$/app/views/api/v1/images/index.jbuilder" />
         <option value="$PROJECT_DIR$/app/controllers/api/v1/images_controller.rb" />
-        <option value="$PROJECT_DIR$/app/javascript/src/utils/url.js" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/common/Media.vue" />
-        <option value="$PROJECT_DIR$/app/javascript/src/components/common/ImportMedia.vue" />
         <option value="$PROJECT_DIR$/app/javascript/src/router.js" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/common/LeftMenu.vue" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/HomePage.vue" />
         <option value="$PROJECT_DIR$/app/javascript/app.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/utils/url.js" />
+        <option value="$PROJECT_DIR$/app/services/init_services/init_dish.rb" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/common/ImportMedia.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/UploadImage.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/ImportDish.vue" />
       </list>
     </option>
   </component>
@@ -285,14 +264,6 @@
               <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
               <item name="Rails_restaurant" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="v1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Rails_restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="javascript" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -309,6 +280,24 @@
               <item name="javascript" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Rails_restaurant" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="javascript" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Rails_restaurant" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="javascript" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="forms" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
@@ -459,18 +448,18 @@
       <workItem from="1607848749357" duration="3724000" />
       <workItem from="1607908201317" duration="424000" />
       <workItem from="1607908742043" duration="6709000" />
-      <workItem from="1607994670331" duration="17304000" />
+      <workItem from="1607994670331" duration="20736000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145926000" />
+    <option name="totallyTimeSpent" value="149358000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49803922" visible="true" weight="0.30775446" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49803922" visible="true" weight="0.30775446" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5019608" side_tool="true" weight="0.28432956" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -486,7 +475,7 @@
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32947975" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
-      <window_info anchor="bottom" id="Terminal" order="13" visible="true" weight="0.28612718" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="13" visible="true" weight="0.3468208" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -808,19 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/ImportDish.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-          <folding>
-            <element signature="n#style#0;n#a-button#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/forms/DishImage.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/serializers/dish_serializer.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -846,24 +822,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/services/init_services/init_dish.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/UploadImage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="83" column="7" selection-start-line="83" selection-start-column="6" selection-end-line="83" selection-end-column="7" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#a-modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -913,13 +871,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/utils/url.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="2" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/api/v1/dishes_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -955,36 +906,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/LeftMenu.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Dishes.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="99" column="26" lean-forward="true" selection-start-line="99" selection-start-column="26" selection-end-line="99" selection-end-column="26" />
-          <folding>
-            <element signature="n#style#0;n#a-select#0;n#div#0;n#div#0;n#div#0;n#a-layout-content#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a-select#1;n#div#0;n#div#0;n#div#0;n#a-layout-content#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#3082#3108#0" expanded="true" />
-            <element signature="n#style#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/ImportMedia.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
-          <folding>
-            <element signature="e#823#848#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/src/router.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
@@ -995,24 +916,100 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/app.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/LeftMenu.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Signin.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
+        <state relative-caret-position="213">
           <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/HomePage.vue">
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Dishes.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        <state relative-caret-position="184">
+          <caret line="99" column="26" lean-forward="true" selection-start-line="99" selection-start-column="26" selection-end-line="99" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#a-select#0;n#div#0;n#div#0;n#div#0;n#a-layout-content#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a-select#1;n#div#0;n#div#0;n#div#0;n#a-layout-content#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#3082#3108#0" expanded="true" />
+            <element signature="n#style#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/app.vue">
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/forms/DishImage.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/HomePage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/utils/url.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+          <caret line="1" column="38" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/ImportMedia.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+          <folding>
+            <element signature="e#768#793#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/services/init_services/init_dish.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/UploadImage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#a-modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/controllers/import_data_dish_controller_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/ImportDish.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+          <folding>
+            <element signature="n#style#0;n#a-button#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#681#707#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

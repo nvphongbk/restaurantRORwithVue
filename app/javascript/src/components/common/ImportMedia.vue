@@ -2,7 +2,7 @@
   <div>
     <a-upload
       accept=".jpg,.png,.jpeg"
-      action="/api/v1/images"
+      :action="imageUploadUrl"
       list-type="picture-card"
       :file-list="fileList"
       :multiple="true"
@@ -47,7 +47,8 @@
         fileList: [],
         desserts:'',
         images: [],
-        index: 0
+        index: 0,
+        imageUploadUrl: URLS.IMAGES
       }
     },
     mounted() {

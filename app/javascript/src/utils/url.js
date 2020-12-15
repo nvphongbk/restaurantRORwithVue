@@ -17,4 +17,6 @@ export const URLS = {
   DISH: (id) => `${getBaseUrl()}/dishes/${id}`,
 
   IMAGES: () => `${getBaseUrl()}/images`,
+
+  FORM_DATA: () => `form-data.xlsx`,
 };

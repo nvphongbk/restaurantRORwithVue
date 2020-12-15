@@ -6,7 +6,6 @@ module InitServices
     end
 
     def perform
-      binding.pry
       return if @images_ids.blank?
       current_images = @dish.images.pluck(:id)
       Image.where(id: current_images - @images_ids).destroy_all
