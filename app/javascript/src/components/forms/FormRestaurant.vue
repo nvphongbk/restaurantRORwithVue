@@ -69,7 +69,7 @@
       handleSubmit(e) {
         this.$refs.ruleForm.validate((valid) => {
           if (valid) {
-            let valuesSave = Object.assign({}, this.editItem, {user_id: 1})
+            let valuesSave = Object.assign({}, this.editItem)
             if (this.isEdit) {
               let idItem = this.editItem.id
               axios

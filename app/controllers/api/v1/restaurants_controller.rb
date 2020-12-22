@@ -1,6 +1,8 @@
 module Api
   module V1
     class RestaurantsController < ApplicationController
+      skip_before_action :verify_authenticity_token
+
       def index
         @restaurants = Restaurant.all
         render json: @restaurants, status: 200
@@ -18,6 +20,7 @@ module Api
 
       def create
         @restaurant = Restaurant.new(restaurant_params)
+        @restaurant.user_id = current_user.id
 
         if @restaurant.save
           render json: @restaurant, status: 200
@@ -45,6 +48,11 @@ module Api
         @restaurant = Restaurant.find(params[:id])
         @categories = @restaurant.categories
         render json: @categories , status: 200
+      end
+
+      def all_categories
+        @categories = Category.includes(:dishes).all
+        render json: @categories
       end
 
       private

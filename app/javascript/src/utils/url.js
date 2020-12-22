@@ -18,5 +18,10 @@ export const URLS = {
 
   IMAGES: () => `${getBaseUrl()}/images`,
 
-  FORM_DATA: () => `form-data.xlsx`,
+  FILE_XAMPLE_IMPORT_DATA: () => `form-data.xlsx`,
+
+  SIGNIN: () => `${getBaseUrl()}/signin`,
+  SIGNOUT: () => `${getBaseUrl()}/signout`,
+
+  MENU : (id) => `${getBaseUrl()}/restaurants/${id}/categories`
 };

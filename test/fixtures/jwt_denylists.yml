@@ -1,12 +1,14 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: jwt_denylists
 #
-#  id                 :integer          not null, primary key
-#  email              :string           not null
-#  encrypted_password :string
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id         :integer          not null, primary key
+#  expired_at :datetime         not null
+#  jti        :string           not null
+#
+# Indexes
+#
+#  index_jwt_denylists_on_jti  (jti)
 #
 
 # This model initially had no columns defined. If you add columns to the

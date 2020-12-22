@@ -49,6 +49,7 @@
     id: '',
     name: '',
     address:'',
+    user_id:''
   }
   export default {
     name: "Restaurants",
