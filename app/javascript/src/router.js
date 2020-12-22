@@ -7,20 +7,26 @@ import Restaurants from "./components/Restaurants"
 import Categories from "./components/Categories"
 import Dishes from "./components/Dishes"
 import ImportMedia from "./components/common/ImportMedia"
+import {JWT_KEY} from "./utils/constant"
+import Menu from "./components/Menu"
+import About from "./components/About"
+import Contact from "./components/Contact"
+
 Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
   routes: [
     {
-      path: '/restaurants',
+      path: '/admin/restaurants',
       name: 'Restaurants',
       component: Restaurants,
       meta: {
-        openKey: 'Restaurant'
+        openKey: 'Restaurant',
+        guest: true
       }
     },
     {
-      path: '/categories',
+      path: '/admin/categories',
       name: 'Categories',
       component: Categories,
       meta: {
@@ -28,7 +34,7 @@ const router = new VueRouter({
       }
     },
     {
-      path: '/dishes',
+      path: '/admin/dishes',
       name: 'Dishes',
       component: Dishes,
       meta: {
@@ -40,7 +46,8 @@ const router = new VueRouter({
       name: 'SignIn',
       component: SignIn,
       meta: {
-        openKey: 'SignIn'
+        openKey: 'SignIn',
+        guest: true
       }
     },
     {
@@ -48,11 +55,12 @@ const router = new VueRouter({
       name: 'HomePage',
       component: HomePage,
       meta: {
-        openKey: 'HomePage'
+        openKey: 'HomePage',
+        guest: true
       }
     },
     {
-      path: '/dashboard',
+      path: '/admin/dashboard',
       name: 'Dashboard',
       component: Dashboard,
       meta: {
@@ -60,13 +68,56 @@ const router = new VueRouter({
       }
     },
     {
-      path: '/import-media',
+      path: '/admin/import-media',
       name: 'ImportMedia',
       component: ImportMedia,
       meta: {
-        openKey: 'import-media'
+        openKey: 'Import-media'
+      }
+    },
+    {
+      path: '/restaurants/:id',
+      name: 'Menu',
+      component: Menu,
+      meta: {
+        openKey: 'Menu',
+        guest: true
+      }
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About,
+      meta: {
+        openKey: 'About',
+        guest: true
+      }
+    },
+    { path: '/contact',
+      name: 'Contact',
+      component: Contact,
+      meta: {
+        openKey: 'Contact',
+        guest: true
       }
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if (localStorage.getItem(JWT_KEY) == null) {
+    if (to.name !== 'SignIn' && !to.matched.some(record => record.meta.guest)) {
+      router.push('/signin')
+    }
+    else if(to.name !== 'SignIn' && to.matched.some(record => record.meta.guest)) {
+      next()
+    }
+  } else {
+    if (to.name == 'SignIn' && to.matched.some(record => record.meta.guest)) { //guest = true
+      router.push('/dashboard')
+    }
+  }
+  next()
+})
+
 export default router

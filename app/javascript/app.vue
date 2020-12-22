@@ -3,11 +3,25 @@
     <div v-if="layout=='SignIn'">
       <router-view/>
     </div>
+    <div v-else-if="layout=='HomePage'">
+      <router-view/>
+    </div>
+    <div v-else-if="layout=='About'">
+      <router-view/>
+    </div>
+    <div v-else-if="layout=='Menu'">
+      <router-view/>
+    </div>
+    <div v-else-if="layout=='Contact'">
+      <router-view/>
+    </div>
     <div v-else>
       <a-layout id="components-layout-demo-responsive" class="h-screen">
-        <LeftMenu />
+        <LeftMenu/>
         <a-layout>
-          <CompHeader />
+          <CompHeader
+            @signout="signout"
+          />
           <a-layout-content class="content">
             <router-view></router-view>
           </a-layout-content>
@@ -21,13 +35,19 @@
   import SignIn from "./src/components/Signin";
   import LeftMenu from "./src/components/common/LeftMenu"
   import CompHeader from "./src/components/common/CompHeader"
+  import HomePage from "./src/components/HomePage"
+  import Menu from "./src/components/Menu"
+  import axios from "axios"
+  import {URLS} from "./src/utils/url";
 
   export default {
     name: 'App',
     components: {
+      HomePage,
       SignIn,
       LeftMenu,
       CompHeader,
+      Menu
     },
     data() {
       return {};
@@ -37,7 +57,18 @@
         return this.$route.meta.openKey || ""
       }
     },
-    methods: {}
+    methods: {
+      signout() {
+        localStorage.clear()
+        axios
+          .delete(URLS.SIGNOUT())
+          .then((res) => {
+            this.$router.push({name: 'SignIn'})
+          })
+          .catch(error => {
+          });
+      },
+    }
   }
 </script>
 <style scoped>

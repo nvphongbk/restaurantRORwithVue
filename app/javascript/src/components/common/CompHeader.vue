@@ -5,10 +5,10 @@
         <a-popover placement="bottomRight">
           <template slot="content">
             <div>
-              <a href="#">
+              <a href="#" @click="logout">
                 <a-icon type="poweroff" style="color: orangered"
                         class="mr-2"/>
-                Đăng xuất</a>
+                Sign out</a>
             </div>
           </template>
           <a-avatar style="backgroundColor:#87d068" icon="user"/>
@@ -23,7 +23,12 @@
     name: "CompHeader",
     data(){
       return{}
-    }
+    },
+    methods: {
+      logout() {
+        this.$emit('signout')
+      },
+    },
   }
 </script>
 

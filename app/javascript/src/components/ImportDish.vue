@@ -75,7 +75,7 @@
       },
       downloadformdata(){
           axios({
-            url: URLS.FORM_DATA(),
+            url: URLS.FILE_XAMPLE_IMPORT_DATA(),
             method: 'GET',
             responseType: 'blob',
           }).then((response) => {
@@ -83,7 +83,7 @@
             var fileLink = document.createElement('a');
 
             fileLink.href = fileURL;
-            fileLink.setAttribute('download', 'form-data.xlsx');
+            fileLink.setAttribute('download', URLS.FILE_XAMPLE_IMPORT_DATA());
             document.body.appendChild(fileLink);
 
             fileLink.click();

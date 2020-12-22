@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) {|repo| "https://github.com/#{repo}.git"}
 
 ruby '2.7.1'
 
@@ -18,9 +18,9 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
- gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
- gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -29,6 +29,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'foreman'
 gem 'active_model_serializers'
 gem 'rubyXL'
+gem 'devise'
+gem 'devise-jwt'
+gem 'jsonapi-rails'
 gem 'activerecord-import'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -48,6 +51,10 @@ group :development do
 end
 
 group :test do
+  gem 'faker'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'jsonapi-rspec'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
