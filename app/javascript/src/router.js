@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import SignIn from './components/Signin'
+import SignIn from "./components/Signin"
 import HomePage from "./components/HomePage"
 import Dashboard from "./components/Dashboard"
 import Restaurants from "./components/Restaurants"
@@ -8,7 +8,7 @@ import Categories from "./components/Categories"
 import Dishes from "./components/Dishes"
 import ImportMedia from "./components/common/ImportMedia"
 import {JWT_KEY} from "./utils/constant"
-import Menu from "./components/Menu"
+import Menu from "./components/menu/Menu"
 import About from "./components/About"
 import Contact from "./components/Contact"
 
@@ -55,7 +55,7 @@ const router = new VueRouter({
       name: 'HomePage',
       component: HomePage,
       meta: {
-        openKey: 'HomePage',
+        openKey: 'GuestPage',
         guest: true
       }
     },
@@ -80,7 +80,7 @@ const router = new VueRouter({
       name: 'Menu',
       component: Menu,
       meta: {
-        openKey: 'Menu',
+        openKey: 'GuestPage',
         guest: true
       }
     },
@@ -89,7 +89,7 @@ const router = new VueRouter({
       name: 'About',
       component: About,
       meta: {
-        openKey: 'About',
+        openKey: 'GuestPage',
         guest: true
       }
     },
@@ -97,7 +97,7 @@ const router = new VueRouter({
       name: 'Contact',
       component: Contact,
       meta: {
-        openKey: 'Contact',
+        openKey: 'GuestPage',
         guest: true
       }
     }

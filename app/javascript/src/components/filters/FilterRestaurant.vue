@@ -9,7 +9,7 @@
               @change="handleChange"
               default-value="undefined"
     >
-      <a-select-option v-for="restaurant in restaurants" :value="restaurant.id">
+      <a-select-option v-for="(restaurant, index) in restaurants" :value="restaurant.id" :key="index">
         {{ restaurant.name }}
       </a-select-option>
     </a-select>

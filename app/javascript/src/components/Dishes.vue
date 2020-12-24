@@ -10,7 +10,8 @@
                     placeholder="Select a Restaurant"
                     @change="handleChangeRestaurant"
           >
-            <a-select-option v-for="restaurant in restaurants" :value="restaurant.id">
+            <a-select-option v-for="restaurant in restaurants"
+                             :value="restaurant.id" :key="restaurant.id">
               {{ restaurant.name }}
             </a-select-option>
           </a-select>
@@ -22,7 +23,8 @@
                     placeholder="Select a Category"
                     @change="handleChangeCategory"
           >
-            <a-select-option v-for="category in categories" :value="category.id">
+            <a-select-option v-for="category in categories" :value="category.id"
+                             :key="category.id">
               {{ category.name }}
             </a-select-option>
           </a-select>
@@ -40,7 +42,8 @@
           Import
         </a-button>
 
-        <a-modal v-model:visible="visibleImportDish" title="Import data" :footer="null">
+        <a-modal v-model:visible="visibleImportDish" title="Import data"
+                 :footer="null">
           <ImportDish @closeImportModal="visibleImportDish = false"/>
         </a-modal>
 
@@ -61,7 +64,7 @@
         >
           <template slot="image" slot-scope="image">
         <span>
-          <a-avatar shape="square" :size="100" :src="image" />
+          <a-avatar shape="square" :size="100" :src="image"/>
         </span>
           </template>
           <template slot="action" slot-scope="text, record">
@@ -92,11 +95,12 @@
   import {URLS} from "../utils/url"
   import FormDish from "./forms/FormDish"
   import ImportDish from "./ImportDish"
+
   const newDish = {
     id: '',
     name: '',
-    price:'',
-    category_ids:[],
+    price: '',
+    category_ids: [],
     images_attributes: [],
     images_ids: []
   }
@@ -105,17 +109,25 @@
     data() {
       return {
         visibleImportDish: false,
-        categories:[],
+        categories: [],
         restaurants: [],
         rules: {
           name: [
-            { required: true,
-              message: 'Please input name', trigger: 'blur' },
-            { min: 3,
+            {
+              required: true,
+              message: 'Please input name', trigger: 'blur'
+            },
+            {
+              min: 3,
               message: 'Length should be 3',
-              trigger: 'blur' },
+              trigger: 'blur'
+            },
           ],
-          restaurant: [{ required: false, message: 'Please select Restaurant', trigger: 'change' }],
+          restaurant: [{
+            required: false,
+            message: 'Please select Restaurant',
+            trigger: 'change'
+          }],
 
         },
         editItem: {},
@@ -134,7 +146,7 @@
           {
             title: 'Image',
             dataIndex: 'images_attributes[0].url',
-            scopedSlots: { customRender: "image" },
+            scopedSlots: {customRender: "image"},
           },
           {
             title: 'Action',
@@ -144,8 +156,8 @@
         ],
       };
     },
-    components:{
-      FormDish,ImportDish
+    components: {
+      FormDish, ImportDish
     },
     watch: {},
     computed: {
@@ -167,12 +179,12 @@
           .catch(e => {
           });
       },
-      addDish(){
+      addDish() {
         this.visible = true;
         this.isEdit = false
         this.editItem = Object.assign({}, newDish);
       },
-      showModalImport(){
+      showModalImport() {
         this.visibleImportDish = true
       },
       editDish(record) {
@@ -196,7 +208,7 @@
       updateListAfterUpdated() {
         this.initialize()
       },
-      getDataRestaurant(){
+      getDataRestaurant() {
         return axios
           .get(URLS.RESTAURANTS())
           .then(response => {
@@ -205,7 +217,7 @@
           .catch(e => {
           });
       },
-      getDataCategory(value){
+      getDataCategory(value) {
         return axios
           .get(URLS.RESTAURANT_SEARCH(value))
           .then(response => {
@@ -214,7 +226,7 @@
           .catch(e => {
           });
       },
-      searchDish(value){
+      searchDish(value) {
         return axios
           .get(URLS.CATEGORY_SEARCH(value))
           .then(response => {

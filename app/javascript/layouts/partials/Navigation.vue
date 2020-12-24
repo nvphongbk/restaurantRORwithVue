@@ -12,23 +12,20 @@
       <div class="navigation__nav">
         <ul class="navigation__list">
           <li class="navigation__item">
-            <router-link :to="{name: 'HomePage'}">
-              <a href="#" class="navigation__link">Homepage </a>
+            <router-link :to="{name: 'HomePage'}" class="navigation__link">
+              Trang chủ
             </router-link>
           </li>
           <li class="navigation__item">
-            <router-link :to="{name: 'About'}">
-              <a href="#" class="navigation__link">About</a>
+            <router-link :to="{name: 'About'}" class="navigation__link">
+              Giới thiệu
             </router-link>
           </li>
           <li class="navigation__item">
-            <router-link :to="{name:'Contact'}">
-              <a href="#" class="navigation__link">Contact</a>
+            <router-link :to="{name:'Contact'}" class="navigation__link">
+              Liên hệ
             </router-link>
           </li>
-          <li class="navigation__item"><a href="#" class="navigation__link">Address</a>
-          </li>
-
         </ul>
       </div>
     </div>
@@ -38,7 +35,7 @@
 
 <script>
   export default {
-    name: "CompNavigation",
+    name: "Navigation",
     data() {
       return {
         logo: '/uploads/image/photo/294/logoRestaurant.png',
