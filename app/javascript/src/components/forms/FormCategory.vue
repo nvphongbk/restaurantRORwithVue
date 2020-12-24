@@ -14,7 +14,7 @@
                 option-filter-prop="children"
                 :filter-option="filterOption"
                 v-model="editItem.restaurant_id" placeholder="Select a Restaurant">
-        <a-select-option v-for="restaurant in restaurants" :value="restaurant.id" >
+        <a-select-option v-for="restaurant in restaurants" :value="restaurant.id" :key="restaurant.id" >
           {{ restaurant.name }}
         </a-select-option>
       </a-select>

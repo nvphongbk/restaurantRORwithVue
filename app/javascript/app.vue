@@ -1,53 +1,28 @@
 <template>
   <div id="app">
     <div v-if="layout=='SignIn'">
-      <router-view/>
+      <LayoutSignIn />
     </div>
-    <div v-else-if="layout=='HomePage'">
-      <router-view/>
-    </div>
-    <div v-else-if="layout=='About'">
-      <router-view/>
-    </div>
-    <div v-else-if="layout=='Menu'">
-      <router-view/>
-    </div>
-    <div v-else-if="layout=='Contact'">
-      <router-view/>
+    <div v-else-if="layout=='GuestPage'">
+      <LayoutGuest />
     </div>
     <div v-else>
-      <a-layout id="components-layout-demo-responsive" class="h-screen">
-        <LeftMenu/>
-        <a-layout>
-          <CompHeader
-            @signout="signout"
-          />
-          <a-layout-content class="content">
-            <router-view></router-view>
-          </a-layout-content>
-        </a-layout>
-      </a-layout>
+      <LayoutAdmin />
     </div>
   </div>
 </template>
 
 <script>
-  import SignIn from "./src/components/Signin";
-  import LeftMenu from "./src/components/common/LeftMenu"
-  import CompHeader from "./src/components/common/CompHeader"
-  import HomePage from "./src/components/HomePage"
-  import Menu from "./src/components/Menu"
-  import axios from "axios"
-  import {URLS} from "./src/utils/url";
+  import LayoutSignIn from "./layouts/LayoutSignIn";
+  import LayoutAdmin from "./layouts/LayoutAdmin";
+  import LayoutGuest from "./layouts/LayoutGuest";
 
   export default {
     name: 'App',
     components: {
-      HomePage,
-      SignIn,
-      LeftMenu,
-      CompHeader,
-      Menu
+      LayoutGuest,
+      LayoutAdmin,
+      LayoutSignIn,
     },
     data() {
       return {};
@@ -57,18 +32,6 @@
         return this.$route.meta.openKey || ""
       }
     },
-    methods: {
-      signout() {
-        localStorage.clear()
-        axios
-          .delete(URLS.SIGNOUT())
-          .then((res) => {
-            this.$router.push({name: 'SignIn'})
-          })
-          .catch(error => {
-          });
-      },
-    }
   }
 </script>
 <style scoped>

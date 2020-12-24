@@ -10,16 +10,13 @@
           <div class="footer__navigation">
             <ul class="footer__list">
               <li class="footer__item">
-                <a href="#" class="footer__link">Address</a>
+                <router-link :to="{name: 'HomePage'}" class="footer__link" >Trang chủ</router-link>
               </li>
               <li class="footer__item">
-                <a href="" class="footer__link">Contacts</a>
+                <router-link :to="{name: 'About'}" class="footer__link">Giới thiệu</router-link>
               </li>
               <li class="footer__item">
-                <a href="" class="footer__link">Policy</a>
-              </li>
-              <li class="footer__item">
-                <a href="" class="footer__link">Sponsors</a>
+                <router-link :to="{name: 'Contact'}" class="footer__link">Liên hệ</router-link>
               </li>
             </ul>
           </div>
@@ -38,7 +35,7 @@
 
 <script>
   export default {
-    name: "CompFooter",
+    name: "Footer",
     data (){
       return {
         logo: '/uploads/image/photo/294/logoRestaurant.png',

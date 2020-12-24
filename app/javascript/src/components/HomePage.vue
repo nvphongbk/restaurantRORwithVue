@@ -5,43 +5,46 @@
       <div class="homepage-header-text-box">
         <h3 class="homepage-header-heading-primary">
           <span class="homepage-header-heading-primary__main">
-               Restaurant
+               Mr Bolat
           </span>
           <span class="homepage-header-heading-primary__sub">
-              is how you survive
+              Tinh hoa ẩm thực
           </span>
         </h3>
-        <a href="#" class="btn btn-white btn-animated">See our Restaurant</a>
+        <router-link :to="{name: 'About'}" class="btn btn-white btn-animated">Về
+          chúng tôi
+        </router-link>
       </div>
     </header>
-    <CompNavigation/>
+    <Navigation/>
     <div class="homepage-our-story">
       <div class="text-center">
         <h2 class="homepage__heading-secondary">
-          Our Store US
+          Giới thiệu
         </h2>
       </div>
       <a-row>
         <a-col :span="12">
           <h3 class="homepage-our-story__heading-tertiary">
-            from zero to hero
+            Người tạo ra hương vị
           </h3>
           <p class="homepage-our-story__paragraph">
-            Lorem ipsum dolor sit amet,
-            consectetur adipisicing elit.
-            Fuga cumque autem officiis distinctio,
-            voluptate qui minima.
-            Magnam tenetur suscipit eius beatae dolore nihil
-            repudiandae atque vero,
-            rem, labore ullam ipsa incidunt enim id necessitatibus at dolor!
-            Incidunt sequi nihil amet.
+            Đầu bếp trưởng – Chef Vũ ( Nguyễn Đức Văn Vũ) là người đã làm nghề
+            Bếp gần 20 năm, anh cũng là người truyền lửa và đêm mê cho thế hệ
+            trẻ. Kinh nghiệm của anh không chỉ nằm ở việc kinh nghiệm lâu năm
+            trong nghề bếp, mà còn là những trải nghiệm phong phú của anh đến
+            các ẩm thực đa dạng ở những vùng miền của Việt Nam
           </p>
           <h3 class="homepage-our-story__heading-tertiary">
-            master your skills
+            Tinh túy không gian ẩm thực
           </h3>
           <p class="homepage-our-story__paragraph">
-            Lorem ipsum dolor sit amet,
-            consectetur adipisicing elite.
+            Điều đặc biệt lôi cuốn thực khách đến với nhà hàng ẩm thực Chân Quê
+            đó là lối kiến trúc mang vẻ đẹp văn hóa Việt, ấm cúng, đan xen giữa
+            chất hiện đại và truyền thống, tạo nên sự độc đáo và phá cách.
+            Thật tuyệt vời khi được hòa mình vào không gian đầy chất nghệ thuật
+            và thưởng thức tinh hoa ẩm thực Việt tại Chân Quê vào một buổi tối
+            cuối tuần mát mẻ phải không? Hãy đến và cảm nhận!
           </p>
         </a-col>
         <a-col :span="12">
@@ -61,19 +64,19 @@
     >
       <div class="text-center">
         <h2 class="homepage__heading-secondary mt-5">
-          Our Restaurant
+          Hệ thống nhà hàng
         </h2>
       </div>
       <a-row>
         <div class="homepage-card-restaurant" v-for="restaurant in restaurants"
-             :value="restaurant.id">
+             :key="restaurant.id">
           <a-col class="col-card" :span="6">
 
             <div class="homepage-card-restaurant-card">
               <h4 class="homepage__restaurant-name">{{restaurant.name}}</h4>
-              <p>Address: {{restaurant.address}}</p>
+              <p>Địa chỉ: {{restaurant.address}}</p>
               <router-link :to="{name: 'Menu', params: {id: restaurant.id }}">
-                <span class="nav-text"><a href="#" class="btn btn-white">See menu</a></span>
+                <span class="nav-text btn btn-white">See menu</span>
               </router-link>
             </div>
           </a-col>
@@ -83,7 +86,7 @@
     <div class="section-testimonials">
       <div class="text-center">
         <h2 class="homepage__heading-secondary">
-          testimonials
+          Đánh giá từ khách hàng
         </h2>
       </div>
       <div class="row">
@@ -97,14 +100,15 @@
           </figure>
           <div class="testimonial__text">
             <h3 class="heading-tertiary u-margin-bottom-small">
-              thank for your guide
+              Món ăn tuyệt vời, đậm đà hương vị
             </h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Incidunt repellat tenetur officia quis quasi,
-              temporibus neque reiciendis quaerat exercitationem quibusdam?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Possimus dolorem labore nam?
+              Đây không phải lần đầu, mà là rất nhiều lần tôi đến đây để thưởng
+              thức món ăn đậm đà hương vị Việt. Thật tuyệt vời trong một không
+              gian ấm cúng đúng chất chợ quê Việt Nam những năm 1980-1990 với
+              các gian hàng đầy đủ món ăn 3 miền hội tụ. Món yêu thích nhất tôi
+              thường gọi là bánh hỏi nem nướng, bánh xèo nam bộ và mực một nắng
+              chiên giòn.
             </p>
           </div>
         </div>
@@ -118,20 +122,20 @@
           </figure>
           <div class="testimonial__text">
             <h3 class="heading-tertiary u-margin-bottom-small">
-              Dish very good
+              Món ăn đa dạng
             </h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Incidunt repellat tenetur officia quis quasi,
-              temporibus neque reiciendis quaerat exercitationem quibusdam?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Possimus dolorem labore nam?
+              Món ăn đa dạng,phù hợp với tất cả các đối tượng và lứa tuổi. Đặc
+              biện nếu bạn cần dẫn khách nước ngoài trải nghiệm món ăn Việt Nam,
+              đây sẽ là sự lựa chọn không tồi vì có đầy đủ các món ăn ba miền
+              Bắc Trung Nam. Món ăn nêm nếm vừa vặn tròn vị. Nên thử món bánh
+              xèo và chè sương sa hạt lựu.
             </p>
           </div>
         </div>
       </div>
     </div>
-    <CompFooter/>
+    <Footer/>
   </div>
 </template>
 
@@ -139,12 +143,12 @@
   import axios from 'axios'
   import {URLS} from "../utils/url";
   import ACol from "ant-design-vue/es/grid/Col";
-  import CompFooter from "./common/pages/CompFooter"
-  import CompNavigation from "./common/pages/CompNavigation"
+  import Navigation from "../../layouts/partials/Navigation";
+  import Footer from "../../layouts/partials/Footer";
 
   export default {
     name: 'HomePage',
-    components: {CompNavigation, CompFooter, ACol},
+    components: {Footer, Navigation, ACol},
     data() {
       return {
         restaurants: '',

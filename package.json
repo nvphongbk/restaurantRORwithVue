@@ -8,6 +8,7 @@
     "@rails/webpacker": "4.3.0",
     "ant-design-vue": "^1.7.2",
     "axios": "^0.21.0",
+    "postcss": "^8.2.1",
     "reqwest": "^2.0.5",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.12",
@@ -15,11 +16,12 @@
     "vue-loader": "^15.9.5",
     "vue-reqwest": "^1.2.1",
     "vue-router": "^3.4.9",
+    "vue-sticky-nav": "^1.2.6",
     "vue-template-compiler": "^2.6.12"
   },
   "version": "0.1.0",
   "devDependencies": {
-    "tailwindcss": "^2.0.1",
+    "tailwindcss": "^2.0.2",
     "webpack-dev-server": "^3.11.0"
   }
 }

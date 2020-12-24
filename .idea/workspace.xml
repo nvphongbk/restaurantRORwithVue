@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/app/javascript/src/components/forms/FormDish.vue" description=".catch(error =&gt; {" line="114" />
+    <bookmark url="file://$PROJECT_DIR$/app/javascript/src/components/forms/FormDish.vue" description=".catch(error =&gt; {" line="115" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9a3189e-9217-4436-9c46-d56438460f78" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Rails_restaurant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Rails_restaurant.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/src/components/menu/Menu.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/restaurants_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/v1/restaurants_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/signin_controller.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/users_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/v1/users_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/users_helper.rb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/app.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/Dashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/About.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/About.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/Contact.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/Contact.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/Dishes.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/Dishes.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/src/components/HomePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/HomePage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/ImportDish.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/ImportDish.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/Restaurants.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/Restaurants.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/Signin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/Signin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/common/CompHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/common/CompHeader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/common/LeftMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/common/LeftMenu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/forms/FormRestaurant.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/forms/FormRestaurant.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/Menu.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/common/pages/CompFooter.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/common/pages/CompNavigation.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/filters/FilterRestaurant.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/filters/FilterRestaurant.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/forms/FormCategory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/forms/FormCategory.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/src/components/forms/FormDish.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/components/forms/FormDish.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/router.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/src/utils/url.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/src/utils/url.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/dish.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/dish.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/serializers/category_serializer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/serializers/category_serializer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/serializers/restaurant_serializer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/serializers/restaurant_serializer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/application.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20201126013856_create_users.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fixtures/users.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test/fixtures/users.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/models/user_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/user_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
@@ -68,13 +70,78 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/javascript/src/components/menu/Menu.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1207">
+              <caret line="86" column="42" lean-forward="true" selection-start-line="86" selection-start-column="42" selection-end-line="86" selection-end-column="42" />
+              <folding>
+                <element signature="n#a#0;n#div#0;n#a-tab-pane#0;n#a-tabs#0;n#div#0;n#section#0;n#template#0;n#!!top" />
+                <element signature="n#a#1;n#div#0;n#a-tab-pane#0;n#a-tabs#0;n#div#0;n#section#0;n#template#0;n#!!top" />
+                <element signature="e#5469#5494#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/api/v1/restaurants_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="748">
+              <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/serializers/restaurant_serializer.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/serializers/category_serializer.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/javascript/app.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-427">
+              <folding>
+                <element signature="e#254#304#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Dishes.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3573">
+              <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
+              <folding>
+                <element signature="n#style#0;n#a-select#0;n#div#0;n#div#0;n#div#0;n#a-layout-content#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a-select#1;n#div#0;n#div#0;n#div#0;n#a-layout-content#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/javascript/src/components/HomePage.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="424" column="3" selection-end-line="454" />
+            <state relative-caret-position="329">
+              <caret line="70" column="12" selection-end-line="458" />
               <folding>
-                <element signature="n#div#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="e#5889#5914#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,35 +153,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cover</find>
-      <find>component</find>
-      <find>homepage-card-restaurant-card</find>
-      <find>gradi</find>
-      <find>span</find>
-      <find>homepage-header-heading-primary</find>
-      <find>animation</find>
-      <find>btn-animated</find>
-      <find>images</find>
-      <find>our_menu</find>
-      <find>30px</find>
-      <find>right</find>
-      <find>.navigation</find>
-      <find>navigation__button</find>
-      <find>transition</find>
-      <find>men</find>
-      <find>login-form-button</find>
-      <find>margin-bottom</find>
-      <find>menu-c</find>
-      <find>page_title</find>
-      <find>homepage-our-story</find>
-      <find>homepage-our-story-composition</find>
-      <find>homepage-header-logo-box</find>
       <find>intro-content__title</find>
       <find>about-page-intro</find>
       <find>350px</find>
@@ -122,6 +167,29 @@
       <find>navigation__checkbox</find>
       <find>homepage-</find>
       <find>about-page</find>
+      <find>md</find>
+      <find>v-fo</find>
+      <find>menu-dish_img</find>
+      <find>img</find>
+      <find>100%</find>
+      <find>container-menu</find>
+      <find>cate</find>
+      <find>btn</find>
+      <find>btn-white</find>
+      <find>v-for</find>
+      <find>./src/components/common/CompHeader</find>
+      <find>menu-body</find>
+      <find>CompFooter</find>
+      <find>single</find>
+      <find>single_menu</find>
+      <find>isActive</find>
+      <find>activeView</find>
+      <find />
+      <find>active</find>
+      <find>FormRestaurant</find>
+      <find>for</find>
+      <find>testimonials</find>
+      <find>map</find>
     </findStrings>
     <replaceStrings>
       <replace>RESTAURANT_SEARCH</replace>
@@ -138,22 +206,18 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/javascript/src/components/Category.vue" />
-        <option value="$PROJECT_DIR$/app/views/api/v1/categories/index.json.jbuilder" />
-        <option value="$PROJECT_DIR$/app/views/api/v1/restaurants/index.json.jbuilder" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/forms/DishImage.vue" />
         <option value="$PROJECT_DIR$/app/uploaders/image_uploader.rb" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/controllers/api/v1/category_dishes_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/category_dish.rb" />
         <option value="$PROJECT_DIR$/app/models/category.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/api/v1/categories_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20201126023120_create_dishes.rb" />
         <option value="$PROJECT_DIR$/app/views/api/v1/dishes/index.json.jbuilder" />
         <option value="$PROJECT_DIR$/db/migrate/20201210115224_remove_dish_foreign_key.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20201211065508_remove_dish_foreign_key.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20201209072648_create_images.rb" />
         <option value="$PROJECT_DIR$/app/serializers/dish_serializer.rb" />
-        <option value="$PROJECT_DIR$/app/javascript/src/components/forms/FormCategory.vue" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/Categories.vue" />
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/config/initializers/mime_types.rb" />
@@ -163,11 +227,9 @@
         <option value="$PROJECT_DIR$/app/controllers/api/v1/import_data_dish_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/api/v1/import_data/index.jbuilder" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/common/ImportData.vue" />
-        <option value="$PROJECT_DIR$/app/models/dish.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20201214104004_add_name_to_image.rb" />
         <option value="$PROJECT_DIR$/app/models/image.rb" />
         <option value="$PROJECT_DIR$/app/serializers/image_serializer.rb" />
-        <option value="$PROJECT_DIR$/app/javascript/src/components/forms/FormDish.vue" />
         <option value="$PROJECT_DIR$/app/controllers/api/v1/dishes_controller.rb" />
         <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
         <option value="$PROJECT_DIR$/app/controllers/api/v1/import_data_controller.rb" />
@@ -207,7 +269,6 @@
         <option value="$PROJECT_DIR$/app/javascript/src/components/Dashboard.vue" />
         <option value="$PROJECT_DIR$/app/javascript/src/utils/constant.js" />
         <option value="$PROJECT_DIR$/config/initializers/devise.rb" />
-        <option value="$PROJECT_DIR$/app/javascript/src/components/Dishes.vue" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/common/CompHeader.vue" />
         <option value="$PROJECT_DIR$/app/controllers/api/v1/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
@@ -215,22 +276,50 @@
         <option value="$PROJECT_DIR$/app/javascript/src/components/forms/FormRestaurant.vue" />
         <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/common/pages/Footer.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/common/LeftMenu.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/common/ImportMedia.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/common/pages/CompFooter.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/common/pages/CompNavigation.vue" />
+        <option value="$PROJECT_DIR$/postcss.config.js" />
+        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
+        <option value="$PROJECT_DIR$/app/javascript/css/tailwind.js" />
+        <option value="$PROJECT_DIR$/app/javascript/css/custom.css" />
+        <option value="$PROJECT_DIR$/app/javascript/src/assets/app.css" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/forms/FormDish.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/application.js" />
+        <option value="$PROJECT_DIR$/app/views/home/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/application.html.erb" />
+        <option value="$PROJECT_DIR$/app/javascript/css/application.css" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/Menu.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/menu/Listview.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/menu/GridView.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/layouts/LayoutGuest.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/layouts/LayoutSignIn.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/Signin.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/router.js" />
+        <option value="$PROJECT_DIR$/app/javascript/layouts/LayoutAdmin.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/menu/ListView.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/filters/FilterRestaurant.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/forms/FormCategory.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/layouts/partials/Footer.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/layouts/partials/Navigation.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/About.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/app.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/packs/main.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/javascript/src/utils/url.js" />
+        <option value="$PROJECT_DIR$/app/models/dish.rb" />
+        <option value="$PROJECT_DIR$/app/views/api/v1/categories/index.json.jbuilder" />
+        <option value="$PROJECT_DIR$/app/views/api/v1/restaurants/index.json.jbuilder" />
+        <option value="$PROJECT_DIR$/app/controllers/api/v1/restaurants_controller.rb" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/menu/Menu.vue" />
+        <option value="$PROJECT_DIR$/app/views/api/v1/restaurants/menus.jbuilder" />
         <option value="$PROJECT_DIR$/app/serializers/restaurant_serializer.rb" />
         <option value="$PROJECT_DIR$/app/serializers/category_serializer.rb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/javascript/src/components/filters/FilterRestaurant.vue" />
-        <option value="$PROJECT_DIR$/app/javascript/src/components/common/LeftMenu.vue" />
-        <option value="$PROJECT_DIR$/app/javascript/src/utils/url.js" />
-        <option value="$PROJECT_DIR$/app/javascript/src/components/common/ImportMedia.vue" />
-        <option value="$PROJECT_DIR$/app/controllers/api/v1/restaurants_controller.rb" />
-        <option value="$PROJECT_DIR$/app/javascript/src/components/common/pages/CompFooter.vue" />
-        <option value="$PROJECT_DIR$/app/javascript/src/router.js" />
-        <option value="$PROJECT_DIR$/app/javascript/src/components/Signin.vue" />
+        <option value="$PROJECT_DIR$/app/controllers/api/v1/categories_controller.rb" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/Contact.vue" />
-        <option value="$PROJECT_DIR$/app/javascript/src/components/About.vue" />
-        <option value="$PROJECT_DIR$/app/javascript/src/components/common/pages/CompNavigation.vue" />
-        <option value="$PROJECT_DIR$/app/javascript/app.vue" />
-        <option value="$PROJECT_DIR$/app/javascript/src/components/Menu.vue" />
+        <option value="$PROJECT_DIR$/app/javascript/src/components/Dishes.vue" />
         <option value="$PROJECT_DIR$/app/javascript/src/components/HomePage.vue" />
       </list>
     </option>
@@ -264,6 +353,12 @@
               <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
               <item name="Rails_restaurant" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Rails_restaurant" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -280,12 +375,6 @@
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
               <item name="v1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Rails_restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
@@ -314,7 +403,17 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="javascript" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="filters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Rails_restaurant" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="javascript" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="menu" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
@@ -331,29 +430,41 @@
             <path>
               <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
               <item name="Rails_restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
               <item name="Rails_restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="initializers" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
               <item name="Rails_restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="v1" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
               <item name="Rails_restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-              <item name="migrate" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="v1" type="462c0819:PsiDirectoryNode" />
+              <item name="dishes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
               <item name="Rails_restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="v1" type="462c0819:PsiDirectoryNode" />
+              <item name="restaurants" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
@@ -373,32 +484,33 @@
               <item name="uploads" type="462c0819:PsiDirectoryNode" />
               <item name="image" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Rails_restaurant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Rails_restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="spec" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="RailsProjectView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Ruby.ViewRefParam.DefaultExtension" value="jbuilder" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="editor.config.ad.shown" value="true" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="database.main" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/javascript/layouts/partials" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/javascript/src/components/menu" />
       <recent name="$PROJECT_DIR$/app/controllers" />
       <recent name="$PROJECT_DIR$/app/controllers/api/v1" />
       <recent name="$PROJECT_DIR$/public/uploads" />
       <recent name="$PROJECT_DIR$/public/image/our-story" />
-      <recent name="$PROJECT_DIR$/app/javascript/src/assets/image/logo" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -457,17 +569,18 @@
       <workItem from="1608293452399" duration="4209000" />
       <workItem from="1608368964593" duration="40080000" />
       <workItem from="1608600155766" duration="17207000" />
+      <workItem from="1608772843025" duration="29474000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="293782000" />
+    <option name="totallyTimeSpent" value="342104000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49803922" visible="true" weight="0.22940226" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49803922" visible="true" weight="0.29886913" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5019608" side_tool="true" weight="0.28432956" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -483,7 +596,7 @@
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32947975" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="13" visible="true" weight="0.42341042" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="13" visible="true" weight="0.38872832" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -506,7 +619,7 @@
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32947975" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="13" visible="true" weight="0.2716763" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="13" visible="true" weight="0.24277456" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -517,178 +630,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/api/v1/import_data/index.jbuilder">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/ImportData.vue" />
-    <entry file="file://$PROJECT_DIR$/db/migrate/20201214084234_create_import_data_dishes.rb" />
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="12" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/uploads/image/photo/114/martin-widenka-tkfRSPt-jdk-unsplash-min.jpg" />
-    <entry file="file://$PROJECT_DIR$/app/models/dish.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="29" column="14" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/controllers/dishes_controller_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/v1/import_data_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/serializers/image_serializer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/api/v1/dishes/index.json.jbuilder">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/api/v1/images/index.jbuilder">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/forms/FormDish.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1650">
-          <caret line="139" column="33" selection-start-line="139" selection-start-column="33" selection-end-line="139" selection-end-column="33" />
-          <folding>
-            <element signature="n#style#0;n#a-button#1;n#a-form-model-item#3;n#a-form-model#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#1414#1440#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/image.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/v1/images_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/fixtures/import_data_dishes.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="69" selection-start-line="3" selection-start-column="69" selection-end-line="3" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/forms/DishImage.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/controllers/import_data_dish_controller_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17255" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/services/init_services/init_dish.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20201216020249_add_devise_to_users.rb" />
-    <entry file="file://$PROJECT_DIR$/db/migrate/20201126013856_create_users.rb" />
-    <entry file="file://$PROJECT_DIR$/config/initializers/jwt.rb" />
-    <entry file="file://$PROJECT_DIR$/db/migrate/20201126023120_create_dishes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20201126020639_create_categories.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/session_controller.rb" />
-    <entry file="file://$PROJECT_DIR$/db/migrate/20201216035215_create_jwt_blacklists.rb" />
-    <entry file="file://$PROJECT_DIR$/config/initializers/inflections.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/mime_types.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/wrap_parameters.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/assets.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/application_controller_renderer.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/filter_parameter_logging.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.7.1/gems/jwt-2.2.2/lib/jwt/decode.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.7.1@global/gems/railties-6.0.3.4/lib/rails/railtie.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22">
-          <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/cookies_serializer.rb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -848,13 +789,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20201214104004_add_name_to_image.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="44" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/schema.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
@@ -892,24 +826,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/utils/constant.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="34" selection-start-column="34" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/locales/devise.en.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
           <caret line="57" column="60" selection-start-line="57" selection-start-column="60" selection-end-line="57" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Dashboard.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="12" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -927,31 +847,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/CompHeader.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/serializers/SerializableUser.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/serializers/user_serializer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -983,28 +882,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Restaurants.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="17" column="48" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="48" />
-          <folding>
-            <element signature="e#1445#1471#0" expanded="true" />
-            <element signature="n#style#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/restaurant.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/serializers/dish_serializer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -1026,40 +907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/filters/FilterRestaurant.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="40" column="6" selection-start-line="40" selection-start-column="6" selection-end-line="42" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/utils/url.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Dishes.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="146" column="13" selection-start-line="146" selection-start-column="4" selection-end-line="146" selection-end-column="13" />
-          <folding>
-            <element signature="n#style#0;n#a-select#0;n#div#0;n#div#0;n#div#0;n#a-layout-content#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a-select#1;n#div#0;n#div#0;n#div#0;n#a-layout-content#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#3082#3108#0" expanded="true" />
-            <element signature="n#style#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/LeftMenu.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="24" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="10" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/src/components/UploadImage.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1071,140 +918,445 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/About" />
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/pages/CompFooter.vue" />
+    <entry file="file://$PROJECT_DIR$/config/webpack/development.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="2" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="3" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/assets/tailwind.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret column="882250" selection-start-column="882250" selection-end-column="882250" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/postcss.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/css/tailwind.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/forms/FormDish.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
+          <folding>
+            <element signature="n#style#0;n#a-button#1;n#a-form-model-item#3;n#a-form-model#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/assets/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="27" lean-forward="true" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/css/application.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/application.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/vue-loader/lib/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/pages/CompNavigation.vue" />
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Dashboard.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="12" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/ImportMedia.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="40" selection-start-line="40" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/LeftMenu.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/layouts/LayoutGuest.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/utils/constant.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="34" selection-start-column="34" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/layouts/LayoutAdmin.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/CompHeader.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="13" column="27" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <folding>
+            <element signature="n#style#0;n#a-icon#0;n#a#0;n#div#0;n#template#0;n#a-popover#0;n#a-row#0;n#a-layout-header#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a-avatar#0;n#a-popover#0;n#a-row#0;n#a-layout-header#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/layouts/LayoutSignIn.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="15" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Signin.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="35" column="10" lean-forward="true" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+          <folding>
+            <element signature="n#a-form-model#0;n#a-col#0;n#a-row#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#a-icon#0;n#a-input#0;n#a-form-model-item#0;n#a-form-model#0;n#a-col#0;n#a-row#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#1440#1465#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20201214104004_add_name_to_image.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Restaurants.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding>
+            <element signature="e#1445#1471#0" expanded="true" />
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/menu/GridView.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/src/components/forms/FormRestaurant.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="71" column="60" selection-start-line="71" selection-start-column="60" selection-end-line="71" selection-end-column="60" />
+        <state relative-caret-position="439">
+          <caret line="35" column="8" lean-forward="true" selection-start-line="32" selection-start-column="4" selection-end-line="35" selection-end-column="8" />
           <folding>
             <element signature="e#855#881#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/ImportMedia.vue">
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/menu/ListView.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-269">
-          <caret line="40" selection-start-line="40" selection-end-line="41" />
+        <state relative-caret-position="340">
+          <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/serializers/restaurant_serializer.rb">
+    <entry file="file://$PROJECT_DIR$/node_modules/vue-loader/lib/loaders/templateLoader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="56" lean-forward="true" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
+        <state relative-caret-position="93">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/About">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/forms/FormCategory.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="6" lean-forward="true" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        <state relative-caret-position="-298">
+          <caret line="12" column="27" lean-forward="true" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/v1/categories_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/javascript/layouts/partials/Footer.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/v1/restaurants_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="44" column="9" lean-forward="true" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/serializers/category_serializer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/pages/CompFooter.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="60" lean-forward="true" selection-start-line="43" selection-start-column="7" selection-end-line="43" selection-end-column="60" />
+        <state relative-caret-position="323">
+          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/src/router.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="107" selection-start-line="107" selection-end-line="107" />
+        <state relative-caret-position="816">
+          <caret line="48" column="24" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Signin.vue">
+    <entry file="file://$PROJECT_DIR$/node_modules/axios/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+        <state relative-caret-position="620">
+          <caret line="157" column="14" selection-start-line="157" selection-start-column="14" selection-end-line="157" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/vue-sticky-nav/dist/vue-sticky-nav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
           <folding>
-            <element signature="n#a-form-model#0;n#a-col#0;n#a-row#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#a-icon#0;n#a-input#0;n#a-form-model-item#0;n#a-form-model#0;n#a-col#0;n#a-row#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Contact.vue">
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/filters/FilterRestaurant.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-685">
-          <caret line="72" column="15" selection-start-line="72" selection-start-column="15" selection-end-line="72" selection-end-column="15" />
+        <state relative-caret-position="17">
+          <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/layouts/partials/Navigation.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="11" lean-forward="true" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/utils/url.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/dish.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/api/v1/dishes/_dish.json.jbuilder">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/api/v1/categories/index.json.jbuilder">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/api/v1/restaurants/_restaurant.json.jbuilder">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/api/v1/restaurants/show.json.jbuilder">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/api/v1/restaurants/menus.jbuilder">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/api/v1/restaurants/index.json.jbuilder">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/menu/Menu.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1207">
+          <caret line="86" column="42" lean-forward="true" selection-start-line="86" selection-start-column="42" selection-end-line="86" selection-end-column="42" />
           <folding>
-            <element signature="n#style#0;n#a-button#1;n#a-form-model-item#3;n#a-form-model#0;n#div#1;n#a-col#1;n#a-row#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#2476#2535#0" expanded="true" />
+            <element signature="n#a#0;n#div#0;n#a-tab-pane#0;n#a-tabs#0;n#div#0;n#section#0;n#template#0;n#!!top" />
+            <element signature="n#a#1;n#div#0;n#a-tab-pane#0;n#a-tabs#0;n#div#0;n#section#0;n#template#0;n#!!top" />
+            <element signature="e#5469#5494#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/common/pages/CompNavigation.vue">
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/v1/restaurants_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="14" selection-end-line="197" />
+        <state relative-caret-position="748">
+          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/app.vue">
+    <entry file="file://$PROJECT_DIR$/app/serializers/SerializableUser.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding>
-            <element signature="n#style#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/serializers/user_serializer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/serializers/restaurant_serializer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/serializers/dish_serializer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="65" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/serializers/image_serializer.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/v1/categories_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="5" column="34" lean-forward="true" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/serializers/category_serializer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/src/components/About.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="143" column="13" lean-forward="true" selection-start-line="143" selection-start-column="13" selection-end-line="143" selection-end-column="13" />
+        <state relative-caret-position="169">
+          <caret line="41" column="25" selection-end-line="250" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Contact.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-594">
+          <caret line="96" column="37" lean-forward="true" selection-start-line="96" selection-start-column="37" selection-end-line="96" selection-end-column="37" />
           <folding>
-            <element signature="e#3490#3548#0" expanded="true" />
+            <element signature="n#style#0;n#a-button#1;n#a-form-model-item#3;n#a-form-model#0;n#div#1;n#a-col#1;n#a-row#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Menu.vue">
+    <entry file="file://$PROJECT_DIR$/app/javascript/app.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="12" column="14" selection-end-line="184" />
+        <state relative-caret-position="-427">
+          <folding>
+            <element signature="e#254#304#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/src/components/Dishes.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3573">
+          <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#a-select#0;n#div#0;n#div#0;n#div#0;n#a-layout-content#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a-select#1;n#div#0;n#div#0;n#div#0;n#a-layout-content#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/src/components/HomePage.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="424" column="3" selection-end-line="454" />
+        <state relative-caret-position="329">
+          <caret line="70" column="12" selection-end-line="458" />
           <folding>
-            <element signature="n#div#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#5889#5914#0" expanded="true" />
           </folding>
         </state>
       </provider>

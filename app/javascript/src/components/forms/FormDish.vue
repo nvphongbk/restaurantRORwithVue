@@ -1,44 +1,45 @@
 <template>
-  <a-form-model
-    :rules="rules"
-    ref="ruleForm"
-    :model="editItem"
-    :label-col="{ span: 5 }"
-    :wrapper-col="{ span: 12 }">
-    <a-form-model-item ref="name" label="Name" prop="name">
-      <a-input placeholder="Please input name dish" :autoFocus="true"
-               v-model="editItem.name"/>
-    </a-form-model-item>
-    <a-form-model-item ref="price" label="Price" prop="price">
-      <a-input placeholder="Please input price dish"
-               v-model="editItem.price"/>
-      <!--{{this.editItem.images_attributes}} - editItem-->
-    </a-form-model-item>
-    <a-form-model-item label="Category">
+  <div>
+    <a-form-model
+      :rules="rules"
+      ref="ruleForm"
+      :model="editItem"
+      :label-col="{ span: 5 }"
+      :wrapper-col="{ span: 12 }">
+      <a-form-model-item ref="name" label="Name" prop="name">
+        <a-input placeholder="Please input name dish" :autoFocus="true"
+                 v-model="editItem.name"/>
+      </a-form-model-item>
+      <a-form-model-item ref="price" label="Price" prop="price">
+        <a-input placeholder="Please input price dish"
+                 v-model="editItem.price"/>
+      </a-form-model-item>
+      <a-form-model-item label="Category">
 
-      <a-checkbox-group v-model="editItem.category_ids" @change="onChange">
-        <a-checkbox :span="6" v-for="category in categories"
-                    name="category_ids[]" :value="category.id">
-          {{ category.name }}
-        </a-checkbox>
-      </a-checkbox-group>
-    </a-form-model-item>
-    <div class="clearfix">
-      <UploadImage
-        :editImages="editItem.images_attributes"
-        @updateImageList="updateImageList"
-      />
-    </div>
+        <a-checkbox-group v-model="editItem.category_ids" @change="onChange">
+          <a-checkbox :span="6" v-for="category in categories" :key="category.id"
+                      name="category_ids[]" :value="category.id">
+            {{ category.name }}
+          </a-checkbox>
+        </a-checkbox-group>
+      </a-form-model-item>
+      <div class="clearfix">
+        <UploadImage
+          :editImages="editItem.images_attributes"
+          @updateImageList="updateImageList"
+        />
+      </div>
 
-    <a-form-model-item :wrapperCol="{ offset: 8 }">
-      <a-button @click="handleSubmit" type="primary" html-type="submit">
-        Submit
-      </a-button>
-      <a-button style="margin-left: 10px;" @click="resetForm">
-        Reset
-      </a-button>
-    </a-form-model-item>
-  </a-form-model>
+      <a-form-model-item :wrapperCol="{ offset: 8 }">
+        <a-button @click="handleSubmit" type="primary" html-type="submit">
+          Submit
+        </a-button>
+        <a-button style="margin-left: 10px;" @click="resetForm">
+          Reset
+        </a-button>
+      </a-form-model-item>
+    </a-form-model>
+  </div>
 </template>
 <script>
 

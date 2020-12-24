@@ -5,15 +5,15 @@
       <div class="aboutpage-header-text-box">
         <h3 class="aboutpage-header-heading-primary">
           <span class="aboutpage-header-heading-primary__main">
-               Restaurant
+               Giới thiệu
           </span>
           <span class="aboutpage-header-heading-primary__sub">
-              is how you survive
+              Mr Bolat - Thưởng thức theo cách của bạn
           </span>
         </h3>
       </div>
     </header>
-    <CompNavigation/>
+    <Navigation/>
     <div class="aboutpage-intro">
       <a-row>
         <a-col :span="13">
@@ -28,16 +28,25 @@
         </a-col>
         <a-col :span="10" :offset="1">
           <div class="aboutpage-intro-content">
-            <h4 class="intro-content__title">The Story</h4>
+            <h4 class="intro-content__title">Câu chuyện của chúng </h4>
             <p class="intro-content__paragraph">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Accusantium aut dolore ea eaque eius eligendi est explicabo fugit,
-              in incidunt labore laborum, minima mollitia nam nesciunt numquam
-              repellat, sit vel.
+              Được tọa lạc ngay giữa trung tâm nhộn nhịp,
+              nhà hàng Mr Bolat là một không gian tuyệt vời để thực khách có thể
+              xua tan hết mọi áp lực cuộc sống khi tận hưởng những món ăn đậm
+              chất văn hoá của ẩm thực Việt Nam.
+              Trong tiềm thức nhiều người, hình ảnh món Việt thường luôn gắn
+              liền với không gian dân dã và đậm chất thôn quê, nhưng đến với Dì
+              Mai, bạn sẽ không khỏi bất ngờ trước lối thiết kế giao hòa, tinh
+              tế và độc đáo giữa nét quê mộc mạc và kiến trúc Đông Dương. Nét ấn
+              tượng nhất ngay tại trung tâm là bàn ăn được thiết kế từ chiếc xe
+              lam; gợi nên hình ảnh đường phố Sài Gòn năm xưa. Hơn thế nữa, sự
+              chăm chút tỉ mỉ về trang phục qua tà áo dài cách tân của nhân viên
+              phục vụ và những chiếc tạp dề mang hoạ tiết đậm chất Việt của đầu
+              bếp đã góp phần hoàn thiện phong cách độc đáo cho nhà hàng
             </p>
           </div>
           <div>
-            <h5 class="uppercase text-white text-lg">specialities</h5>
+            <h5 class="uppercase text-white text-lg">Đặc biệt</h5>
             <ul class="text-white flex flex-wrap">
               <li class="w-2/4">
                 <a-icon class="intro__icon" type="sketch"/>
@@ -99,14 +108,14 @@
 </template>
 
 <script>
-  import CompNavigation from "./common/pages/CompNavigation"
   import ARow from "ant-design-vue/es/grid/Row";
   import ACol from "ant-design-vue/es/grid/Col";
-  import Footer from "./common/pages/CompFooter"
+  import Footer from "../../layouts/partials/Footer";
+  import Navigation from "../../layouts/partials/Navigation";
 
   export default {
     name: "About",
-    components: {ACol, ARow, CompNavigation, Footer},
+    components: {Navigation, Footer, ACol, ARow},
     props: {
       logo: {
         type: String

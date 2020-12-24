@@ -12,8 +12,7 @@ Rails.application.routes.draw do
       end
       resources :restaurants do
         member do
-          get :categories
-          get :menu, to: 'restaurants#all_categories'
+          get :menus
         end
       end
       resources :users

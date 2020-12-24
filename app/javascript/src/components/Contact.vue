@@ -1,19 +1,35 @@
 <template>
   <div id="contact-us">
-    <comp-navigation/>
+    <Navigation/>
     <div class="contact-body">
       <a-row>
         <a-col :span="12">
           <div class="contact--left">
             <h4 class="capitalize contact__title">Get In Touch</h4>
-            <p class="contact__paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dicta exercitationem, natus nesciunt quibusdam quo quod repellendus sunt temporibus. Labore, magnam, repudiandae. Aliquam, aperiam aspernatur beatae error molestiae porro rerum.</p>
+            <p class="contact__paragraph">Lorem ipsum dolor sit amet,
+              consectetur adipisicing elit. Aspernatur dicta exercitationem,
+              natus nesciunt quibusdam quo quod repellendus sunt temporibus.
+              Labore, magnam, repudiandae. Aliquam, aperiam aspernatur beatae
+              error molestiae porro rerum.</p>
           </div>
           <div class="contact--left">
             <ul class="contact__paragraph contact-list">
-              <li><a-icon class="contact__icon" type="mail" /> +84 12345678</li>
-              <li><a-icon class="contact__icon" type="phone" /> +84 12345678</li>
-              <li><a-icon class="contact__icon" type="clock-circle"/> +84 12345678</li>
-              <li><a-icon class="contact__icon" type="facebook" /> facebook.com</li>
+              <li>
+                <a-icon class="contact__icon" type="mail"/>
+                +84 12345678
+              </li>
+              <li>
+                <a-icon class="contact__icon" type="phone"/>
+                +84 12345678
+              </li>
+              <li>
+                <a-icon class="contact__icon" type="clock-circle"/>
+                +84 12345678
+              </li>
+              <li>
+                <a-icon class="contact__icon" type="facebook"/>
+                facebook.com
+              </li>
             </ul>
           </div>
         </a-col>
@@ -30,14 +46,17 @@
               :label-col="labelCol"
               :wrapper-col="wrapperCol"
             >
-              <a-form-model-item ref="name" label="YOUR NAME" prop="name">
-                <a-input class="contact__paragraph" v-model="form.name" placeholder="Your name"/>
+              <a-form-model-item ref="name" prop="name">
+                <a-input class="contact__paragraph" v-model="form.name"
+                         placeholder="Your name"/>
               </a-form-model-item>
-              <a-form-model-item label="EMAIL ADDRESS" prop="mail">
-                <a-input v-model="form.email" placeholder="email@gmail.com" type="mail" />
+              <a-form-model-item prop="mail">
+                <a-input v-model="form.email" placeholder="email@gmail.com"
+                         type="mail"/>
               </a-form-model-item>
-              <a-form-model-item label="COMMENT/QUESTION" prop="comment">
-                <a-input v-model="form.comment" type="textarea" placeholder="Comment or question" />
+              <a-form-model-item prop="comment">
+                <a-input v-model="form.comment" type="textarea"
+                         placeholder="Comment or question"/>
               </a-form-model-item>
               <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
                 <a-button class="uppercase" type="primary" @click="onSubmit">
@@ -52,13 +71,14 @@
         </a-col>
       </a-row>
     </div>
-    <CompFooter/>
+    <Footer/>
   </div>
 </template>
 
 <script>
-  import CompNavigation from "./common/pages/CompNavigation";
-  import CompFooter from "./common/pages/CompFooter";
+  import Footer from "../../layouts/partials/Footer";
+  import Navigation from "../../layouts/partials/Navigation";
+
   export default {
     name: "Contact",
     props: {
@@ -68,13 +88,13 @@
     },
     data() {
       return {
-        labelCol: { span: 4 },
-        wrapperCol: { span: 14 },
+        labelCol: {span: 4},
+        wrapperCol: {span: 14},
         form: {},
         rules: {},
       }
     },
-    components: {CompFooter, CompNavigation},
+    components: {Navigation, Footer},
     methods: {
       onSubmit() {
         this.$refs.ruleForm.validate(valid => {
@@ -94,34 +114,41 @@
 </script>
 
 <style scoped>
-  #contact-us{
-    background: rgb(24,22,20);;
+  #contact-us {
+    background: rgb(24, 22, 20);;
   }
-  .contact-body{
+
+  .contact-body {
     padding: 30px 10px;
     padding-top: 150px;
   }
-  .contact--left{
+
+  .contact--left {
     width: 90%;
   }
-  .contact__title{
+
+  .contact__title {
     font-size: 40px;
     color: white;
   }
-  .contact__paragraph{
+
+  .contact__paragraph {
     color: #6b6164;
   }
-  .contact-list{
+
+  .contact-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     width: 100%;
   }
-  .contact-list li{
+
+  .contact-list li {
     width: 50%;
   }
-  .contact__icon{
+
+  .contact__icon {
     color: #C1975D;
   }
 </style>
