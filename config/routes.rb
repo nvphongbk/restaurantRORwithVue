@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       resources :import_data, only: %w[index create]
       resources :dishes
       resources :images, only: %w[create index]
+      resources :messages
+
       resources :categories do
         member do
           get :dishes

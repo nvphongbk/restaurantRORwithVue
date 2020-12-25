@@ -28,12 +28,13 @@
             <span class="nav-text">Import Media</span>
           </router-link>
         </a-menu-item>
-        <a-sub-menu key="pages">
-          <span slot="title"><a-icon type="book" /><span>Pages</span></span>
-          <a-menu-item key="3">
-            Homepage
-          </a-menu-item>
-        </a-sub-menu>
+        <a-menu-item key="Message">
+          <router-link :to="{name: 'Message'}">
+            <a-icon type="import"/>
+            <span class="nav-text">Message</span>
+          </router-link>
+        </a-menu-item>
+
       </a-menu>
     </a-layout-sider>
 </template>

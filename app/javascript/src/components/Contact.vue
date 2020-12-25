@@ -41,21 +41,21 @@
           <div>
             <a-form-model
               ref="ruleForm"
-              :model="form"
+              :model="message"
               :rules="rules"
               :label-col="labelCol"
               :wrapper-col="wrapperCol"
             >
               <a-form-model-item ref="name" prop="name">
-                <a-input class="contact__paragraph" v-model="form.name"
+                <a-input class="contact__paragraph" v-model="message.name"
                          placeholder="Your name"/>
               </a-form-model-item>
-              <a-form-model-item prop="mail">
-                <a-input v-model="form.email" placeholder="email@gmail.com"
+              <a-form-model-item prop="email" ref="email">
+                <a-input v-model="message.email" placeholder="email@gmail.com"
                          type="mail"/>
               </a-form-model-item>
-              <a-form-model-item prop="comment">
-                <a-input v-model="form.comment" type="textarea"
+              <a-form-model-item prop="message">
+                <a-input v-model="message.message" type="textarea"
                          placeholder="Comment or question"/>
               </a-form-model-item>
               <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
@@ -76,6 +76,8 @@
 </template>
 
 <script>
+  import axios from "axios"
+  import {URLS} from "../utils/url";
   import Footer from "../../layouts/partials/Footer";
   import Navigation from "../../layouts/partials/Navigation";
 
@@ -90,7 +92,7 @@
       return {
         labelCol: {span: 4},
         wrapperCol: {span: 14},
-        form: {},
+        message:{},
         rules: {},
       }
     },
@@ -99,7 +101,18 @@
       onSubmit() {
         this.$refs.ruleForm.validate(valid => {
           if (valid) {
-            alert('submit!');
+            axios
+              .post(URLS.MESSAGE_CONTACT(), {
+                message: this.message
+              })
+              .then(response => {
+                console.log("Created!");
+                this.$message.success('Send message success');
+                this.resetForm()
+              })
+              .catch(error => {
+                console.log(error);
+              });
           } else {
             console.log('error submit!!');
             return false;
