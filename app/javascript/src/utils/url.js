@@ -23,5 +23,9 @@ export const URLS = {
   SIGNIN: () => `${getBaseUrl()}/signin`,
   SIGNOUT: () => `${getBaseUrl()}/signout`,
 
-  MENU : (id) => `${getBaseUrl()}/restaurants/${id}/menus`
+  MENU: (id) => `${getBaseUrl()}/restaurants/${id}/menus`,
+
+  MESSAGES: () => `${getBaseUrl()}/messages`,
+  MESSAGE: (id) => `${getBaseUrl()}/messages/${id}`,
+  MESSAGE_CONTACT: () => `${getBaseUrl()}/messages`,
 };

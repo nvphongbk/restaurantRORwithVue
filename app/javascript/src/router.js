@@ -6,6 +6,7 @@ import Dashboard from "./components/Dashboard"
 import Restaurants from "./components/Restaurants"
 import Categories from "./components/Categories"
 import Dishes from "./components/Dishes"
+import Message from "./components/Message"
 import ImportMedia from "./components/common/ImportMedia"
 import {JWT_KEY} from "./utils/constant"
 import Menu from "./components/menu/Menu"
@@ -73,6 +74,14 @@ const router = new VueRouter({
       component: ImportMedia,
       meta: {
         openKey: 'Import-media'
+      }
+    },
+    {
+      path: '/admin/message',
+      name: 'Message',
+      component: Message,
+      meta: {
+        openKey: 'Message'
       }
     },
     {
