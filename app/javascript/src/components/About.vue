@@ -1,7 +1,7 @@
 <template>
   <div id="aboutpage">
     <header class="aboutpage-header"
-            :style="{'background-image':'url(/uploads/image/photo/5/background-header-about.jpg)'}">
+            :style="{'background-image':'url(/uploads/about/background-header-about.jpg)'}">
       <div class="aboutpage-header-text-box">
         <h3 class="aboutpage-header-heading-primary">
           <span class="aboutpage-header-heading-primary__main">
@@ -18,11 +18,11 @@
       <a-row>
         <a-col :span="13">
           <div class="aboutpage-our-story-composition">
-            <img src="/uploads/our-story/our-story-us-1.jpg" alt="photo1"
+            <img src="/uploads/about/our-story-us-1.jpg" alt="photo1"
                  class="aboutpage-our-story-composition__photo aboutpage-our-story-composition__photo--p1">
-            <img src="/uploads/our-story/our-story-us-2.jpg" alt="photo2"
+            <img src="/uploads/about/our-story-us-2.jpg" alt="photo2"
                  class="aboutpage-our-story-composition__photo aboutpage-our-story-composition__photo--p2">
-            <img src="/uploads/our-story/our-story-us-3.jpg" alt="photo3"
+            <img src="/uploads/about/our-story-us-3.jpg" alt="photo3"
                  class="aboutpage-our-story-composition__photo aboutpage-our-story-composition__photo--p3">
           </div>
         </a-col>
@@ -50,19 +50,19 @@
             <ul class="text-white flex flex-wrap">
               <li class="w-2/4">
                 <a-icon class="intro__icon" type="sketch"/>
-                Fine Dining
+                Ăn tối
               </li>
               <li class="w-2/4">
                 <a-icon class="intro__icon" type="sketch"/>
-                Food Catering
+                Dịch vụ ăn
               </li>
               <li class="w-2/4">
                 <a-icon class="intro__icon" type="sketch"/>
-                Food Delivery
+                Giao đồ ăn
               </li>
               <li class="w-2/4">
                 <a-icon class="intro__icon" type="sketch"/>
-                Wedding Ceremony
+                Lễ Cưới
               </li>
             </ul>
           </div>
@@ -73,18 +73,17 @@
       <a-row class="aboutpage-archie">
         <a-col :span="10">
           <div>
-            <h4 class="intro-content__title">The achievement</h4>
+            <h4 class="intro-content__title">Thành tựu</h4>
             <p class="intro-content__paragraph">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Accusantium aut dolore ea eaque eius eligendi est explicabo fugit,
-              in incidunt labore laborum, minima mollitia nam nesciunt numquam
-              repellat, sit vel.
+              Được thành lập ngày 02/04/2010, trải qua nhiều khó khăn và thử thách, đến nay nhà hàng Mr Bolat đã
+              trở thành một trong những nhà hàng hàng đầu tại Việt Nam trong ngành ẩm thực và có sức ảnh hưởng lớn
+              đến nhiều nước trên thế giới.
             </p>
           </div>
         </a-col>
         <a-col :span="13" :offset="1">
           <div class="composition">
-            <img src="/uploads/our-story/our-story-us-1.jpg" alt="photo1"
+            <img src="/uploads/about/our-story-us-4.jpg" alt="photo1"
                  class="w-3/4">
           </div>
         </a-col>
@@ -92,9 +91,8 @@
       <div>
         <a-row>
           <div class="aboutpage-quote text-center">
-            <p class="text-white aboutpage-quote__text">"The discovery of a new
-              dish does more for the happiness of mankind than the discovery of
-              a star."</p>
+            <p class="text-white aboutpage-quote__text">"Với tham vọng của bản thân, việc đi và học nấu nướng chưa bao
+              giờ là đủ."</p>
             <p class="uppercase aboutpage-quote__author">ANTHELME
               BRILLAT-SAVARIN</p>
           </div>

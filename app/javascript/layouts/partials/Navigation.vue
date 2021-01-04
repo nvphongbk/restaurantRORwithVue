@@ -38,7 +38,7 @@
     name: "Navigation",
     data() {
       return {
-        logo: '/uploads/image/photo/294/logoRestaurant.png',
+        logo: '/uploads/logo/logoRestaurant.png',
       }
     }
   }

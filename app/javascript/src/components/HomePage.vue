@@ -1,7 +1,7 @@
 <template>
   <div id="homepage">
     <header class="homepage-header"
-            :style="{'background-image':'linear-gradient(to right bottom, rgba(142, 158, 252, .4),rgba(28, 62, 255, .4)),url(/uploads/image/photo/295/background-header.jpg)'}">
+            :style="{'background-image':'linear-gradient(to right bottom, rgba(142, 158, 252, .4),rgba(28, 62, 255, .4)),url(/uploads/home-page/background-header.jpg)'}">
       <div class="homepage-header-text-box">
         <h3 class="homepage-header-heading-primary">
           <span class="homepage-header-heading-primary__main">
@@ -49,18 +49,18 @@
         </a-col>
         <a-col :span="12">
           <div class="homepage-our-story-composition">
-            <img src="/uploads/our-story/our-story-us-1.jpg" alt="photo1"
+            <img src="/uploads/home-page/home-intro-1.jpg" alt="photo1"
                  class="homepage-our-story-composition__photo homepage-our-story-composition__photo--p1">
-            <img src="/uploads/our-story/our-story-us-2.jpg" alt="photo2"
+            <img src="/uploads/home-page/home-intro-2.jpg" alt="photo2"
                  class="homepage-our-story-composition__photo homepage-our-story-composition__photo--p2">
-            <img src="/uploads/our-story/our-story-us-3.jpg" alt="photo3"
+            <img src="/uploads/home-page/home-intro-3.jpg" alt="photo3"
                  class="homepage-our-story-composition__photo homepage-our-story-composition__photo--p3">
           </div>
         </a-col>
       </a-row>
     </div>
     <div class="homepage-our-restaurant"
-         :style="{'background-image':'url(/uploads/image/photo/295/background-header.jpg)'}"
+         :style="{'background-image':'url(/uploads/home-page/background-header.jpg)'}"
     >
       <div class="text-center">
         <h2 class="homepage__heading-secondary mt-5">
@@ -92,7 +92,7 @@
       <div class="row">
         <div class="testimonial">
           <figure class="testimonial__shape">
-            <img src="/uploads/our-story/our-story-us-1.jpg"
+            <img src="/uploads/home-page/testimonial-1.jpg"
                  class="testimonial__img" alt="photo1">
             <figcaption class="testimonial__caption">
               Mr Sach
@@ -114,7 +114,7 @@
         </div>
         <div class="testimonial">
           <figure class="testimonial__shape">
-            <img src="/uploads/our-story/our-story-us-1.jpg"
+            <img src="/uploads/home-page/testimonial-2.jpg"
                  class="testimonial__img" alt="photo2">
             <figcaption class="testimonial__caption">
               Mr Phuc

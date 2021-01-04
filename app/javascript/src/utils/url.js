@@ -1,5 +1,5 @@
 export const getBaseUrl = () => {
-  return "http://localhost:3000/api/v1"
+  return "/api/v1"
 };
 export const URLS = {
   RESTAURANTS: () => `${getBaseUrl()}/restaurants`,

@@ -5,12 +5,10 @@
       <a-row>
         <a-col :span="12">
           <div class="contact--left">
-            <h4 class="capitalize contact__title">Get In Touch</h4>
-            <p class="contact__paragraph">Lorem ipsum dolor sit amet,
-              consectetur adipisicing elit. Aspernatur dicta exercitationem,
-              natus nesciunt quibusdam quo quod repellendus sunt temporibus.
-              Labore, magnam, repudiandae. Aliquam, aperiam aspernatur beatae
-              error molestiae porro rerum.</p>
+            <h4 class="capitalize contact__title">Liên hệ với Mr Bolat</h4>
+            <p class="contact__paragraph">Nhà hàng có một vị trí lý tưởng. Một bên là sự sầm uất và sang trọng của khu
+              trung tâm Quận 1, một bên là sông Sài Gòn thơ mộng. Đây là nhà hàng nổi lớn nhất Việt Nam với sức chứa tối
+              đa lên đến 750 khách, bao gồm 5 boong 2 thang máy, 2 thang bộ ....</p>
           </div>
           <div class="contact--left">
             <ul class="contact__paragraph contact-list">
@@ -35,8 +33,7 @@
         </a-col>
         <a-col :span="12">
           <div>
-            <h4 class="contact__title">Your Details</h4>
-            <p class="contact__paragraph">Let us know how to get back to you</p>
+            <p class="contact__paragraph">Hãy cho chúng tôi biết cách liên lạc với bạn:</p>
           </div>
           <div>
             <a-form-model
@@ -60,7 +57,7 @@
               </a-form-model-item>
               <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
                 <a-button class="uppercase" type="primary" @click="onSubmit">
-                  Contact Us
+                  Gửi
                 </a-button>
                 <a-button style="margin-left: 10px;" @click="resetForm">
                   Reset
@@ -92,7 +89,7 @@
       return {
         labelCol: {span: 4},
         wrapperCol: {span: 14},
-        message:{},
+        message: {},
         rules: {},
       }
     },
