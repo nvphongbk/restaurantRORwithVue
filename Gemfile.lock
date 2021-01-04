@@ -315,7 +315,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
-  carrierwave (~> 2.0)
+  carrierwave
   devise
   devise-jwt
   factory_bot_rails
