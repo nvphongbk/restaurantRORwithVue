@@ -58,7 +58,6 @@
           })
           .then(response => {
             console.log(response);
-            console.log("Created!");
             this.$message.success('Created success');
             this.$emit('updateListAfterUpdated', this.editItem);
           })
