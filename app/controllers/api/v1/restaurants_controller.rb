@@ -44,6 +44,12 @@ module Api
         end
       end
 
+      def categories
+        @restaurant = Restaurant.find(params[:id])
+        @categories = @restaurant.categories
+        render json: @categories
+      end
+
       def menus
         @restaurants = Restaurant.find(params[:id])
         render json: @restaurants

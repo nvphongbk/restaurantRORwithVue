@@ -13,7 +13,7 @@ class Dish < ApplicationRecord
 
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
-  has_many :category_dishes
+  has_many :category_dishes, dependent: :destroy
   has_many :categories, through: :category_dishes
 
   validates :name, :price, presence: false
