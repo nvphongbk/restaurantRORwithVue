@@ -2,7 +2,7 @@
   <section id="our_menu">
     <Navigation/>
     <div class="container-menu pt-0"
-         :style="{'background-image':'url(/uploads/image/photo/5/background-header-about.jpg)'}">
+         :style="{'background-image':'url(/uploads/menu/background-menu.jpg)'}">
       <a-row>
         <a-col :span="24">
           <div class="menu-page_title text-center mb-4">

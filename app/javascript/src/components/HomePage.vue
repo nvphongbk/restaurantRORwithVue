@@ -63,7 +63,7 @@
          :style="{'background-image':'url(/uploads/home-page/background-header.jpg)'}"
     >
       <div class="text-center">
-        <h2 class="homepage__heading-secondary mt-5">
+        <h2 class="homepage__heading-secondary mt-5 mb-5">
           Hệ thống nhà hàng
         </h2>
       </div>
@@ -271,10 +271,11 @@
 
   .homepage-our-story {
     height: 410px;
-    margin: 0 10px;
+    margin: 30px 10px;
   }
 
   .homepage__heading-secondary {
+    margin-bottom: 30px;
     font-size: 45px;
     text-transform: uppercase;
     font-weight: 700;
@@ -345,6 +346,7 @@
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, .15);
+    margin-bottom: 30px;
   }
 
   .homepage-card-restaurant-card:hover {
