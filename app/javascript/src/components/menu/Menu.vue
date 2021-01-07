@@ -7,6 +7,7 @@
         <a-col :span="24">
           <div class="menu-page_title text-center mb-4">
             <h1>{{menu.name}}</h1>
+            <p class="menu-page--wifi">Pass Wifi: {{menu.pass_wifi}}</p>
             <div class="menu-single_line"></div>
           </div>
         </a-col>
@@ -145,7 +146,7 @@
   }
 
   .menu-page_title h1 {
-    font-size: 60px;
+    font-size: 45px;
     color: #9b2c2c;
     font-weight: 700;
     line-height: 2;
@@ -217,6 +218,11 @@
     font-weight: 200;
     font-size: 16px;
     letter-spacing: 1px;
+  }
+  .menu-page--wifi {
+    font-size: 18px;
+    font-weight: 500;
+    color: #fde3b2;
   }
 
   .menu-name_category {

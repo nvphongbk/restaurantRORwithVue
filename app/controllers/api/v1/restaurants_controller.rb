@@ -59,7 +59,7 @@ module Api
       private
 
       def restaurant_params
-        params.require(:restaurant).permit(:name, :address, :user_id)
+        params.require(:restaurant).permit(:name, :address, :pass_wifi, :user_id)
       end
     end
   end
