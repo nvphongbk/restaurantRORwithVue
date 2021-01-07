@@ -15,9 +15,22 @@
             @updateListAfterUpdated="updateListAfterUpdated"
           />
         </a-modal>
+
+        <a-modal v-model="visible_qrcode" :title=this.editItem.name :footer="null">
+          <QrRestaurant :editItem="editItem">
+          </QrRestaurant>
+        </a-modal>
+
         <a-table bordered :data-source="desserts" :columns="columns"
                  :row-key="(record) => record.id"
         >
+          <template slot="qrcode" slot-scope="text, record">
+            <a-button @click="getQrCode(record)" :size="'small'"
+                      :type="'primary'"
+            >
+              <a-icon type="qrcode"/>
+            </a-button>
+          </template>
           <template slot="action" slot-scope="text, record">
             <a-button @click="editRestaurant(record)" :size="'small'"
                       :type="'primary'"
@@ -45,10 +58,12 @@
   import axios from "axios";
   import FormRestaurant from "./forms/FormRestaurant"
   import {URLS} from "../utils/url"
+  import QrRestaurant from "./QrRestaurant";
   const newRestaurant = {
     id: '',
     name: '',
     address:'',
+    pass_wifi: '',
     user_id:''
   }
   export default {
@@ -75,12 +90,20 @@
               trigger: 'blur'
             },
           ],
+          pass_wifi: [
+            {
+              min: 8,
+              message: 'Length should be 8',
+              trigger: 'blur'
+            }
+          ]
         },
         editItem: {
         },
         isEdit: false,
         desserts: [],
         visible: false,
+        visible_qrcode: false,
         columns: [
           {
             title: 'Name',
@@ -95,6 +118,15 @@
             dataIndex: 'address',
           },
           {
+            title: 'Pass wifi',
+            dataIndex: 'pass_wifi',
+          },
+          {
+            title: 'QR CODE',
+            dataIndex: 'qrcode',
+            scopedSlots: {customRender: 'qrcode'},
+          },
+          {
             title: 'Action',
             dataIndex: 'action',
             scopedSlots: {customRender: 'action'},
@@ -103,6 +135,7 @@
       };
     },
     components:{
+      QrRestaurant,
       FormRestaurant
     },
     mounted() {
@@ -133,6 +166,10 @@
       editRestaurant(record) {
         this.isEdit = true;
         this.visible = true;
+        this.editItem = Object.assign({}, record);
+      },
+      getQrCode(record){
+        this.visible_qrcode = true;
         this.editItem = Object.assign({}, record);
       },
       updateVisible(value) {
