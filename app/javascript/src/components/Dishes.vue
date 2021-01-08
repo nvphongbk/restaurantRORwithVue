@@ -102,7 +102,7 @@
     price: '',
     category_ids: [],
     images_attributes: [],
-    images_ids: []
+    image_ids: []
   }
   export default {
     name: "Dishes",
