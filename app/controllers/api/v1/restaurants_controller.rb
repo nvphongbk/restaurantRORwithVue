@@ -4,7 +4,7 @@ module Api
       skip_before_action :verify_authenticity_token
 
       def index
-        @restaurants = Restaurant.all
+        @restaurants = Restaurant.all.order('created_at DESC')
         render json: @restaurants, status: 200
       end
 

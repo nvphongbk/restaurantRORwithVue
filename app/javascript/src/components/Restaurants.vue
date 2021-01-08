@@ -6,6 +6,11 @@
                   @click="addRestaurant">
           Add
         </a-button>
+        <a-input-search
+          placeholder="input search restaurant"
+          style="width: 200px"
+          v-model="search"
+        ></a-input-search>
         <a-modal v-model="visible" :title="titleModal" :footer="null">
           <FormRestaurant
             :rules="rules"
@@ -21,7 +26,7 @@
           </QrRestaurant>
         </a-modal>
 
-        <a-table bordered :data-source="desserts" :columns="columns"
+        <a-table bordered :data-source="onSearch" :columns="columns"
                  :row-key="(record) => record.id"
         >
           <template slot="qrcode" slot-scope="text, record">
@@ -70,6 +75,7 @@
     name: "Restaurants",
     data() {
       return {
+        search: '',
         rules: {
           name: [
             { required: true,
@@ -144,6 +150,16 @@
     computed: {
       titleModal() {
         return this.isEdit ? 'Edit Category' : 'Create Category'
+      },
+      onSearch() {
+        if(this.search){
+          return this.desserts.filter((item)=>{
+            console.log(item)
+            return this.search.toLowerCase().split(' ').every(v => item.name.toLowerCase().includes(v))
+          })
+        }else{
+          return this.desserts;
+        }
       }
     },
     methods: {

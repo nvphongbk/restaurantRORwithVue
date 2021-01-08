@@ -46,12 +46,12 @@
                  :footer="null">
           <ImportDish @closeImportModal="visibleImportDish = false"/>
         </a-modal>
-
-
         <a-modal v-model="visible" :title="titleModal" :footer="null">
           <FormDish
+            :visible="visible"
             :rules="rules"
             :editItem="editItem"
+            :isAddNew="isAddNew"
             :isEdit="isEdit"
             @updateVisible="updateVisible"
             @updateListAfterUpdated="updateListAfterUpdated"
@@ -63,9 +63,9 @@
                  :row-key="(record) => record.id"
         >
           <template slot="image" slot-scope="image">
-        <span>
-          <a-avatar shape="square" :size="100" :src="image"/>
-        </span>
+            <span>
+              <a-avatar shape="square" :size="100" :src="image"/>
+            </span>
           </template>
           <template slot="action" slot-scope="text, record">
             <a-button @click="editDish(record)" :size="'small'"
@@ -109,6 +109,7 @@
     data() {
       return {
         visibleImportDish: false,
+        isAddNew: false,
         categories: [],
         restaurants: [],
         rules: {
@@ -182,6 +183,7 @@
       addDish() {
         this.visible = true;
         this.isEdit = false
+        this.isAddNew = true
         this.editItem = Object.assign({}, newDish);
       },
       showModalImport() {
@@ -190,6 +192,7 @@
       editDish(record) {
         this.isEdit = true;
         this.visible = true;
+        this.isAddNew = false
         this.editItem = Object.assign({}, record);
       },
       updateVisible(value) {
