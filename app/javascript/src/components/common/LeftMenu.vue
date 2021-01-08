@@ -30,7 +30,7 @@
         </a-menu-item>
         <a-menu-item key="Message">
           <router-link :to="{name: 'Message'}">
-            <a-icon type="import"/>
+            <a-icon type="mail"/>
             <span class="nav-text">Message</span>
           </router-link>
         </a-menu-item>

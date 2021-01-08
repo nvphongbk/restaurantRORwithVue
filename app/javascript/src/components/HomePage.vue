@@ -11,8 +11,8 @@
               Tinh hoa ẩm thực
           </span>
         </h3>
-        <router-link :to="{name: 'About'}" class="btn btn-white btn-animated">Về
-          chúng tôi
+        <router-link :to="{name: 'About'}" class="btn btn-white btn-animated">
+          Về chúng tôi
         </router-link>
       </div>
     </header>
@@ -39,9 +39,6 @@
             Tinh túy không gian ẩm thực
           </h3>
           <p class="homepage-our-story__paragraph">
-            Điều đặc biệt lôi cuốn thực khách đến với nhà hàng ẩm thực Chân Quê
-            đó là lối kiến trúc mang vẻ đẹp văn hóa Việt, ấm cúng, đan xen giữa
-            chất hiện đại và truyền thống, tạo nên sự độc đáo và phá cách.
             Thật tuyệt vời khi được hòa mình vào không gian đầy chất nghệ thuật
             và thưởng thức tinh hoa ẩm thực Việt tại Chân Quê vào một buổi tối
             cuối tuần mát mẻ phải không? Hãy đến và cảm nhận!
@@ -71,12 +68,11 @@
         <div class="homepage-card-restaurant" v-for="restaurant in restaurants"
              :key="restaurant.id">
           <a-col class="col-card" :span="6">
-
             <div class="homepage-card-restaurant-card">
               <h4 class="homepage__restaurant-name">{{restaurant.name}}</h4>
               <p>Địa chỉ: {{restaurant.address}}</p>
               <router-link :to="{name: 'Menu', params: {id: restaurant.id }}">
-                <span class="nav-text btn btn-white">See menu</span>
+                <span class="nav-text btn btn-white btn-see-menu">See menu</span>
               </router-link>
             </div>
           </a-col>
@@ -106,9 +102,7 @@
               Đây không phải lần đầu, mà là rất nhiều lần tôi đến đây để thưởng
               thức món ăn đậm đà hương vị Việt. Thật tuyệt vời trong một không
               gian ấm cúng đúng chất chợ quê Việt Nam những năm 1980-1990 với
-              các gian hàng đầy đủ món ăn 3 miền hội tụ. Món yêu thích nhất tôi
-              thường gọi là bánh hỏi nem nướng, bánh xèo nam bộ và mực một nắng
-              chiên giòn.
+              các gian hàng đầy đủ món ăn 3 miền hội tụ.
             </p>
           </div>
         </div>
@@ -128,8 +122,7 @@
               Món ăn đa dạng,phù hợp với tất cả các đối tượng và lứa tuổi. Đặc
               biện nếu bạn cần dẫn khách nước ngoài trải nghiệm món ăn Việt Nam,
               đây sẽ là sự lựa chọn không tồi vì có đầy đủ các món ăn ba miền
-              Bắc Trung Nam. Món ăn nêm nếm vừa vặn tròn vị. Nên thử món bánh
-              xèo và chè sương sa hạt lựu.
+              Bắc Trung Nam.
             </p>
           </div>
         </div>
@@ -268,6 +261,14 @@
     color: #777777;
     background-color: #fff;
   }
+  .btn-see-menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: 15px;
+    ;
+  }
 
   .homepage-our-story {
     height: 410px;
@@ -332,6 +333,7 @@
   }
 
   .homepage-card-restaurant .ant-col-6 {
+    position: relative;
     padding: 15px;
   }
 

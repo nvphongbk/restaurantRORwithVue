@@ -12,7 +12,7 @@
           </div>
         </a-col>
       </a-row>
-      <a-tabs type="card" class="menu-body" v-if="!MobileView">
+      <a-tabs type="card" class="menu-body">
         <a-tab-pane key="all" tab="All">
           <div class="menu-btn">
             <a @click="listView">
@@ -38,88 +38,6 @@
             <div v-if="ListView" class="menu-view">
               <div class="single_menu w-full" v-for='dish in category.dishes'>
                 <img class="menu-dish_img" :src="dish.images_attributes[0].url">
-                <div class="menu_content">
-                  <h4>{{dish.name}} <span>${{dish.price}}</span></h4>
-                </div>
-              </div>
-            </div>
-            <div v-else class="menu-view">
-              <div class="single_menu w-1/2 flex-wrap" v-for='dish in category.dishes'>
-                <img class="menu-dish_img--grid" :src="dish.images_attributes[0].url">
-                <div class="menu_content">
-                  <h4>{{dish.name}} <span>${{dish.price}}</span></h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </a-tab-pane>
-        <template v-for='category in menu.categories'>
-          <a-tab-pane :key="category.id" :tab="category.name">
-            <div class="menu-btn">
-              <a @click="listView">
-                <svg viewBox="64 64 896 896" data-icon="unordered-list"
-                     width="25px" height="25px" fill="currentColor"
-                     aria-hidden="true" focusable="false"
-                     class="inline-block btn-view-menu">
-                  <path
-                    d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path>
-                </svg>
-              </a>
-              <a @click="gridView">
-                <svg viewBox="64 64 896 896" data-icon="table" width="25px"
-                     height="25px" fill="currentColor" aria-hidden="true"
-                     focusable="false" class="inline-block btn-view-menu">
-                  <path
-                    d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 208H676V232h212v136zm0 224H676V432h212v160zM412 432h200v160H412V432zm200-64H412V232h200v136zm-476 64h212v160H136V432zm0-200h212v136H136V232zm0 424h212v136H136V656zm276 0h200v136H412V656zm476 136H676V656h212v136z"></path>
-                </svg>
-              </a>
-            </div>
-            <div class="menu-view" v-if="ListView">
-              <div class="single_menu w-full" v-for='dish in category.dishes'>
-                <img class="menu-dish_img" :src="dish.images_attributes[0].url">
-                <div class="menu_content">
-                  <h4>{{dish.name}} <span>${{dish.price}}</span></h4>
-                </div>
-              </div>
-            </div>
-            <div class="menu-view" v-else>
-              <div class="single_menu w-1/2 flex-wrap" v-for='dish in category.dishes'>
-                <img class="menu-dish_img--grid" :src="dish.images_attributes[0].url">
-                <div class="menu_content">
-                  <h4>{{dish.name}} <span>${{dish.price}}</span></h4>
-                </div>
-              </div>
-            </div>
-          </a-tab-pane>
-        </template>
-      </a-tabs>
-
-      <a-tabs type="card" class="menu-body--mobile" v-if="MobileView">
-        <a-tab-pane key="all" tab="All">
-          <div class="menu-btn">
-            <a @click="listView">
-              <svg viewBox="64 64 896 896" data-icon="unordered-list"
-                   width="25px" height="25px" fill="currentColor"
-                   aria-hidden="true" focusable="false"
-                   class="inline-block btn-view-menu">
-                <path
-                  d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path>
-              </svg>
-            </a>
-            <a @click="gridView">
-              <svg viewBox="64 64 896 896" data-icon="table" width="25px"
-                   height="25px" fill="currentColor" aria-hidden="true"
-                   focusable="false" class="inline-block btn-view-menu">
-                <path
-                  d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 208H676V232h212v136zm0 224H676V432h212v160zM412 432h200v160H412V432zm200-64H412V232h200v136zm-476 64h212v160H136V432zm0-200h212v136H136V232zm0 424h212v136H136V656zm276 0h200v136H412V656zm476 136H676V656h212v136z"></path>
-              </svg>
-            </a>
-          </div>
-          <div v-for='category in menu.categories' :key="category.id">
-            <div class="text-center menu-name_category">{{category.name}}</div>
-            <div v-if="ListView" class="menu-view">
-              <div class="single_menu w-full" v-for='dish in category.dishes'>
-                <img class="menu-dish_img menu-dish_img--mobile" :src="dish.images_attributes[0].url">
                 <div class="menu_content">
                   <h4>{{dish.name}} <span>${{dish.price}}</span></h4>
                 </div>
@@ -219,7 +137,6 @@
         this.ListView = false
       },
       handleView() {
-        this.MobileView = window.innerWidth <=800
         console.log(window.innerWidth, "mobi")
       }
     },
@@ -367,18 +284,14 @@
     position: fixed;
   }
 
-  .menu-body--mobile {
-    width: 100%;
-    margin: 0 auto;
-    height: 85vh;
-    background: white;
-    overflow: scroll;
-    padding: 10px;
-    border-radius: 20px;
-  }
-  .menu-dish_img--mobile{
-    width: 60px;
-    height: 60px;
+  @media only screen and (max-width: 800px) {
+    .menu-body {
+      width: 100%;
+    }
+    .menu-dish_img{
+      width: 60px;
+      height: 60px;
+    }
   }
 
 </style>

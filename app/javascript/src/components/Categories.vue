@@ -117,7 +117,6 @@
         return axios
           .get(URLS.CATEGORIES())
           .then(response => {
-            console.log(response.data);
             this.desserts = response.data;
           })
           .catch(e => {
@@ -155,7 +154,6 @@
           return axios
             .get(URLS.RESTAURANT_SEARCH(value))
             .then(response => {
-              console.log(response.data);
                 this.desserts = response.data;
             })
             .catch(e => {
@@ -166,7 +164,6 @@
         return axios
           .get(URLS.RESTAURANTS())
           .then(response => {
-            console.log(response.data);
             this.restaurants = response.data;
           })
           .catch(e => {
