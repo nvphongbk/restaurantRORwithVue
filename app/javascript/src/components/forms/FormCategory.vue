@@ -5,10 +5,6 @@
     :model="editItem"
     :label-col="{ span: 5 }"
     :wrapper-col="{ span: 12 }">
-    <a-form-model-item ref="name" label="Name" prop="name">
-      <a-input placeholder="Please input name category" :autoFocus="true"
-        v-model="editItem.name" />
-    </a-form-model-item>
     <a-form-model-item  label="Restaurant" prop="restaurants">
       <a-select show-search
                 option-filter-prop="children"
@@ -18,6 +14,10 @@
           {{ restaurant.name }}
         </a-select-option>
       </a-select>
+    </a-form-model-item>
+    <a-form-model-item ref="name" label="Name" prop="name">
+      <a-input placeholder="Please input name category" :autoFocus="true"
+        v-model="editItem.name" />
     </a-form-model-item>
     <a-form-model-item :wrapperCol="{ offset: 8 }">
       <a-button @click="handleSubmit" type="primary" html-type="submit">

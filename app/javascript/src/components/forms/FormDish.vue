@@ -25,6 +25,7 @@
       </a-form-model-item>
       <div class="clearfix">
         <UploadImage
+          ref="refUploadImage"
           :editImages="editItem.images_attributes"
           @updateImageList="updateImageList"
         />
@@ -42,12 +43,9 @@
   </div>
 </template>
 <script>
-
-
   import axios from "axios";
   import {URLS} from "../../utils/url"
   import UploadImage from "../UploadImage"
-  import reqwest from 'reqwest'
   export default {
     name: "FormDish",
     props: {
@@ -58,6 +56,10 @@
         type: Object
       },
       isEdit: {
+        type: Boolean,
+        default: false
+      },
+      isAddNew: {
         type: Boolean,
         default: false
       },
@@ -82,7 +84,15 @@
       this.callDataRestaurant()
       this.getDataCategory()
     },
-
+    watch: {
+      visible: {
+        handler: function () {
+          if(this.isAddNew) {
+            this.$refs.refUploadImage.initializeImages()
+          }
+        }
+      }
+    },
     methods: {
       create(item) {
         this.isEdit = false
@@ -104,7 +114,6 @@
             let valuesSave = Object.assign({}, this.editItem)
             if (this.isEdit) {
               let idItem = this.editItem.id
-
               axios
                 .put(URLS.DISH(idItem), {
                   dish: valuesSave
@@ -119,7 +128,6 @@
               this.create(valuesSave)
             }
             this.$emit('updateVisible', false);
-            this.visible = false;
           } else {
             return false;
           }

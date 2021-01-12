@@ -13,6 +13,10 @@
       <a-input placeholder="Please input address restaurant"
                v-model="editItem.address" />
     </a-form-model-item>
+    <a-form-model-item ref="pass_wifi" label="Pass wifi" prop="pass_wifi">
+      <a-input placeholder="Please input pass wifi restaurant"
+               v-model="editItem.pass_wifi" />
+    </a-form-model-item>
 
     <a-form-model-item :wrapperCol="{ offset: 8 }">
       <a-button @click="handleSubmit" type="primary" html-type="submit">

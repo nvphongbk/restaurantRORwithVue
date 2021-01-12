@@ -3,7 +3,7 @@ module Api
     class DishesController < ApplicationController
 
       def index
-        @dishes = Dish.all
+        @dishes = Dish.all.order(created_at: :desc)
         render json: @dishes
       end
 

@@ -4,7 +4,7 @@ module Api
       skip_before_action :verify_authenticity_token
 
       def index
-        @restaurants = Restaurant.all
+        @restaurants = Restaurant.all.order(created_at: :desc)
         render json: @restaurants, status: 200
       end
 
@@ -59,7 +59,7 @@ module Api
       private
 
       def restaurant_params
-        params.require(:restaurant).permit(:name, :address, :user_id)
+        params.require(:restaurant).permit(:name, :address, :pass_wifi, :user_id)
       end
     end
   end

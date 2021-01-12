@@ -1,3 +1,5 @@
+import { HOME_URL } from "./constant";
+
 export const getBaseUrl = () => {
   return "/api/v1"
 };
@@ -24,6 +26,8 @@ export const URLS = {
   SIGNOUT: () => `${getBaseUrl()}/signout`,
 
   MENU: (id) => `${getBaseUrl()}/restaurants/${id}/menus`,
+
+  RESTAURANT_URL: (id) => `${HOME_URL}/restaurants/${id}`,
 
   MESSAGES: () => `${getBaseUrl()}/messages`,
   MESSAGE: (id) => `${getBaseUrl()}/messages/${id}`,

@@ -5,6 +5,7 @@
 #  id         :integer          not null, primary key
 #  address    :string
 #  name       :string
+#  pass_wifi  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer          not null
@@ -18,7 +19,7 @@
 #  user_id  (user_id => users.id)
 #
 class RestaurantSerializer < ActiveModel::Serializer
-  attributes :id, :name, :user_id, :address, :created_at, :categories
+  attributes :id, :name, :pass_wifi, :user_id, :address, :created_at, :categories
   # has_many :categories, serializer: CategorySerializer
 
   def categories

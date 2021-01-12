@@ -2,11 +2,12 @@
   <section id="our_menu">
     <Navigation/>
     <div class="container-menu pt-0"
-         :style="{'background-image':'url(/uploads/image/photo/5/background-header-about.jpg)'}">
+         :style="{'background-image':'url(/uploads/menu/background-menu.jpg)'}">
       <a-row>
         <a-col :span="24">
           <div class="menu-page_title text-center mb-4">
             <h1>{{menu.name}}</h1>
+            <p class="menu-page--wifi">Pass Wifi: {{menu.pass_wifi}}</p>
             <div class="menu-single_line"></div>
           </div>
         </a-col>
@@ -93,7 +94,6 @@
         </template>
       </a-tabs>
     </div>
-
   </section>
 </template>
 
@@ -110,19 +110,21 @@
       return {
         menu: '',
         ListView: true,
+        MobileView: false,
       }
     },
     mounted() {
       this.showMenu()
+    },
+    created() {
+      this.handleView()
     },
     methods: {
       showMenu() {
         return axios
           .get(URLS.MENU(this.$route.params.id))
           .then(response => {
-            console.log(response.data);
             this.menu = response.data;
-            console.log(this.menu, 'menu')
           })
           .catch(e => {
             console.log(e);
@@ -134,6 +136,9 @@
       gridView() {
         this.ListView = false
       },
+      handleView() {
+        console.log(window.innerWidth, "mobi")
+      }
     },
   }
 </script>
@@ -145,7 +150,7 @@
   }
 
   .menu-page_title h1 {
-    font-size: 60px;
+    font-size: 45px;
     color: #9b2c2c;
     font-weight: 700;
     line-height: 2;
@@ -186,8 +191,8 @@
   }
 
   .menu-dish_img {
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     border: 1px solid #ddd;
     border-radius: 5px;
   }
@@ -218,6 +223,11 @@
     font-size: 16px;
     letter-spacing: 1px;
   }
+  .menu-page--wifi {
+    font-size: 18px;
+    font-weight: 500;
+    color: #fde3b2;
+  }
 
   .menu-name_category {
     font-size: 20px;
@@ -236,7 +246,7 @@
   }
 
   .menu-body {
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
     height: 75vh;
     background: white;
@@ -273,4 +283,15 @@
   #our_menu .ant-tabs-bar{
     position: fixed;
   }
+
+  @media (min-width: 800px) {
+    .menu-body {
+      width: 50%;
+    }
+    .menu-dish_img{
+      width: 30px;
+      height: 30px;
+    }
+  }
+
 </style>
