@@ -1,7 +1,7 @@
 <template>
   <div id="compnavigation">
     <div class="navigation-header-logo-box">
-      <img :src="logo" class="navigation-header-logo-box__img" alt="logo">
+        <img :src="logo" class="navigation-header-logo-box__img" alt="logo">
     </div>
     <div class="navigation">
       <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
