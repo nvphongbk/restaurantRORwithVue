@@ -3,9 +3,9 @@
     <Navigation/>
     <div class="container-menu pt-0"
          :style="{'background-image':'url(/uploads/menu/background-menu.jpg)'}">
-      <a-row>
+      <a-row class="menu-header">
         <a-col :span="24">
-          <div class="menu-page_title text-center mb-4">
+          <div class="menu-page_title text-center">
             <h1>{{menu.name}}</h1>
             <p class="menu-page--wifi">Pass Wifi: {{menu.pass_wifi}}</p>
             <div class="menu-single_line"></div>
@@ -149,14 +149,21 @@
     margin: 0px;
   }
 
+  .menu-header {
+    line-height: 50px;
+  }
+
   .menu-page_title h1 {
-    font-size: 45px;
-    color: #9b2c2c;
+    font-size: 18px;
+    color: #ffff;
     font-weight: 700;
     line-height: 2;
     margin-bottom: 0;
     position: relative;
     text-transform: capitalize;
+    margin: 0 auto;
+    width: 50%;
+    padding-top: 20px;
   }
 
   .menu-page_title h1::before {
@@ -165,7 +172,7 @@
     height: 2px;
     position: absolute;
     content: '';
-    top: 90%;
+    top: 100%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
@@ -176,7 +183,7 @@
     background: #fbc531;
     width: 30px;
     height: 2px;
-    top: 90%;
+    top: 100%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
@@ -224,9 +231,9 @@
     letter-spacing: 1px;
   }
   .menu-page--wifi {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
-    color: #fde3b2;
+    color: #ffff;
   }
 
   .menu-name_category {
@@ -288,9 +295,14 @@
     .menu-body {
       width: 50%;
     }
+
     .menu-dish_img{
       width: 30px;
       height: 30px;
+    }
+
+    .menu-page_title h1 {
+      font-size: 30px;
     }
   }
 
