@@ -191,8 +191,8 @@
   }
 
   .menu-dish_img {
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     border: 1px solid #ddd;
     border-radius: 5px;
   }
@@ -246,7 +246,7 @@
   }
 
   .menu-body {
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
     height: 75vh;
     background: white;
@@ -284,13 +284,13 @@
     position: fixed;
   }
 
-  @media only screen and (max-width: 800px) {
+  @media (min-width: 800px) {
     .menu-body {
-      width: 100%;
+      width: 50%;
     }
     .menu-dish_img{
-      width: 60px;
-      height: 60px;
+      width: 30px;
+      height: 30px;
     }
   }
 
