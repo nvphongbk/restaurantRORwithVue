@@ -91,4 +91,13 @@
   .ant-table-thead tr th {
     text-align: center !important;
   }
+  @media only screen and (max-width: 800px) {
+    .menu-body {
+      width: 100%;
+    }
+    .menu-dish_img{
+      width: 60px;
+      height: 60px;
+    }
+  }
 </style>

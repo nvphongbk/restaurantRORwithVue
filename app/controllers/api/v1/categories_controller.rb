@@ -3,7 +3,7 @@ module Api
     class CategoriesController < ApplicationController
 
       def index
-        @categories = Category.all.order('created_at Desc')
+        @categories = Category.all.order(created_at: :desc)
       end
 
       def show; end
