@@ -10,7 +10,6 @@ import Message from "./components/Message"
 import ImportMedia from "./components/common/ImportMedia"
 import {JWT_KEY} from "./utils/constant"
 import Menu from "./components/menu/Menu"
-import About from "./components/About"
 import Contact from "./components/Contact"
 
 Vue.use(VueRouter)
@@ -88,15 +87,6 @@ const router = new VueRouter({
       path: '/restaurants/:id',
       name: 'Menu',
       component: Menu,
-      meta: {
-        openKey: 'GuestPage',
-        guest: true
-      }
-    },
-    {
-      path: '/about',
-      name: 'About',
-      component: About,
       meta: {
         openKey: 'GuestPage',
         guest: true

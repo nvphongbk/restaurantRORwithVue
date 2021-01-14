@@ -3,32 +3,6 @@
     <div class="navigation-header-logo-box">
         <img :src="logo" class="navigation-header-logo-box__img" alt="logo">
     </div>
-    <div class="navigation">
-      <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
-      <label for="navi-toggle" class="navigation__button">
-        <span class="navigation__icon">&nbsp;</span>
-      </label>
-      <div class="navigation__background">&nbsp;</div>
-      <div class="navigation__nav">
-        <ul class="navigation__list">
-          <li class="navigation__item">
-            <router-link :to="{name: 'HomePage'}" class="navigation__link">
-              Trang chủ
-            </router-link>
-          </li>
-          <li class="navigation__item">
-            <router-link :to="{name: 'About'}" class="navigation__link">
-              Giới thiệu
-            </router-link>
-          </li>
-          <li class="navigation__item">
-            <router-link :to="{name:'Contact'}" class="navigation__link">
-              Liên hệ
-            </router-link>
-          </li>
-        </ul>
-      </div>
-    </div>
   </div>
 
 </template>

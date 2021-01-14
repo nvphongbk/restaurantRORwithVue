@@ -55,7 +55,6 @@ module Api
         render json: @restaurants
       end
 
-
       private
 
       def restaurant_params

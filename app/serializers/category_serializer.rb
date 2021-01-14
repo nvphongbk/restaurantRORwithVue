@@ -3,7 +3,9 @@
 # Table name: categories
 #
 #  id            :integer          not null, primary key
+#  is_active     :boolean          default(TRUE)
 #  name          :string
+#  position      :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  restaurant_id :integer          not null
@@ -17,7 +19,7 @@
 #  restaurant_id  (restaurant_id => restaurants.id)
 #
 class CategorySerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :is_active, :position
   has_many :dishes, serializer: DishSerializer
 
 end

@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_07_092028) do
+ActiveRecord::Schema.define(version: 2021_01_14_170538) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.integer "restaurant_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "position"
+    t.boolean "is_active", default: true
     t.index ["restaurant_id"], name: "index_categories_on_restaurant_id"
   end
 
@@ -34,6 +36,8 @@ ActiveRecord::Schema.define(version: 2021_01_07_092028) do
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "position"
+    t.boolean "is_active", default: true
   end
 
   create_table "images", force: :cascade do |t|

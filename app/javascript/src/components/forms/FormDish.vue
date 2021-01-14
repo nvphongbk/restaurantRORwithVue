@@ -4,15 +4,22 @@
       :rules="rules"
       ref="ruleForm"
       :model="editItem"
-      :label-col="{ span: 5 }"
-      :wrapper-col="{ span: 12 }">
-      <a-form-model-item ref="name" label="Name" prop="name">
-        <a-input placeholder="Please input name dish" :autoFocus="true"
+      :label-col="{ span: 8 }"
+      :wrapper-col="{ span: 16 }">
+      <a-form-model-item ref="name" label="Tên món ăn" prop="name">
+        <a-input placeholder="Vui lòng nhập tên món ăn"
                  v-model="editItem.name"/>
       </a-form-model-item>
-      <a-form-model-item ref="price" label="Price" prop="price">
-        <a-input placeholder="Please input price dish"
+      <a-form-model-item ref="price" label="Giá bán" prop="price">
+        <a-input placeholder="Nhập giá bán"
                  v-model="editItem.price"/>
+      </a-form-model-item>
+      <a-form-model-item label="Kích hoạt" prop="isActive">
+        <a-switch v-model="editItem.is_active" />
+      </a-form-model-item>
+      <a-form-model-item label="Vị trí" prop="position">
+        <a-input placeholder="Vị trí xuất hiện"
+                 v-model="editItem.position"/>
       </a-form-model-item>
       <a-form-model-item label="Category">
 
@@ -33,7 +40,7 @@
 
       <a-form-model-item :wrapperCol="{ offset: 8 }">
         <a-button @click="handleSubmit" type="primary" html-type="submit">
-          Submit
+          {{ getTitle }}
         </a-button>
         <a-button style="margin-left: 10px;" @click="resetForm">
           Reset
@@ -79,7 +86,11 @@
       };
     },
     components: {UploadImage},
-    computed: {},
+    computed: {
+      getTitle() {
+        return this.isEdit ? "Cập nhật" : "Thêm"
+      }
+    },
     mounted() {
       this.callDataRestaurant()
       this.getDataCategory()
@@ -102,7 +113,7 @@
             dish: item
           })
           .then(response => {
-            this.$message.success('Created success');
+            this.$message.success('Cập nhật thành công');
             this.$emit('updateListAfterUpdated', this.editItem);
           })
           .catch(error => {

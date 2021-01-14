@@ -62,6 +62,9 @@
                  :columns="columns"
                  :row-key="(record) => record.id"
         >
+          <template slot="isActive" slot-scope="text, record">
+            <a-switch size="small" v-model="record.is_active" @change="changeIsActive(record)"/>
+          </template>
           <template slot="image" slot-scope="image">
             <span>
               <a-avatar shape="square" :size="100" :src="image"/>
@@ -102,7 +105,9 @@
     price: '',
     category_ids: [],
     images_attributes: [],
-    image_ids: []
+    image_ids: [],
+    position: undefined,
+    is_active: true
   }
   export default {
     name: "Dishes",
@@ -137,15 +142,24 @@
         visible: false,
         columns: [
           {
-            title: 'Name',
+            title: 'Tên món ăn',
             dataIndex: 'name',
           },
           {
-            title: 'Price',
+            title: 'Giá bán',
             dataIndex: 'price',
           },
           {
-            title: 'Image',
+            title: 'Sắp xếp',
+            dataIndex: 'position',
+          },
+          {
+            title: 'Kích hoạt',
+            dataIndex: 'is_active',
+            scopedSlots: {customRender: "isActive"},
+          },
+          {
+            title: 'Ảnh món ăn',
             dataIndex: 'images_attributes[0].url',
             scopedSlots: {customRender: "image"},
           },
@@ -252,6 +266,17 @@
       showAllDish() {
         this.initialize()
       },
+      async changeIsActive(item) {
+        let response = await axios.post(URLS.DISH_CHANGE_ACTIVE(item.id), {
+          id: item.id,
+          is_active: item.is_active
+        })
+        if (response.status === 200) {
+          this.$message.success("Cập nhật thành công");
+        } else {
+          this.$message.error(response.message);
+        }
+      }
     }
   }
 </script>

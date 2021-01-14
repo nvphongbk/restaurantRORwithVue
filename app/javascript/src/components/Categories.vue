@@ -9,11 +9,11 @@
         />
         <a-button type="primary" class="editable-add-btn"
                   @click="addCategory">
-          Add
+          Thêm danh mục
         </a-button>
         <a-button type="primary" class="editable-add-btn"
                               @click="showAllCategories">
-        All Category
+        Tất cả danh mục
       </a-button>
         <a-modal v-model="visible" :title="titleModal" :footer="null">
           <FormCategory
@@ -30,6 +30,9 @@
                  :columns="columns"
                  :row-key="(record) => record.id"
         >
+          <template slot="isActive" slot-scope="text, record">
+            <a-switch size="small" v-model="record.is_active" @change="changeIsActive(record)"/>
+          </template>
           <template slot="action" slot-scope="text, record">
             <a-button @click="editCategory(record)" :size="'small'"
                       :type="'primary'"
@@ -62,7 +65,9 @@
   const newCategory = {
     id: '',
     name: '',
-    restaurant_id:undefined,
+    restaurant_id: undefined,
+    position: undefined,
+    is_active: true
   }
   export default {
     name: "Categories",
@@ -88,8 +93,17 @@
         visible: false,
         columns: [
           {
-            title: 'Name',
+            title: 'Tên',
             dataIndex: 'name',
+          },
+          {
+            title: 'Sắp xếp',
+            dataIndex: 'position',
+          },
+          {
+            title: 'Kích hoạt',
+            dataIndex: 'is_active',
+            scopedSlots: {customRender: "isActive"}
           },
           {
             title: 'Action',
@@ -174,6 +188,17 @@
         this.initialize()
         this.editItem = Object.assign({}, newCategory);
       },
+      async changeIsActive(item) {
+        let response = await axios.post(URLS.CATEGORY_CHANGE_ACTIVE(item.id), {
+          id: item.id,
+          is_active: item.is_active
+        })
+        if (response.status === 200) {
+          this.$message.success("Cập nhật thành công");
+        } else {
+          this.$message.error(response.message);
+        }
+      }
     }
   }
 </script>

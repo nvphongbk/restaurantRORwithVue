@@ -3,13 +3,18 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :import_data, only: %w[index create]
-      resources :dishes
+      resources :dishes do
+        member do
+          post :change_active
+        end
+      end
       resources :images, only: %w[create index]
       resources :messages
 
       resources :categories do
         member do
           get :dishes
+          post :change_active
         end
       end
       resources :restaurants do

@@ -3,7 +3,9 @@
 # Table name: categories
 #
 #  id            :integer          not null, primary key
+#  is_active     :boolean          default(TRUE)
 #  name          :string
+#  position      :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  restaurant_id :integer          not null

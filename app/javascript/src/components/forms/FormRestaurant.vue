@@ -62,7 +62,7 @@
           })
           .then(response => {
             console.log(response);
-            this.$message.success('Created success');
+            this.$message.success('Cập nhật thành công');
             this.$emit('updateListAfterUpdated', this.editItem);
           })
           .catch(error => {

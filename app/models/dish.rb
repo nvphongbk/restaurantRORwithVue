@@ -3,7 +3,9 @@
 # Table name: dishes
 #
 #  id         :integer          not null, primary key
+#  is_active  :boolean          default(TRUE)
 #  name       :string
+#  position   :integer
 #  price      :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

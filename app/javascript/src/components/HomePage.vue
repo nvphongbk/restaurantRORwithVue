@@ -11,9 +11,6 @@
               Tinh hoa ẩm thực
           </span>
         </h3>
-        <router-link :to="{name: 'About'}" class="btn btn-white btn-animated">
-          Về chúng tôi
-        </router-link>
       </div>
     </header>
     <Navigation/>

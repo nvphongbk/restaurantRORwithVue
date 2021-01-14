@@ -39,15 +39,17 @@
               <div class="single_menu w-full" v-for='dish in category.dishes'>
                 <img class="menu-dish_img" :src="dish.images_attributes[0].url">
                 <div class="menu_content">
-                  <h4>{{dish.name}} <span>${{dish.price}}</span></h4>
+                  <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
                 </div>
               </div>
             </div>
             <div v-else class="menu-view">
               <div class="single_menu w-1/2 flex-wrap" v-for='dish in category.dishes'>
-                <img class="menu-dish_img--grid" :src="dish.images_attributes[0].url">
+                <div class="menu-dish_img--grid">
+                  <img :src="dish.images_attributes[0].url" />
+                </div>
                 <div class="menu_content">
-                  <h4>{{dish.name}} <span>${{dish.price}}</span></h4>
+                  <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
                 </div>
               </div>
             </div>
@@ -78,7 +80,7 @@
               <div class="single_menu w-full" v-for='dish in category.dishes'>
                 <img class="menu-dish_img" :src="dish.images_attributes[0].url">
                 <div class="menu_content">
-                  <h4>{{dish.name}} <span>${{dish.price}}</span></h4>
+                  <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
                 </div>
               </div>
             </div>
@@ -86,7 +88,7 @@
               <div class="single_menu w-1/2 flex-wrap" v-for='dish in category.dishes'>
                 <img class="menu-dish_img--grid" :src="dish.images_attributes[0].url">
                 <div class="menu_content">
-                  <h4>{{dish.name}} <span>${{dish.price}}</span></h4>
+                  <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
                 </div>
               </div>
             </div>
@@ -284,7 +286,8 @@
   }
 
   .menu-dish_img--grid{
-    width: 100%;
+    margin: 0 auto;
+    width: 200px;
     height: 200px;
   }
   #our_menu .ant-tabs-bar{
