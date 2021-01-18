@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class CategoriesController < ApplicationController
-
       def index
         @categories = Category.all.order(position: :asc, created_at: :desc)
       end
@@ -21,7 +22,7 @@ module Api
         if @category.save
           render json: @category, status: 200
         else
-          render json: {message: "Can't create category"}, status: 422
+          render json: { message: "Can't create category" }, status: 422
         end
       end
 
@@ -30,15 +31,13 @@ module Api
         if @category.update(category_params)
           render json: @category, status: 200
         else
-          render json: {message: "Can't not update category"}, status: 422
+          render json: { message: "Can't not update category" }, status: 422
         end
       end
 
       def destroy
         @category = Category.find(params[:id])
-        if @category.destroy
-          render json: {status: "ok deleted"}, status: 200
-        end
+        render json: { status: 'ok deleted' }, status: 200 if @category.destroy
       end
 
       def dishes
@@ -50,9 +49,9 @@ module Api
       def change_active
         @category = Category.find(params[:id])
         if @category.update(is_active: params[:is_active])
-          render json: {status: "ok"}, status: 200
+          render json: { status: 'ok' }, status: 200
         else
-          render json: {message: "Có lỗi xảy ra"}, status: 422
+          render json: { message: 'Có lỗi xảy ra' }, status: 422
         end
       end
 

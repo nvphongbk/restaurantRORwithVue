@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class CategoryDishesController < ApplicationController
@@ -7,7 +9,7 @@ module Api
         if @category_dishes.save
           render json: @category_dishes, status: 200
         else
-          render json: {message: "Can't create category dish"}, status: 422
+          render json: { message: "Can't create category dish" }, status: 422
         end
       end
 

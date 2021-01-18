@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.array! @images do |image|
   json.id image.id
   json.url image.photo.url

@@ -60,7 +60,7 @@
 </template>
 
 <script>
-  import axios from "axios";
+  import {ApiCaller} from "../utils/api";
   import FormRestaurant from "./forms/FormRestaurant"
   import {URLS} from "../utils/url"
   import QrRestaurant from "./QrRestaurant";
@@ -164,8 +164,7 @@
     },
     methods: {
       initialize() {
-        return axios
-          .get(URLS.RESTAURANTS())
+        return ApiCaller().get(URLS.RESTAURANTS())
           .then(response => {
             console.log(response.data);
             this.desserts = response.data;
@@ -195,11 +194,10 @@
         this.initialize()
       },
       deleteRestaurant(item) {
-        axios
-          .delete(URLS.RESTAURANT(item.id))
+        return ApiCaller().delete(URLS.RESTAURANT(item.id))
           .then((res) => {
             console.log(res)
-            this.$message.success('Deleted success');
+            this.$message.success('Đã xoá thành công');
             this.initialize()
           })
           .catch(error => {

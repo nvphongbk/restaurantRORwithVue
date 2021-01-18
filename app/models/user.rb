@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -9,8 +11,7 @@
 #  updated_at         :datetime         not null
 #
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-          :jwt_authenticatable, jwt_revocation_strategy: JwtDenylist
+  devise :database_authenticatable, :registerable
   has_many :restaurants
   validates :email, presence: true, uniqueness: true
 end

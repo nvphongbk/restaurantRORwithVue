@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class MessagesController < ApplicationController
-
       def index
         @messages = Message.all
         render json: @messages, status: 200
@@ -14,19 +15,13 @@ module Api
       def create
         @message = Message.new(message_params)
 
-        if @message.save
-          MessageMailer.with(message: @message).new_message_email.deliver_later
-        else
-
-        end
+        MessageMailer.with(message: @message).new_message_email.deliver_later if @message.save
       end
 
       def destroy
         @message = Message.find(params[:id])
 
-        if @message.destroy
-          render json: {status: "deleted"}
-        end
+        render json: { status: 'deleted' } if @message.destroy
       end
 
       private

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class UsersController < ApplicationController
@@ -21,7 +23,7 @@ module Api
         if @user.save
           render json: @user, status: 200
         else
-          render json: {message: "not create user"}, status: 422
+          render json: { message: 'not create user' }, status: 422
         end
       end
 
@@ -34,7 +36,7 @@ module Api
         if @user.update_attributes(user_params)
           render json: @user, status: 200
         else
-          render json: {message: "not create user"}, status: 422
+          render json: { message: 'not create user' }, status: 422
         end
       end
 

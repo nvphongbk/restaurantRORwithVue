@@ -34,7 +34,7 @@
   </a-form-model>
 </template>
 <script>
-  import axios from "axios";
+  import {ApiCaller} from "../../utils/api";
   import {URLS} from "../../utils/url";
 
   export default {
@@ -74,8 +74,7 @@
     methods: {
       create(item) {
         this.isEdit = false
-        axios
-          .post(URLS.CATEGORIES(), {
+        ApiCaller().post(URLS.CATEGORIES(), {
             category: item
           })
           .then(response => {
@@ -93,15 +92,14 @@
             let valuesSave = Object.assign({}, this.editItem)
             if (this.isEdit) {
               let idItem = this.editItem.id
-              axios
-                .put(URLS.CATEGORY(idItem), {
+              ApiCaller().put(URLS.CATEGORY(idItem), {
                   category: valuesSave
                 },{headers: {
                     'Content-Type': 'application/json'
                   }})
                 .then(response => {
                   console.log(response);
-                  this.$message.success('Updated success')
+                  this.$message.success('Cập nhật thành công')
                   this.$emit('updateListAfterUpdated', this.editItem);
                 })
                 .catch(error => {

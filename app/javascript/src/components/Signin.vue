@@ -49,8 +49,8 @@
     data() {
       return {
         formsignin:{
-          email:'',
-          password:''
+          email:'tester@ment.vn',
+          password:'123456'
         },
         isShowError:false,
       };
@@ -60,9 +60,7 @@
         e.preventDefault();
         isShowError:false
         axios
-          .post(URLS.SIGNIN(), {
-            user: this.formsignin
-          })
+          .post(URLS.SIGNIN(), this.formsignin)
           .then(response => {
             this.submitSuccessful(response);
           })
@@ -74,7 +72,7 @@
       submitSuccessful(response){
         this.$message.success('Sign in success')
         setTimeout(() => {
-          localStorage.setItem(JWT_KEY, response.data.token);
+          localStorage.setItem(JWT_KEY, response.data.auth_token);
           this.$router.push({ name: "Dashboard" });
         }, 100)
       },
