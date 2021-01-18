@@ -68,7 +68,7 @@
             <div class="homepage-card-restaurant-card">
               <h4 class="homepage__restaurant-name">{{restaurant.name}}</h4>
               <p>Địa chỉ: {{restaurant.address}}</p>
-              <router-link :to="{name: 'Menu', params: {id: restaurant.id }}">
+              <router-link :to="{name: 'Menu', params: {id: restaurant.slug }}">
                 <span class="nav-text btn btn-white btn-see-menu">See menu</span>
               </router-link>
             </div>
@@ -130,7 +130,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import {ApiCaller} from "../utils/api";
   import {URLS} from "../utils/url";
   import ACol from "ant-design-vue/es/grid/Col";
   import Navigation from "../../layouts/partials/Navigation";
@@ -155,8 +155,7 @@
     },
     methods: {
       DataRestaurant() {
-        return axios
-          .get(URLS.RESTAURANTS())
+        return ApiCaller().get(URLS.RESTAURANTS())
           .then(response => {
             console.log(response.data);
             this.restaurants = response.data;

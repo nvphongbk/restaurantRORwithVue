@@ -57,7 +57,7 @@
 </template>
 
 <script>
-  import axios from "axios";
+  import {ApiCaller} from "../utils/api";
   import FormCategory from "./forms/FormCategory"
   import FilterRestaurant from  "./filters/FilterRestaurant"
   import {URLS} from "../utils/url";
@@ -79,7 +79,7 @@
           name: [
             { required: true,
               message: 'Please input name', trigger: 'blur' },
-            { min: 3,
+            { min: 1,
               message: 'Length should be 3',
               trigger: 'blur' },
           ],
@@ -128,8 +128,7 @@
     },
     methods: {
       initialize() {
-        return axios
-          .get(URLS.CATEGORIES())
+        return ApiCaller().get(URLS.CATEGORIES())
           .then(response => {
             this.desserts = response.data;
           })
@@ -151,8 +150,7 @@
         this.visible = value;
       },
       deleteCategory(item) {
-        axios
-          .delete(URLS.CATEGORY(item.id))
+          ApiCaller().delete(URLS.CATEGORY(item.id))
           .then((res) => {
             this.$message.success('Deleted success');
             this.searchCategory(this.editItem.restaurant_id)
@@ -165,8 +163,7 @@
         this.searchCategory(this.editItem.restaurant_id)
       },
       searchCategory(value){
-          return axios
-            .get(URLS.RESTAURANT_SEARCH(value))
+          return ApiCaller().get(URLS.RESTAURANT_SEARCH(value))
             .then(response => {
                 this.desserts = response.data;
             })
@@ -175,8 +172,7 @@
             });
       },
       getDataRestaurant(){
-        return axios
-          .get(URLS.RESTAURANTS())
+        return ApiCaller().get(URLS.RESTAURANTS())
           .then(response => {
             this.restaurants = response.data;
           })
@@ -189,7 +185,7 @@
         this.editItem = Object.assign({}, newCategory);
       },
       async changeIsActive(item) {
-        let response = await axios.post(URLS.CATEGORY_CHANGE_ACTIVE(item.id), {
+        let response = await ApiCaller().post(URLS.CATEGORY_CHANGE_ACTIVE(item.id), {
           id: item.id,
           is_active: item.is_active
         })

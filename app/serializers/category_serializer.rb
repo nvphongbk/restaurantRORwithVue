@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: categories
@@ -21,5 +23,4 @@
 class CategorySerializer < ActiveModel::Serializer
   attributes :id, :name, :is_active, :position
   has_many :dishes, serializer: DishSerializer
-
 end

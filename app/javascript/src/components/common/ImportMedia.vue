@@ -28,7 +28,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import {ApiCaller} from "../../utils/api";
   import {URLS} from "../../utils/url";
   function getBase64(file) {
     return new Promise((resolve, reject) => {
@@ -56,8 +56,7 @@
     },
     methods: {
       initialize() {
-        return axios
-          .get(URLS.IMAGES())
+        return ApiCaller().get(URLS.IMAGES())
           .then(response => {
             const arrUrl=[]
             this.desserts = response.data;

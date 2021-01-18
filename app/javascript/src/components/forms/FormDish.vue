@@ -10,6 +10,10 @@
         <a-input placeholder="Vui lòng nhập tên món ăn"
                  v-model="editItem.name"/>
       </a-form-model-item>
+      <a-form-model-item ref="dish_code" label="Mã món ăn" prop="dish_code">
+        <a-input placeholder="Vui lòng nhập Mã món ăn"
+                 v-model="editItem.dish_code"/>
+      </a-form-model-item>
       <a-form-model-item ref="price" label="Giá bán" prop="price">
         <a-input placeholder="Nhập giá bán"
                  v-model="editItem.price"/>
@@ -22,7 +26,6 @@
                  v-model="editItem.position"/>
       </a-form-model-item>
       <a-form-model-item label="Category">
-
         <a-checkbox-group v-model="editItem.category_ids" @change="onChange">
           <a-checkbox :span="6" v-for="category in categories" :key="category.id"
                       name="category_ids[]" :value="category.id">
@@ -50,7 +53,7 @@
   </div>
 </template>
 <script>
-  import axios from "axios";
+  import {ApiCaller} from "../../utils/api";
   import {URLS} from "../../utils/url"
   import UploadImage from "../UploadImage"
   export default {
@@ -107,9 +110,7 @@
     methods: {
       create(item) {
         this.isEdit = false
-
-        axios
-          .post(URLS.DISHES(), {
+        ApiCaller().post(URLS.DISHES(), {
             dish: item
           })
           .then(response => {
@@ -125,8 +126,7 @@
             let valuesSave = Object.assign({}, this.editItem)
             if (this.isEdit) {
               let idItem = this.editItem.id
-              axios
-                .put(URLS.DISH(idItem), {
+                ApiCaller().put(URLS.DISH(idItem), {
                   dish: valuesSave
                 })
                 .then(response => {
@@ -156,8 +156,7 @@
         );
       },
       getDataCategory() {
-        return axios
-          .get(URLS.CATEGORIES())
+        return ApiCaller().get(URLS.CATEGORIES())
           .then(response => {
             this.categories = response.data;
           })

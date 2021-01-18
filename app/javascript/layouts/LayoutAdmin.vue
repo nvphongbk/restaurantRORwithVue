@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import axios from "axios";
+  import {ApiCaller} from "../src/utils/api";
   import {URLS} from "../src/utils/url";
   import LeftMenu from "../src/components/common/LeftMenu";
   import CompHeader from "../src/components/common/CompHeader";
@@ -26,8 +26,7 @@
     methods: {
       signout() {
         localStorage.clear()
-        axios
-          .delete(URLS.SIGNOUT())
+        ApiCaller().delete(URLS.SIGNOUT())
           .then((res) => {
             this.$router.push({name: 'SignIn'})
           })

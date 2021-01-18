@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: dishes
 #
 #  id         :integer          not null, primary key
+#  dish_code  :string
 #  is_active  :boolean          default(TRUE)
 #  name       :string
 #  position   :integer
@@ -11,7 +14,7 @@
 #  updated_at :datetime         not null
 #
 class Dish < ApplicationRecord
-  IMPORT_COLUMNS = {name: 'name', price: 'price', image: 'image'}
+  IMPORT_COLUMNS = { name: 'name', price: 'price', image: 'image', category: 'category' }.freeze
 
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
@@ -29,6 +32,6 @@ class Dish < ApplicationRecord
   end
 
   def images_attributes
-    images.map {|i| {id: i.id, url: i.photo.url, uid: i.id, name: i.photo_identifier}}
+    images.map { |i| { id: i.id, url: i.photo.url, uid: i.id, name: i.photo_identifier } }
   end
 end

@@ -44,7 +44,9 @@
 
         <a-modal v-model:visible="visibleImportDish" title="Import data"
                  :footer="null">
-          <ImportDish @closeImportModal="visibleImportDish = false"/>
+          <ImportDish
+            @updateListAfterUpdated="updateListAfterUpdated"
+          />
         </a-modal>
         <a-modal v-model="visible" :title="titleModal" :footer="null">
           <FormDish
@@ -62,6 +64,11 @@
                  :columns="columns"
                  :row-key="(record) => record.id"
         >
+          <template slot="categories" slot-scope="text, record">
+            <div v-for="desert in text" :key="desert.id">
+              {{ desert.name }}
+            </div>
+          </template>
           <template slot="isActive" slot-scope="text, record">
             <a-switch size="small" v-model="record.is_active" @change="changeIsActive(record)"/>
           </template>
@@ -94,7 +101,7 @@
 </template>
 
 <script>
-  import axios from "axios";
+  import {ApiCaller} from "../utils/api";
   import {URLS} from "../utils/url"
   import FormDish from "./forms/FormDish"
   import ImportDish from "./ImportDish"
@@ -107,7 +114,7 @@
     images_attributes: [],
     image_ids: [],
     position: undefined,
-    is_active: true
+    is_active: true,
   }
   export default {
     name: "Dishes",
@@ -141,6 +148,11 @@
         desserts: [],
         visible: false,
         columns: [
+          {
+            title: 'Nhóm thực đơn',
+            dataIndex: 'categories',
+            scopedSlots: { customRender: 'categories' }
+          },
           {
             title: 'Tên món ăn',
             dataIndex: 'name',
@@ -186,10 +198,10 @@
     },
     methods: {
       initialize() {
-        return axios
-          .get(URLS.DISHES())
+        return ApiCaller().get(URLS.DISHES())
           .then(response => {
             this.desserts = response.data;
+            console.log(this.desserts)
           })
           .catch(e => {
           });
@@ -213,8 +225,7 @@
         this.visible = value;
       },
       deleteDish(item) {
-        axios
-          .delete(URLS.DISH(item.id))
+          ApiCaller().delete(URLS.DISH(item.id))
           .then((res) => {
             this.$message.success('Deleted success');
             this.initialize()
@@ -226,8 +237,7 @@
         this.initialize()
       },
       getDataRestaurant() {
-        return axios
-          .get(URLS.RESTAURANTS())
+        return ApiCaller().get(URLS.RESTAURANTS())
           .then(response => {
             this.restaurants = response.data;
           })
@@ -235,8 +245,7 @@
           });
       },
       getDataCategory(value) {
-        return axios
-          .get(URLS.RESTAURANT_SEARCH(value))
+        return ApiCaller().get(URLS.RESTAURANT_SEARCH(value))
           .then(response => {
             this.categories = response.data;
           })
@@ -244,8 +253,7 @@
           });
       },
       searchDish(value) {
-        return axios
-          .get(URLS.CATEGORY_SEARCH(value))
+        return ApiCaller().get(URLS.CATEGORY_SEARCH(value))
           .then(response => {
             this.desserts = response.data;
           })
@@ -267,7 +275,7 @@
         this.initialize()
       },
       async changeIsActive(item) {
-        let response = await axios.post(URLS.DISH_CHANGE_ACTIVE(item.id), {
+        let response = await ApiCaller().post(URLS.DISH_CHANGE_ACTIVE(item.id), {
           id: item.id,
           is_active: item.is_active
         })

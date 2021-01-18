@@ -7,9 +7,11 @@ import "ant-design-vue/dist/antd.css";
 import '../css/application.css';
 import '../css/custom.css';
 import { FormModel } from 'ant-design-vue';
+import VueCookie from "vue-cookie"
 
 Vue.use(Antd);
 Vue.use(FormModel);
+Vue.use(VueCookie);
 Vue.config.productionTip = false;
 
 document.addEventListener('DOMContentLoaded', () => {

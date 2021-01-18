@@ -73,7 +73,7 @@
 </template>
 
 <script>
-  import axios from "axios"
+  import {ApiCaller} from "../utils/api";
   import {URLS} from "../utils/url";
   import Footer from "../../layouts/partials/Footer";
   import Navigation from "../../layouts/partials/Navigation";
@@ -98,8 +98,7 @@
       onSubmit() {
         this.$refs.ruleForm.validate(valid => {
           if (valid) {
-            axios
-              .post(URLS.MESSAGE_CONTACT(), {
+            ApiCaller().post(URLS.MESSAGE_CONTACT(), {
                 message: this.message
               })
               .then(response => {
