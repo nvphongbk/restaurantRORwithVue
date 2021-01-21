@@ -13,6 +13,7 @@
     "tailwindcss": "^2.0.2",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.12",
+    "vue-cookie": "^1.1.4",
     "vue-gallery-slideshow": "^1.5.2",
     "vue-html2pdf": "^1.8.0",
     "vue-loader": "^15.9.5",
@@ -24,6 +25,6 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.2"
   }
 }

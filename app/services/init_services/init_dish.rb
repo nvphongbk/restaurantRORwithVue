@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module InitServices
   class InitDish
     def initialize(dish, images_ids)
@@ -7,6 +9,7 @@ module InitServices
 
     def perform
       return if @images_ids.blank?
+
       current_images = @dish.images.pluck(:id)
       Image.where(id: current_images - @images_ids).destroy_all
       images = Image.where(id: @images_ids - current_images)

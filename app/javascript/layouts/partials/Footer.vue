@@ -13,9 +13,6 @@
                 <router-link :to="{name: 'HomePage'}" class="footer__link" >Trang chủ</router-link>
               </li>
               <li class="footer__item">
-                <router-link :to="{name: 'About'}" class="footer__link">Giới thiệu</router-link>
-              </li>
-              <li class="footer__item">
                 <router-link :to="{name: 'Contact'}" class="footer__link">Liên hệ</router-link>
               </li>
             </ul>
@@ -23,7 +20,7 @@
         </a-col>
         <a-col :span="12" >
           <p class="footer__copyright">
-            Copyright by Phong
+            Copyright by <a href="https://ment.vn">Ment Company</a>
           </p>
         </a-col>
       </a-row>

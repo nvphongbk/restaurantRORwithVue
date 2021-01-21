@@ -1,6 +1,6 @@
 <template>
-  <a-layout-content :style="{ margin: '24px 16px 0' }">
-    <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
+  <a-layout-content :style="{ margin: '0px 16px 0' }">
+    <div :style="{ background: '#fff', minHeight: '360px' }">
       <div>
         <a-button type="primary" class="editable-add-btn"
                   @click="addRestaurant">
@@ -22,13 +22,11 @@
         </a-modal>
 
         <a-modal v-model="visible_qrcode" :title=this.editItem.name :footer="null">
-          <QrRestaurant :editItem="editItem">
-          </QrRestaurant>
+          <QrRestaurant :editItem="editItem" />
         </a-modal>
 
         <a-table bordered :data-source="onSearch" :columns="columns"
-                 :row-key="(record) => record.id"
-        >
+                 :row-key="(record) => record.id">
           <template slot="qrcode" slot-scope="text, record">
             <a-button @click="getQrCode(record)" :size="'small'"
                       :type="'primary'"
@@ -60,7 +58,7 @@
 </template>
 
 <script>
-  import axios from "axios";
+  import {ApiCaller} from "../utils/api";
   import FormRestaurant from "./forms/FormRestaurant"
   import {URLS} from "../utils/url"
   import QrRestaurant from "./QrRestaurant";
@@ -79,30 +77,23 @@
         rules: {
           name: [
             { required: true,
-              message: 'Please input name', trigger: 'blur' },
+              message: 'Điền tên nhà hàng', trigger: 'blur' },
             { min: 3,
-              message: 'Length should be 3',
+              message: 'Chiều dài tên cửa hàng lớn hơn 3',
               trigger: 'blur' },
           ],
           address: [
             {
               required: true,
-              message: 'Please input address',
+              message: 'Điền địa chỉ',
               trigger: 'blur'
             },
             {
               min: 3,
-              message: 'Length should be 3',
+              message: 'Chiều dài lớn hơn 3',
               trigger: 'blur'
             },
           ],
-          pass_wifi: [
-            {
-              min: 8,
-              message: 'Length should be 8',
-              trigger: 'blur'
-            }
-          ]
         },
         editItem: {
         },
@@ -164,8 +155,7 @@
     },
     methods: {
       initialize() {
-        return axios
-          .get(URLS.RESTAURANTS())
+        return ApiCaller().get(URLS.RESTAURANTS())
           .then(response => {
             console.log(response.data);
             this.desserts = response.data;
@@ -195,11 +185,10 @@
         this.initialize()
       },
       deleteRestaurant(item) {
-        axios
-          .delete(URLS.RESTAURANT(item.id))
+        return ApiCaller().delete(URLS.RESTAURANT(item.id))
           .then((res) => {
             console.log(res)
-            this.$message.success('Deleted success');
+            this.$message.success('Đã xoá thành công');
             this.initialize()
           })
           .catch(error => {

@@ -3,32 +3,38 @@
     :rules="rules"
     ref="ruleForm"
     :model="editItem"
-    :label-col="{ span: 5 }"
-    :wrapper-col="{ span: 12 }">
+    :label-col="{ span: 8 }"
+    :wrapper-col="{ span: 16 }">
     <a-form-model-item  label="Restaurant" prop="restaurants">
-      <a-select show-search
+      <a-select show-search :autoFocus="true"
                 option-filter-prop="children"
                 :filter-option="filterOption"
-                v-model="editItem.restaurant_id" placeholder="Select a Restaurant">
-        <a-select-option v-for="restaurant in restaurants" :value="restaurant.id" :key="restaurant.id" >
+                v-model="editItem.restaurant_id" placeholder="Chọn nhà hàng">
+        <a-select-option v-for="restaurant in restaurants" :key="restaurant.id">
           {{ restaurant.name }}
         </a-select-option>
       </a-select>
     </a-form-model-item>
-    <a-form-model-item ref="name" label="Name" prop="name">
-      <a-input placeholder="Please input name category" :autoFocus="true"
+    <a-form-model-item ref="name" label="Tên danh mục" prop="name">
+      <a-input placeholder="Vui lòng nhập tên danh mục"
         v-model="editItem.name" />
+    </a-form-model-item>
+    <a-form-model-item label="Vị trí xuất hiện" prop="position">
+      <a-input placeholder="Có thể bỏ qua nếu không cần ưu tiên"
+        v-model="editItem.position" />
+    </a-form-model-item>
+    <a-form-model-item label="Kích hoạt" prop="is_active">
+      <a-switch v-model="editItem.is_active" />
     </a-form-model-item>
     <a-form-model-item :wrapperCol="{ offset: 8 }">
       <a-button @click="handleSubmit" type="primary" html-type="submit">
-        Submit
+        {{ getTitle }}
       </a-button>
-
     </a-form-model-item>
   </a-form-model>
 </template>
 <script>
-  import axios from "axios";
+  import {ApiCaller} from "../../utils/api";
   import {URLS} from "../../utils/url";
 
   export default {
@@ -60,16 +66,20 @@
     mounted(){
       this.callDataRestaurant()
     },
+    computed: {
+      getTitle() {
+        return this.isEdit ? "Cập nhật" : "Thêm"
+      }
+    },
     methods: {
       create(item) {
         this.isEdit = false
-        axios
-          .post(URLS.CATEGORIES(), {
+        ApiCaller().post(URLS.CATEGORIES(), {
             category: item
           })
           .then(response => {
             console.log(response);
-            this.$message.success('Created success');
+            this.$message.success('Cập nhật thành công');
             this.$emit('updateListAfterUpdated', this.editItem);
           })
           .catch(error => {
@@ -82,15 +92,14 @@
             let valuesSave = Object.assign({}, this.editItem)
             if (this.isEdit) {
               let idItem = this.editItem.id
-              axios
-                .put(URLS.CATEGORY(idItem), {
+              ApiCaller().put(URLS.CATEGORY(idItem), {
                   category: valuesSave
                 },{headers: {
                     'Content-Type': 'application/json'
                   }})
                 .then(response => {
                   console.log(response);
-                  this.$message.success('Updated success')
+                  this.$message.success('Cập nhật thành công')
                   this.$emit('updateListAfterUpdated', this.editItem);
                 })
                 .catch(error => {

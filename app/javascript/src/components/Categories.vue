@@ -1,6 +1,6 @@
 <template>
-  <a-layout-content :style="{ margin: '24px 16px 0' }">
-    <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
+  <a-layout-content :style="{ margin: '0px 16px 0' }">
+    <div :style="{ background: '#fff', minHeight: '360px' }">
       <div>
         <FilterRestaurant
           @searchCategory="searchCategory"
@@ -9,11 +9,11 @@
         />
         <a-button type="primary" class="editable-add-btn"
                   @click="addCategory">
-          Add
+          Thêm danh mục
         </a-button>
         <a-button type="primary" class="editable-add-btn"
                               @click="showAllCategories">
-        All Category
+        Tất cả danh mục
       </a-button>
         <a-modal v-model="visible" :title="titleModal" :footer="null">
           <FormCategory
@@ -30,6 +30,9 @@
                  :columns="columns"
                  :row-key="(record) => record.id"
         >
+          <template slot="isActive" slot-scope="text, record">
+            <a-switch size="small" v-model="record.is_active" @change="changeIsActive(record)"/>
+          </template>
           <template slot="action" slot-scope="text, record">
             <a-button @click="editCategory(record)" :size="'small'"
                       :type="'primary'"
@@ -54,7 +57,7 @@
 </template>
 
 <script>
-  import axios from "axios";
+  import {ApiCaller} from "../utils/api";
   import FormCategory from "./forms/FormCategory"
   import FilterRestaurant from  "./filters/FilterRestaurant"
   import {URLS} from "../utils/url";
@@ -62,7 +65,9 @@
   const newCategory = {
     id: '',
     name: '',
-    restaurant_id:undefined,
+    restaurant_id: undefined,
+    position: undefined,
+    is_active: true
   }
   export default {
     name: "Categories",
@@ -74,7 +79,7 @@
           name: [
             { required: true,
               message: 'Please input name', trigger: 'blur' },
-            { min: 3,
+            { min: 1,
               message: 'Length should be 3',
               trigger: 'blur' },
           ],
@@ -88,8 +93,17 @@
         visible: false,
         columns: [
           {
-            title: 'Name',
+            title: 'Tên',
             dataIndex: 'name',
+          },
+          {
+            title: 'Sắp xếp',
+            dataIndex: 'position',
+          },
+          {
+            title: 'Kích hoạt',
+            dataIndex: 'is_active',
+            scopedSlots: {customRender: "isActive"}
           },
           {
             title: 'Action',
@@ -114,8 +128,7 @@
     },
     methods: {
       initialize() {
-        return axios
-          .get(URLS.CATEGORIES())
+        return ApiCaller().get(URLS.CATEGORIES())
           .then(response => {
             this.desserts = response.data;
           })
@@ -137,8 +150,7 @@
         this.visible = value;
       },
       deleteCategory(item) {
-        axios
-          .delete(URLS.CATEGORY(item.id))
+          ApiCaller().delete(URLS.CATEGORY(item.id))
           .then((res) => {
             this.$message.success('Deleted success');
             this.searchCategory(this.editItem.restaurant_id)
@@ -151,8 +163,7 @@
         this.searchCategory(this.editItem.restaurant_id)
       },
       searchCategory(value){
-          return axios
-            .get(URLS.RESTAURANT_SEARCH(value))
+          return ApiCaller().get(URLS.RESTAURANT_SEARCH(value))
             .then(response => {
                 this.desserts = response.data;
             })
@@ -161,8 +172,7 @@
             });
       },
       getDataRestaurant(){
-        return axios
-          .get(URLS.RESTAURANTS())
+        return ApiCaller().get(URLS.RESTAURANTS())
           .then(response => {
             this.restaurants = response.data;
           })
@@ -174,6 +184,17 @@
         this.initialize()
         this.editItem = Object.assign({}, newCategory);
       },
+      async changeIsActive(item) {
+        let response = await ApiCaller().post(URLS.CATEGORY_CHANGE_ACTIVE(item.id), {
+          id: item.id,
+          is_active: item.is_active
+        })
+        if (response.status === 200) {
+          this.$message.success("Cập nhật thành công");
+        } else {
+          this.$message.error(response.message);
+        }
+      }
     }
   }
 </script>

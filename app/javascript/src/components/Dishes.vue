@@ -1,6 +1,6 @@
 <template>
-  <a-layout-content :style="{ margin: '24px 16px 0' }">
-    <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
+  <a-layout-content :style="{ margin: '0px 16px 0' }">
+    <div :style="{ background: '#fff', minHeight: '280px' }">
       <div>
         <div class="my-5">
           <a-select style="width: 300px"
@@ -44,7 +44,10 @@
 
         <a-modal v-model:visible="visibleImportDish" title="Import data"
                  :footer="null">
-          <ImportDish @closeImportModal="visibleImportDish = false"/>
+          <ImportDish
+            @updateListAfterUpdated="updateListAfterUpdated"
+            :restaurants="restaurants"
+          />
         </a-modal>
         <a-modal v-model="visible" :title="titleModal" :footer="null">
           <FormDish
@@ -62,9 +65,17 @@
                  :columns="columns"
                  :row-key="(record) => record.id"
         >
+          <template slot="categories" slot-scope="text, record">
+            <div v-for="desert in text" :key="desert.id">
+              {{ desert.name }}
+            </div>
+          </template>
+          <template slot="isActive" slot-scope="text, record">
+            <a-switch size="small" v-model="record.is_active" @change="changeIsActive(record)"/>
+          </template>
           <template slot="image" slot-scope="image">
             <span>
-              <a-avatar shape="square" :size="100" :src="image"/>
+              <a-avatar shape="square" :size="50" :src="image"/>
             </span>
           </template>
           <template slot="action" slot-scope="text, record">
@@ -91,7 +102,7 @@
 </template>
 
 <script>
-  import axios from "axios";
+  import {ApiCaller} from "../utils/api";
   import {URLS} from "../utils/url"
   import FormDish from "./forms/FormDish"
   import ImportDish from "./ImportDish"
@@ -101,8 +112,12 @@
     name: '',
     price: '',
     category_ids: [],
+    main_ingredient_id: undefined,
+    cooking_method_id: undefined,
     images_attributes: [],
-    image_ids: []
+    image_ids: [],
+    position: undefined,
+    is_active: true,
   }
   export default {
     name: "Dishes",
@@ -137,20 +152,42 @@
         visible: false,
         columns: [
           {
-            title: 'Name',
-            dataIndex: 'name',
-          },
-          {
-            title: 'Price',
-            dataIndex: 'price',
-          },
-          {
-            title: 'Image',
+            title: 'Ảnh món ăn',
             dataIndex: 'images_attributes[0].url',
             scopedSlots: {customRender: "image"},
           },
           {
-            title: 'Action',
+            title: 'Danh mục thực đơn',
+            dataIndex: 'categories',
+            scopedSlots: { customRender: 'categories' }
+          },
+          {
+            title: 'Tên món ăn',
+            dataIndex: 'name',
+          },
+          {
+            title: 'Giá bán',
+            dataIndex: 'price',
+          },
+          {
+            title: 'Thành phần chính',
+            dataIndex: 'main_ingredient.name',
+          },
+          {
+            title: 'Cách chế biến',
+            dataIndex: 'cooking_method.name',
+          },
+          {
+            title: 'Sắp xếp',
+            dataIndex: 'position',
+          },
+          {
+            title: 'Kích hoạt',
+            dataIndex: 'is_active',
+            scopedSlots: {customRender: "isActive"},
+          },
+          {
+            title: '',
             dataIndex: 'action',
             scopedSlots: {customRender: 'action'},
           },
@@ -172,10 +209,10 @@
     },
     methods: {
       initialize() {
-        return axios
-          .get(URLS.DISHES())
+        return ApiCaller().get(URLS.DISHES())
           .then(response => {
             this.desserts = response.data;
+            console.log(this.desserts)
           })
           .catch(e => {
           });
@@ -199,8 +236,7 @@
         this.visible = value;
       },
       deleteDish(item) {
-        axios
-          .delete(URLS.DISH(item.id))
+          ApiCaller().delete(URLS.DISH(item.id))
           .then((res) => {
             this.$message.success('Deleted success');
             this.initialize()
@@ -212,8 +248,7 @@
         this.initialize()
       },
       getDataRestaurant() {
-        return axios
-          .get(URLS.RESTAURANTS())
+        return ApiCaller().get(URLS.RESTAURANTS())
           .then(response => {
             this.restaurants = response.data;
           })
@@ -221,8 +256,7 @@
           });
       },
       getDataCategory(value) {
-        return axios
-          .get(URLS.RESTAURANT_SEARCH(value))
+        return ApiCaller().get(URLS.RESTAURANT_SEARCH(value))
           .then(response => {
             this.categories = response.data;
           })
@@ -230,8 +264,7 @@
           });
       },
       searchDish(value) {
-        return axios
-          .get(URLS.CATEGORY_SEARCH(value))
+        return ApiCaller().get(URLS.CATEGORY_SEARCH(value))
           .then(response => {
             this.desserts = response.data;
           })
@@ -252,6 +285,17 @@
       showAllDish() {
         this.initialize()
       },
+      async changeIsActive(item) {
+        let response = await ApiCaller().post(URLS.DISH_CHANGE_ACTIVE(item.id), {
+          id: item.id,
+          is_active: item.is_active
+        })
+        if (response.status === 200) {
+          this.$message.success("Cập nhật thành công");
+        } else {
+          this.$message.error(response.message);
+        }
+      }
     }
   }
 </script>

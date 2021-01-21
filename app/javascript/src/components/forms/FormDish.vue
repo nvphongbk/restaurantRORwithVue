@@ -4,18 +4,43 @@
       :rules="rules"
       ref="ruleForm"
       :model="editItem"
-      :label-col="{ span: 5 }"
-      :wrapper-col="{ span: 12 }">
-      <a-form-model-item ref="name" label="Name" prop="name">
-        <a-input placeholder="Please input name dish" :autoFocus="true"
+      :label-col="{ span: 8 }"
+      :wrapper-col="{ span: 16 }">
+      <a-form-model-item ref="name" label="Tên món ăn" prop="name">
+        <a-input placeholder="Vui lòng nhập tên món ăn"
                  v-model="editItem.name"/>
       </a-form-model-item>
-      <a-form-model-item ref="price" label="Price" prop="price">
-        <a-input placeholder="Please input price dish"
+      <a-form-model-item ref="dish_code" label="Mã món ăn" prop="dish_code">
+        <a-input placeholder="Vui lòng nhập Mã món ăn"
+                 v-model="editItem.dish_code"/>
+      </a-form-model-item>
+      <a-form-model-item ref="price" label="Giá bán" prop="price">
+        <a-input placeholder="Nhập giá bán"
                  v-model="editItem.price"/>
       </a-form-model-item>
-      <a-form-model-item label="Category">
+      <a-form-model-item label="Thành phần chính" prop="main_ingredient">
+        <a-select v-model="editItem.main_ingredient_id" placeholder="Chọn thành phần chính">
+          <a-select-option v-for="ingredient in ingredients" :key="ingredient.id">
+            {{ ingredient.name }}
+          </a-select-option>
+        </a-select>
+      </a-form-model-item>
 
+      <a-form-model-item label="Cách chế biến" prop="cooking_method">
+        <a-select v-model="editItem.cooking_method_id" placeholder="Chọn cách chế biến">
+          <a-select-option v-for="method in cooking_methods" :key="method.id">
+            {{ method.name }}
+          </a-select-option>
+        </a-select>
+      </a-form-model-item>
+      <a-form-model-item label="Kích hoạt" prop="isActive">
+        <a-switch v-model="editItem.is_active" />
+      </a-form-model-item>
+      <a-form-model-item label="Vị trí" prop="position">
+        <a-input placeholder="Vị trí xuất hiện"
+                 v-model="editItem.position"/>
+      </a-form-model-item>
+      <a-form-model-item label="Danh mục thực đơn">
         <a-checkbox-group v-model="editItem.category_ids" @change="onChange">
           <a-checkbox :span="6" v-for="category in categories" :key="category.id"
                       name="category_ids[]" :value="category.id">
@@ -33,7 +58,7 @@
 
       <a-form-model-item :wrapperCol="{ offset: 8 }">
         <a-button @click="handleSubmit" type="primary" html-type="submit">
-          Submit
+          {{ getTitle }}
         </a-button>
         <a-button style="margin-left: 10px;" @click="resetForm">
           Reset
@@ -43,9 +68,10 @@
   </div>
 </template>
 <script>
-  import axios from "axios";
+  import {ApiCaller} from "../../utils/api";
   import {URLS} from "../../utils/url"
   import UploadImage from "../UploadImage"
+  import AFormModelItem from "ant-design-vue/es/form-model/FormItem";
   export default {
     name: "FormDish",
     props: {
@@ -74,15 +100,20 @@
     data() {
       return {
         categories: [],
+        ingredients: [],
+        cooking_methods: [],
         previewVisible: false,
 
       };
     },
-    components: {UploadImage},
-    computed: {},
+    components: {AFormModelItem, UploadImage},
+    computed: {
+      getTitle() {
+        return this.isEdit ? "Cập nhật" : "Thêm"
+      }
+    },
     mounted() {
-      this.callDataRestaurant()
-      this.getDataCategory()
+      this.fetchData()
     },
     watch: {
       visible: {
@@ -94,15 +125,27 @@
       }
     },
     methods: {
+      fetchData() {
+        this.getIngredients()
+        this.callDataRestaurant()
+        this.getDataCategory()
+        this.getCookingMethods()
+      },
+      async getIngredients() {
+        let response = await ApiCaller().get(URLS.MAIN_INGREDIENTS())
+        this.ingredients = response.data
+      },
+      async getCookingMethods() {
+        let response = await ApiCaller().get(URLS.COOKING_METHODS())
+        this.cooking_methods = response.data
+      },
       create(item) {
         this.isEdit = false
-
-        axios
-          .post(URLS.DISHES(), {
+        ApiCaller().post(URLS.DISHES(), {
             dish: item
           })
           .then(response => {
-            this.$message.success('Created success');
+            this.$message.success('Cập nhật thành công');
             this.$emit('updateListAfterUpdated', this.editItem);
           })
           .catch(error => {
@@ -114,8 +157,7 @@
             let valuesSave = Object.assign({}, this.editItem)
             if (this.isEdit) {
               let idItem = this.editItem.id
-              axios
-                .put(URLS.DISH(idItem), {
+                ApiCaller().put(URLS.DISH(idItem), {
                   dish: valuesSave
                 })
                 .then(response => {
@@ -145,8 +187,7 @@
         );
       },
       getDataCategory() {
-        return axios
-          .get(URLS.CATEGORIES())
+        return ApiCaller().get(URLS.CATEGORIES())
           .then(response => {
             this.categories = response.data;
           })

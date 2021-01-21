@@ -4,13 +4,14 @@ import SignIn from "./components/Signin"
 import HomePage from "./components/HomePage"
 import Dashboard from "./components/Dashboard"
 import Restaurants from "./components/Restaurants"
+import MainIngredients from "./components/MainIngredients"
+import CookingMethods from "./components/CookingMethods"
 import Categories from "./components/Categories"
 import Dishes from "./components/Dishes"
 import Message from "./components/Message"
 import ImportMedia from "./components/common/ImportMedia"
 import {JWT_KEY} from "./utils/constant"
 import Menu from "./components/menu/Menu"
-import About from "./components/About"
 import Contact from "./components/Contact"
 
 Vue.use(VueRouter)
@@ -23,7 +24,6 @@ const router = new VueRouter({
       component: Restaurants,
       meta: {
         openKey: 'Restaurant',
-        guest: true
       }
     },
     {
@@ -40,6 +40,22 @@ const router = new VueRouter({
       component: Dishes,
       meta: {
         openKey: 'Dish'
+      }
+    },
+    {
+      path: '/admin/main_ingredients',
+      name: 'MainIngredients',
+      component: MainIngredients,
+      meta: {
+        openKey: 'MainIngredients'
+      }
+    },
+    {
+      path: '/admin/cooking_methods',
+      name: 'CookingMethods',
+      component: CookingMethods,
+      meta: {
+        openKey: 'CookingMethods'
       }
     },
     {
@@ -88,15 +104,6 @@ const router = new VueRouter({
       path: '/restaurants/:id',
       name: 'Menu',
       component: Menu,
-      meta: {
-        openKey: 'GuestPage',
-        guest: true
-      }
-    },
-    {
-      path: '/about',
-      name: 'About',
-      component: About,
       meta: {
         openKey: 'GuestPage',
         guest: true

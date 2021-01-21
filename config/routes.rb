@@ -1,15 +1,32 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  root "home#index"
+  root 'home#index'
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :import_data, only: %w[index create]
-      resources :dishes
+      resources :dishes do
+        member do
+          post :change_active
+        end
+      end
       resources :images, only: %w[create index]
       resources :messages
 
       resources :categories do
         member do
           get :dishes
+          post :change_active
+        end
+      end
+      resources :cooking_methods do
+        member do
+          post :change_active
+        end
+      end
+      resources :main_ingredients do
+        member do
+          post :change_active
         end
       end
       resources :restaurants do
@@ -37,4 +54,3 @@ Rails.application.routes.draw do
 
   match '/*path', to: 'home#index', format: false, via: :get
 end
-

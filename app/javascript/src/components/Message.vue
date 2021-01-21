@@ -30,12 +30,12 @@
 </template>
 
 <script>
-  import axios from "axios"
+  import {ApiCaller} from "../utils/api";
   import {URLS} from "../utils/url";
 
   export default {
     name: "Message",
-    data () {
+    data() {
       return {
         desserts: [],
         columns: [
@@ -69,8 +69,7 @@
     },
     methods: {
       initialize() {
-        return axios
-          .get(URLS.MESSAGES())
+        return ApiCaller().get(URLS.MESSAGES())
           .then(response => {
             this.desserts = response.data;
           })
@@ -78,8 +77,7 @@
           });
       },
       deleteMessage(message) {
-        axios
-          .delete(URLS.MESSAGE(message.id))
+        ApiCaller().delete(URLS.MESSAGE(message.id))
           .then((res) => {
             this.$message.success('Deleted success');
             this.initialize()

@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import axios from "axios";
+  import {ApiCaller} from "../../utils/api";
   import {URLS} from "../../utils/url"
   export default {
     name: "FormRestaurant",
@@ -56,13 +56,12 @@
     methods:{
       create(item) {
         this.isEdit = false
-        axios
-          .post(URLS.RESTAURANTS(), {
+          return ApiCaller().post(URLS.RESTAURANTS(), {
             restaurant: item
           })
           .then(response => {
             console.log(response);
-            this.$message.success('Created success');
+            this.$message.success('Cập nhật thành công');
             this.$emit('updateListAfterUpdated', this.editItem);
           })
           .catch(error => {
@@ -75,16 +74,15 @@
             let valuesSave = Object.assign({}, this.editItem)
             if (this.isEdit) {
               let idItem = this.editItem.id
-              axios
-                .put(URLS.RESTAURANT(idItem), {
+                ApiCaller().put(URLS.RESTAURANT(idItem), {
                   restaurant: valuesSave
                 },{headers: {
                     'Content-Type': 'application/json'
                   }})
                 .then(response => {
                   console.log(response);
-                  console.log("Updated!");
-                  this.$message.success('Updated success')
+                  console.log(this.visible)
+                  this.$message.success('Cập nhật thành công')
                   this.$emit('updateListAfterUpdated', this.editItem);
                 })
                 .catch(error => {
