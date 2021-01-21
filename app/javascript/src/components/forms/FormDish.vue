@@ -18,11 +18,14 @@
         <a-input placeholder="Nhập giá bán"
                  v-model="editItem.price"/>
       </a-form-model-item>
-      <a-select v-model="editItem.main_ingredient_id" placeholder="Chọn thành phần chính">
-        <a-select-option v-for="ingredient in ingredients" :key="ingredient.id">
-          {{ ingredient.name }}
-        </a-select-option>
-      </a-select>
+      <a-form-model-item label="Thành phần chính" prop="main_ingredient">
+        <a-select v-model="editItem.main_ingredient_id" placeholder="Chọn thành phần chính">
+          <a-select-option v-for="ingredient in ingredients" :key="ingredient.id">
+            {{ ingredient.name }}
+          </a-select-option>
+        </a-select>
+      </a-form-model-item>
+
       <a-form-model-item label="Cách chế biến" prop="cooking_method">
         <a-select v-model="editItem.cooking_method_id" placeholder="Chọn cách chế biến">
           <a-select-option v-for="method in cooking_methods" :key="method.id">
@@ -68,6 +71,7 @@
   import {ApiCaller} from "../../utils/api";
   import {URLS} from "../../utils/url"
   import UploadImage from "../UploadImage"
+  import AFormModelItem from "ant-design-vue/es/form-model/FormItem";
   export default {
     name: "FormDish",
     props: {
@@ -102,7 +106,7 @@
 
       };
     },
-    components: {UploadImage},
+    components: {AFormModelItem, UploadImage},
     computed: {
       getTitle() {
         return this.isEdit ? "Cập nhật" : "Thêm"
