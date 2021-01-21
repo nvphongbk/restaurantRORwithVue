@@ -22,6 +22,14 @@ export const URLS = {
 
   IMAGES: () => `${getBaseUrl()}/images`,
 
+  MAIN_INGREDIENTS: () => `${getBaseUrl()}/main_ingredients`,
+  MAIN_INGREDIENT: (id) => `${getBaseUrl()}/main_ingredients/${id}`,
+  MAIN_INGREDIENT_CHANGE_ACTIVE: (id) => `${getBaseUrl()}/main_ingredients/${id}/change_active`,
+
+  COOKING_METHODS: () => `${getBaseUrl()}/cooking_methods`,
+  COOKING_METHOD: (id) => `${getBaseUrl()}/cooking_methods/${id}`,
+  COOKING_METHOD_CHANGE_ACTIVE: (id) => `${getBaseUrl()}/cooking_methods/${id}/change_active`,
+
   FILE_XAMPLE_IMPORT_DATA: () => `form-data.xlsx`,
 
   SIGNIN: () => `${getBaseUrl()}/signin`,

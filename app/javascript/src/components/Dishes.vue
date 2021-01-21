@@ -46,6 +46,7 @@
                  :footer="null">
           <ImportDish
             @updateListAfterUpdated="updateListAfterUpdated"
+            :restaurants="restaurants"
           />
         </a-modal>
         <a-modal v-model="visible" :title="titleModal" :footer="null">
@@ -74,7 +75,7 @@
           </template>
           <template slot="image" slot-scope="image">
             <span>
-              <a-avatar shape="square" :size="100" :src="image"/>
+              <a-avatar shape="square" :size="50" :src="image"/>
             </span>
           </template>
           <template slot="action" slot-scope="text, record">
@@ -111,6 +112,8 @@
     name: '',
     price: '',
     category_ids: [],
+    main_ingredient_id: undefined,
+    cooking_method_id: undefined,
     images_attributes: [],
     image_ids: [],
     position: undefined,
@@ -149,7 +152,12 @@
         visible: false,
         columns: [
           {
-            title: 'Nhóm thực đơn',
+            title: 'Ảnh món ăn',
+            dataIndex: 'images_attributes[0].url',
+            scopedSlots: {customRender: "image"},
+          },
+          {
+            title: 'Danh mục thực đơn',
             dataIndex: 'categories',
             scopedSlots: { customRender: 'categories' }
           },
@@ -162,6 +170,14 @@
             dataIndex: 'price',
           },
           {
+            title: 'Thành phần chính',
+            dataIndex: 'main_ingredient.name',
+          },
+          {
+            title: 'Cách chế biến',
+            dataIndex: 'cooking_method.name',
+          },
+          {
             title: 'Sắp xếp',
             dataIndex: 'position',
           },
@@ -171,12 +187,7 @@
             scopedSlots: {customRender: "isActive"},
           },
           {
-            title: 'Ảnh món ăn',
-            dataIndex: 'images_attributes[0].url',
-            scopedSlots: {customRender: "image"},
-          },
-          {
-            title: 'Action',
+            title: '',
             dataIndex: 'action',
             scopedSlots: {customRender: 'action'},
           },

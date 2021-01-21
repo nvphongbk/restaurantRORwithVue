@@ -1,16 +1,21 @@
 <template>
   <div class="clearfix">
-    <h4> Sample Form:
-      <a-button
-        @click="downloadSampleform()">
-        <a-icon type="download"/>
-      </a-button>
-    </h4>
+    <p> Dữ liệu mẫu
+      <a-icon type="download" @click="downloadSampleform()" />
+    </p>
+    <br>
+    <a-form-item label="Chọn quán:">
+      <a-select v-model="restaurant_id" style="width: 300px" placeholder="Vui lòng chọn quán">
+        <a-select-option v-for="restaurant in restaurants" :key="restaurant.id" >
+          {{ restaurant.name }}
+        </a-select-option>
+      </a-select>
+    </a-form-item>
     <a-upload :file-list="fileList" :remove="handleRemove"
               :before-upload="beforeUpload">
       <a-button :disabled="fileList.length > 0">
         <a-icon type="upload"/>
-        Select file
+        Chọn file upload
       </a-button>
     </a-upload>
     <a-button
@@ -37,6 +42,12 @@
       return {
         fileList: [],
         uploading: false,
+        restaurant_id: undefined
+      }
+    },
+    props: {
+      restaurants: {
+        type: Array
       }
     },
     methods: {
@@ -53,6 +64,7 @@
       handleUpload() {
         const {fileList} = this;
         const formData = new FormData();
+        formData.set('restaurant_id', this.restaurant_id)
         fileList.forEach(file => {
           formData.append('files[]', file);
         });
@@ -61,7 +73,7 @@
           url: URLS.IMPORT_DATA(),
           method: 'post',
           processData: false,
-          data: formData,
+          data: formData
         }).then((response) => {
           console.log('ok')
           this.fileList = [];

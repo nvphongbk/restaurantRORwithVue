@@ -4,14 +4,18 @@
 #
 # Table name: dishes
 #
-#  id         :integer          not null, primary key
-#  dish_code  :string
-#  is_active  :boolean          default(TRUE)
-#  name       :string
-#  position   :integer
-#  price      :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                 :integer          not null, primary key
+#  dish_code          :string
+#  is_active          :boolean          default(TRUE)
+#  name               :string
+#  position           :integer
+#  price              :integer
+#  quantity           :float            default(0.0)
+#  unit               :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  cooking_method_id  :integer
+#  main_ingredient_id :integer
 #
 class DishSerializer < ActiveModel::Serializer
   attributes :id, :name, :price, :category_ids, :images_attributes,

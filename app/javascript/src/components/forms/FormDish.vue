@@ -18,6 +18,18 @@
         <a-input placeholder="Nhập giá bán"
                  v-model="editItem.price"/>
       </a-form-model-item>
+      <a-select v-model="editItem.main_ingredient_id" placeholder="Chọn thành phần chính">
+        <a-select-option v-for="ingredient in ingredients" :key="ingredient.id">
+          {{ ingredient.name }}
+        </a-select-option>
+      </a-select>
+      <a-form-model-item label="Cách chế biến" prop="cooking_method">
+        <a-select v-model="editItem.cooking_method_id" placeholder="Chọn cách chế biến">
+          <a-select-option v-for="method in cooking_methods" :key="method.id">
+            {{ method.name }}
+          </a-select-option>
+        </a-select>
+      </a-form-model-item>
       <a-form-model-item label="Kích hoạt" prop="isActive">
         <a-switch v-model="editItem.is_active" />
       </a-form-model-item>
@@ -25,7 +37,7 @@
         <a-input placeholder="Vị trí xuất hiện"
                  v-model="editItem.position"/>
       </a-form-model-item>
-      <a-form-model-item label="Category">
+      <a-form-model-item label="Danh mục thực đơn">
         <a-checkbox-group v-model="editItem.category_ids" @change="onChange">
           <a-checkbox :span="6" v-for="category in categories" :key="category.id"
                       name="category_ids[]" :value="category.id">
@@ -84,6 +96,8 @@
     data() {
       return {
         categories: [],
+        ingredients: [],
+        cooking_methods: [],
         previewVisible: false,
 
       };
@@ -95,8 +109,7 @@
       }
     },
     mounted() {
-      this.callDataRestaurant()
-      this.getDataCategory()
+      this.fetchData()
     },
     watch: {
       visible: {
@@ -108,6 +121,20 @@
       }
     },
     methods: {
+      fetchData() {
+        this.getIngredients()
+        this.callDataRestaurant()
+        this.getDataCategory()
+        this.getCookingMethods()
+      },
+      async getIngredients() {
+        let response = await ApiCaller().get(URLS.MAIN_INGREDIENTS())
+        this.ingredients = response.data
+      },
+      async getCookingMethods() {
+        let response = await ApiCaller().get(URLS.COOKING_METHODS())
+        this.cooking_methods = response.data
+      },
       create(item) {
         this.isEdit = false
         ApiCaller().post(URLS.DISHES(), {

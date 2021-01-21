@@ -8,23 +8,23 @@ export const ApiCaller = (customHeader = null) => {
     headers: Object.assign(customHeader || {}, header),
     timeout: 10000
   })
-  // instance.interceptors.response.use((response) => {
-  //   return response
-  // }, (error) => {
-  //   let errorMessage = error.toString()
-  //   if (error.response) {
-  //     if (error.response.data.message) {
-  //       errorMessage = error.response.data.message
-  //     }
-  //     if (error.response.status === 401) {
-  //       localStorage.clear()
-  //       setTimeout(() => {
-  //         window.location.href = '/signin'
-  //       }, 2000)
-  //     }
-  //   }
-  //   store.commit('message/SET_MESSAGE', errorMessage)
-  //   return Promise.reject(error)
-  // })
+  instance.interceptors.response.use((response) => {
+    return response
+  }, (error) => {
+    let errorMessage = error.toString()
+    if (error.response) {
+      if (error.response.data.message) {
+        errorMessage = error.response.data.message
+      }
+      if (error.response.status === 401) {
+        localStorage.clear()
+        setTimeout(() => {
+          window.location.href = '/signin'
+        }, 2000)
+      }
+    }
+    store.commit('message/SET_MESSAGE', errorMessage)
+    return Promise.reject(error)
+  })
   return instance
 }

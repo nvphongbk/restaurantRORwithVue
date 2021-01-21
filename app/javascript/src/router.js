@@ -4,6 +4,8 @@ import SignIn from "./components/Signin"
 import HomePage from "./components/HomePage"
 import Dashboard from "./components/Dashboard"
 import Restaurants from "./components/Restaurants"
+import MainIngredients from "./components/MainIngredients"
+import CookingMethods from "./components/CookingMethods"
 import Categories from "./components/Categories"
 import Dishes from "./components/Dishes"
 import Message from "./components/Message"
@@ -22,7 +24,6 @@ const router = new VueRouter({
       component: Restaurants,
       meta: {
         openKey: 'Restaurant',
-        guest: true
       }
     },
     {
@@ -39,6 +40,22 @@ const router = new VueRouter({
       component: Dishes,
       meta: {
         openKey: 'Dish'
+      }
+    },
+    {
+      path: '/admin/main_ingredients',
+      name: 'MainIngredients',
+      component: MainIngredients,
+      meta: {
+        openKey: 'MainIngredients'
+      }
+    },
+    {
+      path: '/admin/cooking_methods',
+      name: 'CookingMethods',
+      component: CookingMethods,
+      meta: {
+        openKey: 'CookingMethods'
       }
     },
     {

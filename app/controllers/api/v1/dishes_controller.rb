@@ -5,7 +5,6 @@ module Api
     class DishesController < ApplicationController
       def index
         @dishes = Dish.all.order(position: :asc, created_at: :desc)
-        render json: @dishes
       end
 
       def show; end
@@ -55,7 +54,8 @@ module Api
       private
 
       def dish_params
-        params.require(:dish).permit(:name, :dish_code, :price, :position, :is_active, category_ids: [])
+        params.require(:dish).permit(:name, :dish_code, :price, :position, :is_active,
+                                            :main_ingredient_id, :cooking_method_id, category_ids: [])
       end
     end
   end

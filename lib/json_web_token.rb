@@ -3,7 +3,7 @@
 class JsonWebToken
   SECRET_KEY = 'ment-menu-2021'
 
-  def self.encode(payload, exp = 24.hours.from_now)
+  def self.encode(payload, exp = 10.days.from_now)
     payload[:exp] = exp.to_i
     JWT.encode(payload, SECRET_KEY)
   end

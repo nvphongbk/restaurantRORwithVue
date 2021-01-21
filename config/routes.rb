@@ -19,6 +19,16 @@ Rails.application.routes.draw do
           post :change_active
         end
       end
+      resources :cooking_methods do
+        member do
+          post :change_active
+        end
+      end
+      resources :main_ingredients do
+        member do
+          post :change_active
+        end
+      end
       resources :restaurants do
         member do
           get :categories

@@ -27,4 +27,6 @@ class Restaurant < ApplicationRecord
   friendly_id :name, use: :slugged
   belongs_to :user
   has_many :categories, dependent: :destroy
+  has_many :cooking_methods, dependent: :destroy
+  has_many :main_ingredients, dependent: :destroy
 end
