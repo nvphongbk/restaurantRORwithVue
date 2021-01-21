@@ -37,7 +37,9 @@
             <div class="text-center menu-name_category">{{category.name}}</div>
             <div v-if="ListView" class="menu-view">
               <div class="single_menu w-full" v-for='dish in category.dishes'>
-                <img class="menu-dish_img" :src="dish.images_attributes[0].url">
+                <img v-if="dish.images_attributes.length === 0" class="menu-dish_img"
+                     src="/image/no-image.png">
+                <img v-else class="menu-dish_img" :src="dish.images_attributes[0].url">
                 <div class="menu_content">
                   <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
                 </div>
@@ -46,7 +48,9 @@
             <div v-else class="menu-view">
               <div class="single_menu w-1/2 flex-wrap" v-for='dish in category.dishes'>
                 <div class="menu-dish_img--grid">
-                  <img :src="dish.images_attributes[0].url" />
+                  <img v-if="dish.images_attributes.length === 0"
+                       src="/image/no-image.png">
+                  <img v-else :src="dish.images_attributes[0].url">
                 </div>
                 <div class="menu_content">
                   <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
@@ -78,7 +82,9 @@
             </div>
             <div class="menu-view" v-if="ListView">
               <div class="single_menu w-full" v-for='dish in category.dishes'>
-                <img class="menu-dish_img" :src="dish.images_attributes[0].url">
+                <img v-if="dish.images_attributes.length === 0" class="menu-dish_img"
+                     src="/image/no-image.png">
+                <img v-else class="menu-dish_img" :src="dish.images_attributes[0].url">
                 <div class="menu_content">
                   <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
                 </div>
@@ -86,7 +92,9 @@
             </div>
             <div class="menu-view" v-else>
               <div class="single_menu w-1/2 flex-wrap" v-for='dish in category.dishes'>
-                <img class="menu-dish_img--grid" :src="dish.images_attributes[0].url">
+                <img v-if="dish.images_attributes.length === 0" class="menu-dish_img"
+                     src="/image/no-image.png">
+                <img v-else class="menu-dish_img" :src="dish.images_attributes[0].url">
                 <div class="menu_content">
                   <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
                 </div>
@@ -278,7 +286,7 @@
     color: #1890ff;
   }
 
-  .menu-dish_img--grid{
+  .menu-dish_img--grid {
     margin: 0 auto;
     width: 200px;
     height: 200px;
