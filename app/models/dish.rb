@@ -25,8 +25,8 @@ class Dish < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
   has_many :category_dishes, dependent: :destroy
   has_many :categories, through: :category_dishes
-  belongs_to :main_ingredient
-  belongs_to :cooking_method
+  belongs_to :main_ingredient, optional: true
+  belongs_to :cooking_method, optional: true
   accepts_nested_attributes_for :main_ingredient
   accepts_nested_attributes_for :cooking_method
 

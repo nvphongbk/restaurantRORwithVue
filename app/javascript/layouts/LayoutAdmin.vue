@@ -1,5 +1,5 @@
 <template>
-  <a-layout id="components-layout-demo-custom-trigger" style="height: 100vh">
+  <a-layout id="components-layout-demo-custom-trigger" style="min-height: 100vh">
     <LeftMenu :collapsed="collapsed"/>
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">

@@ -55,7 +55,7 @@ module Api
 
       def dish_params
         params.require(:dish).permit(:name, :dish_code, :price, :position, :is_active,
-                                            :main_ingredient_id, :cooking_method_id, category_ids: [])
+                                     :main_ingredient_id, :cooking_method_id, category_ids: [])
       end
     end
   end

@@ -1,5 +1,5 @@
 <template>
-  <a-layout-content :style="{ margin: '24px 16px 0' }">
+  <a-layout-content :style="{ margin: '24px 16px 0px' }">
     <div style="margin-bottom: 10px">
       <a-button type="primary" class="editable-add-btn"
                 @click="addMainIngredient">

@@ -2,7 +2,6 @@
 
 module ApplicationHelper
   def import_data_from(restaurant, file, import_columns)
-
     datas = RubyXL::Parser.parse(file)
     data = datas[0]
     lines = data.count
@@ -27,9 +26,12 @@ module ApplicationHelper
             @images = Image.where(image_name: image_names)
           end
         when 'category'
-          category_names = value.split(',')
-          category_names = ['Khác'] if category_names.blank?
 
+          category_names = if value.blank?
+                             ['Khác']
+                           else
+                             value.split(',')
+                           end
           category_names = category_names.map(&:strip)
           new_categories = category_names - list_categories_name
           if new_categories.present?
@@ -57,7 +59,7 @@ module ApplicationHelper
       @images.update_all(dish_id: dish.id) if @images.present?
     end
     { status: true, message: 'Hoàn thành' }
-  rescue => e
+  rescue StandardError => e
     { status: false, message: e.message }
   end
 end
