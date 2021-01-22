@@ -145,7 +145,6 @@
       onSearch() {
         if(this.search){
           return this.desserts.filter((item)=>{
-            console.log(item)
             return this.search.toLowerCase().split(' ').every(v => item.name.toLowerCase().includes(v))
           })
         }else{

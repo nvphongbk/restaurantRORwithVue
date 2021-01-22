@@ -7,6 +7,7 @@ json.restaurant do
   json.user_id @restaurant.user_id
   json.address @restaurant.address
   json.categories @categories do |category|
+    json.id category.id
     json.name category.name
     json.dishes category.dishes.where(is_active: true) do |dish|
       json.id dish.id

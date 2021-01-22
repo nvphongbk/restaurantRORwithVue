@@ -12,6 +12,8 @@
           </div>
         </a-col>
       </a-row>
+
+
       <a-tabs type="card" class="menu-body">
         <a-tab-pane key="all" tab="All">
           <div class="menu-btn">
@@ -290,6 +292,9 @@
     margin: 0 auto;
     width: 200px;
     height: 200px;
+  }
+  .menu-dish_img--grid img {
+    height: inherit;
   }
   #our_menu .ant-tabs-bar{
     position: fixed;

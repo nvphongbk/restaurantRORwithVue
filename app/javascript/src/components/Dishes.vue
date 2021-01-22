@@ -28,6 +28,11 @@
               {{ category.name }}
             </a-select-option>
           </a-select>
+          <a-input-search
+            placeholder="Tìm kiếm tên món ăn"
+            style="width: 200px"
+            v-model="search"
+          ></a-input-search>
         </div>
         <a-button type="primary" class="editable-add-btn"
                   @click="addDish">
@@ -61,7 +66,7 @@
             @getDataRestaurant="getDataRestaurant"
           />
         </a-modal>
-        <a-table bordered :data-source="desserts"
+        <a-table bordered :data-source="onSearch"
                  :columns="columns"
                  :row-key="(record) => record.id"
         >
@@ -123,6 +128,7 @@
     name: "Dishes",
     data() {
       return {
+        search: '',
         visibleImportDish: false,
         isAddNew: false,
         categories: [],
@@ -201,6 +207,15 @@
     computed: {
       titleModal() {
         return this.isEdit ? 'Edit Dish' : 'Create Dish'
+      },
+      onSearch() {
+        if(this.search){
+          return this.desserts.filter((item)=>{
+            return this.search.toLowerCase().split(' ').every(v => item.name.toLowerCase().includes(v))
+          })
+        }else{
+          return this.desserts;
+        }
       }
     },
     mounted() {
@@ -212,7 +227,6 @@
         return ApiCaller().get(URLS.DISHES())
           .then(response => {
             this.desserts = response.data;
-            console.log(this.desserts)
           })
           .catch(e => {
           });
