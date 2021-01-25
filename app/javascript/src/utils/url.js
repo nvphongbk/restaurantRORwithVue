@@ -11,6 +11,7 @@ export const URLS = {
 
   CATEGORIES: () => `${getBaseUrl()}/categories`,
   CATEGORY: (id) => `${getBaseUrl()}/categories/${id}`,
+  CATEGORY_DISHES: (id) => `${getBaseUrl()}/categories/${id}/dishes`,
   CATEGORY_CHANGE_ACTIVE: (id) => `${getBaseUrl()}/categories/${id}/change_active`,
   CATEGORY_SEARCH: (id) => `${getBaseUrl()}/categories/${id}/dishes`,
 
@@ -19,6 +20,7 @@ export const URLS = {
   DISHES: () => `${getBaseUrl()}/dishes`,
   DISH: (id) => `${getBaseUrl()}/dishes/${id}`,
   DISH_CHANGE_ACTIVE: (id) => `${getBaseUrl()}/dishes/${id}/change_active`,
+  DISHES_FILTER: (id) =>`${getBaseUrl()}/restaurants/${id}/dishes_filter`,
 
   IMAGES: () => `${getBaseUrl()}/images`,
 
@@ -29,6 +31,7 @@ export const URLS = {
   COOKING_METHODS: () => `${getBaseUrl()}/cooking_methods`,
   COOKING_METHOD: (id) => `${getBaseUrl()}/cooking_methods/${id}`,
   COOKING_METHOD_CHANGE_ACTIVE: (id) => `${getBaseUrl()}/cooking_methods/${id}/change_active`,
+  COOKING_METHOD_DISHES: (id) =>`${getBaseUrl()}/cooking_methods/${id}/dishes`,
 
   FILE_XAMPLE_IMPORT_DATA: () => `form-data.xlsx`,
 
@@ -42,4 +45,5 @@ export const URLS = {
   MESSAGES: () => `${getBaseUrl()}/messages`,
   MESSAGE: (id) => `${getBaseUrl()}/messages/${id}`,
   MESSAGE_CONTACT: () => `${getBaseUrl()}/messages`,
+
 };

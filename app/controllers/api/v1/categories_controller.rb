@@ -41,9 +41,8 @@ module Api
       end
 
       def dishes
-        @category = Category.find(params[:id])
-        @dishes = @category.dishes
-        render json: @dishes, status: 200
+          @category = Category.find(params[:id])
+          @dishes = @category.dishes.includes(:images)
       end
 
       def change_active
