@@ -9,7 +9,9 @@ module Api
         @cooking_methods = CookingMethod.all.includes(:restaurant).order(position: :asc, name: :asc)
       end
 
-      def show; end
+      def show
+        @cooking_method = CookingMethod.find(params[:id])
+      end
 
       def new
         @cooking_method = CookingMethod.new
@@ -50,6 +52,12 @@ module Api
         else
           render json: { message: 'Có lỗi xảy ra' }, status: 422
         end
+      end
+
+      def dishes
+        @cooking_method = CookingMethod.find(params[:id])
+        @dishes = @cooking_method.dishes.includes(:images)
+        render json: @dishes
       end
 
       private

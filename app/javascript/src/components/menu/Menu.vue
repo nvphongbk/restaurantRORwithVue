@@ -3,108 +3,107 @@
     <Navigation/>
     <div class="container-menu pt-0"
          :style="{'background-image':'url(/uploads/menu/background-menu.jpg)'}">
-      <a-row class="menu-header">
+
+      <!--button menu-->
+      <a-row class="menu-header text-center">
         <a-col :span="24">
-          <div class="menu-page_title text-center">
-            <h1>{{menu.name}}</h1>
-            <p class="menu-page--wifi">Pass Wifi: {{menu.pass_wifi}}</p>
-            <div class="menu-single_line"></div>
+          <div>
+            <a-button @click="showInfoRestaurant" type="primary">
+              Thông tin
+            </a-button>
+            <a-button @click="filterCookingMethod" type="primary">
+              Cách nấu
+            </a-button>
+            <a-button @click="filterMainIngredient" type="primary">
+              Thành phần
+            </a-button>
+            <a-button @click="filterCategory" type="primary">
+              Danh mục
+            </a-button>
           </div>
         </a-col>
       </a-row>
 
+      <!--info restaurant-->
+      <div v-if="info_restaurant">
+        <a-row class="menu-header">
+          <a-col :span="24">
+            <div class="menu-page_title text-center">
+              <h1>{{menu.name}}</h1>
+              <p class="menu-page--wifi">Pass Wifi: {{menu.pass_wifi}}</p>
+              <div class="menu-single_line"></div>
+            </div>
+          </a-col>
+        </a-row>
+      </div>
 
-      <a-tabs type="card" class="menu-body">
-        <a-tab-pane key="all" tab="All">
-          <div class="menu-btn">
-            <a @click="listView">
-              <svg viewBox="64 64 896 896" data-icon="unordered-list"
-                   width="25px" height="25px" fill="currentColor"
-                   aria-hidden="true" focusable="false"
-                   class="inline-block btn-view-menu">
-                <path
-                  d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path>
-              </svg>
-            </a>
-            <a @click="gridView">
-              <svg viewBox="64 64 896 896" data-icon="table" width="25px"
-                   height="25px" fill="currentColor" aria-hidden="true"
-                   focusable="false" class="inline-block btn-view-menu">
-                <path
-                  d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 208H676V232h212v136zm0 224H676V432h212v160zM412 432h200v160H412V432zm200-64H412V232h200v136zm-476 64h212v160H136V432zm0-200h212v136H136V232zm0 424h212v136H136V656zm276 0h200v136H412V656zm476 136H676V656h212v136z"></path>
-              </svg>
-            </a>
-          </div>
-          <div v-for='category in menu.categories' :key="category.id">
-            <div class="text-center menu-name_category">{{category.name}}</div>
-            <div v-if="ListView" class="menu-view">
-              <div class="single_menu w-full" v-for='dish in category.dishes'>
-                <img v-if="dish.images_attributes.length === 0" class="menu-dish_img"
-                     src="/image/no-image.png">
-                <img v-else class="menu-dish_img" :src="dish.images_attributes[0].url">
-                <div class="menu_content">
-                  <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
-                </div>
+      <!--cooking method-->
+      <div v-if="filter_cooking_method" class="bg-yellow-200 text-center w-1/2 m-auto">
+        <a-checkbox-group @change="onChangeCookingMethod" v-model="checkedCookingMethod">
+          <a-checkbox :span="24" v-for="(cookingMethod, index) in menu.cooking_methods" :value="cookingMethod.id"
+                      :key="index" name="cooking_methods[]">
+            <div>
+              {{ cookingMethod.name }}
+            </div>
+          </a-checkbox>
+        </a-checkbox-group>
+      </div>
+
+      <!--main ingredient-->
+      <div v-if="filter_main_ingredient" class="bg-yellow-200 text-center w-1/2 m-auto">
+        <a-checkbox-group @change="onChangeMainIngredient" v-model="checkedMainIngredient">
+          <a-checkbox :span="24" v-for="(mainIngredient, index) in menu.main_ingredients" :value="mainIngredient.id"
+                      :key="index">
+            <div>
+              {{ mainIngredient.name }}
+            </div>
+          </a-checkbox>
+        </a-checkbox-group>
+      </div>
+
+      <!--category-->
+      <div v-if="show_filter_category" class="bg-yellow-200 text-center w-1/2 m-auto">
+        <a-checkbox-group @change="onChangeCategory" v-model="checkedCategory">
+          <a-checkbox :span="24" v-for="(category, index) in menu.categories" :value="category.id"
+                      :key="index">
+            <div>
+              {{ category.name }}
+            </div>
+          </a-checkbox>
+        </a-checkbox-group>
+      </div>
+
+      <!--body menu-->
+      <div class="menu-body">
+        <a-row>
+          <a-col span="24">
+            <div>
+              <div class="menu-btn">
+                <a @click="listView">
+                  <svg viewBox="64 64 896 896" data-icon="unordered-list"
+                       width="25px" height="25px" fill="currentColor"
+                       aria-hidden="true" focusable="false"
+                       class="inline-block btn-view-menu">
+                    <path
+                      d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path>
+                  </svg>
+                </a>
+                <a @click="gridView">
+                  <svg viewBox="64 64 896 896" data-icon="table" width="25px"
+                       height="25px" fill="currentColor" aria-hidden="true"
+                       focusable="false" class="inline-block btn-view-menu">
+                    <path
+                      d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 208H676V232h212v136zm0 224H676V432h212v160zM412 432h200v160H412V432zm200-64H412V232h200v136zm-476 64h212v160H136V432zm0-200h212v136H136V232zm0 424h212v136H136V656zm276 0h200v136H412V656zm476 136H676V656h212v136z"></path>
+                  </svg>
+                </a>
               </div>
+              <show-dish :current_dishes="current_dishes"
+                         :ListView="ListView"
+              />
             </div>
-            <div v-else class="menu-view">
-              <div class="single_menu w-1/2 flex-wrap" v-for='dish in category.dishes'>
-                <div class="menu-dish_img--grid">
-                  <img v-if="dish.images_attributes.length === 0"
-                       src="/image/no-image.png">
-                  <img v-else :src="dish.images_attributes[0].url">
-                </div>
-                <div class="menu_content">
-                  <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </a-tab-pane>
-        <template v-for='category in menu.categories'>
-          <a-tab-pane :key="category.id" :tab="category.name">
-            <div class="menu-btn">
-              <a @click="listView">
-                <svg viewBox="64 64 896 896" data-icon="unordered-list"
-                     width="25px" height="25px" fill="currentColor"
-                     aria-hidden="true" focusable="false"
-                     class="inline-block btn-view-menu">
-                  <path
-                    d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path>
-                </svg>
-              </a>
-              <a @click="gridView">
-                <svg viewBox="64 64 896 896" data-icon="table" width="25px"
-                     height="25px" fill="currentColor" aria-hidden="true"
-                     focusable="false" class="inline-block btn-view-menu">
-                  <path
-                    d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 208H676V232h212v136zm0 224H676V432h212v160zM412 432h200v160H412V432zm200-64H412V232h200v136zm-476 64h212v160H136V432zm0-200h212v136H136V232zm0 424h212v136H136V656zm276 0h200v136H412V656zm476 136H676V656h212v136z"></path>
-                </svg>
-              </a>
-            </div>
-            <div class="menu-view" v-if="ListView">
-              <div class="single_menu w-full" v-for='dish in category.dishes'>
-                <img v-if="dish.images_attributes.length === 0" class="menu-dish_img"
-                     src="/image/no-image.png">
-                <img v-else class="menu-dish_img" :src="dish.images_attributes[0].url">
-                <div class="menu_content">
-                  <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
-                </div>
-              </div>
-            </div>
-            <div class="menu-view" v-else>
-              <div class="single_menu w-1/2 flex-wrap" v-for='dish in category.dishes'>
-                <img v-if="dish.images_attributes.length === 0" class="menu-dish_img"
-                     src="/image/no-image.png">
-                <img v-else class="menu-dish_img" :src="dish.images_attributes[0].url">
-                <div class="menu_content">
-                  <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
-                </div>
-              </div>
-            </div>
-          </a-tab-pane>
-        </template>
-      </a-tabs>
+          </a-col>
+        </a-row>
+      </div>
     </div>
   </section>
 </template>
@@ -114,25 +113,43 @@
   import {URLS} from "../../utils/url";
   import ACol from "ant-design-vue/es/grid/Col";
   import Navigation from "../../../layouts/partials/Navigation";
+  import ShowDish from "./ShowDish"
 
   export default {
     name: "Menu",
-    components: {Navigation, ACol},
+    components: {Navigation, ACol, ShowDish},
     data() {
       return {
         menu: '',
         ListView: true,
         MobileView: false,
+        current_dishes: [],
+        listCategories: [],
+        info_restaurant: false,
+        checkedCookingMethod: [],
+        filter_cooking_method: false,
+        filter_main_ingredient: false,
+        checkedMainIngredient: [],
+        show_filter_category: false,
+        checkedCategory: []
       }
     },
     mounted() {
-      this.showMenu()
+      this.fetchData();
+    },
+    computed: {
+      allDishes: function () {
+        return this.menu.categories.map(e => e.dishes).flat()
+      },
+
     },
     methods: {
-      showMenu() {
+      fetchData() {
         return ApiCaller().get(URLS.MENU(this.$route.params.id))
           .then(response => {
             this.menu = response.data.restaurant;
+            this.current_dishes = this.allDishes
+            this.listCategories = [{id: 0, name: 'All'}].concat(this.menu.categories)
           })
           .catch(e => {
             console.log(e);
@@ -144,6 +161,39 @@
       gridView() {
         this.ListView = false
       },
+      showInfoRestaurant() {
+        this.info_restaurant = !this.info_restaurant
+      },
+      filterCookingMethod() {
+        this.filter_cooking_method = !this.filter_cooking_method
+      },
+      filterMainIngredient() {
+        this.filter_main_ingredient = !this.filter_main_ingredient
+      },
+      filterCategory() {
+        this.show_filter_category = !this.show_filter_category
+      },
+      onChangeCookingMethod(checkedValues) {
+
+      },
+      onChangeMainIngredient(checkedValues) {
+      },
+      async onChangeCategory(checkedValues) {
+          let restaurant_id = this.$route.params.id
+          let cooking_method_ids = this.checkedCookingMethod
+          let main_ingredient_ids = this.checkedMainIngredient
+          let category_ids = this.checkedCategory
+
+        let response = await ApiCaller().post(URLS.DISHES_FILTER(), {
+          restaurant_id,
+          cooking_method_ids,
+          main_ingredient_ids,
+          category_ids
+        })
+        this.current_dishes = response.data
+      }
+
+
     },
   }
 </script>
@@ -235,6 +285,7 @@
     font-size: 16px;
     letter-spacing: 1px;
   }
+
   .menu-page--wifi {
     font-size: 14px;
     font-weight: 500;
@@ -275,7 +326,8 @@
   .btn-view-menu {
     margin-bottom: 5px;
   }
-  .menu-btn{
+
+  .menu-btn {
     display: flex;
     justify-content: flex-end;
   }
@@ -293,10 +345,12 @@
     width: 200px;
     height: 200px;
   }
+
   .menu-dish_img--grid img {
     height: inherit;
   }
-  #our_menu .ant-tabs-bar{
+
+  #our_menu .ant-tabs-bar {
     position: fixed;
   }
 
@@ -305,7 +359,7 @@
       width: 50%;
     }
 
-    .menu-dish_img{
+    .menu-dish_img {
       width: 30px;
       height: 30px;
     }

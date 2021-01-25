@@ -51,6 +51,12 @@ module Api
         end
       end
 
+      def dishes
+        @main_ingredient = MainIngredient.find(params[:id])
+        @dishes = @main_ingredient.dishes.includes(:images)
+        render json: @dishes
+      end
+
       private
 
       def main_ingredient_params

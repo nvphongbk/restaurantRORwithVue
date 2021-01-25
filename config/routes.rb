@@ -22,17 +22,22 @@ Rails.application.routes.draw do
       resources :cooking_methods do
         member do
           post :change_active
+          get :dishes
         end
       end
       resources :main_ingredients do
         member do
           post :change_active
+          get :dishes
         end
       end
       resources :restaurants do
         member do
+          post :dishes_filter
           get :categories
           get :menus
+          get :cooking_methods
+          get :main_ingredients
         end
       end
       resources :users

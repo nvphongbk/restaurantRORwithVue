@@ -53,6 +53,16 @@ module Api
       def menus
         @restaurant = Restaurant.friendly.find(params[:id])
         @categories = @restaurant.categories.includes(:dishes).where(is_active: true)
+        @cooking_methods = @restaurant.cooking_methods.where(is_active: true)
+        @main_ingredients = @restaurant.main_ingredients.where(is_active: true)
+      end
+
+      def dishes_filter
+        @restaurant = Restaurant.includes(:categories, :dishes).find(params[:restaurant_id])
+        return if @restaurant.blank?
+
+        @dishes = @restaurant.dishes
+        @dishes = RestaurantsServices::DishesFilter.new(@restaurant, @dishes, params).perform
       end
 
       private

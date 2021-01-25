@@ -21,4 +21,12 @@ json.restaurant do
       json.dish_code dish.dish_code
     end
   end
+  json.cooking_methods @cooking_methods do |cooking_method|
+    json.id cooking_method.id
+    json.name cooking_method.name
+  end
+  json.main_ingredients @main_ingredients do |main_ingredient|
+    json.id main_ingredient.id
+    json.name main_ingredient.name
+  end
 end
