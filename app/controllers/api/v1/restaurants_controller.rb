@@ -58,7 +58,7 @@ module Api
       end
 
       def dishes_filter
-        @restaurant = Restaurant.includes(:categories, :dishes).find(params[:restaurant_id])
+        @restaurant = Restaurant.includes(:categories, :dishes).friendly.find(params[:restaurant_id])
         return if @restaurant.blank?
 
         @dishes = @restaurant.dishes
