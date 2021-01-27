@@ -4,10 +4,10 @@
       <div>
         <a-button type="primary" class="editable-add-btn"
                   @click="addRestaurant">
-          Add
+          Thêm mới
         </a-button>
         <a-input-search
-          placeholder="input search restaurant"
+          placeholder="Tìm tên nhà hàng"
           style="width: 200px"
           v-model="search"
         ></a-input-search>
@@ -67,7 +67,8 @@
     name: '',
     address:'',
     pass_wifi: '',
-    user_id:''
+    user_id:'',
+    phone: '',
   }
   export default {
     name: "Restaurants",
@@ -103,16 +104,20 @@
         visible_qrcode: false,
         columns: [
           {
-            title: 'Name',
+            title: 'Tên',
             dataIndex: 'name',
           },
           {
-            title: 'Date Create',
+            title: 'Ngày tạo',
             dataIndex: 'created_at',
           },
           {
-            title: 'Address',
+            title: 'Địa chỉ ',
             dataIndex: 'address',
+          },
+          {
+            title: 'Số điện thoại',
+            dataIndex: 'phone',
           },
           {
             title: 'Pass wifi',
@@ -124,7 +129,7 @@
             scopedSlots: {customRender: 'qrcode'},
           },
           {
-            title: 'Action',
+            title: 'Sửa/Xoá',
             dataIndex: 'action',
             scopedSlots: {customRender: 'action'},
           },
@@ -140,7 +145,7 @@
     },
     computed: {
       titleModal() {
-        return this.isEdit ? 'Edit Category' : 'Create Category'
+        return this.isEdit ? 'Sửa thông tin nhà hàng ' : 'Tạo nhà hàng mới'
       },
       onSearch() {
         if(this.search){

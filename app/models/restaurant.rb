@@ -8,6 +8,7 @@
 #  address    :string
 #  name       :string
 #  pass_wifi  :string
+#  phone      :string
 #  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

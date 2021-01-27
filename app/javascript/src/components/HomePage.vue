@@ -62,18 +62,20 @@
         </h2>
       </div>
       <a-row>
-        <div class="homepage-card-restaurant" v-for="restaurant in restaurants"
-             :key="restaurant.id">
-          <a-col class="col-card" :span="6">
-            <div class="homepage-card-restaurant-card">
-              <h4 class="homepage__restaurant-name">{{restaurant.name}}</h4>
-              <p>Địa chỉ: {{restaurant.address}}</p>
-              <router-link :to="{name: 'Menu', params: {id: restaurant.slug }}">
-                <span class="nav-text btn btn-white btn-see-menu">See menu</span>
-              </router-link>
-            </div>
-          </a-col>
-        </div>
+          <div class="homepage-card-restaurant" v-for="restaurant in restaurants"
+               :key="restaurant.id">
+            <router-link :to="{name: 'Menu', params: {id: restaurant.slug }}">
+
+            <a-col class="col-card" :span="6">
+              <div class="homepage-card-restaurant-card">
+                <h4 class="homepage__restaurant-name">{{restaurant.name}}</h4>
+                <p>Địa chỉ: {{restaurant.address}}</p>
+
+                  <span class="nav-text btn btn-white btn-see-menu">See menu</span>
+              </div>
+            </a-col>
+            </router-link>
+          </div>
       </a-row>
     </div>
     <div class="section-testimonials">

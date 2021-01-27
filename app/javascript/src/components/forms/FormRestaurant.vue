@@ -6,16 +6,20 @@
     :label-col="{ span: 5 }"
     :wrapper-col="{ span: 12 }">
     <a-form-model-item ref="name" label="Name" prop="name">
-      <a-input placeholder="Please input name Restaurant"
+      <a-input placeholder="Nhập tên nhà hàng"
                v-model="editItem.name" />
     </a-form-model-item>
     <a-form-model-item ref="address" label="Address" prop="address">
-      <a-input placeholder="Please input address restaurant"
+      <a-input placeholder="Địa chỉ nhà hàng"
                v-model="editItem.address" />
     </a-form-model-item>
     <a-form-model-item ref="pass_wifi" label="Pass wifi" prop="pass_wifi">
-      <a-input placeholder="Please input pass wifi restaurant"
+      <a-input placeholder="Mật khẩu wifi"
                v-model="editItem.pass_wifi" />
+    </a-form-model-item>
+    <a-form-model-item ref="phone" label="Phone Number" prop="phone">
+      <a-input placeholder="Số điện thoại"
+               v-model="editItem.phone" />
     </a-form-model-item>
 
     <a-form-model-item :wrapperCol="{ offset: 8 }">
@@ -80,8 +84,6 @@
                     'Content-Type': 'application/json'
                   }})
                 .then(response => {
-                  console.log(response);
-                  console.log(this.visible)
                   this.$message.success('Cập nhật thành công')
                   this.$emit('updateListAfterUpdated', this.editItem);
                 })
