@@ -6,6 +6,7 @@ json.restaurant do
   json.pass_wifi @restaurant.pass_wifi
   json.user_id @restaurant.user_id
   json.address @restaurant.address
+  json.phone @restaurant.phone
   json.categories @categories do |category|
     json.id category.id
     json.name category.name

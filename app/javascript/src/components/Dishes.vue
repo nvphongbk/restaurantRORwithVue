@@ -7,7 +7,7 @@
                     show-search
                     option-filter-prop="children"
                     :filter-option="filterOption"
-                    placeholder="Select a Restaurant"
+                    placeholder="Chọn nhà hàng"
                     @change="handleChangeRestaurant"
           >
             <a-select-option v-for="restaurant in restaurants"
@@ -20,7 +20,7 @@
                     show-search
                     option-filter-prop="children"
                     :filter-option="filterOption"
-                    placeholder="Select a Category"
+                    placeholder="Chọn danh mục"
                     @change="handleChangeCategory"
           >
             <a-select-option v-for="category in categories" :value="category.id"
@@ -36,11 +36,11 @@
         </div>
         <a-button type="primary" class="editable-add-btn"
                   @click="addDish">
-          Add
+          Thêm
         </a-button>
         <a-button type="primary" class="editable-add-btn"
                   @click="showAllDish">
-          All dish
+          Tất cả món ăn
         </a-button>
         <a-button type="dashed" class="editable-add-btn"
                   @click="showModalImport">

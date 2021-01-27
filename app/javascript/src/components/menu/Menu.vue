@@ -2,13 +2,28 @@
   <section id="our_menu">
     <!--<Navigation/>-->
     <div class="container-menu pt-0"
-         :style="{'background-image':'url(/uploads/menu/background-menu.jpg)'}">
+         :style="{'background-image':'url(/uploads/menu/background-menu.jpg)', 'background-size':'cover'}">
 
       <!--button menu-->
       <a-row class="menu-header text-center">
         <a-col :span="24">
           <div>
-            <a @click="showInfoRestaurant" class="btn-filter">Thông tin</a>
+            <a-popover v-model="visible"
+                       :title=menu.name trigger="click">
+              <template slot="content">
+                <div class="text-left">
+                  <p>Địa chỉ: {{menu.address}}</p>
+                  <p>Pass Wifi: {{menu.pass_wifi}}</p>
+                  <p>Số điện thoại: {{menu.phone}}</p>
+                </div>
+                <div class="text-right">
+                  <a-button class="mt-3" @click="hideInfo" type="primary">
+                    ok
+                  </a-button>
+                </div>
+              </template>
+              <a class="btn-filter">Thông tin</a>
+            </a-popover>
             <a @click="filterCookingMethod" class="btn-filter">Cách nấu</a>
             <a @click="filterMainIngredient" class="btn-filter">Thành phần</a>
             <a @click="filterCategory" class="btn-filter">Danh mục</a>
@@ -17,24 +32,12 @@
         </a-col>
       </a-row>
 
-      <!--info restaurant-->
-      <div v-if="info_restaurant">
-        <a-row class="menu-header">
-          <a-col :span="24">
-            <div class="menu-page_title text-center">
-              <h1>{{menu.name}}</h1>
-              <p class="menu-page--wifi">Pass Wifi: {{menu.pass_wifi}}</p>
-              <div class="menu-single_line"></div>
-            </div>
-          </a-col>
-        </a-row>
-      </div>
-
       <!--cooking method-->
-      <div v-if="filter_cooking_method" class="bg-yellow-200 text-center w-1/2 m-auto my-3">
+      <div v-if="filter_cooking_method" class="bg-yellow-200 text-center w-1/2 m-auto my-3 position: relative">
+        <a @click="closeFilterCookingMethod" class="close"></a>
         <a-checkbox-group @change="onChangefilter" v-model="checkedCookingMethod">
           <a-row>
-            <a-col class="pt-3" :span="24">
+            <a-col class="pt-3 mt-4" :span="24">
               <a-checkbox v-for="(cookingMethod, index) in menu.cooking_methods" :value="cookingMethod.id"
                           :key="index" name="cooking_methods[]">
                 <div>
@@ -48,26 +51,37 @@
       </div>
 
       <!--main ingredient-->
-      <div v-if="filter_main_ingredient" class="bg-yellow-200 text-center w-1/2 m-auto my-3">
+      <div v-if="filter_main_ingredient" class="bg-yellow-200 text-center w-1/2 m-auto my-3 position: relative">
+        <a href="#" @click="closeFilterMainIngredient" class="close"></a>
         <a-checkbox-group @change="onChangefilter" v-model="checkedMainIngredient">
-          <a-checkbox class="pt-3"  :span="24" v-for="(mainIngredient, index) in menu.main_ingredients" :value="mainIngredient.id"
-                      :key="index">
-            <div>
-              {{ mainIngredient.name }}
-            </div>
-          </a-checkbox>
+          <a-row>
+            <a-col class="pt-3 mt-4" :span="24">
+              <a-checkbox :span="24" v-for="(mainIngredient, index) in menu.main_ingredients"
+                          :value="mainIngredient.id"
+                          :key="index">
+                <div>
+                  {{ mainIngredient.name }}
+                </div>
+              </a-checkbox>
+            </a-col>
+          </a-row>
         </a-checkbox-group>
       </div>
 
       <!--category-->
-      <div v-if="show_filter_category" class="bg-yellow-200 text-center w-1/2 m-auto my-3">
+      <div v-if="show_filter_category" class="bg-yellow-200 text-center w-1/2 m-auto my-3 position: relative">
+        <a href="#" @click="closeFilterCategory" class="close"></a>
         <a-checkbox-group @change="onChangefilter" v-model="checkedCategory">
-          <a-checkbox class="pt-3"  :span="24" v-for="(category, index) in menu.categories" :value="category.id"
-                      :key="index">
-            <div>
-              {{ category.name }}
-            </div>
-          </a-checkbox>
+          <a-row>
+            <a-col class="pt-3 mt-4" :span="24">
+              <a-checkbox :span="24" v-for="(category, index) in menu.categories" :value="category.id"
+                          :key="index">
+                <div>
+                  {{ category.name }}
+                </div>
+              </a-checkbox>
+            </a-col>
+          </a-row>
         </a-checkbox-group>
       </div>
 
@@ -93,7 +107,7 @@
           </a>
         </div>
         <show-dish :current_dishes="current_dishes"
-          :ListView="ListView" />
+                   :ListView="ListView"/>
       </div>
     </div>
   </section>
@@ -115,14 +129,13 @@
         ListView: true,
         MobileView: false,
         current_dishes: [],
-        info_restaurant: false,
         checkedCookingMethod: [],
         filter_cooking_method: false,
         filter_main_ingredient: false,
         checkedMainIngredient: [],
         show_filter_category: false,
         checkedCategory: [],
-        active: false
+        visible: false,
       }
     },
     mounted() {
@@ -150,10 +163,6 @@
       gridView() {
         this.ListView = false
       },
-      showInfoRestaurant() {
-        this.active = !this.active
-        this.info_restaurant = !this.info_restaurant
-      },
       filterCookingMethod() {
         this.filter_cooking_method = !this.filter_cooking_method
       },
@@ -165,10 +174,10 @@
       },
 
       async onChangefilter(checkedValues) {
-          let restaurant_id = this.$route.params.id
-          let cooking_method_ids = this.checkedCookingMethod
-          let main_ingredient_ids = this.checkedMainIngredient
-          let category_ids = this.checkedCategory
+        let restaurant_id = this.$route.params.id
+        let cooking_method_ids = this.checkedCookingMethod
+        let main_ingredient_ids = this.checkedMainIngredient
+        let category_ids = this.checkedCategory
 
         let response = await ApiCaller().post(URLS.DISHES_FILTER(), {
           restaurant_id,
@@ -180,10 +189,22 @@
       },
       resetFilter() {
         this.checkedCategory = []
-        this.checkedCookingMethod= []
+        this.checkedCookingMethod = []
         this.checkedMainIngredient = []
         this.fetchData()
-      }
+      },
+      hideInfo() {
+        this.visible = false;
+      },
+      closeFilterCookingMethod() {
+        this.filter_cooking_method = false
+      },
+      closeFilterMainIngredient() {
+        this.filter_main_ingredient = false
+      },
+      closeFilterCategory() {
+        this.show_filter_category = false
+      },
 
     },
   }
@@ -259,7 +280,7 @@
   .menu-page--wifi {
     font-size: 14px;
     font-weight: 500;
-    color: #ffff;
+    color: #000000;
   }
 
   .container-menu {
@@ -308,14 +329,48 @@
     background: #1890ff;
     color: #fff
   }
+
   .btn-filter:hover {
     background-color: #439cff;
   }
+
   .btn-reset {
     padding: 8px;
     border-radius: 6px;
     color: #fff
   }
+
+  .close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    width: 20px;
+    height: 32px;
+    opacity: 0.3;
+    z-index: 100
+  }
+
+  .close:hover {
+    opacity: 1;
+  }
+
+  .close:before, .close:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 21px;
+    width: 2px;
+    background-color: #333;
+  }
+
+  .close:before {
+    transform: rotate(45deg);
+  }
+
+  .close:after {
+    transform: rotate(-45deg);
+  }
+
   @media (min-width: 800px) {
     .menu-body {
       width: 50%;

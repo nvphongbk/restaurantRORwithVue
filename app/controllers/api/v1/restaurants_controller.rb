@@ -3,7 +3,7 @@
 module Api
   module V1
     class RestaurantsController < ApplicationController
-      skip_before_action :authenticate_request!, only: %w[index menus]
+      skip_before_action :authenticate_request!, only: %w[index menus dishes_filter]
       def index
         @restaurants = Restaurant.all.order(created_at: :desc)
         render json: @restaurants, status: 200
@@ -68,7 +68,7 @@ module Api
       private
 
       def restaurant_params
-        params.require(:restaurant).permit(:name, :address, :pass_wifi, :user_id)
+        params.require(:restaurant).permit(:name, :address, :pass_wifi, :phone, :user_id)
       end
     end
   end
