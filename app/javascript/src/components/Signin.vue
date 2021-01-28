@@ -3,7 +3,7 @@
     <a-alert
       v-show="isShowError"
       type="error"
-      message="Wrong password or account"
+      message="Sai email hoặc mật khẩu!"
       banner
     />
     <div class="container-form">
@@ -108,6 +108,12 @@
   .login-form-button
   {
     width: 100%;
+  }
+  @media (max-width: 767px) {
+    .container-form {
+      width: 75%;
+      margin: 0 auto;
+    }
   }
 </style>
 

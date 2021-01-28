@@ -13,6 +13,7 @@ import ImportMedia from "./components/common/ImportMedia"
 import {JWT_KEY} from "./utils/constant"
 import Menu from "./components/menu/Menu"
 import Contact from "./components/Contact"
+import Signup from "./components/Signup"
 
 Vue.use(VueRouter)
 const router = new VueRouter({
@@ -62,6 +63,15 @@ const router = new VueRouter({
       path: '/signin',
       name: 'SignIn',
       component: SignIn,
+      meta: {
+        openKey: 'SignIn',
+        guest: true
+      }
+    },
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: Signup,
       meta: {
         openKey: 'SignIn',
         guest: true
@@ -124,6 +134,9 @@ router.beforeEach((to, from, next) => {
   if (localStorage.getItem(JWT_KEY) == null) {
     if (to.name !== 'SignIn' && !to.matched.some(record => record.meta.guest)) {
       router.push('/signin')
+    }
+    else if(to.name == Signup){
+      router.push('/signup')
     }
     else if(to.name !== 'SignIn' && to.matched.some(record => record.meta.guest)) {
       next()

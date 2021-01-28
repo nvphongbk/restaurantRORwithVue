@@ -38,6 +38,8 @@ export const URLS = {
   SIGNIN: () => `${getBaseUrl()}/signin`,
   SIGNOUT: () => `${getBaseUrl()}/signout`,
 
+  SIGNUP: () => `${getBaseUrl()}/signup`,
+
   MENU: (id) => `${getBaseUrl()}/restaurants/${id}/menus`,
 
   RESTAURANT_URL: (id) => `${HOME_URL}/restaurants/${id}`,

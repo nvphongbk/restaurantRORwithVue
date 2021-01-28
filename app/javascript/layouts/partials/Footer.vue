@@ -35,7 +35,7 @@
     name: "Footer",
     data (){
       return {
-        logo: '/uploads/logo/logoRestaurant.png',
+        logo: '/uploads/logo/logo-ment.png',
       }
     },
   }
