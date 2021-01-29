@@ -30,6 +30,5 @@ class Restaurant < ApplicationRecord
   has_many :categories, dependent: :destroy
   has_many :cooking_methods, dependent: :destroy
   has_many :main_ingredients, dependent: :destroy
-
   has_many :dishes, through: :categories, dependent: :destroy
 end

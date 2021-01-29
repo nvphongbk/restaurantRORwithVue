@@ -4,19 +4,12 @@ module Api
   module V1
     class DishesController < ApplicationController
       def index
-        @restaurant_ids = current_user.restaurants&.pluck(:id)
-        @dishes = Dish.all.where(restaurant_id: @restaurant_ids).order(position: :asc, created_at: :desc)
+        @dishes = current_restaurant.dishes.includes(:images, :categories, :main_ingredient, :cooking_method)
+                                    .page(params[:page]).per(params[:perpage])
+                                    .order(position: :asc, created_at: :desc)
       end
 
       def show; end
-
-      def new
-        @dish = Dish.new
-      end
-
-      def edit
-        @dish = Dish.find(params[:id])
-      end
 
       def create
         dish = Dish.new(dish_params)

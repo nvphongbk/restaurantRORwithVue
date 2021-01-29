@@ -4,8 +4,7 @@ module Api
   module V1
     class ImportDataController < ApplicationController
       def create
-        restaurant = current_user.restaurants.find(params[:restaurant_id])
-        import_data_from(restaurant, params[:files][0], Dish::IMPORT_COLUMNS)
+        import_data_from(current_restaurant, params[:files][0], Dish::IMPORT_COLUMNS)
         response json: { status: :success }
       rescue StandardError
         render json: { status: :not_found }

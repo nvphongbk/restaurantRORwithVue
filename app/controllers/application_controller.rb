@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
   before_action :authenticate_request!
   include ApplicationHelper
 
-  attr_reader :current_user
+  attr_reader :current_user, :current_restaurant
 
   protected
 
@@ -14,6 +14,7 @@ class ApplicationController < ActionController::API
       return
     end
     @current_user = User.find(auth_token[:user_id])
+    @current_restaurant = @current_user.default_restaurant || @current_user.restaurants.first
   rescue JWT::VerificationError, JWT::DecodeError
     render json: { errors: ['Not Authenticated'] }, status: :unauthorized
   end

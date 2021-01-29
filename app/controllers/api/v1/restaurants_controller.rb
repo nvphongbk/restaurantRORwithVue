@@ -6,20 +6,11 @@ module Api
       skip_before_action :authenticate_request!, only: %w[menus dishes_filter]
 
       def index
-        @restaurants = current_user.restaurants.all.order(created_at: :desc)
+        @restaurants = current_user.restaurants.order(created_at: :desc)
         render json: @restaurants, status: 200
       end
 
-      def show;
-      end
-
-      def new
-        @restaurant = Restaurant.new
-      end
-
-      def edit
-        @restaurant = Restaurant.find(params[:id])
-      end
+      def show; end
 
       def create
         @restaurant = Restaurant.new(restaurant_params)
@@ -53,14 +44,12 @@ module Api
       end
 
       def main_ingredients
-        @restaurant = current_user.restaurants.find(params[:id])
-        @main_ingredients = @restaurant.main_ingredients
+        @main_ingredients = current_restaurant.main_ingredients
         render json: @main_ingredients, status: 200
       end
 
       def cooking_methods
-        @restaurant = current_user.restaurants.find(params[:id])
-        @cooking_methods = @restaurant.cooking_methods
+        @cooking_methods = current_restaurant.cooking_methods
         render json: @cooking_methods, status: 200
       end
 

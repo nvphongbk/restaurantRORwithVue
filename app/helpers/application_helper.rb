@@ -54,7 +54,6 @@ module ApplicationHelper
       dish.categories = @categories if @categories.present?
       dish.main_ingredient_id = @main_ingredient.id
       dish.cooking_method_id = @cooking_method.id
-      dish.restaurant_id = restaurant.id
       dish.save
       @images.update_all(dish_id: dish.id) if @images.present?
     end

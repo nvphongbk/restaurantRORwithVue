@@ -18,13 +18,6 @@
         <a-input placeholder="Nhập giá bán"
                  v-model="editItem.price"/>
       </a-form-model-item>
-      <a-form-model-item ref="restaurant" label="Tên nhà hàng" prop="restaurants">
-        <a-select v-model="editItem.restaurants" placeholder="Chọn nhà hàng" @change="handleChangeRestaurant">
-          <a-select-option v-for="restaurant in restaurants" :key="restaurant.id">
-            {{ restaurant.name }}
-          </a-select-option>
-        </a-select>
-      </a-form-model-item>
       <a-form-model-item label="Thành phần chính" prop="main_ingredient">
         <a-select v-model="editItem.main_ingredient_id" placeholder="Chọn thành phần chính">
           <a-select-option v-for="ingredient in ingredients" :key="ingredient.id">
@@ -83,9 +76,6 @@
   export default {
     name: "FormDish",
     props: {
-      restaurants: {
-        type: Array
-      },
       rules: {
         type: Object
       },

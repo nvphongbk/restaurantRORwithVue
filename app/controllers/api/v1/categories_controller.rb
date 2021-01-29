@@ -5,32 +5,23 @@ module Api
     class CategoriesController < ApplicationController
 
       def index
-        restaurant_ids = current_user.restaurants&.pluck(:id)
-        @categories = Category.all.where(restaurant_id: restaurant_ids).order(position: :asc, created_at: :desc)
+        @categories = current_restaurant.categories.order(position: :asc, created_at: :desc)
       end
 
       def show;
       end
 
-      def new
-        @category = Category.new
-      end
-
-      def edit
-        @category = Category.find(params[:id])
-      end
-
       def create
-        @category = Category.new(category_params)
+        @category = current_restaurant.categories.new(category_params)
         if @category.save
           render json: @category, status: 200
         else
-          render json: {message: "Can't create category"}, status: 422
+          render json: { message: "Can't create category" }, status: 422
         end
       end
 
       def update
-        @category = Category.find(params[:id])
+        @category = current_restaurant.categories.find params[:id]
         if @category.update(category_params)
           render json: @category, status: 200
         else
@@ -39,17 +30,17 @@ module Api
       end
 
       def destroy
-        @category = Category.find(params[:id])
+        @category = current_restaurant.categories.find(params[:id])
         render json: {status: 'ok deleted'}, status: 200 if @category.destroy
       end
 
       def dishes
-        @category = Category.find(params[:id])
+        @category = current_restaurant.categories.find(params[:id])
         @dishes = @category.dishes.includes(:images)
       end
 
       def change_active
-        @category = Category.find(params[:id])
+        @category = current_restaurant.categories.find(params[:id])
         if @category.update(is_active: params[:is_active])
           render json: {status: 'ok'}, status: 200
         else

@@ -16,11 +16,6 @@
 #  updated_at         :datetime         not null
 #  cooking_method_id  :integer
 #  main_ingredient_id :integer
-#  restaurant_id      :integer
-#
-# Indexes
-#
-#  index_dishes_on_restaurant_id  (restaurant_id)
 #
 class DishSerializer < ActiveModel::Serializer
   attributes :id, :name, :price, :category_ids, :images_attributes,

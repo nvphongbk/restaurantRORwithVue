@@ -5,22 +5,14 @@ module Api
     class MainIngredientsController < ApplicationController
 
       def index
-        @restaurant_ids = current_user.restaurants&.pluck(:id)
-        @main_ingredients = MainIngredient.all.where(restaurant_id: @restaurant_ids).order(position: :asc, name: :asc)
+        @main_ingredients = current_restaurant.main_ingredients
+                                              .order(position: :asc, name: :asc)
       end
 
       def show; end
 
-      def new
-        @main_ingredient = MainIngredient.new
-      end
-
-      def edit
-        @main_ingredient = MainIngredient.find(params[:id])
-      end
-
       def create
-        @main_ingredient = MainIngredient.new(main_ingredient_params)
+        @main_ingredient = current_restaurant.main_ingredients.new(main_ingredient_params)
 
         if @main_ingredient.save
           render json: @main_ingredient, status: 200
@@ -30,7 +22,7 @@ module Api
       end
 
       def update
-        @main_ingredient = MainIngredient.find(params[:id])
+        @main_ingredient = current_restaurant.main_ingredients.find(params[:id])
         if @main_ingredient.update(main_ingredient_params)
           render json: @main_ingredient, status: 200
         else
@@ -39,12 +31,12 @@ module Api
       end
 
       def destroy
-        @main_ingredient = MainIngredient.find(params[:id])
+        @main_ingredient = current_restaurant.main_ingredients.find(params[:id])
         render json: { status: 'ok' }, status: 200 if @main_ingredient.destroy
       end
 
       def change_active
-        main_ingredient = MainIngredient.find(params[:id])
+        main_ingredient = current_restaurant.main_ingredients.find(params[:id])
         if main_ingredient.update(is_active: params[:is_active])
           render json: { status: 'ok' }, status: 200
         else
