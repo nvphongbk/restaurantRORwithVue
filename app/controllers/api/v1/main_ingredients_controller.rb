@@ -3,9 +3,10 @@
 module Api
   module V1
     class MainIngredientsController < ApplicationController
-      skip_before_action :authenticate_request!, only: %w[index menus]
+
       def index
-        @main_ingredients = MainIngredient.all.includes(:restaurant).order(position: :asc, name: :asc)
+        @restaurant_ids = current_user.restaurants&.pluck(:id)
+        @main_ingredients = MainIngredient.all.where(restaurant_id: @restaurant_ids).order(position: :asc, name: :asc)
       end
 
       def show; end

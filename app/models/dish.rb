@@ -16,6 +16,11 @@
 #  updated_at         :datetime         not null
 #  cooking_method_id  :integer
 #  main_ingredient_id :integer
+#  restaurant_id      :integer
+#
+# Indexes
+#
+#  index_dishes_on_restaurant_id  (restaurant_id)
 #
 class Dish < ApplicationRecord
   IMPORT_COLUMNS = { name: 'name', price: 'price', image: 'image', category: 'category',
@@ -27,8 +32,10 @@ class Dish < ApplicationRecord
   has_many :categories, through: :category_dishes
   belongs_to :main_ingredient, optional: true
   belongs_to :cooking_method, optional: true
+  belongs_to :restaurant, optional: true
   accepts_nested_attributes_for :main_ingredient
   accepts_nested_attributes_for :cooking_method
+  accepts_nested_attributes_for :restaurant
 
   validates :name, :price, presence: false
 

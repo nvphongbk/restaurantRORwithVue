@@ -4,7 +4,8 @@ module Api
   module V1
     class DishesController < ApplicationController
       def index
-        @dishes = Dish.all.order(position: :asc, created_at: :desc)
+        @restaurant_ids = current_user.restaurants&.pluck(:id)
+        @dishes = Dish.all.where(restaurant_id: @restaurant_ids).order(position: :asc, created_at: :desc)
       end
 
       def show; end
@@ -54,7 +55,7 @@ module Api
       private
 
       def dish_params
-        params.require(:dish).permit(:name, :dish_code, :price, :position, :is_active,
+        params.require(:dish).permit(:name, :dish_code, :price, :position, :is_active, :restaurant_id,
                                      :main_ingredient_id, :cooking_method_id, category_ids: [])
       end
     end

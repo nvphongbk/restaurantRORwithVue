@@ -9,6 +9,7 @@ json.array! @dishes do |dish|
   json.price dish.price
   json.main_ingredient_id dish.main_ingredient&.id
   json.cooking_method_id dish.cooking_method&.id
+  json.restaurant_id dish.restaurant&.id
   json.main_ingredient do
     json.id dish.main_ingredient&.id
     json.name dish.main_ingredient&.name

@@ -3,10 +3,10 @@
 module Api
   module V1
     class CookingMethodsController < ApplicationController
-      skip_before_action :authenticate_request!
 
       def index
-        @cooking_methods = CookingMethod.all.includes(:restaurant).order(position: :asc, name: :asc)
+        @restaurant_ids = current_user.restaurants&.pluck(:id)
+        @cooking_methods = CookingMethod.all.where(restaurant_id: @restaurant_ids).order(position: :asc, name: :asc)
       end
 
       def show

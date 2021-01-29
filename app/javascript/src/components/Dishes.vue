@@ -61,6 +61,7 @@
             :editItem="editItem"
             :isAddNew="isAddNew"
             :isEdit="isEdit"
+            :restaurants="restaurants"
             @updateVisible="updateVisible"
             @updateListAfterUpdated="updateListAfterUpdated"
             @getDataRestaurant="getDataRestaurant"
@@ -123,6 +124,7 @@
     image_ids: [],
     position: undefined,
     is_active: true,
+    restaurant_id: [],
   }
   export default {
     name: "Dishes",
@@ -137,19 +139,10 @@
           name: [
             {
               required: true,
-              message: 'Please input name', trigger: 'blur'
-            },
-            {
-              min: 3,
-              message: 'Length should be 3',
-              trigger: 'blur'
+              message: 'Vui lòng nhập tên món ăn', trigger: 'blur'
             },
           ],
-          restaurant: [{
-            required: false,
-            message: 'Please select Restaurant',
-            trigger: 'change'
-          }],
+          restaurants: [{required: true, message: 'Vui lòng chọn nhà hàng', trigger: 'blur'}]
 
         },
         editItem: {},
@@ -163,17 +156,18 @@
             scopedSlots: {customRender: "image"},
           },
           {
-            title: 'Danh mục thực đơn',
-            dataIndex: 'categories',
-            scopedSlots: { customRender: 'categories' }
-          },
-          {
             title: 'Tên món ăn',
             dataIndex: 'name',
           },
+
           {
             title: 'Giá bán',
             dataIndex: 'price',
+          },
+          {
+            title: 'Danh mục thực đơn',
+            dataIndex: 'categories',
+            scopedSlots: {customRender: 'categories'}
           },
           {
             title: 'Thành phần chính',
@@ -209,11 +203,11 @@
         return this.isEdit ? 'Edit Dish' : 'Create Dish'
       },
       onSearch() {
-        if(this.search){
-          return this.desserts.filter((item)=>{
+        if (this.search) {
+          return this.desserts.filter((item) => {
             return this.search.toLowerCase().split(' ').every(v => item.name.toLowerCase().includes(v))
           })
-        }else{
+        } else {
           return this.desserts;
         }
       }
@@ -245,12 +239,13 @@
         this.visible = true;
         this.isAddNew = false
         this.editItem = Object.assign({}, record);
+        console.log(this.editItem, 1)
       },
       updateVisible(value) {
         this.visible = value;
       },
       deleteDish(item) {
-          ApiCaller().delete(URLS.DISH(item.id))
+        ApiCaller().delete(URLS.DISH(item.id))
           .then((res) => {
             this.$message.success('Deleted success');
             this.initialize()

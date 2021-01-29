@@ -3,9 +3,8 @@
 module Api
   module V1
     class ImportDataController < ApplicationController
-      skip_before_action :authenticate_request!
       def create
-        restaurant = Restaurant.find(params[:restaurant_id])
+        restaurant = current_user.restaurants.find(params[:restaurant_id])
         import_data_from(restaurant, params[:files][0], Dish::IMPORT_COLUMNS)
         response json: { status: :success }
       rescue StandardError
