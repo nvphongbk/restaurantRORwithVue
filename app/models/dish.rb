@@ -20,15 +20,12 @@
 class Dish < ApplicationRecord
   IMPORT_COLUMNS = { name: 'name', price: 'price', image: 'image', category: 'category',
                      cooking_method: 'cooking_method', main_ingredient: 'main_ingredient', unit: 'unit', quantity: 'quantity' }.freeze
-
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   has_many :category_dishes, dependent: :destroy
   has_many :categories, through: :category_dishes
   belongs_to :main_ingredient, optional: true
   belongs_to :cooking_method, optional: true
-  accepts_nested_attributes_for :main_ingredient
-  accepts_nested_attributes_for :cooking_method
 
   validates :name, :price, presence: false
 

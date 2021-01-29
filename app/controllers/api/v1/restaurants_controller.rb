@@ -3,21 +3,14 @@
 module Api
   module V1
     class RestaurantsController < ApplicationController
-      skip_before_action :authenticate_request!, only: %w[index menus dishes_filter]
+      skip_before_action :authenticate_request!, only: %w[menus dishes_filter]
+
       def index
-        @restaurants = Restaurant.all.order(created_at: :desc)
+        @restaurants = current_user.restaurants.order(created_at: :desc)
         render json: @restaurants, status: 200
       end
 
       def show; end
-
-      def new
-        @restaurant = Restaurant.new
-      end
-
-      def edit
-        @restaurant = Restaurant.find(params[:id])
-      end
 
       def create
         @restaurant = Restaurant.new(restaurant_params)
@@ -26,7 +19,7 @@ module Api
         if @restaurant.save
           render json: @restaurant, status: 200
         else
-          render json: { message: "Can't create restaurant" }, status: 422
+          render json: {message: "Can't create restaurant"}, status: 422
         end
       end
 
@@ -35,19 +28,29 @@ module Api
         if @restaurant.update(restaurant_params)
           render json: @restaurant, status: 200
         else
-          render json: { message: "Can't not update restaurant" }, status: 422
+          render json: {message: "Can't not update restaurant"}, status: 422
         end
       end
 
       def destroy
         @restaurant = Restaurant.find(params[:id])
-        render json: { status: 'ok' }, status: 200 if @restaurant.destroy
+        render json: {status: 'ok'}, status: 200 if @restaurant.destroy
       end
 
       def categories
-        @restaurant = Restaurant.find(params[:id])
+        @restaurant = current_user.restaurants.find(params[:id])
         @categories = @restaurant.categories
-        render json: @categories
+        render json: @categories, status: 200
+      end
+
+      def main_ingredients
+        @main_ingredients = current_restaurant.main_ingredients
+        render json: @main_ingredients, status: 200
+      end
+
+      def cooking_methods
+        @cooking_methods = current_restaurant.cooking_methods
+        render json: @cooking_methods, status: 200
       end
 
       def menus

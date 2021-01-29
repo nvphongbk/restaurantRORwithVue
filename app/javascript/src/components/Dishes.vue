@@ -7,19 +7,6 @@
                     show-search
                     option-filter-prop="children"
                     :filter-option="filterOption"
-                    placeholder="Chọn nhà hàng"
-                    @change="handleChangeRestaurant"
-          >
-            <a-select-option v-for="restaurant in restaurants"
-                             :value="restaurant.id" :key="restaurant.id">
-              {{ restaurant.name }}
-            </a-select-option>
-          </a-select>
-
-          <a-select style="width: 300px"
-                    show-search
-                    option-filter-prop="children"
-                    :filter-option="filterOption"
                     placeholder="Chọn danh mục"
                     @change="handleChangeCategory"
           >
@@ -51,7 +38,6 @@
                  :footer="null">
           <ImportDish
             @updateListAfterUpdated="updateListAfterUpdated"
-            :restaurants="restaurants"
           />
         </a-modal>
         <a-modal v-model="visible" :title="titleModal" :footer="null">
@@ -63,12 +49,12 @@
             :isEdit="isEdit"
             @updateVisible="updateVisible"
             @updateListAfterUpdated="updateListAfterUpdated"
-            @getDataRestaurant="getDataRestaurant"
           />
         </a-modal>
         <a-table bordered :data-source="onSearch"
                  :columns="columns"
                  :row-key="(record) => record.id"
+                 :pagination="false"
         >
           <template slot="categories" slot-scope="text, record">
             <div v-for="desert in text" :key="desert.id">
@@ -101,6 +87,14 @@
             </a-popconfirm>
           </template>
         </a-table>
+        <a-pagination size="small"
+                      :total="total"
+                      v-model="current_page"
+                      show-size-changer
+                      :pageSize="perpage"
+                      :show-total="(total) => `Total ${total} items`"
+                      @change="changePage"
+                      @showSizeChange="changePageSize"/>
       </div>
     </div>
   </a-layout-content>
@@ -119,38 +113,36 @@
     category_ids: [],
     main_ingredient_id: undefined,
     cooking_method_id: undefined,
-    images_attributes: [],
+    images_attributes: [
+      {
+        id: undefined,
+        name: undefined,
+        url: undefined
+      }
+    ],
     image_ids: [],
     position: undefined,
     is_active: true,
+    restaurant_id: [],
   }
   export default {
     name: "Dishes",
     data() {
       return {
+        current_page: 1,
+        total: 0,
+        perpage: 20,
         search: '',
         visibleImportDish: false,
         isAddNew: false,
         categories: [],
-        restaurants: [],
         rules: {
           name: [
             {
               required: true,
-              message: 'Please input name', trigger: 'blur'
-            },
-            {
-              min: 3,
-              message: 'Length should be 3',
-              trigger: 'blur'
+              message: 'Vui lòng nhập tên món ăn', trigger: 'blur'
             },
           ],
-          restaurant: [{
-            required: false,
-            message: 'Please select Restaurant',
-            trigger: 'change'
-          }],
-
         },
         editItem: {},
         isEdit: false,
@@ -159,21 +151,22 @@
         columns: [
           {
             title: 'Ảnh món ăn',
-            dataIndex: 'images_attributes[0].url',
+            dataIndex: 'images_attribute[0].url',
             scopedSlots: {customRender: "image"},
-          },
-          {
-            title: 'Danh mục thực đơn',
-            dataIndex: 'categories',
-            scopedSlots: { customRender: 'categories' }
           },
           {
             title: 'Tên món ăn',
             dataIndex: 'name',
           },
+
           {
             title: 'Giá bán',
             dataIndex: 'price',
+          },
+          {
+            title: 'Danh mục thực đơn',
+            dataIndex: 'categories',
+            scopedSlots: {customRender: 'categories'}
           },
           {
             title: 'Thành phần chính',
@@ -209,24 +202,24 @@
         return this.isEdit ? 'Edit Dish' : 'Create Dish'
       },
       onSearch() {
-        if(this.search){
-          return this.desserts.filter((item)=>{
+        if (this.search) {
+          return this.desserts.filter((item) => {
             return this.search.toLowerCase().split(' ').every(v => item.name.toLowerCase().includes(v))
           })
-        }else{
+        } else {
           return this.desserts;
         }
       }
     },
     mounted() {
       this.initialize()
-      this.getDataRestaurant()
     },
     methods: {
       initialize() {
-        return ApiCaller().get(URLS.DISHES())
+        return ApiCaller().get(URLS.DISHES(), {params: {page: this.current_page, perpage: this.perpage}})
           .then(response => {
-            this.desserts = response.data;
+            this.desserts = response.data.dishes;
+            this.total = response.data.total
           })
           .catch(e => {
           });
@@ -245,12 +238,13 @@
         this.visible = true;
         this.isAddNew = false
         this.editItem = Object.assign({}, record);
+        console.log(this.editItem, 1)
       },
       updateVisible(value) {
         this.visible = value;
       },
       deleteDish(item) {
-          ApiCaller().delete(URLS.DISH(item.id))
+        ApiCaller().delete(URLS.DISH(item.id))
           .then((res) => {
             this.$message.success('Deleted success');
             this.initialize()
@@ -260,14 +254,6 @@
       },
       updateListAfterUpdated() {
         this.initialize()
-      },
-      getDataRestaurant() {
-        return ApiCaller().get(URLS.RESTAURANTS())
-          .then(response => {
-            this.restaurants = response.data;
-          })
-          .catch(e => {
-          });
       },
       getDataCategory(value) {
         return ApiCaller().get(URLS.RESTAURANT_SEARCH(value))
@@ -297,6 +283,14 @@
         this.searchDish(value)
       },
       showAllDish() {
+        this.initialize()
+      },
+      changePage(value) {
+        this.current_page = value
+        this.initialize()
+      },
+      changePageSize(value, pageSize) {
+        this.perpage = pageSize
         this.initialize()
       },
       async changeIsActive(item) {

@@ -3,26 +3,18 @@
 module Api
   module V1
     class CookingMethodsController < ApplicationController
-      skip_before_action :authenticate_request!
 
       def index
-        @cooking_methods = CookingMethod.all.includes(:restaurant).order(position: :asc, name: :asc)
+        @restaurant_ids = current_user.restaurants&.pluck(:id)
+        @cooking_methods = current_restaurant.cooking_methods.order(position: :asc, name: :asc)
       end
 
       def show
-        @cooking_method = CookingMethod.find(params[:id])
-      end
-
-      def new
-        @cooking_method = CookingMethod.new
-      end
-
-      def edit
-        @cooking_method = CookingMethod.find(params[:id])
+        @cooking_method = current_restaurant.cooking_methods.find(params[:id])
       end
 
       def create
-        @cooking_method = CookingMethod.new(cooking_method_params)
+        @cooking_method = current_restaurant.cooking_methods.new(cooking_method_params)
 
         if @cooking_method.save
           render json: @cooking_method, status: 200
@@ -32,7 +24,7 @@ module Api
       end
 
       def update
-        @cooking_method = CookingMethod.find(params[:id])
+        @cooking_method = current_restaurant.cooking_methods.find(params[:id])
         if @cooking_method.update(cooking_method_params)
           render json: @cooking_method, status: 200
         else
@@ -41,12 +33,12 @@ module Api
       end
 
       def destroy
-        @cooking_method = CookingMethod.find(params[:id])
+        @cooking_method = current_restaurant.cooking_methods.find(params[:id])
         render json: { status: 'ok' }, status: 200 if @cooking_method.destroy
       end
 
       def change_active
-        cooking_method = CookingMethod.find(params[:id])
+        cooking_method = current_restaurant.cooking_methods.find(params[:id])
         if cooking_method.update(is_active: params[:is_active])
           render json: { status: 'ok' }, status: 200
         else
@@ -55,7 +47,7 @@ module Api
       end
 
       def dishes
-        @cooking_method = CookingMethod.find(params[:id])
+        @cooking_method = current_restaurant.cooking_methods.find(params[:id])
         @dishes = @cooking_method.dishes.includes(:images)
         render json: @dishes
       end

@@ -1,4 +1,4 @@
-import { HOME_URL } from "./constant";
+import {HOME_URL} from "./constant";
 
 export const getBaseUrl = () => {
   return "/api/v1"
@@ -7,6 +7,8 @@ export const URLS = {
   RESTAURANTS: () => `${getBaseUrl()}/restaurants`,
   RESTAURANT: (id) => `${getBaseUrl()}/restaurants/${id}`,
   RESTAURANT_SEARCH: (id) => `${getBaseUrl()}/restaurants/${id}/categories`,
+  RESTAURANT_COOKINGMETHOD: (id) => `${getBaseUrl()}/restaurants/${id}/cooking_methods`,
+  RESTAURANT_MAININGREDIENT: (id) => `${getBaseUrl()}/restaurants/${id}/main_ingredients`,
 
 
   CATEGORIES: () => `${getBaseUrl()}/categories`,
@@ -20,7 +22,7 @@ export const URLS = {
   DISHES: () => `${getBaseUrl()}/dishes`,
   DISH: (id) => `${getBaseUrl()}/dishes/${id}`,
   DISH_CHANGE_ACTIVE: (id) => `${getBaseUrl()}/dishes/${id}/change_active`,
-  DISHES_FILTER: (id) =>`${getBaseUrl()}/restaurants/${id}/dishes_filter`,
+  DISHES_FILTER: (id) => `${getBaseUrl()}/restaurants/${id}/dishes_filter`,
 
   IMAGES: () => `${getBaseUrl()}/images`,
 
@@ -31,7 +33,7 @@ export const URLS = {
   COOKING_METHODS: () => `${getBaseUrl()}/cooking_methods`,
   COOKING_METHOD: (id) => `${getBaseUrl()}/cooking_methods/${id}`,
   COOKING_METHOD_CHANGE_ACTIVE: (id) => `${getBaseUrl()}/cooking_methods/${id}/change_active`,
-  COOKING_METHOD_DISHES: (id) =>`${getBaseUrl()}/cooking_methods/${id}/dishes`,
+  COOKING_METHOD_DISHES: (id) => `${getBaseUrl()}/cooking_methods/${id}/dishes`,
 
   FILE_XAMPLE_IMPORT_DATA: () => `form-data.xlsx`,
 

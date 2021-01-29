@@ -34,7 +34,7 @@
         </a-select>
       </a-form-model-item>
       <a-form-model-item label="Kích hoạt" prop="isActive">
-        <a-switch v-model="editItem.is_active" />
+        <a-switch v-model="editItem.is_active"/>
       </a-form-model-item>
       <a-form-model-item label="Vị trí" prop="position">
         <a-input placeholder="Vị trí xuất hiện"
@@ -72,12 +72,10 @@
   import {URLS} from "../../utils/url"
   import UploadImage from "../UploadImage"
   import AFormModelItem from "ant-design-vue/es/form-model/FormItem";
+
   export default {
     name: "FormDish",
     props: {
-      restaurants: {
-        type: Array
-      },
       rules: {
         type: Object
       },
@@ -118,7 +116,7 @@
     watch: {
       visible: {
         handler: function () {
-          if(this.isAddNew) {
+          if (this.isAddNew) {
             this.$refs.refUploadImage.initializeImages()
           }
         }
@@ -126,24 +124,25 @@
     },
     methods: {
       fetchData() {
-        this.getIngredients()
         this.callDataRestaurant()
-        this.getDataCategory()
-        this.getCookingMethods()
       },
-      async getIngredients() {
-        let response = await ApiCaller().get(URLS.MAIN_INGREDIENTS())
+      async getCategories(value) {
+        let response = await ApiCaller().get(URLS.RESTAURANT_SEARCH(value))
+        this.categories = response.data
+      },
+      async getIngredients(value) {
+        let response = await ApiCaller().get(URLS.RESTAURANT_MAININGREDIENT(value))
         this.ingredients = response.data
       },
-      async getCookingMethods() {
-        let response = await ApiCaller().get(URLS.COOKING_METHODS())
+      async getCookingMethods(value) {
+        let response = await ApiCaller().get(URLS.RESTAURANT_COOKINGMETHOD(value))
         this.cooking_methods = response.data
       },
       create(item) {
         this.isEdit = false
         ApiCaller().post(URLS.DISHES(), {
-            dish: item
-          })
+          dish: item
+        })
           .then(response => {
             this.$message.success('Cập nhật thành công');
             this.$emit('updateListAfterUpdated', this.editItem);
@@ -157,9 +156,9 @@
             let valuesSave = Object.assign({}, this.editItem)
             if (this.isEdit) {
               let idItem = this.editItem.id
-                ApiCaller().put(URLS.DISH(idItem), {
-                  dish: valuesSave
-                })
+              ApiCaller().put(URLS.DISH(idItem), {
+                dish: valuesSave
+              })
                 .then(response => {
                   this.$message.success('Updated success')
                   this.$emit('updateListAfterUpdated', this.editItem);
@@ -186,18 +185,15 @@
           option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0
         );
       },
-      getDataCategory() {
-        return ApiCaller().get(URLS.CATEGORIES())
-          .then(response => {
-            this.categories = response.data;
-          })
-          .catch(e => {
-          });
-      },
       onChange(checkedValues) {
       },
       updateImageList(list) {
         this.editItem.images_ids = list
+      },
+      handleChangeRestaurant(value) {
+        this.getCategories(value)
+        this.getCookingMethods(value)
+        this.getIngredients(value)
       }
     },
   };

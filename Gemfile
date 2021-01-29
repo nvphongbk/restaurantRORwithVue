@@ -38,6 +38,7 @@ gem 'foreman'
 gem 'friendly_id'
 gem 'jsonapi-rails'
 gem 'jwt'
+gem 'kaminari'
 gem 'rubyXL'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

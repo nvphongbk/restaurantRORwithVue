@@ -26,7 +26,6 @@ module ApplicationHelper
             @images = Image.where(image_name: image_names)
           end
         when 'category'
-
           category_names = if value.blank?
                              ['Khác']
                            else
@@ -48,7 +47,7 @@ module ApplicationHelper
           main_ingredient_name = value || 'Khác'
           @main_ingredient = restaurant.main_ingredients.find_or_create_by(name: main_ingredient_name)
         else
-          current_row.merge!({ key => value }) if value.present?
+          current_row.merge!({key => value}) if value.present?
         end
       end
       dish = Dish.new(current_row)
@@ -58,8 +57,8 @@ module ApplicationHelper
       dish.save
       @images.update_all(dish_id: dish.id) if @images.present?
     end
-    { status: true, message: 'Hoàn thành' }
+    {status: true, message: 'Hoàn thành'}
   rescue StandardError => e
-    { status: false, message: e.message }
+    {status: false, message: e.message}
   end
 end

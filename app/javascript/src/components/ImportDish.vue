@@ -4,13 +4,6 @@
       <a-icon type="download" @click="downloadSampleform()" />
     </p>
     <br>
-    <a-form-item label="Chọn quán:">
-      <a-select v-model="restaurant_id" style="width: 300px" placeholder="Vui lòng chọn quán">
-        <a-select-option v-for="restaurant in restaurants" :key="restaurant.id" >
-          {{ restaurant.name }}
-        </a-select-option>
-      </a-select>
-    </a-form-item>
     <a-upload :file-list="fileList" :remove="handleRemove"
               :before-upload="beforeUpload">
       <a-button :disabled="fileList.length > 0">

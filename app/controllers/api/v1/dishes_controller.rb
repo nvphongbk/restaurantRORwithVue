@@ -4,18 +4,12 @@ module Api
   module V1
     class DishesController < ApplicationController
       def index
-        @dishes = Dish.all.order(position: :asc, created_at: :desc)
+        @dishes = current_restaurant.dishes.includes(:images, :categories, :main_ingredient, :cooking_method)
+                                    .page(params[:page]).per(params[:perpage])
+                                    .order(position: :asc, created_at: :desc)
       end
 
       def show; end
-
-      def new
-        @dish = Dish.new
-      end
-
-      def edit
-        @dish = Dish.find(params[:id])
-      end
 
       def create
         dish = Dish.new(dish_params)
@@ -54,7 +48,7 @@ module Api
       private
 
       def dish_params
-        params.require(:dish).permit(:name, :dish_code, :price, :position, :is_active,
+        params.require(:dish).permit(:name, :dish_code, :price, :position, :is_active, :restaurant_id,
                                      :main_ingredient_id, :cooking_method_id, category_ids: [])
       end
     end
