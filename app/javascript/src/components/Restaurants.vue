@@ -112,6 +112,10 @@
             dataIndex: 'created_at',
           },
           {
+            title: 'Đường dẫn',
+            dataIndex: 'slug',
+          },
+          {
             title: 'Địa chỉ ',
             dataIndex: 'address',
           },

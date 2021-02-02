@@ -9,12 +9,12 @@
         <a-col :span="24">
           <div>
             <a-popover v-model="visible"
-                       :title=menu.name trigger="click">
+                       :title=restaurant.name trigger="click">
               <template slot="content">
                 <div class="text-left">
-                  <p>Địa chỉ: {{menu.address}}</p>
-                  <p>Pass Wifi: {{menu.pass_wifi}}</p>
-                  <p>Số điện thoại: {{menu.phone}}</p>
+                  <p>Địa chỉ: {{restaurant.address}}</p>
+                  <p>Pass Wifi: {{restaurant.pass_wifi}}</p>
+                  <p>Số điện thoại: {{restaurant.phone}}</p>
                 </div>
                 <div class="text-right">
                   <a-button class="mt-3" @click="hideInfo" type="primary">
@@ -35,11 +35,11 @@
       <!--cooking method-->
       <div v-if="filter_cooking_method" class="bg-yellow-200 text-center w-1/2 m-auto my-3 position: relative">
         <a @click="closeFilterCookingMethod" class="close"></a>
-        <a-checkbox-group @change="onChangefilter" v-model="checkedCookingMethod">
+        <a-checkbox-group @change="fetchData" v-model="queryParams.cooking_method_ids">
           <a-row>
             <a-col class="pt-3 mt-4" :span="24">
-              <a-checkbox v-for="(cookingMethod, index) in menu.cooking_methods" :value="cookingMethod.id"
-                          :key="index" name="cooking_methods[]">
+              <a-checkbox v-for="(cookingMethod, index) in cooking_methods" :value="cookingMethod.id"
+                          :key="index" name="cooking_methods">
                 <div>
                   {{ cookingMethod.name }}
                 </div>
@@ -53,10 +53,10 @@
       <!--main ingredient-->
       <div v-if="filter_main_ingredient" class="bg-yellow-200 text-center w-1/2 m-auto my-3 position: relative">
         <a href="#" @click="closeFilterMainIngredient" class="close"></a>
-        <a-checkbox-group @change="onChangefilter" v-model="checkedMainIngredient">
+        <a-checkbox-group @change="fetchData" v-model="queryParams.main_ingredient_ids">
           <a-row>
             <a-col class="pt-3 mt-4" :span="24">
-              <a-checkbox :span="24" v-for="(mainIngredient, index) in menu.main_ingredients"
+              <a-checkbox :span="24" v-for="(mainIngredient, index) in main_ingredients"
                           :value="mainIngredient.id"
                           :key="index">
                 <div>
@@ -71,10 +71,10 @@
       <!--category-->
       <div v-if="show_filter_category" class="bg-yellow-200 text-center w-1/2 m-auto my-3 position: relative">
         <a href="#" @click="closeFilterCategory" class="close"></a>
-        <a-checkbox-group @change="onChangefilter" v-model="checkedCategory">
+        <a-checkbox-group @change="fetchData" v-model="queryParams.category_ids">
           <a-row>
             <a-col class="pt-3 mt-4" :span="24">
-              <a-checkbox :span="24" v-for="(category, index) in menu.categories" :value="category.id"
+              <a-checkbox :span="24" v-for="(category, index) in categories" :value="category.id"
                           :key="index">
                 <div>
                   {{ category.name }}
@@ -108,6 +108,7 @@
         </div>
         <show-dish :current_dishes="current_dishes"
                    :ListView="ListView"/>
+        <a-pagination v-model="current_page" :total="total" @change="changePage" :show-total="(total) => `Tổng ${total} món`" />
       </div>
     </div>
   </section>
@@ -119,8 +120,13 @@
   import ACol from "ant-design-vue/es/grid/Col";
   import Navigation from "../../../layouts/partials/Navigation";
   import ShowDish from "./ShowDish"
+  const resetParamsQuery = {
+      main_ingredient_ids: [],
+      cooking_method_ids: [],
+      category_ids: []
+  }
 
-  export default {
+    export default {
     name: "Menu",
     components: {Navigation, ACol, ShowDish},
     data() {
@@ -130,32 +136,61 @@
         MobileView: false,
         current_dishes: [],
         checkedCookingMethod: [],
+        cooking_methods: [],
+        categories: [],
+        restaurant: {},
+        main_ingredients: [],
         filter_cooking_method: false,
         filter_main_ingredient: false,
         checkedMainIngredient: [],
         show_filter_category: false,
         checkedCategory: [],
         visible: false,
+        current_page: 1,
+        per_page: 20,
+        total: 0,
+        queryParams: {...resetParamsQuery}
       }
     },
     mounted() {
       this.fetchData();
-    },
-    computed: {
-      allDishes: function () {
-        return this.menu.categories.map(e => e.dishes).flat()
-      },
+      this.fetchInfo();
     },
     methods: {
-      fetchData() {
-        return ApiCaller().get(URLS.MENU(this.$route.params.id))
+      fetchInfo() {
+        return ApiCaller().get(URLS.GUEST_RESTAURANT_INFO(this.restaurant.id))
           .then(response => {
-            this.menu = response.data.restaurant;
-            this.current_dishes = this.allDishes
+            this.cooking_methods = response.data.cooking_methods
+            this.restaurant = response.data.restaurant
+            this.categories = response.data.categories
+            this.main_ingredients = response.data.main_ingredients
           })
           .catch(e => {
             console.log(e);
           });
+      },
+      fetchData() {
+        return ApiCaller().get(URLS.GUEST_DISHES(this.$route.params.id),
+          {
+            params: Object.assign({},
+              {page: this.current_page, per_page: this.per_page},
+              {
+                categories: { id: this.queryParams.category_ids},
+                main_ingredient_id: this.queryParams.main_ingredient_ids,
+                cooking_method_id: this.queryParams.cooking_method_ids
+              })
+          })
+          .then(response => {
+            this.current_dishes = response.data.dishes
+            this.total = response.data.total
+          })
+          .catch(e => {
+            console.log(e);
+          })
+      },
+      changePage(value) {
+        this.current_page = value
+        this.fetchData()
       },
       listView() {
         this.ListView = true
@@ -172,25 +207,8 @@
       filterCategory() {
         this.show_filter_category = !this.show_filter_category
       },
-
-      async onChangefilter(checkedValues) {
-        let restaurant_id = this.$route.params.id
-        let cooking_method_ids = this.checkedCookingMethod
-        let main_ingredient_ids = this.checkedMainIngredient
-        let category_ids = this.checkedCategory
-
-        let response = await ApiCaller().post(URLS.DISHES_FILTER(), {
-          restaurant_id,
-          cooking_method_ids,
-          main_ingredient_ids,
-          category_ids
-        })
-        this.current_dishes = response.data
-      },
       resetFilter() {
-        this.checkedCategory = []
-        this.checkedCookingMethod = []
-        this.checkedMainIngredient = []
+        this.queryParams = {...resetParamsQuery}
         this.fetchData()
       },
       hideInfo() {

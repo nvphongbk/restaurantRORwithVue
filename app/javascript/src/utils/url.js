@@ -4,6 +4,7 @@ export const getBaseUrl = () => {
   return "/api/v1"
 };
 export const URLS = {
+  GUEST_RESTAURANTS: () => `${getBaseUrl()}/restaurants/guest_index`,
   RESTAURANTS: () => `${getBaseUrl()}/restaurants`,
   RESTAURANT: (id) => `${getBaseUrl()}/restaurants/${id}`,
   RESTAURANT_SEARCH: (id) => `${getBaseUrl()}/restaurants/${id}/categories`,
@@ -22,7 +23,8 @@ export const URLS = {
   DISHES: () => `${getBaseUrl()}/dishes`,
   DISH: (id) => `${getBaseUrl()}/dishes/${id}`,
   DISH_CHANGE_ACTIVE: (id) => `${getBaseUrl()}/dishes/${id}/change_active`,
-  DISHES_FILTER: (id) => `${getBaseUrl()}/restaurants/${id}/dishes_filter`,
+  GUEST_DISHES: (id) => `${getBaseUrl()}/restaurants/${id}/guest_dishes`,
+  GUEST_RESTAURANT_INFO: (id) => `${getBaseUrl()}/restaurants/${id}/guest_restaurant_info`,
 
   IMAGES: () => `${getBaseUrl()}/images`,
 
@@ -41,11 +43,7 @@ export const URLS = {
   SIGNOUT: () => `${getBaseUrl()}/signout`,
 
   SIGNUP: () => `${getBaseUrl()}/signup`,
-
-  MENU: (id) => `${getBaseUrl()}/restaurants/${id}/menus`,
-
   RESTAURANT_URL: (id) => `${HOME_URL}/restaurants/${id}`,
-
   MESSAGES: () => `${getBaseUrl()}/messages`,
   MESSAGE: (id) => `${getBaseUrl()}/messages/${id}`,
   MESSAGE_CONTACT: () => `${getBaseUrl()}/messages`,

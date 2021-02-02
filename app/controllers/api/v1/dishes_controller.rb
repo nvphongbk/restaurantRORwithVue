@@ -5,7 +5,7 @@ module Api
     class DishesController < ApplicationController
       def index
         @dishes = current_restaurant.dishes.includes(:images, :categories, :main_ingredient, :cooking_method)
-                                    .page(params[:page]).per(params[:perpage])
+                                    .page(params[:page]).per(params[:per_page])
                                     .order(position: :asc, created_at: :desc)
       end
 

@@ -5,4 +5,5 @@ json.array! @restaurants do |restaurant|
   json.name restaurant.name
   json.address restaurant.address
   json.user_id restaurant.user_id
+  json.slug restaurant.slug
 end

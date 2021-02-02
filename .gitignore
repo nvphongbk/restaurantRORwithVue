@@ -43,4 +43,5 @@ yarn-debug.log*
 /vendor
 /public/uploads/image
 /public/uploads/tmp
+/test
 

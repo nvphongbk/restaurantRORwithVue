@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  def filter_search(params)
+    params.select{ |k, value| value.present? }
+  end
+
+
   def import_data_from(restaurant, file, import_columns)
     datas = RubyXL::Parser.parse(file)
     data = datas[0]

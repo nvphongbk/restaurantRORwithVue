@@ -32,10 +32,15 @@ Rails.application.routes.draw do
         end
       end
       resources :restaurants do
+        collection do
+          get :guest_index
+        end
+
         member do
-          post :dishes_filter
+          get :guest_dishes
+          get :guest_restaurant_info
+
           get :categories
-          get :menus
           get :cooking_methods
           get :main_ingredients
         end

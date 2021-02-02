@@ -3,11 +3,14 @@
 module Api
   module V1
     class RestaurantsController < ApplicationController
-      skip_before_action :authenticate_request!, only: %w[menus dishes_filter]
+      skip_before_action :authenticate_request!, only: %w[guest_index menus guest_dishes]
 
       def index
         @restaurants = current_user.restaurants.order(created_at: :desc)
-        render json: @restaurants, status: 200
+      end
+
+      def guest_index
+        @restaurants = Restaurant.order(created_at: :desc)
       end
 
       def show; end
@@ -19,7 +22,7 @@ module Api
         if @restaurant.save
           render json: @restaurant, status: 200
         else
-          render json: {message: "Can't create restaurant"}, status: 422
+          render json: { message: "Can't create restaurant" }, status: 422
         end
       end
 
@@ -34,12 +37,11 @@ module Api
 
       def destroy
         @restaurant = Restaurant.find(params[:id])
-        render json: {status: 'ok'}, status: 200 if @restaurant.destroy
+        render json: { status: 'ok' } if @restaurant.destroy
       end
 
       def categories
-        @restaurant = current_user.restaurants.find(params[:id])
-        @categories = @restaurant.categories
+        @categories = current_restaurant.categories
         render json: @categories, status: 200
       end
 
@@ -53,25 +55,29 @@ module Api
         render json: @cooking_methods, status: 200
       end
 
-      def menus
-        @restaurant = Restaurant.friendly.find(params[:id])
-        @categories = @restaurant.categories.includes(:dishes).where(is_active: true)
-        @cooking_methods = @restaurant.cooking_methods.where(is_active: true)
-        @main_ingredients = @restaurant.main_ingredients.where(is_active: true)
+      def guest_restaurant_info
+        @categories = current_restaurant.categories.includes(:dishes).where(is_active: true)
+        @cooking_methods = current_restaurant.cooking_methods.where(is_active: true)
+        @main_ingredients = current_restaurant.main_ingredients.where(is_active: true)
       end
 
-      def dishes_filter
-        @restaurant = Restaurant.includes(:categories, :dishes).friendly.find(params[:restaurant_id])
+      def guest_dishes
+        @restaurant = Restaurant.friendly.find(params[:id])
         return if @restaurant.blank?
 
-        @dishes = @restaurant.dishes
-        @dishes = RestaurantsServices::DishesFilter.new(@restaurant, @dishes, params).perform
+        @dishes = @restaurant.dishes.includes(:images, :categories, :main_ingredient, :cooking_method)
+                            .page(params[:page]).per(params[:per_page])
+        @total = @dishes&.total_count
       end
 
       private
 
       def restaurant_params
         params.require(:restaurant).permit(:name, :address, :pass_wifi, :phone, :user_id)
+      end
+
+      def filtering_params
+        filter_search(params).slice(:main_ingredient_id, :cooking_method_id, :categories)
       end
     end
   end

@@ -815,7 +815,8 @@
     data() {
       return {
         restaurants: '',
-        restaurant_id: String
+        restaurant_id: String,
+        images: []
       };
     },
     props: {
@@ -824,11 +825,11 @@
       }
     },
     mounted() {
-      this.DataRestaurant();
+      // this.DataRestaurant();
     },
     methods: {
       DataRestaurant() {
-        return ApiCaller().get(URLS.RESTAURANTS())
+        return ApiCaller().get(URLS.GUEST_RESTAURANTS())
           .then(response => {
             console.log(response.data);
             this.restaurants = response.data;

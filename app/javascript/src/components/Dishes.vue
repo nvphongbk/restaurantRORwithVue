@@ -91,8 +91,9 @@
                       :total="total"
                       v-model="current_page"
                       show-size-changer
-                      :pageSize="perpage"
+                      :pageSize="per_page"
                       :show-total="(total) => `Total ${total} items`"
+                      :pageSizeOptions="pageSizeOptions"
                       @change="changePage"
                       @showSizeChange="changePageSize"/>
       </div>
@@ -129,9 +130,10 @@
     name: "Dishes",
     data() {
       return {
+        pageSizeOptions: ['20', '50', '100', '500', '1000'],
         current_page: 1,
         total: 0,
-        perpage: 20,
+        per_page: 20,
         search: '',
         visibleImportDish: false,
         isAddNew: false,
@@ -216,7 +218,7 @@
     },
     methods: {
       initialize() {
-        return ApiCaller().get(URLS.DISHES(), {params: {page: this.current_page, perpage: this.perpage}})
+        return ApiCaller().get(URLS.DISHES(), {params: {page: this.current_page, per_page: this.per_page}})
           .then(response => {
             this.desserts = response.data.dishes;
             this.total = response.data.total
@@ -290,7 +292,7 @@
         this.initialize()
       },
       changePageSize(value, pageSize) {
-        this.perpage = pageSize
+        this.per_page = pageSize
         this.initialize()
       },
       async changeIsActive(item) {

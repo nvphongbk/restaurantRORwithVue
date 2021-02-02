@@ -1,26 +1,26 @@
 <template>
-    <div v-if="ListView" class="menu-view">
-      <div class="single_menu w-full" v-for='dish in current_dishes'>
+  <div v-if="ListView" class="menu-view">
+    <div class="single_menu w-full" v-for='dish in current_dishes'>
+      <img v-if="!dish.images_attributes || dish.images_attributes.length === 0" class="menu-dish_img"
+           src="/image/no-image.png">
+      <img v-else class="menu-dish_img" :src="dish.images_attributes[0].url">
+      <div class="menu_content">
+        <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
+      </div>
+    </div>
+  </div>
+  <div v-else class="menu-view">
+    <div class="single_menu w-1/2 flex-wrap" v-for='dish in current_dishes'>
+      <div class="menu-dish_img--grid">
         <img v-if="!dish.images_attributes || dish.images_attributes.length === 0" class="menu-dish_img"
              src="/image/no-image.png">
         <img v-else class="menu-dish_img" :src="dish.images_attributes[0].url">
-        <div class="menu_content">
-          <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
-        </div>
+      </div>
+      <div class="menu_content">
+        <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
       </div>
     </div>
-    <div v-else class="menu-view">
-      <div class="single_menu w-1/2 flex-wrap" v-for='dish in current_dishes'>
-        <div class="menu-dish_img--grid">
-          <img v-if="!dish.images_attributes || dish.images_attributes.length === 0" class="menu-dish_img"
-               src="/image/no-image.png">
-          <img v-else class="menu-dish_img" :src="dish.images_attributes[0].url">
-        </div>
-        <div class="menu_content">
-          <h4>{{dish.name}} <span>{{dish.price}} Đ</span></h4>
-        </div>
-      </div>
-    </div>
+  </div>
 </template>
 
 <script>
