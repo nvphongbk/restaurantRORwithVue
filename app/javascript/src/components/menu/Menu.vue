@@ -158,7 +158,7 @@
     },
     methods: {
       fetchInfo() {
-        return ApiCaller().get(URLS.GUEST_RESTAURANT_INFO(this.restaurant.id))
+        return ApiCaller().get(URLS.GUEST_RESTAURANT_INFO(this.$route.params.id))
           .then(response => {
             this.cooking_methods = response.data.cooking_methods
             this.restaurant = response.data.restaurant

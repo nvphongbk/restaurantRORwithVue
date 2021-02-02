@@ -1,11 +1,11 @@
 json.restaurant do
-  json.id @current_restaurant.id
-  json.name @current_restaurant.name
-  json.address @current_restaurant.address
-  json.user_id @current_restaurant.user_id
-  json.pass_wifi @current_restaurant.pass_wifi
-  json.phone @current_restaurant.phone
-  json.slug @current_restaurant.slug
+  json.id @restaurant.id
+  json.name @restaurant.name
+  json.address @restaurant.address
+  json.user_id @restaurant.user_id
+  json.pass_wifi @restaurant.pass_wifi
+  json.phone @restaurant.phone
+  json.slug @restaurant.slug
 end
 json.cooking_methods do
   json.array! @cooking_methods do |cooking_method|

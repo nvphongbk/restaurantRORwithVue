@@ -3,7 +3,7 @@
 module Api
   module V1
     class RestaurantsController < ApplicationController
-      skip_before_action :authenticate_request!, only: %w[guest_index menus guest_dishes]
+      skip_before_action :authenticate_request!, only: %w[guest_index menus guest_dishes guest_restaurant_info]
 
       def index
         @restaurants = current_user.restaurants.order(created_at: :desc)
@@ -56,9 +56,10 @@ module Api
       end
 
       def guest_restaurant_info
-        @categories = current_restaurant.categories.includes(:dishes).where(is_active: true)
-        @cooking_methods = current_restaurant.cooking_methods.where(is_active: true)
-        @main_ingredients = current_restaurant.main_ingredients.where(is_active: true)
+        @restaurant = Restaurant.friendly.find(params[:id])
+        @categories = @restaurant.categories.includes(:dishes).where(is_active: true)
+        @cooking_methods = @restaurant.cooking_methods.where(is_active: true)
+        @main_ingredients = @restaurant.main_ingredients.where(is_active: true)
       end
 
       def guest_dishes
