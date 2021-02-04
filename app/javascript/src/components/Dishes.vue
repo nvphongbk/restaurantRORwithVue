@@ -153,7 +153,7 @@
         columns: [
           {
             title: 'Ảnh món ăn',
-            dataIndex: 'images_attribute[0].url',
+            dataIndex: 'images_attributes[0].url',
             scopedSlots: {customRender: "image"},
           },
           {
