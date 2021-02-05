@@ -13,7 +13,7 @@
 #
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable
-  belongs_to :default_restaurant, class_name: 'Restaurant'
+  belongs_to :default_restaurant, class_name: 'Restaurant', optional: true
   has_many :restaurants
   validates :email, presence: true, uniqueness: true
 end

@@ -16,7 +16,7 @@ module Api
         if @category.save
           render json: @category, status: 200
         else
-          render json: { message: "Can't create category" }, status: 422
+          render json: {message: "Can't create category"}, status: 422
         end
       end
 
@@ -36,7 +36,8 @@ module Api
 
       def dishes
         @category = current_restaurant.categories.find(params[:id])
-        @dishes = @category.dishes.includes(:images)
+        @dishes = @category.dishes.includes(:images).page(params[:page]).per(params[:per_page])
+        @total = @dishes&.total_count
       end
 
       def change_active
