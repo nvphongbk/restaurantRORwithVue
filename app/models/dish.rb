@@ -30,7 +30,7 @@ class Dish < ApplicationRecord
   validates :name, :price, presence: false
 
   def category_ids
-    categories&.pluck(:id)
+    self.categories&.pluck(:id)
   end
 
   def images_ids

@@ -5,14 +5,16 @@ import router from '../src/router.js'
 import store from '../src/store.js'
 import Antd from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
+import Vue2Filters from 'vue2-filters'
 import '../css/application.css';
 import '../css/custom.css';
 import { FormModel } from 'ant-design-vue';
 import VueCookie from "vue-cookie"
 
 Vue.use(Antd);
-Vue.use(FormModel);
-Vue.use(VueCookie);
+Vue.use(FormModel)
+Vue.use(VueCookie)
+Vue.use(Vue2Filters)
 Vue.config.productionTip = false;
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -26,8 +26,8 @@
             <a-popover v-model="filterVisible"
                        title="Lựa chọn thực đơn" trigger="click">
             <template slot="content">
-              <div class="text-left">
-                <div class="category-filter-row d-flex"
+              <div class="text-left cursor-pointer ant-popover-inner-content--custom">
+                <div class="category-filter-row d-flex hover:bg-gray-400 py-1"
                      v-for="category in categories"
                      :key="category.id"
                      @click="filterCategory(category.id)"
@@ -37,11 +37,6 @@
                   <div class="category-filter-item">
                     {{ category.name }}
                   </div>
-                </div>
-                <div class="text-right">
-                  <a-button class="mt-3" @click="hideInfo" type="primary">
-                    Ok
-                  </a-button>
                 </div>
               </div>
             </template>
@@ -115,16 +110,8 @@
         ListView: true,
         MobileView: false,
         current_dishes: [],
-        // checkedCookingMethod: [],
-        // cooking_methods: [],
         categories: [],
         restaurant: {},
-        // main_ingredients: [],
-        // filter_cooking_method: false,
-        // filter_main_ingredient: false,
-        // checkedMainIngredient: [],
-        // show_filter_category: false,
-        // checkedCategory: [],
         visible: false,
         filterVisible: false,
         current_page: 1,
@@ -169,9 +156,13 @@
           })
       },
       filterCategory(value) {
+        this.filterVisible = false
         this.current_page = 1
         this.queryParams.category_id = value
-        this.fetchData()
+        let self = this
+        setTimeout(function() {
+            self.fetchData()
+          }, 200)
       },
       changePage(value) {
         this.current_page = value
@@ -190,16 +181,7 @@
       },
       hideInfo() {
         this.visible = false;
-      },
-      // closeFilterCookingMethod() {
-      //   this.filter_cooking_method = false
-      // },
-      // closeFilterMainIngredient() {
-      //   this.filter_main_ingredient = false
-      // },
-      // closeFilterCategory() {
-      //   this.show_filter_category = false
-      // },
+      }
     },
   }
 </script>
@@ -343,8 +325,10 @@
     z-index: 100
   }
   .category-filter-item {
+    padding: 5px 0;
+  }
+  .category-filter-row {
     border-bottom: 1px solid #e8e8e8;
-    padding: 10px 0;
   }
   .d-flex {
     display: flex;
@@ -369,6 +353,10 @@
 
   .close:after {
     transform: rotate(-45deg);
+  }
+  .ant-popover-inner-content--custom {
+    height: 70vh;
+    overflow: scroll;
   }
 
   @media (min-width: 800px) {

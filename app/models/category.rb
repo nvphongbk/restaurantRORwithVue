@@ -21,6 +21,8 @@
 #  restaurant_id  (restaurant_id => restaurants.id)
 #
 class Category < ApplicationRecord
+  default_scope -> { order('categories.position IS NULL, categories.position ASC, created_at DESC') }
+
   belongs_to :restaurant
   has_many :category_dishes, dependent: :destroy
   has_many :dishes, through: :category_dishes

@@ -152,15 +152,15 @@
       deleteCategory(item) {
           ApiCaller().delete(URLS.CATEGORY(item.id))
           .then((res) => {
-            this.$message.success('Deleted success');
-            this.searchCategory(this.editItem.restaurant_id)
+            this.$message.success('Deleted success')
+            this.initialize()
           })
           .catch(error => {
             console.log(error);
           });
       },
       updateListAfterUpdated() {
-        this.searchCategory(this.editItem.restaurant_id)
+        this.initialize()
       },
       searchCategory(value){
           return ApiCaller().get(URLS.RESTAURANT_SEARCH(value))

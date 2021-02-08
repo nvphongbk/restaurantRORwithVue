@@ -5,7 +5,7 @@ module Api
     class CategoriesController < ApplicationController
 
       def index
-        @categories = current_restaurant.categories.order(position: :asc, created_at: :desc)
+        @categories = current_restaurant.categories
       end
 
       def show;
@@ -23,7 +23,7 @@ module Api
       def update
         @category = current_restaurant.categories.find params[:id]
         if @category.update(category_params)
-          render json: @category, status: 200
+          render json: {message: "Bạn đã thay đổi thành công"}, status: 200
         else
           render json: {message: "Can't not update category"}, status: 422
         end
