@@ -13,6 +13,12 @@
                 <router-link :to="{name: 'HomePage'}" class="footer__link" >Trang chủ</router-link>
               </li>
               <li class="footer__item">
+                <router-link :to="{name: 'LoginPage'}" class="footer__link" >Đăng ký</router-link>
+              </li>
+              <li class="footer__item">
+                <router-link :to="{name: 'RegistrationPage'}" class="footer__link" >Đăng nhập</router-link>
+              </li>
+              <li class="footer__item">
                 <router-link :to="{name: 'Contact'}" class="footer__link">Liên hệ</router-link>
               </li>
             </ul>

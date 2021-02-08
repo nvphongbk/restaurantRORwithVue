@@ -17,81 +17,41 @@
                 </div>
                 <div class="text-right">
                   <a-button class="mt-3" @click="hideInfo" type="primary">
-                    ok
+                    Ok
                   </a-button>
                 </div>
               </template>
-              <a class="btn-filter">Thông tin</a>
+              <a-button type="primary" shape="circle" icon="info" size="large"/>
             </a-popover>
-            <div class="h-12 overflow-scroll">
-              <a v-for="(category, index) in categories"
-                 :value="category.id"
-                 :key="index" name="categories"
-                 @click="filterCategory(category.id)"
-                 class="m-1 btn-filter"
-              >
-                {{category.name}}
-              </a>
-              <a @click="resetFilter" class="btn-reset bg-red-500 hover:bg-red-700">Tất cả</a>
-            </div>
+            <a-popover v-model="filterVisible"
+                       title="Lựa chọn thực đơn" trigger="click">
+            <template slot="content">
+              <div class="text-left">
+                <div class="category-filter-row d-flex"
+                     v-for="category in categories"
+                     :key="category.id"
+                     @click="filterCategory(category.id)"
+                >
+                  <div class="category-filter-thumb">
+                  </div>
+                  <div class="category-filter-item">
+                    {{ category.name }}
+                  </div>
+                </div>
+                <div class="text-right">
+                  <a-button class="mt-3" @click="hideInfo" type="primary">
+                    Ok
+                  </a-button>
+                </div>
+              </div>
+            </template>
+            <a-button type="primary" shape="circle" icon="search" size="large" class="m-3"/>
+          </a-popover>
+            <a-button type="primary" shape="circle" icon="redo" size="large" @click="resetFilter"/>
           </div>
         </a-col>
       </a-row>
 
-      <!--cooking method-->
-      <!--      <div v-if="filter_cooking_method" class="bg-yellow-200 text-center w-1/2 m-auto my-3 position: relative">-->
-      <!--        <a @click="closeFilterCookingMethod" class="close"></a>-->
-      <!--        <a-checkbox-group @change="fetchData" v-model="queryParams.cooking_method_ids">-->
-      <!--          <a-row>-->
-      <!--            <a-col class="pt-3 mt-4" :span="24">-->
-      <!--              <a-checkbox v-for="(cookingMethod, index) in cooking_methods" :value="cookingMethod.id"-->
-      <!--                          :key="index" name="cooking_methods">-->
-      <!--                <div>-->
-      <!--                  {{ cookingMethod.name }}-->
-      <!--                </div>-->
-      <!--              </a-checkbox>-->
-      <!--            </a-col>-->
-      <!--          </a-row>-->
-
-      <!--        </a-checkbox-group>-->
-      <!--      </div>-->
-
-      <!--main ingredient-->
-      <!--      <div v-if="filter_main_ingredient" class="bg-yellow-200 text-center w-1/2 m-auto my-3 position: relative">-->
-      <!--        <a href="#" @click="closeFilterMainIngredient" class="close"></a>-->
-      <!--        <a-checkbox-group @change="fetchData" v-model="queryParams.main_ingredient_ids">-->
-      <!--          <a-row>-->
-      <!--            <a-col class="pt-3 mt-4" :span="24">-->
-      <!--              <a-checkbox :span="24" v-for="(mainIngredient, index) in main_ingredients"-->
-      <!--                          :value="mainIngredient.id"-->
-      <!--                          :key="index">-->
-      <!--                <div>-->
-      <!--                  {{ mainIngredient.name }}-->
-      <!--                </div>-->
-      <!--              </a-checkbox>-->
-      <!--            </a-col>-->
-      <!--          </a-row>-->
-      <!--        </a-checkbox-group>-->
-      <!--      </div>-->
-
-      <!--      &lt;!&ndash;category&ndash;&gt;-->
-      <!--      <div v-if="show_filter_category" class="bg-yellow-200 text-center w-1/2 m-auto my-3 position: relative">-->
-      <!--        <a href="#" @click="closeFilterCategory" class="close"></a>-->
-      <!--        <a-checkbox-group @change="fetchData" v-model="queryParams.category_ids">-->
-      <!--          <a-row>-->
-      <!--            <a-col class="pt-3 mt-4" :span="24">-->
-      <!--              <a-checkbox :span="24" v-for="(category, index) in categories" :value="category.id"-->
-      <!--                          :key="index">-->
-      <!--                <div>-->
-      <!--                  {{ category.name }}-->
-      <!--                </div>-->
-      <!--              </a-checkbox>-->
-      <!--            </a-col>-->
-      <!--          </a-row>-->
-      <!--        </a-checkbox-group>-->
-      <!--      </div>-->
-
-      <!--body menu-->
       <div class="menu-body">
         <a-row class="w-full md:w-3/6 pr-9 fixed">
           <a-col :span="20">
@@ -166,6 +126,7 @@
         // show_filter_category: false,
         // checkedCategory: [],
         visible: false,
+        filterVisible: false,
         current_page: 1,
         per_page: 20,
         total: 0,
@@ -193,7 +154,11 @@
         return ApiCaller().get(URLS.GUEST_DISHES(this.$route.params.id),
           {
             params: Object.assign({},
-              {page: this.current_page, per_page: this.per_page, category_id: this.queryParams.category_id})
+              {
+                page: this.current_page,
+                per_page: this.per_page,
+                category_id: this.queryParams.category_id
+              })
           })
           .then(response => {
             this.current_dishes = response.data.dishes
@@ -376,6 +341,13 @@
     height: 32px;
     opacity: 0.3;
     z-index: 100
+  }
+  .category-filter-item {
+    border-bottom: 1px solid #e8e8e8;
+    padding: 10px 0;
+  }
+  .d-flex {
+    display: flex;
   }
 
   .close:hover {
