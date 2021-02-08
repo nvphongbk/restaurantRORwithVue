@@ -67,6 +67,7 @@
             console.log(response);
             this.$message.success('Cập nhật thành công');
             this.$emit('updateListAfterUpdated', this.editItem);
+            window.location.reload()
           })
           .catch(error => {
             console.log(error);

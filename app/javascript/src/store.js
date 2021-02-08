@@ -43,6 +43,7 @@ const store = new Vuex.Store({
      })
      if(response) {
        dispatch('getRestaurantInfo')
+       window.location.reload()
      }
    }
   }
