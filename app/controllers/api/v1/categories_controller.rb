@@ -49,6 +49,15 @@ module Api
         end
       end
 
+      def change_display_home
+        @category = current_restaurant.categories.find(params[:id])
+        if @category.update(display_home: params[:display_home])
+          render json: {status: :ok}, status: 200
+        else
+          render json: {message: 'Có lỗi xảy ra'}, status: 422
+        end
+      end
+
       private
 
       def category_params

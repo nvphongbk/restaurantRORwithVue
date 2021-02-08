@@ -19,6 +19,9 @@
       <a-input placeholder="Vui lòng nhập tên danh mục"
         v-model="editItem.name" />
     </a-form-model-item>
+    <a-form-model-item label="Hiển thị trang chủ" prop="display_home">
+      <a-switch v-model="editItem.display_home" @change="changeDisplayHome(editItem)" />
+    </a-form-model-item>
     <a-form-model-item label="Vị trí xuất hiện" prop="position">
       <a-input placeholder="Có thể bỏ qua nếu không cần ưu tiên"
         v-model="editItem.position" />
@@ -123,6 +126,12 @@
           option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0
         );
       },
+      async changeDisplayHome(item) {
+        const response = await ApiCaller().post(URLS.CHANGE_CATEGORY_DISPLAY_HOME(item.id))
+        if(response) {
+          this.$message.success('Bạn đã đổi hiển thị thành công')
+        }
+      }
     },
   };
 </script>

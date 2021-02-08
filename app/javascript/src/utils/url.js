@@ -35,11 +35,12 @@ export const URLS = {
   SIGNIN: () => `${getBaseUrl()}/signin`,
   SIGNOUT: () => `${getBaseUrl()}/signout`,
   SIGNUP: () => `${getBaseUrl()}/signup`,
-  RESTAURANT_URL: (id) => `${HOME_URL}/restaurants/${id}`,
+  RESTAURANT_URL: (slug) => `${HOME_URL}/restaurants/${slug}`,
   MESSAGES: () => `${getBaseUrl()}/messages`,
   MESSAGE: (id) => `${getBaseUrl()}/messages/${id}`,
   MESSAGE_CONTACT: () => `${getBaseUrl()}/messages`,
 
 //  Methods
   CHANGE_RESTAURANT_DEFAULT: () => `${getBaseUrl()}/users/change_restaurant_default`,
+  CHANGE_CATEGORY_DISPLAY_HOME: (id) => `${getBaseUrl()}/categories/${id}/change_display_home`,
 };

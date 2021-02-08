@@ -33,6 +33,9 @@
           <template slot="isActive" slot-scope="text, record">
             <a-switch size="small" v-model="record.is_active" @change="changeIsActive(record)"/>
           </template>
+          <template slot="displayHome" slot-scope="text, record">
+            <a-switch size="small" v-model="record.display_home" @change="changeDisplayHome(record)"/>
+          </template>
           <template slot="action" slot-scope="text, record">
             <a-button @click="editCategory(record)" :size="'small'"
                       :type="'primary'"
@@ -84,7 +87,6 @@
               trigger: 'blur' },
           ],
           restaurant: [{ required: false, message: 'Please select Restaurant', trigger: 'change' }],
-
         },
         editItem: {
         },
@@ -95,6 +97,11 @@
           {
             title: 'Tên',
             dataIndex: 'name',
+          },
+          {
+            title: 'Hiện thị trang chủ',
+            dataIndex: 'display_home',
+            scopedSlots: {customRender: "displayHome"}
           },
           {
             title: 'Sắp xếp',
@@ -193,6 +200,14 @@
           this.$message.success("Cập nhật thành công");
         } else {
           this.$message.error(response.message);
+        }
+      },
+      async changeDisplayHome(item) {
+        const response = await ApiCaller().post(URLS.CHANGE_CATEGORY_DISPLAY_HOME(item.id), {
+          display_home: item.display_home
+        })
+        if(response) {
+          this.$message.success('Bạn đã đổi hiển thị thành công')
         }
       }
     }

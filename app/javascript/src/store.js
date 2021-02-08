@@ -11,14 +11,18 @@ const store = new Vuex.Store({
       id: '',
       name: ''
     },
-    restaurants: []
+    restaurants: [],
+    categories: [],
   },
   mutations: {
-    SET_CURRENT_RESTAURANT( state, payload) {
+    SET_CURRENT_RESTAURANT( state, payload ) {
       state.current_restaurant = payload
     },
-    SET_RESTAURANTS( state, payload) {
+    SET_RESTAURANTS( state, payload ) {
       state.restaurants = payload
+    },
+    SET_CATEGORIES( state, payload ) {
+      state.categories = payload
     }
   },
   getters: {
@@ -27,6 +31,9 @@ const store = new Vuex.Store({
     },
     restaurants: state => {
       return state.restaurants
+    },
+    categories: state => {
+      return state.categories
     }
   },
   actions: {
@@ -35,6 +42,7 @@ const store = new Vuex.Store({
      if(response) {
        commit('SET_CURRENT_RESTAURANT', response.data.current_restaurant)
        commit('SET_RESTAURANTS', response.data.restaurants)
+       commit('SET_CATEGORIES', response.data.categories)
      }
    },
    async changeRestaurant({ commit, dispatch }, restaurant_id) {

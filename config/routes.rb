@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         member do
           get :dishes
           post :change_active
+          post :change_display_home
         end
       end
       resources :cooking_methods do
@@ -40,7 +41,6 @@ Rails.application.routes.draw do
         member do
           get :guest_dishes
           get :guest_restaurant_info
-
           get :categories
           get :cooking_methods
           get :main_ingredients

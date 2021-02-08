@@ -5,5 +5,6 @@ json.array! @categories do |category|
   json.name category.name
   json.id category.id
   json.position category.position
+  json.display_home category.display_home
   json.is_active category.is_active
 end

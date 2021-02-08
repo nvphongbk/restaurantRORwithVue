@@ -8,3 +8,4 @@ json.restaurants do
   end
 end
 json.current_restaurant @current_restaurant, :id, :name, :address, :phone, :pass_wifi
+json.categories @categories, :id, :name, :position, :display_home, :is_active

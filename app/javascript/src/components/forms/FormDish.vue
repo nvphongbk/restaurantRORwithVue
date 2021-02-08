@@ -18,21 +18,6 @@
         <a-input placeholder="Nhập giá bán"
                  v-model="editItem.price"/>
       </a-form-model-item>
-      <a-form-model-item label="Thành phần chính" prop="main_ingredient">
-        <a-select v-model="editItem.main_ingredient_id" placeholder="Chọn thành phần chính">
-          <a-select-option v-for="ingredient in ingredients" :key="ingredient.id">
-            {{ ingredient.name }}
-          </a-select-option>
-        </a-select>
-      </a-form-model-item>
-
-      <a-form-model-item label="Cách chế biến" prop="cooking_method">
-        <a-select v-model="editItem.cooking_method_id" placeholder="Chọn cách chế biến">
-          <a-select-option v-for="method in cooking_methods" :key="method.id">
-            {{ method.name }}
-          </a-select-option>
-        </a-select>
-      </a-form-model-item>
       <a-form-model-item label="Kích hoạt" prop="isActive">
         <a-switch v-model="editItem.is_active"/>
       </a-form-model-item>
@@ -71,7 +56,8 @@
   import {ApiCaller} from "../../utils/api";
   import {URLS} from "../../utils/url"
   import UploadImage from "../UploadImage"
-  import AFormModelItem from "ant-design-vue/es/form-model/FormItem";
+  import AFormModelItem from "ant-design-vue/es/form-model/FormItem"
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     name: "FormDish",
@@ -97,7 +83,6 @@
     },
     data() {
       return {
-        categories: [],
         ingredients: [],
         cooking_methods: [],
         previewVisible: false,
@@ -106,6 +91,9 @@
     },
     components: {AFormModelItem, UploadImage},
     computed: {
+      ...mapGetters([
+        'categories'
+      ]),
       getTitle() {
         return this.isEdit ? "Cập nhật" : "Thêm"
       }
@@ -123,20 +111,11 @@
       }
     },
     methods: {
+      ...mapActions([
+        'getRestaurantInfo'
+      ]),
       fetchData() {
         this.callDataRestaurant()
-      },
-      async getCategories(value) {
-        let response = await ApiCaller().get(URLS.RESTAURANT_SEARCH(value))
-        this.categories = response.data
-      },
-      async getIngredients(value) {
-        let response = await ApiCaller().get(URLS.RESTAURANT_MAININGREDIENT(value))
-        this.ingredients = response.data
-      },
-      async getCookingMethods(value) {
-        let response = await ApiCaller().get(URLS.RESTAURANT_COOKINGMETHOD(value))
-        this.cooking_methods = response.data
       },
       create(item) {
         this.isEdit = false
@@ -190,11 +169,6 @@
       updateImageList(list) {
         this.editItem.images_ids = list
       },
-      handleChangeRestaurant(value) {
-        this.getCategories(value)
-        this.getCookingMethods(value)
-        this.getIngredients(value)
-      }
     },
   };
 </script>

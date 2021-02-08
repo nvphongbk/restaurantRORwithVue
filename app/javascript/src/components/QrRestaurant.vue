@@ -57,7 +57,7 @@
     },
     computed: {
       editItemUrl() {
-        return URLS.RESTAURANT_URL(this.editItem.id)
+        return URLS.RESTAURANT_URL(this.editItem.slug)
       },
     },
     methods: {

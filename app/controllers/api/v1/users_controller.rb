@@ -42,6 +42,7 @@ module Api
 
       def get_info
         @restaurants = current_user.restaurants
+        @categories = current_restaurant.categories.where(is_active: true)
       end
 
       def change_restaurant_default

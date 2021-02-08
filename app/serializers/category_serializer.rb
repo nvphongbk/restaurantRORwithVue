@@ -5,6 +5,7 @@
 # Table name: categories
 #
 #  id            :integer          not null, primary key
+#  display_home  :boolean          default(FALSE)
 #  is_active     :boolean          default(TRUE)
 #  name          :string
 #  position      :integer

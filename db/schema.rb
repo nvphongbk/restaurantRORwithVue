@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_29_120113) do
+ActiveRecord::Schema.define(version: 2021_02_08_135023) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_01_29_120113) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "position"
     t.boolean "is_active", default: true
+    t.boolean "display_home", default: false
     t.index ["restaurant_id"], name: "index_categories_on_restaurant_id"
   end
 

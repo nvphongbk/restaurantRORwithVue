@@ -4,25 +4,10 @@
     <div class="container-menu pt-0"
          :style="{'background-image':'url(/uploads/menu/background-menu.jpg)', 'background-size':'cover'}">
       <!--button menu-->
-      <a-row class="menu-header text-center">
+      <div class="menu-header">
+        <a-row class="menu-header">
         <a-col :span="24">
           <div>
-            <a-popover v-model="visible"
-                       :title=restaurant.name trigger="click">
-              <template slot="content">
-                <div class="text-left">
-                  <p>Địa chỉ: {{restaurant.address}}</p>
-                  <p>Pass Wifi: {{restaurant.pass_wifi}}</p>
-                  <p>Số điện thoại: {{restaurant.phone}}</p>
-                </div>
-                <div class="text-right">
-                  <a-button class="mt-3" @click="hideInfo" type="primary">
-                    Ok
-                  </a-button>
-                </div>
-              </template>
-              <a-button type="primary" shape="circle" icon="info" size="large"/>
-            </a-popover>
             <a-popover v-model="filterVisible"
                        title="Lựa chọn thực đơn" trigger="click">
             <template slot="content">
@@ -40,20 +25,29 @@
                 </div>
               </div>
             </template>
-            <a-button type="primary" shape="circle" icon="search" size="large" class="m-3"/>
+            <a-button type="primary" icon="unordered-list" size="large" class="m-3"/>
           </a-popover>
-            <a-button type="primary" shape="circle" icon="redo" size="large" @click="resetFilter"/>
+<!--            <a-button type="primary" shape="circle" icon="redo" size="large" @click="resetFilter"/>-->
+            <a-button-group>
+              <a-button size="large" type="primary" v-for="item in display_categories" @click="filterCategory(item.id)">
+                {{ item.name }}
+              </a-button>
+              <a-button size="large" type="dashed" @click="resetFilter">
+                All
+              </a-button>
+            </a-button-group>
           </div>
         </a-col>
       </a-row>
-
+      </div>
       <div class="menu-body">
         <a-row class="w-full md:w-3/6 pr-9 fixed">
           <a-col :span="20">
             <a-pagination
               simple
               v-if="total > per_page"
-              v-model="current_page"
+              v-model="current_page"in
+              size="large"
               :defaultPageSize="per_page"
               :total="total"
               @change="changePage"
@@ -111,6 +105,7 @@
         MobileView: false,
         current_dishes: [],
         categories: [],
+        display_categories: [],
         restaurant: {},
         visible: false,
         filterVisible: false,
@@ -131,6 +126,7 @@
             this.cooking_methods = response.data.cooking_methods
             this.restaurant = response.data.restaurant
             this.categories = response.data.categories
+            this.display_categories = response.data.display_categories
             this.main_ingredients = response.data.main_ingredients
           })
           .catch(e => {
@@ -162,7 +158,7 @@
         let self = this
         setTimeout(function() {
             self.fetchData()
-          }, 200)
+          }, 500)
       },
       changePage(value) {
         this.current_page = value
@@ -358,10 +354,15 @@
     height: 70vh;
     overflow: scroll;
   }
+  .menu-header {
+    width: 100%;
+    margin: auto;
+
+  }
 
   @media (min-width: 800px) {
-    .menu-body {
-      width: 50%;
+    .menu-header, .menu-body {
+      max-width: 800px;
     }
 
     .menu-page_title h1 {

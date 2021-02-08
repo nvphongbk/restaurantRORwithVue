@@ -58,6 +58,7 @@ module Api
       def guest_restaurant_info
         @restaurant = Restaurant.friendly.find(params[:id])
         @categories = @restaurant.categories.includes(:dishes).where(is_active: true)
+        @display_categories = @restaurant.categories.includes(:dishes).where(is_active: true, display_home: true)
         @cooking_methods = @restaurant.cooking_methods.where(is_active: true)
         @main_ingredients = @restaurant.main_ingredients.where(is_active: true)
       end

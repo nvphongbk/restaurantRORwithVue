@@ -28,3 +28,11 @@ json.categories do
     json.is_active item.is_active
   end
 end
+json.display_categories do
+  json.array! @display_categories do |item|
+    json.id item.id
+    json.name item.name
+    json.is_active item.is_active
+    json.display_home item.display_home
+  end
+end
