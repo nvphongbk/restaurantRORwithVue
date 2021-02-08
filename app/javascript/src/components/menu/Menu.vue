@@ -3,7 +3,6 @@
     <!--<Navigation/>-->
     <div class="container-menu pt-0"
          :style="{'background-image':'url(/uploads/menu/background-menu.jpg)', 'background-size':'cover'}">
-
       <!--button menu-->
       <a-row class="menu-header text-center">
         <a-col :span="24">
@@ -24,91 +23,113 @@
               </template>
               <a class="btn-filter">Thông tin</a>
             </a-popover>
-            <a @click="filterCookingMethod" class="btn-filter">Cách nấu</a>
-            <a @click="filterMainIngredient" class="btn-filter">Thành phần</a>
-            <a @click="filterCategory" class="btn-filter">Danh mục</a>
-            <a @click="resetFilter" class="btn-reset bg-red-500 hover:bg-red-700">Reset</a>
+            <div class="h-12 overflow-scroll">
+              <a v-for="(category, index) in categories"
+                 :value="category.id"
+                 :key="index" name="categories"
+                 @click="filterCategory(category.id)"
+                 class="m-1 btn-filter"
+              >
+                {{category.name}}
+              </a>
+              <a @click="resetFilter" class="btn-reset bg-red-500 hover:bg-red-700">Tất cả</a>
+            </div>
           </div>
         </a-col>
       </a-row>
 
       <!--cooking method-->
-      <div v-if="filter_cooking_method" class="bg-yellow-200 text-center w-1/2 m-auto my-3 position: relative">
-        <a @click="closeFilterCookingMethod" class="close"></a>
-        <a-checkbox-group @change="fetchData" v-model="queryParams.cooking_method_ids">
-          <a-row>
-            <a-col class="pt-3 mt-4" :span="24">
-              <a-checkbox v-for="(cookingMethod, index) in cooking_methods" :value="cookingMethod.id"
-                          :key="index" name="cooking_methods">
-                <div>
-                  {{ cookingMethod.name }}
-                </div>
-              </a-checkbox>
-            </a-col>
-          </a-row>
+      <!--      <div v-if="filter_cooking_method" class="bg-yellow-200 text-center w-1/2 m-auto my-3 position: relative">-->
+      <!--        <a @click="closeFilterCookingMethod" class="close"></a>-->
+      <!--        <a-checkbox-group @change="fetchData" v-model="queryParams.cooking_method_ids">-->
+      <!--          <a-row>-->
+      <!--            <a-col class="pt-3 mt-4" :span="24">-->
+      <!--              <a-checkbox v-for="(cookingMethod, index) in cooking_methods" :value="cookingMethod.id"-->
+      <!--                          :key="index" name="cooking_methods">-->
+      <!--                <div>-->
+      <!--                  {{ cookingMethod.name }}-->
+      <!--                </div>-->
+      <!--              </a-checkbox>-->
+      <!--            </a-col>-->
+      <!--          </a-row>-->
 
-        </a-checkbox-group>
-      </div>
+      <!--        </a-checkbox-group>-->
+      <!--      </div>-->
 
       <!--main ingredient-->
-      <div v-if="filter_main_ingredient" class="bg-yellow-200 text-center w-1/2 m-auto my-3 position: relative">
-        <a href="#" @click="closeFilterMainIngredient" class="close"></a>
-        <a-checkbox-group @change="fetchData" v-model="queryParams.main_ingredient_ids">
-          <a-row>
-            <a-col class="pt-3 mt-4" :span="24">
-              <a-checkbox :span="24" v-for="(mainIngredient, index) in main_ingredients"
-                          :value="mainIngredient.id"
-                          :key="index">
-                <div>
-                  {{ mainIngredient.name }}
-                </div>
-              </a-checkbox>
-            </a-col>
-          </a-row>
-        </a-checkbox-group>
-      </div>
+      <!--      <div v-if="filter_main_ingredient" class="bg-yellow-200 text-center w-1/2 m-auto my-3 position: relative">-->
+      <!--        <a href="#" @click="closeFilterMainIngredient" class="close"></a>-->
+      <!--        <a-checkbox-group @change="fetchData" v-model="queryParams.main_ingredient_ids">-->
+      <!--          <a-row>-->
+      <!--            <a-col class="pt-3 mt-4" :span="24">-->
+      <!--              <a-checkbox :span="24" v-for="(mainIngredient, index) in main_ingredients"-->
+      <!--                          :value="mainIngredient.id"-->
+      <!--                          :key="index">-->
+      <!--                <div>-->
+      <!--                  {{ mainIngredient.name }}-->
+      <!--                </div>-->
+      <!--              </a-checkbox>-->
+      <!--            </a-col>-->
+      <!--          </a-row>-->
+      <!--        </a-checkbox-group>-->
+      <!--      </div>-->
 
-      <!--category-->
-      <div v-if="show_filter_category" class="bg-yellow-200 text-center w-1/2 m-auto my-3 position: relative">
-        <a href="#" @click="closeFilterCategory" class="close"></a>
-        <a-checkbox-group @change="fetchData" v-model="queryParams.category_ids">
-          <a-row>
-            <a-col class="pt-3 mt-4" :span="24">
-              <a-checkbox :span="24" v-for="(category, index) in categories" :value="category.id"
-                          :key="index">
-                <div>
-                  {{ category.name }}
-                </div>
-              </a-checkbox>
-            </a-col>
-          </a-row>
-        </a-checkbox-group>
-      </div>
+      <!--      &lt;!&ndash;category&ndash;&gt;-->
+      <!--      <div v-if="show_filter_category" class="bg-yellow-200 text-center w-1/2 m-auto my-3 position: relative">-->
+      <!--        <a href="#" @click="closeFilterCategory" class="close"></a>-->
+      <!--        <a-checkbox-group @change="fetchData" v-model="queryParams.category_ids">-->
+      <!--          <a-row>-->
+      <!--            <a-col class="pt-3 mt-4" :span="24">-->
+      <!--              <a-checkbox :span="24" v-for="(category, index) in categories" :value="category.id"-->
+      <!--                          :key="index">-->
+      <!--                <div>-->
+      <!--                  {{ category.name }}-->
+      <!--                </div>-->
+      <!--              </a-checkbox>-->
+      <!--            </a-col>-->
+      <!--          </a-row>-->
+      <!--        </a-checkbox-group>-->
+      <!--      </div>-->
 
       <!--body menu-->
       <div class="menu-body">
-        <div class="menu-btn">
-          <a @click="listView">
-            <svg viewBox="64 64 896 896" data-icon="unordered-list"
-                 width="25px" height="25px" fill="currentColor"
-                 aria-hidden="true" focusable="false"
-                 class="inline-block btn-view-menu">
-              <path
-                d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path>
-            </svg>
-          </a>
-          <a @click="gridView">
-            <svg viewBox="64 64 896 896" data-icon="table" width="25px"
-                 height="25px" fill="currentColor" aria-hidden="true"
-                 focusable="false" class="inline-block btn-view-menu">
-              <path
-                d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 208H676V232h212v136zm0 224H676V432h212v160zM412 432h200v160H412V432zm200-64H412V232h200v136zm-476 64h212v160H136V432zm0-200h212v136H136V232zm0 424h212v136H136V656zm276 0h200v136H412V656zm476 136H676V656h212v136z"></path>
-            </svg>
-          </a>
+        <a-row class="w-full md:w-3/6 pr-9 fixed">
+          <a-col :span="20">
+            <a-pagination
+              simple
+              v-if="total > per_page"
+              v-model="current_page"
+              :defaultPageSize="per_page"
+              :total="total"
+              @change="changePage"
+            />
+          </a-col>
+          <a-col :span="4">
+            <div class="menu-btn">
+              <a @click="listView">
+                <svg viewBox="64 64 896 896" data-icon="unordered-list"
+                     width="25px" height="25px" fill="currentColor"
+                     aria-hidden="true" focusable="false"
+                     class="inline-block btn-view-menu">
+                  <path
+                    d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path>
+                </svg>
+              </a>
+              <a @click="gridView">
+                <svg viewBox="64 64 896 896" data-icon="table" width="25px"
+                     height="25px" fill="currentColor" aria-hidden="true"
+                     focusable="false" class="inline-block btn-view-menu">
+                  <path
+                    d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 208H676V232h212v136zm0 224H676V432h212v160zM412 432h200v160H412V432zm200-64H412V232h200v136zm-476 64h212v160H136V432zm0-200h212v136H136V232zm0 424h212v136H136V656zm276 0h200v136H412V656zm476 136H676V656h212v136z"></path>
+                </svg>
+              </a>
+            </div>
+          </a-col>
+        </a-row>
+        <div class="mt-6">
+          <show-dish :current_dishes="current_dishes"
+                     :ListView="ListView"/>
         </div>
-        <show-dish :current_dishes="current_dishes"
-                   :ListView="ListView"/>
-        <a-pagination v-model="current_page" :total="total" @change="changePage" :show-total="(total) => `Tổng ${total} món`" />
       </div>
     </div>
   </section>
@@ -120,13 +141,12 @@
   import ACol from "ant-design-vue/es/grid/Col";
   import Navigation from "../../../layouts/partials/Navigation";
   import ShowDish from "./ShowDish"
+
   const resetParamsQuery = {
-      main_ingredient_ids: [],
-      cooking_method_ids: [],
-      category_ids: []
+    category_id: ''
   }
 
-    export default {
+  export default {
     name: "Menu",
     components: {Navigation, ACol, ShowDish},
     data() {
@@ -135,21 +155,21 @@
         ListView: true,
         MobileView: false,
         current_dishes: [],
-        checkedCookingMethod: [],
-        cooking_methods: [],
+        // checkedCookingMethod: [],
+        // cooking_methods: [],
         categories: [],
         restaurant: {},
-        main_ingredients: [],
-        filter_cooking_method: false,
-        filter_main_ingredient: false,
-        checkedMainIngredient: [],
-        show_filter_category: false,
-        checkedCategory: [],
+        // main_ingredients: [],
+        // filter_cooking_method: false,
+        // filter_main_ingredient: false,
+        // checkedMainIngredient: [],
+        // show_filter_category: false,
+        // checkedCategory: [],
         visible: false,
         current_page: 1,
         per_page: 20,
         total: 0,
-        queryParams: {...resetParamsQuery}
+        queryParams: {...resetParamsQuery},
       }
     },
     mounted() {
@@ -173,12 +193,7 @@
         return ApiCaller().get(URLS.GUEST_DISHES(this.$route.params.id),
           {
             params: Object.assign({},
-              {page: this.current_page, per_page: this.per_page},
-              {
-                categories: { id: this.queryParams.category_ids},
-                main_ingredient_id: this.queryParams.main_ingredient_ids,
-                cooking_method_id: this.queryParams.cooking_method_ids
-              })
+              {page: this.current_page, per_page: this.per_page, category_id: this.queryParams.category_id})
           })
           .then(response => {
             this.current_dishes = response.data.dishes
@@ -187,6 +202,11 @@
           .catch(e => {
             console.log(e);
           })
+      },
+      filterCategory(value) {
+        this.current_page = 1
+        this.queryParams.category_id = value
+        this.fetchData()
       },
       changePage(value) {
         this.current_page = value
@@ -198,32 +218,23 @@
       gridView() {
         this.ListView = false
       },
-      filterCookingMethod() {
-        this.filter_cooking_method = !this.filter_cooking_method
-      },
-      filterMainIngredient() {
-        this.filter_main_ingredient = !this.filter_main_ingredient
-      },
-      filterCategory() {
-        this.show_filter_category = !this.show_filter_category
-      },
       resetFilter() {
+        this.current_page = 1
         this.queryParams = {...resetParamsQuery}
         this.fetchData()
       },
       hideInfo() {
         this.visible = false;
       },
-      closeFilterCookingMethod() {
-        this.filter_cooking_method = false
-      },
-      closeFilterMainIngredient() {
-        this.filter_main_ingredient = false
-      },
-      closeFilterCategory() {
-        this.show_filter_category = false
-      },
-
+      // closeFilterCookingMethod() {
+      //   this.filter_cooking_method = false
+      // },
+      // closeFilterMainIngredient() {
+      //   this.filter_main_ingredient = false
+      // },
+      // closeFilterCategory() {
+      //   this.show_filter_category = false
+      // },
     },
   }
 </script>
@@ -312,9 +323,8 @@
   .menu-body {
     width: 100%;
     margin: 0 auto;
-    height: 90vh;
+    /*height: 85vh;*/
     background: white;
-    overflow: scroll;
     padding: 10px;
     border-radius: 20px;
   }

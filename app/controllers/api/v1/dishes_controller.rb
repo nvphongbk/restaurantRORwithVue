@@ -45,6 +45,11 @@ module Api
         end
       end
 
+      def destroy_select
+        @dishes = Dish.where(id: params[:id].split(','))
+        render json: { status: 'ok deleted' }, status: 200 if @dishes.destroy_all
+      end
+
       private
 
       def dish_params
