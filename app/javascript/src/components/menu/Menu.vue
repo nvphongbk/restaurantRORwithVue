@@ -86,7 +86,7 @@
             </div>
           </a-col>
         </a-row>
-        <div class="mt-6">
+        <div class="mt-7">
           <show-dish :current_dishes="current_dishes"
                      :ListView="ListView"/>
         </div>

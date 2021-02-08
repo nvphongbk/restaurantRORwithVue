@@ -6,4 +6,6 @@ json.array! @restaurants do |restaurant|
   json.address restaurant.address
   json.user_id restaurant.user_id
   json.slug restaurant.slug
+  json.pass_wifi restaurant.pass_wifi
+  json.phone restaurant.phone
 end

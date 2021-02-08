@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from '../app.vue'
 import '../src/assets/tailwind.min.css'
 import router from '../src/router.js'
+import store from '../src/store.js'
 import Antd from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
 import '../css/application.css';
@@ -16,6 +17,7 @@ Vue.config.productionTip = false;
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
+    store,
     router,
     render: h => h(App)
   }).$mount()

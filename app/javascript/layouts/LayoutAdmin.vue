@@ -8,7 +8,18 @@
         :type="collapsed ? 'menu-unfold' : 'menu-fold'"
         @click="toggleCollapse"
         />
-        <a-row class="float-right" style="padding: 0 15px">
+        <a-row class="float-right" style="padding: 0 20px">
+          <a-select
+            v-model="currentRestaurant.id"
+            @change="changeRestaurant(currentRestaurant.id)"
+          >
+            <a-select-option
+              v-for="restaurant in restaurants"
+              :value="restaurant.id"
+            >
+              {{ restaurant.name }}
+            </a-select-option>
+          </a-select>
           <a-popover placement="bottomRight">
             <template slot="content">
               <div>
@@ -35,6 +46,7 @@
 </template>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
   import {ApiCaller} from "../src/utils/api";
   import {URLS} from "../src/utils/url";
   import LeftMenu from "../src/components/common/LeftMenu";
@@ -42,15 +54,26 @@
   export default {
     data() {
       return {
-        collapsed: false
+        collapsed: false,
       }
+    },
+    computed: {
+      ...mapGetters([
+        'restaurants', 'currentRestaurant'
+      ])
     },
     name: "LayoutAdmin",
     components: {
       CompHeader,
       LeftMenu,
     },
+    mounted() {
+      this.getRestaurantInfo()
+    },
     methods: {
+      ...mapActions([
+        'getRestaurantInfo', 'changeRestaurant'
+      ]),
       signout() {
         localStorage.clear()
         ApiCaller().delete(URLS.SIGNOUT())
@@ -63,7 +86,7 @@
       toggleCollapse() {
         this.collapsed = !this.collapsed
         console.log(this.collapsed)
-      }
+      },
     }
   }
 </script>

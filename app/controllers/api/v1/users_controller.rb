@@ -3,7 +3,6 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      before_action :find_user, only: %w[show]
       def index
         @users = current_user
         render json: @users
@@ -15,6 +14,7 @@ module Api
       end
 
       def show
+        @user = User.find(params[:id])
         render_jsonapi_response(@user)
       end
 
@@ -36,12 +36,22 @@ module Api
         if @user.update_attributes(user_params)
           render json: @user, status: 200
         else
-          render json: { message: 'not create user' }, status: 422
+          render json: { message: @user.errors }, status: 422
         end
       end
 
-      def find_user
-        @user = User.find(params[:id])
+      def get_info
+        @restaurants = current_user.restaurants
+      end
+
+      def change_restaurant_default
+        restaurant = current_user.restaurants.find(params[:id])
+        if restaurant
+          current_user.update(default_restaurant_id: restaurant.id)
+          render json: { message: 'Bạn đổi cửa hàng thành công' }, status: 200
+        else
+          render json: { message: 'Bạn chỉnh sửa không đúng thôi tin' }, status: 422
+        end
       end
 
       private

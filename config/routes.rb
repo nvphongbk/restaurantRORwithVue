@@ -46,7 +46,12 @@ Rails.application.routes.draw do
           get :main_ingredients
         end
       end
-      resources :users
+      resources :users do
+        collection do
+          get :get_info
+          post :change_restaurant_default
+        end
+      end
     end
   end
 
