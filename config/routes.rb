@@ -2,12 +2,13 @@
 
 Rails.application.routes.draw do
   root 'home#index'
-  namespace :api, defaults: { format: :json } do
+  namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resources :import_data, only: %w[index create]
       resources :dishes do
         member do
           post :change_active
+          delete :destroy_select
         end
       end
       resources :images, only: %w[create index]
@@ -50,7 +51,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users,
-             defaults: { format: :json },
+             defaults: {format: :json},
              path: '',
              path_names: {
                sign_in: 'api/v1/signin', only: %w[create],

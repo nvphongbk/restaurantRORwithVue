@@ -23,6 +23,7 @@ export const URLS = {
   DISHES: () => `${getBaseUrl()}/dishes`,
   DISH: (id) => `${getBaseUrl()}/dishes/${id}`,
   DISH_CHANGE_ACTIVE: (id) => `${getBaseUrl()}/dishes/${id}/change_active`,
+  DESTROY_SELECT_DISH: (id) => `${getBaseUrl()}/dishes/${id}/destroy_select`,
   GUEST_DISHES: (id) => `${getBaseUrl()}/restaurants/${id}/guest_dishes`,
   GUEST_RESTAURANT_INFO: (id) => `${getBaseUrl()}/restaurants/${id}/guest_restaurant_info`,
 

@@ -22,7 +22,7 @@ module Api
         if @restaurant.save
           render json: @restaurant, status: 200
         else
-          render json: { message: "Can't create restaurant" }, status: 422
+          render json: {message: "Can't create restaurant"}, status: 422
         end
       end
 
@@ -37,7 +37,7 @@ module Api
 
       def destroy
         @restaurant = Restaurant.find(params[:id])
-        render json: { status: 'ok' } if @restaurant.destroy
+        render json: {status: 'ok'} if @restaurant.destroy
       end
 
       def categories
@@ -65,9 +65,15 @@ module Api
       def guest_dishes
         @restaurant = Restaurant.friendly.find(params[:id])
         return if @restaurant.blank?
+        @dishes = if params[:category_id].present?
+                    @restaurant.dishes.includes(:images, :categories, :main_ingredient, :cooking_method)
+                      .where(categories: {id: params[:category_id]})
+                      .page(params[:page]).per(params[:per_page])
+                  else
+                    @restaurant.dishes.includes(:images, :categories, :main_ingredient, :cooking_method)
+                      .page(params[:page]).per(params[:per_page])
+                  end
 
-        @dishes = @restaurant.dishes.includes(:images, :categories, :main_ingredient, :cooking_method)
-                            .page(params[:page]).per(params[:per_page])
         @total = @dishes&.total_count
       end
 

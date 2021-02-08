@@ -24,9 +24,13 @@
               <a class="btn-filter">Thông tin</a>
             </a-popover>
             <div class="h-12 overflow-scroll">
-              <a v-for="(category, index) in categories" :value="category.id"
-                 :key="index" name="categories" @click="filterCategory(category.id)"
-                 class="m-1 btn-filter">{{category.name}}
+              <a v-for="(category, index) in categories"
+                 :value="category.id"
+                 :key="index" name="categories"
+                 @click="filterCategory(category.id)"
+                 class="m-1 btn-filter"
+              >
+                {{category.name}}
               </a>
               <a @click="resetFilter" class="btn-reset bg-red-500 hover:bg-red-700">Tất cả</a>
             </div>
@@ -91,8 +95,14 @@
       <div class="menu-body">
         <a-row class="w-full md:w-3/6 pr-9 fixed">
           <a-col :span="20">
-            <a-pagination v-model="current_page" :total="total" @change="changePage"
-                          :show-total="(total) => `Tổng ${total}`"/>
+            <a-pagination
+              simple
+              v-if="total > per_page"
+              v-model="current_page"
+              :defaultPageSize="per_page"
+              :total="total"
+              @change="changePage"
+            />
           </a-col>
           <a-col :span="4">
             <div class="menu-btn">
@@ -116,8 +126,10 @@
             </div>
           </a-col>
         </a-row>
-        <show-dish :current_dishes="current_dishes"
-                   :ListView="ListView"/>
+        <div class="mt-6">
+          <show-dish :current_dishes="current_dishes"
+                     :ListView="ListView"/>
+        </div>
       </div>
     </div>
   </section>
@@ -131,9 +143,7 @@
   import ShowDish from "./ShowDish"
 
   const resetParamsQuery = {
-    main_ingredient_ids: [],
-    cooking_method_ids: [],
-    category_ids: []
+    category_id: ''
   }
 
   export default {
@@ -160,7 +170,6 @@
         per_page: 20,
         total: 0,
         queryParams: {...resetParamsQuery},
-        idCookingMethod: ''
       }
     },
     mounted() {
@@ -184,12 +193,7 @@
         return ApiCaller().get(URLS.GUEST_DISHES(this.$route.params.id),
           {
             params: Object.assign({},
-              {page: this.current_page, per_page: this.per_page},
-              {
-                categories: {id: this.queryParams.category_ids},
-                main_ingredient_id: this.queryParams.main_ingredient_ids,
-                cooking_method_id: this.queryParams.cooking_method_ids
-              })
+              {page: this.current_page, per_page: this.per_page, category_id: this.queryParams.category_id})
           })
           .then(response => {
             this.current_dishes = response.data.dishes
@@ -199,13 +203,14 @@
             console.log(e);
           })
       },
+      filterCategory(value) {
+        this.current_page = 1
+        this.queryParams.category_id = value
+        this.fetchData()
+      },
       changePage(value) {
         this.current_page = value
-        if (this.idCookingMethod) {
-          this.filterCategory(this.idCookingMethod)
-        } else {
-          this.fetchData()
-        }
+        this.fetchData()
       },
       listView() {
         this.ListView = true
@@ -213,30 +218,8 @@
       gridView() {
         this.ListView = false
       },
-      filterCategory(idCookingMethod) {
-        this.idCookingMethod = idCookingMethod
-        return ApiCaller().get(URLS.CATEGORY_DISHES(idCookingMethod),
-          {
-            params: Object.assign({},
-              {page: this.current_page, per_page: this.per_page})
-          })
-          .then(response => {
-            console.log(response.data)
-            this.current_dishes = response.data.dishes
-            this.total = response.data.total
-          })
-          .catch(e => {
-            console.log(e);
-          })
-
-      },
-      // filterMainIngredient() {
-      //   this.filter_main_ingredient = !this.filter_main_ingredient
-      // },
-      // filterCategory() {
-      //   this.show_filter_category = !this.show_filter_category
-      // },
       resetFilter() {
+        this.current_page = 1
         this.queryParams = {...resetParamsQuery}
         this.fetchData()
       },

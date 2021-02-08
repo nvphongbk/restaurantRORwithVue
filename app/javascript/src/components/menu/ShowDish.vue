@@ -119,7 +119,6 @@
 
   .menu-view {
     height: 73vh;
-    margin-top: 70px;
     overflow: scroll;
   }
 

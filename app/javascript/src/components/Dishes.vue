@@ -25,22 +25,33 @@
                   @click="addDish">
           Thêm
         </a-button>
-        <a-button type="primary" class="editable-add-btn"
+        <a-button type="primary"
+                  class="editable-add-btn"
+                  @click="deleteDishSelect"
+                  :class="{ activeSelect: isActiveSelect }">
+          Xoá
+        </a-button>
+        <a-button type="primary"
+                  class="editable-add-btn"
                   @click="showAllDish">
           Tất cả món ăn
         </a-button>
-        <a-button type="dashed" class="editable-add-btn"
+        <a-button type="dashed"
+                  class="editable-add-btn"
                   @click="showModalImport">
           Import
         </a-button>
 
-        <a-modal v-model:visible="visibleImportDish" title="Import data"
+        <a-modal v-model:visible="visibleImportDish"
+                 title="Import data"
                  :footer="null">
           <ImportDish
             @updateListAfterUpdated="updateListAfterUpdated"
           />
         </a-modal>
-        <a-modal v-model="visible" :title="titleModal" :footer="null">
+        <a-modal v-model="visible"
+                 :title="titleModal"
+                 :footer="null">
           <FormDish
             :visible="visible"
             :rules="rules"
@@ -51,7 +62,8 @@
             @updateListAfterUpdated="updateListAfterUpdated"
           />
         </a-modal>
-        <a-table bordered :data-source="onSearch"
+        <a-table :row-selection="rowSelection"
+                 bordered :data-source="onSearch"
                  :columns="columns"
                  :row-key="(record) => record.id"
                  :pagination="false"
@@ -130,6 +142,8 @@
     name: "Dishes",
     data() {
       return {
+        isActiveSelect: false,
+        selectedRowKeys: [],
         pageSizeOptions: ['20', '50', '100', '500', '1000'],
         current_page: 1,
         total: 0,
@@ -203,6 +217,19 @@
       titleModal() {
         return this.isEdit ? 'Edit Dish' : 'Create Dish'
       },
+      rowSelection() {
+        return {
+          onChange: (selectedRowKeys, selectedRows) => {
+            this.selectedRowKeys = selectedRowKeys
+            if (selectedRowKeys == 0) {
+              this.isActiveSelect = false
+            } else {
+              this.isActiveSelect = true
+            }
+          },
+        };
+      },
+
       onSearch() {
         if (this.search) {
           return this.desserts.filter((item) => {
@@ -240,7 +267,6 @@
         this.visible = true;
         this.isAddNew = false
         this.editItem = Object.assign({}, record);
-        console.log(this.editItem, 1)
       },
       updateVisible(value) {
         this.visible = value;
@@ -305,7 +331,16 @@
         } else {
           this.$message.error(response.message);
         }
-      }
+      },
+      async deleteDishSelect() {
+        let response = await ApiCaller().delete(URLS.DESTROY_SELECT_DISH(this.selectedRowKeys))
+        if (response.status == 200) {
+          this.$message.success('Xoá thành công');
+          this.initialize()
+        } else {
+          this.$message.error(response.message);
+        }
+      },
     }
   }
 </script>
@@ -375,5 +410,10 @@
 
   .ant-table-thead tr th {
     text-align: center !important;
+  }
+
+  .activeSelect {
+    background: #FF0000;
+    border-color: #FF0000;
   }
 </style>
