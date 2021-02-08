@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+  <div id="fixContent">
+    <router-view />
+  </div>
 </template>
 
 <script>
