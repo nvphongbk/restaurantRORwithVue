@@ -5,40 +5,45 @@
          :style="{'background-image':'url(/uploads/menu/background-menu.jpg)', 'background-size':'cover'}">
       <!--button menu-->
       <div class="menu-header">
-        <a-row class="menu-header">
-        <a-col :span="24">
-          <div>
+        <div class="logo-header">
+          <img src="/image/tenHSQ.png" alt="Menu Hoa Sơn Quán mùa Tết" style="height: 100px">
+        </div>
+        <div class="banner-header">
+          <img src="/image/hoaanhdao.png" alt="Menu Hoa Sơn Quán mùa Tết" style="height: 100px">
+        </div>
+        <div class="filter">
+          <a-button-group>
             <a-popover v-model="filterVisible"
                        title="Lựa chọn thực đơn" trigger="click">
-            <template slot="content">
-              <div class="text-left cursor-pointer ant-popover-inner-content--custom">
-                <div class="category-filter-row d-flex hover:bg-gray-400 py-1"
-                     v-for="category in categories"
-                     :key="category.id"
-                     @click="filterCategory(category.id)"
-                >
-                  <div class="category-filter-thumb">
-                  </div>
-                  <div class="category-filter-item">
-                    {{ category.name }}
+              <template slot="content">
+                <div
+                  class="text-left cursor-pointer ant-popover-inner-content--custom">
+                  <div
+                    class="category-filter-row d-flex hover:bg-gray-400 py-1"
+                    v-for="category in categories"
+                    :key="category.id"
+                    @click="filterCategory(category.id)"
+                  >
+                    <div class="category-filter-thumb">
+                    </div>
+                    <div class="category-filter-item">
+                      {{ category.name }}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </template>
-            <a-button type="primary" icon="unordered-list" size="large" class="m-3"/>
-          </a-popover>
-<!--            <a-button type="primary" shape="circle" icon="redo" size="large" @click="resetFilter"/>-->
-            <a-button-group>
-              <a-button size="large" type="primary" v-for="item in display_categories" @click="filterCategory(item.id)">
-                {{ item.name }}
-              </a-button>
-              <a-button size="large" type="dashed" @click="resetFilter">
-                All
-              </a-button>
-            </a-button-group>
-          </div>
-        </a-col>
-      </a-row>
+              </template>
+              <a-button type="primary" icon="unordered-list" size="large" />
+            </a-popover>
+            <a-button size="large" type="primary"
+                      v-for="item in display_categories"
+                      @click="filterCategory(item.id)">
+              {{ item.name }}
+            </a-button>
+            <a-button size="large" type="dashed" @click="resetFilter">
+              All
+            </a-button>
+          </a-button-group>
+        </div>
       </div>
       <div class="menu-body">
         <a-row class="w-full md:w-3/6 pr-9 fixed">
@@ -46,7 +51,7 @@
             <a-pagination
               simple
               v-if="total > per_page"
-              v-model="current_page"in
+              v-model="current_page" in
               size="large"
               :defaultPageSize="per_page"
               :total="total"
@@ -156,9 +161,9 @@
         this.current_page = 1
         this.queryParams.category_id = value
         let self = this
-        setTimeout(function() {
-            self.fetchData()
-          }, 500)
+        setTimeout(function () {
+          self.fetchData()
+        }, 500)
       },
       changePage(value) {
         this.current_page = value
@@ -320,16 +325,30 @@
     opacity: 0.3;
     z-index: 100
   }
+
   .category-filter-item {
     padding: 5px 0;
   }
+
   .category-filter-row {
     border-bottom: 1px solid #e8e8e8;
   }
-  .d-flex {
-    display: flex;
-  }
 
+  .logo-header {
+    padding-top: 10px;
+    line-height: 70px;
+    overflow: hidden;
+  }
+  .logo-header img {
+    max-width: 300px;
+    max-height: 60px;
+    margin: auto auto;
+  }
+  .banner-header img {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
   .close:hover {
     opacity: 1;
   }
@@ -350,10 +369,12 @@
   .close:after {
     transform: rotate(-45deg);
   }
+
   .ant-popover-inner-content--custom {
     height: 70vh;
     overflow: scroll;
   }
+
   .menu-header {
     width: 100%;
     margin: auto;
