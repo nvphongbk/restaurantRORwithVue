@@ -118,10 +118,10 @@
     letter-spacing: 1px;
   }
 
-  .menu-view {
-    height: 73vh;
-    overflow: scroll;
-  }
+  /*.menu-view {*/
+  /*  height: 73vh;*/
+  /*  overflow: scroll;*/
+  /*}*/
 
   .grid-view {
     display: flex;

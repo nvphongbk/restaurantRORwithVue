@@ -20,8 +20,17 @@
       <img alt="example" style="width: 100%" :src="previewImage" />
     </a-modal>
       <div class="flex flex-wrap">
-        <div id="gallery" v-for="(image, i) in images">
-          <img class="image" :src="image">
+        <div id="gallery" v-for="(image, i) in images" :key="image.id">
+          <a-popconfirm
+            class="pop-delete-image"
+            title="Bạn muốn xoá hình này?"
+            ok-text="Xoá"
+            cancel-text="Không"
+            @confirm="deleteImage(image.id)"
+          >
+            <a href="#">x</a>
+          </a-popconfirm>
+          <img class="image" :src="image.url">
         </div>
       </div>
   </div>
@@ -45,8 +54,7 @@
         previewVisible: false,
         previewImage: '',
         fileList: [],
-        desserts:'',
-        images: [],
+        images:'',
         index: 0,
         imageUploadUrl: URLS.IMAGES
       }
@@ -58,13 +66,7 @@
       initialize() {
         return ApiCaller().get(URLS.IMAGES())
           .then(response => {
-            const arrUrl=[]
-            this.desserts = response.data;
-            this.desserts.forEach(function(item){
-                arrUrl.push(item.url)
-              }
-            )
-            this.images = arrUrl
+            this.images = response.data;
           })
           .catch(e => {
           });
@@ -82,6 +84,16 @@
       handleChange({ fileList }) {
         this.fileList = fileList;
       },
+      deleteImage(id) {
+        return ApiCaller().delete(URLS.IMAGE(id))
+          .then((res) => {
+            this.$message.success('Đã xoá thành công');
+            this.initialize()
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      },
     }
   }
 </script>
@@ -90,9 +102,24 @@
   #gallery{
     display: flex;
     max-width: 100px;
+    position: relative;
   }
   #gallery .image{
     padding: 3px;
+  }
+
+  #gallery:hover .pop-delete-image {
+    display: block;
+  }
+
+  .pop-delete-image {
+    display: none;
+    position: absolute;
+    right: 3px;
+    top: -5px;
+    font-size: 25px;
+    font-weight: 600;
+    color: #E63543;
   }
   .ant-upload-select-picture-card i {
     font-size: 32px;

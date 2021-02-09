@@ -11,7 +11,7 @@ Rails.application.routes.draw do
           delete :destroy_select
         end
       end
-      resources :images, only: %w[create index]
+      resources :images, only: %w[create index destroy]
       resources :messages
 
       resources :categories do
