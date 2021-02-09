@@ -99,7 +99,7 @@
             dataIndex: 'name',
           },
           {
-            title: 'Hiện thị trang chủ',
+            title: 'Hiển thị trang chủ',
             dataIndex: 'display_home',
             scopedSlots: {customRender: "displayHome"}
           },

@@ -12,6 +12,7 @@
     "reqwest": "^2.0.5",
     "tailwindcss": "^2.0.2",
     "turbolinks": "^5.2.0",
+    "v-img": "^0.2.0",
     "vue": "^2.6.12",
     "vue-cookie": "^1.1.4",
     "vue-gallery-slideshow": "^1.5.2",

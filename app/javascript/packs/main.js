@@ -10,7 +10,9 @@ import '../css/application.css';
 import '../css/custom.css';
 import { FormModel } from 'ant-design-vue';
 import VueCookie from "vue-cookie"
+import VueImg from 'v-img';
 
+Vue.use(VueImg);
 Vue.use(Antd);
 Vue.use(FormModel)
 Vue.use(VueCookie)
