@@ -154,11 +154,6 @@
       width: 30px;
       height: 30px;
     }
-
-    .menu-view {
-      height: 67vh;
-    }
-
   }
 
 </style>
