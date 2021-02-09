@@ -11,7 +11,9 @@ import '../css/custom.css';
 import { FormModel } from 'ant-design-vue';
 import VueCookie from "vue-cookie"
 import VueImg from 'v-img';
+import { VueHammer } from 'vue2-hammer'
 
+Vue.use(VueHammer)
 Vue.use(VueImg);
 Vue.use(Antd);
 Vue.use(FormModel)
