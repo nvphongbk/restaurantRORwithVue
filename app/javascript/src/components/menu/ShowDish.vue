@@ -149,11 +149,9 @@
   }
 
   @media (min-width: 800px) {
-
     .menu-dish_img {
       width: 30px;
       height: 30px;
     }
   }
-
 </style>
