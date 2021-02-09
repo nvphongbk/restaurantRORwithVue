@@ -295,6 +295,7 @@
   }
 
   .menu-dish_img--grid img {
+    object-fit: cover;
     width: 100%;
     height: inherit;
   }

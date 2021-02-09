@@ -88,6 +88,7 @@
     height: 60px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    object-fit: cover;
   }
 
   .menu_content {
@@ -142,6 +143,7 @@
   }
 
   .menu-dish_img--grid img {
+    object-fit: cover;
     width: 100%;
     height: inherit;
   }
