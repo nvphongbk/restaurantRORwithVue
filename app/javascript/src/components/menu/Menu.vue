@@ -2,7 +2,7 @@
   <section id="our_menu">
     <!--<Navigation/>-->
     <div class="container-menu pt-0"
-         :style="{'background-image':'url(/uploads/menu/background-menu.jpg)', 'background-size':'cover'}">
+         :style="{'background-image':'url(/image/background-menu.png)', 'background-size':'cover'}">
       <!--button menu-->
       <div class="menu-header">
         <div class="logo-header">
@@ -34,9 +34,12 @@
               </template>
               <a-button type="primary" icon="unordered-list" size="large" />
             </a-popover>
-            <a-button size="large" type="primary"
-                      v-for="item in display_categories"
-                      @click="filterCategory(item.id)">
+            <a-button
+              size="large"
+              type="primary"
+              style="background-color: #233665; color: #ffffffeb"
+              v-for="item in display_categories"
+              @click="filterCategory(item.id)">
               {{ item.name }}
             </a-button>
             <a-button size="large" type="dashed" @click="resetFilter">
@@ -46,7 +49,7 @@
         </div>
       </div>
       <div class="menu-body" v-hammer:swipe.left="onSwipeLeft">
-        <a-row class="w-full md:w-3/6 pr-9 fixed">
+        <a-row class="w-full md:w-3/6 pr-9">
           <a-col :span="20">
             <a-pagination
               simple
@@ -84,7 +87,19 @@
           <show-dish :current_dishes="current_dishes"
                      :ListView="ListView"/>
         </div>
+        <a-row>
+            <a-pagination
+              simple
+              v-if="total > per_page"
+              v-model="current_page"in
+              size="large"
+              :defaultPageSize="per_page"
+              :total="total"
+              @change="changePage"
+            />
+        </a-row>
       </div>
+      <menu-footer />
     </div>
   </section>
 </template>
@@ -95,6 +110,7 @@
   import ACol from "ant-design-vue/es/grid/Col";
   import Navigation from "../../../layouts/partials/Navigation";
   import ShowDish from "./ShowDish"
+  import MenuFooter from "./MenuFooter";
 
   const resetParamsQuery = {
     category_id: ''
@@ -102,7 +118,7 @@
 
   export default {
     name: "Menu",
-    components: {Navigation, ACol, ShowDish},
+    components: {MenuFooter, Navigation, ACol, ShowDish},
     data() {
       return {
         menu: '',
@@ -379,11 +395,6 @@
 
   .close:after {
     transform: rotate(-45deg);
-  }
-
-  .ant-popover-inner-content--custom {
-    height: 70vh;
-    overflow: scroll;
   }
 
   .menu-header {

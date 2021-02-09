@@ -24,6 +24,7 @@ export const URLS = {
   GUEST_RESTAURANT_INFO: (id) => `${getBaseUrl()}/restaurants/${id}/guest_restaurant_info`,
   CURRENT_USER_INFO: () => `${getBaseUrl()}/users/get_info`,
   IMAGES: () => `${getBaseUrl()}/images`,
+  IMAGE: (id) => `${getBaseUrl()}/images/${id}`,
   MAIN_INGREDIENTS: () => `${getBaseUrl()}/main_ingredients`,
   MAIN_INGREDIENT: (id) => `${getBaseUrl()}/main_ingredients/${id}`,
   MAIN_INGREDIENT_CHANGE_ACTIVE: (id) => `${getBaseUrl()}/main_ingredients/${id}/change_active`,

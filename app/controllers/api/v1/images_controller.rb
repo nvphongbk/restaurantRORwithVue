@@ -16,6 +16,11 @@ module Api
           render json: { message: "Can't not create image" }, status: 422
         end
       end
+
+      def destroy
+        @image = Image.find(params[:id])
+        render json: {message: 'Xoá thành công'}, status: 200 if @image.destroy
+      end
     end
   end
 end
