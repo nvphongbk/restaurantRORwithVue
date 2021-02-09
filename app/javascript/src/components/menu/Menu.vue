@@ -48,7 +48,7 @@
           </a-button-group>
         </div>
       </div>
-      <div class="menu-body" v-hammer:swipe.left="onSwipeLeft">
+      <div class="menu-body">
         <a-row class="w-full md:w-3/6 pr-9">
           <a-col :span="20">
             <a-pagination
@@ -171,16 +171,6 @@
           .catch(e => {
             console.log(e);
           })
-      },
-      onSwipeLeft() {
-        console.log(123)
-        if(this.current_page > 1) {
-          const self = this
-          setTimeout(function () {
-            self.current_page -=1
-            self.fetchData()
-          }, 3000)
-        }
       },
       filterCategory(value) {
         this.filterVisible = false
