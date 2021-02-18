@@ -8,9 +8,6 @@ module Api
                                     .distinct
                                     .page(params[:page]).per(params[:per_page])
                                     .order(position: :asc, created_at: :desc)
-        @dishes.each do |dish|
-          dish.update(name: dish.name.strip.capitalize)
-        end
       end
 
       def show; end
