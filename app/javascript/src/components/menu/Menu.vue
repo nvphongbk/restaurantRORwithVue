@@ -220,7 +220,6 @@
     line-height: 2;
     margin-bottom: 0;
     position: relative;
-    text-transform: capitalize;
     margin: 0 auto;
     width: 50%;
     padding-top: 20px;
@@ -253,7 +252,6 @@
     font-weight: 500;
     border-bottom: 1px dashed #c0392b;
     line-height: 2;
-    text-transform: capitalize;
   }
 
   .menu_content h4 span {
