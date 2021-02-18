@@ -5,6 +5,9 @@ module ApplicationHelper
     params.select{ |k, value| value.present? }
   end
 
+  def format_character(char)
+    char&.strip&.capitalize
+  end
 
   def import_data_from(restaurant, file, import_columns)
     datas = RubyXL::Parser.parse(file)
@@ -55,15 +58,23 @@ module ApplicationHelper
           current_row.merge!({key => value}) if value.present?
         end
       end
-      dish = Dish.new(current_row)
-      if dish.name.present?
-        dish = Dish.find_or_create_by(name: dish.name)
+      name = format_character(current_row[:name])
+      dish = if restaurant.dishes.present? && name.present?
+               restaurant.dishes.where(name: name)&.first
+             else
+               false
+             end
+
+      if dish.present?
+        dish.update(current_row)
+      else
+        dish = Dish.new(current_row)
+        dish.categories = @categories if @categories.present?
+        dish.main_ingredient_id = @main_ingredient.id
+        dish.cooking_method_id = @cooking_method.id
+        dish.save
+        @images.update_all(dish_id: dish.id) if @images.present?
       end
-      dish.categories = @categories if @categories.present?
-      dish.main_ingredient_id = @main_ingredient.id
-      dish.cooking_method_id = @cooking_method.id
-      dish.save
-      @images.update_all(dish_id: dish.id) if @images.present?
     end
     {status: true, message: 'Hoàn thành'}
   rescue StandardError => e
