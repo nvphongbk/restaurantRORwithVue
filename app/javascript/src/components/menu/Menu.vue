@@ -2,7 +2,7 @@
   <section id="our_menu">
     <!--<Navigation/>-->
     <div class="container-menu pt-0"
-         :style="{'background-image':'url(/image/background-menu.png)', 'background-size':'cover'}">
+         :style="{'background-image':'url(/image/background-menu.jpg)', 'background-size':'cover'}">
       <!--button menu-->
       <div class="menu-header">
         <div class="logo-header">
