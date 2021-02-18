@@ -56,6 +56,9 @@ module ApplicationHelper
         end
       end
       dish = Dish.new(current_row)
+      if dish.name.present?
+        dish = Dish.find_or_create_by(name: dish.name)
+      end
       dish.categories = @categories if @categories.present?
       dish.main_ingredient_id = @main_ingredient.id
       dish.cooking_method_id = @cooking_method.id
