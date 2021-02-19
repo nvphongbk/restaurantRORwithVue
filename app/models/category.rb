@@ -26,5 +26,5 @@ class Category < ApplicationRecord
 
   belongs_to :restaurant
   has_many :category_dishes, dependent: :destroy
-  has_many :dishes, through: :category_dishes
+  has_many :dishes, through: :category_dishes, dependent: :destroy
 end
