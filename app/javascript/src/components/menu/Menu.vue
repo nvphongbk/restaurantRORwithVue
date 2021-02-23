@@ -2,11 +2,11 @@
   <section id="our_menu">
     <!--<Navigation/>-->
     <div class="container-menu pt-0"
-         :style="{'background-image':'url(/image/background-menu.jpg)', 'background-size':'cover'}">
+         :style="{'background-image':'url(' + background.url + ')', 'background-size':'cover'}">
       <!--button menu-->
       <div class="menu-header">
         <div class="logo-header">
-          <img src="/image/tenHSQ.png" alt="Menu Hoa Sơn Quán mùa Tết" style="height: 100px">
+          <img :src="logo.url" alt="logo" style="height: 100px">
         </div>
         <div class="banner-header">
           <img src="/image/hoaanhdao.png" alt="Menu Hoa Sơn Quán mùa Tết" style="height: 100px">
@@ -122,11 +122,13 @@
     data() {
       return {
         menu: '',
+        background: {},
         ListView: true,
         MobileView: false,
         current_dishes: [],
         categories: [],
         display_categories: [],
+        logo: {},
         restaurant: {},
         visible: false,
         filterVisible: false,
@@ -149,6 +151,9 @@
             this.categories = response.data.categories
             this.display_categories = response.data.display_categories
             this.main_ingredients = response.data.main_ingredients
+            this.logo = response.data.logo
+            this.background = response.data.background
+            console.log(this.background)
           })
           .catch(e => {
             console.log(e);

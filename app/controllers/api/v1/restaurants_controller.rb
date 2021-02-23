@@ -61,6 +61,8 @@ module Api
         @display_categories = @restaurant.categories.includes(:dishes).where(is_active: true, display_home: true)
         @cooking_methods = @restaurant.cooking_methods.where(is_active: true)
         @main_ingredients = @restaurant.main_ingredients.where(is_active: true)
+        @logo_restaurant = @restaurant.logo
+        @background_menu = @restaurant.background
       end
 
       def guest_dishes

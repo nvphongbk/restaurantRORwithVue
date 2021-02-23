@@ -40,6 +40,10 @@ export const URLS = {
   MESSAGES: () => `${getBaseUrl()}/messages`,
   MESSAGE: (id) => `${getBaseUrl()}/messages/${id}`,
   MESSAGE_CONTACT: () => `${getBaseUrl()}/messages`,
+  LOGOS: () => `${getBaseUrl()}/logos`,
+  LOGO: (id) => `${getBaseUrl()}/logos/${id}`,
+  BACKGROUNDS: () => `${getBaseUrl()}/backgrounds`,
+  BACKGROUND: (id) => `${getBaseUrl()}/backgrounds/${id}`,
 
 //  Methods
   CHANGE_RESTAURANT_DEFAULT: () => `${getBaseUrl()}/users/change_restaurant_default`,

@@ -7,5 +7,6 @@ json.restaurants do
     json.pass_wifi item.pass_wifi
   end
 end
-json.current_restaurant @current_restaurant, :id, :name, :address, :phone, :pass_wifi
+json.current_restaurant @current_restaurant, :id, :name, :address, :phone, :pass_wifi, :user_id
+
 json.categories @categories, :id, :name, :position, :display_home, :is_active
