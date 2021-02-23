@@ -14,6 +14,7 @@ import {JWT_KEY} from "./utils/constant"
 import Menu from "./components/menu/Menu"
 import Contact from "./components/Contact"
 import Signup from "./components/Signup"
+import LogoAndBackgroundMenu from "./components/LogoBackgroundMenu"
 
 Vue.use(VueRouter)
 const router = new VueRouter({
@@ -124,6 +125,14 @@ const router = new VueRouter({
       component: Contact,
       meta: {
         openKey: 'GuestPage',
+        guest: true
+      }
+    },
+    { path: '/logo_background',
+      name: 'LogoBackgroundMenu',
+      component: LogoAndBackgroundMenu,
+      meta: {
+        openKey: 'logoandbackground',
         guest: true
       }
     }

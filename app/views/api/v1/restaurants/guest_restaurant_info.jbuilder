@@ -36,3 +36,11 @@ json.display_categories do
     json.display_home item.display_home
   end
 end
+json.logo do
+  json.id @logo_restaurant.id
+  json.url @logo_restaurant.photo&.url
+end
+json.background do
+  json.id @background_menu.id
+  json.url @background_menu.photo&.url
+end

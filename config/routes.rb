@@ -52,6 +52,8 @@ Rails.application.routes.draw do
           post :change_restaurant_default
         end
       end
+      resources :logos, only: %w[create update index]
+      resources :backgrounds, only: %w[create update index]
     end
   end
 

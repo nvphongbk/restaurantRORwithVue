@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_08_135023) do
+ActiveRecord::Schema.define(version: 2021_02_23_041721) do
+
+  create_table "backgrounds", force: :cascade do |t|
+    t.string "photo"
+    t.integer "restaurant_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_backgrounds_on_restaurant_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -80,6 +88,14 @@ ActiveRecord::Schema.define(version: 2021_02_08_135023) do
     t.string "jti", null: false
     t.datetime "expired_at", null: false
     t.index ["jti"], name: "index_jwt_denylists_on_jti"
+  end
+
+  create_table "logos", force: :cascade do |t|
+    t.string "photo"
+    t.integer "restaurant_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_logos_on_restaurant_id"
   end
 
   create_table "main_ingredients", force: :cascade do |t|

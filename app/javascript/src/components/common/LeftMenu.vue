@@ -48,6 +48,15 @@
           <span class="nav-text">Tin nhắn</span>
         </router-link>
       </a-menu-item>
+      <a-sub-menu key="setting">
+        <span slot="title"><a-icon type="laptop" class="text-blue-500" />Cấu hình</span>
+        <a-menu-item key="LogoBackgroundMenu">
+          <router-link :to="{name: 'LogoBackgroundMenu'}">
+            <a-icon type="setting" class="text-blue-500"/>
+            <span class="nav-text">Hình nền & Logo</span>
+          </router-link>
+        </a-menu-item>
+      </a-sub-menu>
     </a-menu>
   </a-layout-sider>
 </template>
