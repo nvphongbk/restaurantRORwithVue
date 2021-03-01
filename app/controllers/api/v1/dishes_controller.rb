@@ -25,6 +25,7 @@ module Api
       def update
         dish = Dish.find(params[:id])
         if dish.update(dish_params)
+          InitServices::InitDish.new(dish, params[:dish][:images_ids]).perform
           render json: dish, status: 200
         else
           render json: {message: "Can't not update dish"}, status: 422

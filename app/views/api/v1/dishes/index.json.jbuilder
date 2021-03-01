@@ -38,19 +38,6 @@ json.dishes do
       json.dish_id menu_dish.dish_id
       json.price menu_dish.price
     end
-    json.menu_active dish.menus do |menu_active|
-      if menu_active.is_active == true
-        json.id menu_active.id
-        json.name menu_active.name
-        json.menu_dishes menu_active.menu_dishes do |menu_dish|
-          if dish.id == menu_dish.dish_id
-            json.dish_id menu_dish.dish_id
-            json.price menu_dish.price
-          end
-        end
-      end
-    end
-
   end
 end
 json.total @dishes.total_count

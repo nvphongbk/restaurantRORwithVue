@@ -17,7 +17,7 @@
 #  main_ingredient_id :integer
 #
 class Dish < ApplicationRecord
-  IMPORT_COLUMNS = { name: 'name', price: 'price', image: 'image', category: 'category',
+  IMPORT_COLUMNS = { name: 'name', image: 'image', category: 'category',
                      cooking_method: 'cooking_method', main_ingredient: 'main_ingredient', unit: 'unit', quantity: 'quantity' }.freeze
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
@@ -29,7 +29,7 @@ class Dish < ApplicationRecord
   accepts_nested_attributes_for :menu_dishes, allow_destroy: true
   has_many :menus, through: :menu_dishes
 
-  validates :name, :price, presence: false
+  validates :name, presence: false
 
   def category_ids
     self.categories&.pluck(:id)

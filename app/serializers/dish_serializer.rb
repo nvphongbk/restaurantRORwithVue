@@ -17,7 +17,7 @@
 #  main_ingredient_id :integer
 #
 class DishSerializer < ActiveModel::Serializer
-  attributes :id, :name, :price, :category_ids, :images_attributes,
+  attributes :id, :name, :category_ids, :images_attributes,
              :image_ids, :position, :is_active, :dish_code
   belongs_to :categories, serializer: CategorySerializer
 end

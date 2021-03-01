@@ -69,7 +69,9 @@
                  :pagination="false"
         >
           <template slot="price" slot-scope="text, record">
-            {{text | currency('', 0)}}
+            <div v-for="dish in text" :key="dish.id">
+              {{dish.menu.name}}: {{dish.price | currency('', 0)}}
+            </div>
           </template>
           <template slot="categories" slot-scope="text, record">
             <div v-for="desert in text" :key="desert.id">
@@ -187,8 +189,9 @@
           },
           {
             title: 'Giá bán',
-            dataIndex: 'menu_active[0].menu_dishes[0].price',
-            scopedSlots: {customRender: 'price'}
+            dataIndex: 'menu_dishes_attributes',
+            scopedSlots: {customRender: 'price'},
+            width: '200px'
           },
           {
             title: 'Danh mục thực đơn',

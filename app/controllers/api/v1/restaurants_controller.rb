@@ -70,7 +70,7 @@ module Api
         return if @restaurant.blank?
         @dishes = if params[:category_id].present?
                     @restaurant.dishes.includes(:images, :categories, :main_ingredient, :cooking_method, :menus)
-                      .where(categories: {id: params[:category_id]}, menus: {is_active: true}).to_sql
+                      .where(categories: {id: params[:category_id]}, menus: {is_active: true})
                       .page(params[:page]).per(params[:per_page])
                   else
                     @restaurant.dishes.includes(:images, :categories, :main_ingredient, :cooking_method, :menus)

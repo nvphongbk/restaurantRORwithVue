@@ -79,7 +79,7 @@
           </tbody>
           <tfoot class="center">
           <tr>
-            <td colspan="3">
+            <td colspan="3" class="text-center">
               <a-button @click="addMenuDish">
                 <a-icon type="plus"/>
               </a-button>
