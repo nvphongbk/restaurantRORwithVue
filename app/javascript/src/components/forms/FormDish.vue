@@ -14,10 +14,6 @@
         <a-input placeholder="Vui lòng nhập Mã món ăn"
                  v-model="editItem.dish_code"/>
       </a-form-model-item>
-      <a-form-model-item ref="price" label="Giá bán" prop="price">
-        <a-input placeholder="Nhập giá bán"
-                 v-model="editItem.price"/>
-      </a-form-model-item>
       <a-form-model-item label="Kích hoạt" prop="isActive">
         <a-switch v-model="editItem.is_active"/>
       </a-form-model-item>
@@ -25,7 +21,7 @@
         <a-input placeholder="Vị trí xuất hiện"
                  v-model="editItem.position"/>
       </a-form-model-item>
-      <a-form-model-item label="Danh mục thực đơn">
+      <a-form-model-item label="Danh mục thực đơn" prop="category_ids">
         <a-checkbox-group v-model="editItem.category_ids" @change="onChange">
           <a-checkbox :span="6" v-for="category in categories" :key="category.id"
                       name="category_ids[]" :value="category.id">
@@ -222,13 +218,15 @@
               })
                 .then(response => {
                   this.$message.success('Cập nhật thành công')
-                  this.$emit('updateListAfterUpdated', this.editItem);
+                  this.$emit('updateListAfterUpdated');
                 })
                 .catch(error => {
                 });
             } else {
               this.create(valuesSave)
             }
+            this.clearMenuDishes()
+            this.fetchMenu()
             this.$emit('updateVisible', false);
           } else {
             return false;
@@ -263,9 +261,18 @@
       addMenuDish() {
         this.editItem.menu_dishes_attributes.push({...newMenuDish})
       },
-      deleteMenuDish(menu) {
+      async deleteMenuDish(menu) {
+        let response = await ApiCaller().delete(URLS.MENU(menu.id))
+        if (response.status == 200) {
+          this.$message.success('Xoá thành công');
+        } else {
+          this.$message.error(response.message);
+        }
         const index = this.editItem.menu_dishes_attributes.findIndex(obj => obj === menu)
         this.editItem.menu_dishes_attributes.splice(index, 1)
+      },
+      clearMenuDishes() {
+        this.editItem.menu_dishes_attributes.splice(0)
       }
     },
   };

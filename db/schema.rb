@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_033437) do
+ActiveRecord::Schema.define(version: 2021_03_01_080500) do
 
   create_table "backgrounds", force: :cascade do |t|
     t.string "photo"
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_033437) do
 
   create_table "dishes", force: :cascade do |t|
     t.string "name"
-    t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "position"

@@ -125,7 +125,6 @@
   const newDish = {
     id: '',
     name: '',
-    price: '',
     category_ids: [],
     menu_dishes_attributes: [],
     main_ingredient_id: undefined,
@@ -163,6 +162,14 @@
               message: 'Vui lòng nhập tên món ăn', trigger: 'blur'
             },
           ],
+          category_ids: [
+            {
+              type: 'array',
+              required: true,
+              message: 'Vui lòng chọn danh mục món ăn',
+              trigger: 'change',
+            }
+          ]
         },
         editItem: {},
         isEdit: false,

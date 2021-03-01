@@ -15,8 +15,7 @@ module Api
       def create
         dish = Dish.new(dish_params)
         if dish.save
-          InitServices::InitDish.new(dish, params[:dish][:images_ids], params[:dish][:menu_dishes_attributes]).perform
-          InitServices::InitDish.new(dish, params[:dish][:images_ids], params[:dish][:menu_dishes_attributes]).act
+          InitServices::InitDish.new(dish, params[:dish][:images_ids]).perform
           render json: dish, status: 200
         else
           render json: {message: "Can't create dish"}, status: 422
@@ -26,8 +25,6 @@ module Api
       def update
         dish = Dish.find(params[:id])
         if dish.update(dish_params)
-          InitServices::InitDish.new(dish, params[:dish][:images_ids], params[:dish][:menu_dishes_attributes]).perform
-          InitServices::InitDish.new(dish, params[:dish][:images_ids], params[:dish][:menu_dishes_attributes]).act
           render json: dish, status: 200
         else
           render json: {message: "Can't not update dish"}, status: 422
@@ -56,9 +53,9 @@ module Api
       private
 
       def dish_params
-        params.require(:dish).permit(:name, :dish_code, :price, :position, :is_active, :restaurant_id,
+        params.require(:dish).permit(:name, :dish_code, :position, :is_active, :restaurant_id,
                                      :main_ingredient_id, :cooking_method_id, category_ids: [],
-                                     menu_dishes_attributes: %i[menu_id dish_id price])
+                                     menu_dishes_attributes: %i[id menu_id dish_id price])
       end
     end
   end
