@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_041721) do
+ActiveRecord::Schema.define(version: 2021_03_01_080500) do
 
   create_table "backgrounds", force: :cascade do |t|
     t.string "photo"
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2021_02_23_041721) do
 
   create_table "dishes", force: :cascade do |t|
     t.string "name"
-    t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "position"
@@ -105,6 +104,23 @@ ActiveRecord::Schema.define(version: 2021_02_23_041721) do
     t.integer "restaurant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "menu_dishes", force: :cascade do |t|
+    t.integer "menu_id"
+    t.integer "dish_id"
+    t.string "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_active"
+    t.integer "restaurant_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_menus_on_restaurant_id"
   end
 
   create_table "messages", force: :cascade do |t|

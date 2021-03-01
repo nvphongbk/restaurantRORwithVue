@@ -9,7 +9,6 @@
 #  is_active          :boolean          default(TRUE)
 #  name               :string
 #  position           :integer
-#  price              :integer
 #  quantity           :float            default(0.0)
 #  unit               :string
 #  created_at         :datetime         not null
@@ -18,7 +17,7 @@
 #  main_ingredient_id :integer
 #
 class DishSerializer < ActiveModel::Serializer
-  attributes :id, :name, :price, :category_ids, :images_attributes,
+  attributes :id, :name, :category_ids, :images_attributes,
              :image_ids, :position, :is_active, :dish_code
   belongs_to :categories, serializer: CategorySerializer
 end

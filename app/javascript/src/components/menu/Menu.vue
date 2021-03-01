@@ -153,7 +153,6 @@
             this.main_ingredients = response.data.main_ingredients
             this.logo = response.data.logo
             this.background = response.data.background
-            console.log(this.background)
           })
           .catch(e => {
             console.log(e);

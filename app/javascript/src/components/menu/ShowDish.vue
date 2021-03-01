@@ -5,7 +5,9 @@
            src="/image/no-image.png" />
       <img v-else class="menu-dish_img" :src="dish.images_attributes[0].url" v-img />
       <div class="menu_content">
-        <h4>{{dish.name}} <span>{{dish.price | currency('', 0)}}</span></h4>
+        <h4>{{dish.name}}
+          <span v-if="dish.menus.length !== 0">{{dish.menus[0].menu_dishes[0].price | currency('', 0)}}</span>
+        </h4>
       </div>
     </div>
   </div>
@@ -17,7 +19,9 @@
         <img v-else class="menu-dish_img" :src="dish.images_attributes[0].url" v-img />
       </div>
       <div class="menu_content">
-        <h4>{{dish.name}} <span>{{dish.price | currency('', 0)}}</span></h4>
+        <h4>{{dish.name}}
+          <span v-if="dish.menus.length !== 0">{{dish.menus[0].menu_dishes[0].price | currency('', 0)}}</span>
+        </h4>
       </div>
     </div>
   </div>

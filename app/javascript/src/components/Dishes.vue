@@ -68,6 +68,11 @@
                  :row-key="(record) => record.id"
                  :pagination="false"
         >
+          <template slot="price" slot-scope="text, record">
+            <div v-for="dish in text" :key="dish.id">
+              {{dish.menu.name}}: {{dish.price | currency('', 0)}}
+            </div>
+          </template>
           <template slot="categories" slot-scope="text, record">
             <div v-for="desert in text" :key="desert.id">
               {{ desert.name }}
@@ -88,9 +93,9 @@
               <a-icon type="edit"/>
             </a-button>
             <a-popconfirm
-              title="Delete this Category?"
-              ok-text="Delete"
-              cancel-text="Cancel"
+              title="Xoá món ăn này?"
+              ok-text="Xoá"
+              cancel-text="Không"
               @confirm="deleteDish(record)"
             >
               <a-button size="small" type="danger">
@@ -122,8 +127,8 @@
   const newDish = {
     id: '',
     name: '',
-    price: '',
     category_ids: [],
+    menu_dishes_attributes: [],
     main_ingredient_id: undefined,
     cooking_method_id: undefined,
     images_attributes: [
@@ -159,6 +164,14 @@
               message: 'Vui lòng nhập tên món ăn', trigger: 'blur'
             },
           ],
+          category_ids: [
+            {
+              type: 'array',
+              required: true,
+              message: 'Vui lòng chọn danh mục món ăn',
+              trigger: 'change',
+            }
+          ]
         },
         editItem: {},
         isEdit: false,
@@ -174,10 +187,11 @@
             title: 'Tên món ăn',
             dataIndex: 'name',
           },
-
           {
             title: 'Giá bán',
-            dataIndex: 'price',
+            dataIndex: 'menu_dishes_attributes',
+            scopedSlots: {customRender: 'price'},
+            width: '200px'
           },
           {
             title: 'Danh mục thực đơn',

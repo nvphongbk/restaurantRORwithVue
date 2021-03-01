@@ -2,7 +2,6 @@ json.dishes do
   json.array! @dishes do |dish|
     json.id dish.id
     json.name dish.name
-    json.price dish.price
     json.category_ids dish.category_ids
     json.images_attributes dish.images do |image|
       json.id image.id

@@ -54,6 +54,11 @@ Rails.application.routes.draw do
       end
       resources :logos, only: %w[create update index]
       resources :backgrounds, only: %w[create update index]
+      resources :menus do
+        member do
+          post :change_active
+        end
+      end
     end
   end
 
