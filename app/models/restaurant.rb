@@ -33,4 +33,5 @@ class Restaurant < ApplicationRecord
   has_many :dishes, through: :categories, dependent: :destroy
   has_one :logo
   has_one :background
+  has_many :menus, dependent: :destroy
 end

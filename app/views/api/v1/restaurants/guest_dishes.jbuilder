@@ -11,6 +11,18 @@ json.dishes do
     json.position dish.position
     json.is_active dish.is_active
     json.dish_code dish.dish_code
+
+    json.menus dish.menus do |menu|
+      if menu.is_active == true
+        json.id menu.id
+        json.name menu.name
+        json.menu_dishes menu.menu_dishes do |menu_dish|
+          if dish.id == menu_dish.dish_id
+            json.price menu_dish.price
+          end
+        end
+      end
+    end
   end
 end
 json.total @total

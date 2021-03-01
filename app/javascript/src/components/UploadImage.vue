@@ -72,7 +72,6 @@
         this.updateImageIds()
       },
       initializeImages(){
-        console.log(this.editImages)
         this.fileList = JSON.parse(JSON.stringify(this.editImages))
       },
       updateImageIds() {

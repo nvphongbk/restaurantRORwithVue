@@ -12,6 +12,12 @@
           <span class="nav-text">Danh sách nhà hàng</span>
         </router-link>
       </a-menu-item>
+      <a-menu-item key="MenuDish">
+        <router-link :to="{name: 'MenuDish'}">
+          <a-icon type="funnel-plot" class="text-blue-500" />
+          <span class="nav-text">Menus</span>
+        </router-link>
+      </a-menu-item>
       <a-menu-item key="MainIngredient">
         <router-link :to="{name: 'MainIngredients'}">
           <a-icon type="bg-colors" class="text-blue-500"/>

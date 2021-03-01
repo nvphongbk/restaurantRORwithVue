@@ -33,7 +33,66 @@
           </a-checkbox>
         </a-checkbox-group>
       </a-form-model-item>
-      <div class="clearfix">
+      <div class="ant-form-item-control">
+        <table width="100%">
+          <thead class="ant-table-thead">
+          <tr>
+            <th width="50%">
+              Chọn Menu
+            </th>
+            <th width="50%">
+              Giá món ăn
+            </th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody class="ant-table-tbody">
+          <tr class="ant-table-row" v-for="(menu_dish, index) in editItem.menu_dishes_attributes"
+              :key="menu_dish.menu_id">
+            <td class="small">
+              <a-select
+                show-search
+                placeholder="Chọn menu"
+                option-filter-prop="children"
+                style="width: 200px"
+                :filter-option="filterOption"
+                v-model="menu_dish.menu_id"
+                @focus="filterMenus"
+              >
+                <a-select-option v-for="menu in result" :key="menu.id">
+                  {{ menu.name }}
+                </a-select-option>
+              </a-select>
+            </td>
+            <td class="small">
+              <a-input v-model="menu_dish.price" :value="menu_dish.price" suffix="VNĐ"/>
+            </td>
+            <td class="small">
+              <a-popconfirm
+                title="Bạn muốn xoá menu này?"
+                ok-text="Xác nhận"
+                cancel-text="Huỷ"
+                @confirm="deleteMenuDish(menu_dish)"
+              >
+                <a-button :size="'small'" type="danger">
+                  <a-icon type="delete"/>
+                </a-button>
+              </a-popconfirm>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot class="center">
+          <tr>
+            <td colspan="3">
+              <a-button @click="addMenuDish">
+                <a-icon type="plus"/>
+              </a-button>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="clearfix mt-5">
         <UploadImage
           ref="refUploadImage"
           :editImages="editItem.images_attributes"
@@ -57,7 +116,18 @@
   import {URLS} from "../../utils/url"
   import UploadImage from "../UploadImage"
   import AFormModelItem from "ant-design-vue/es/form-model/FormItem"
-  import { mapGetters, mapActions } from 'vuex'
+  import {mapGetters, mapActions} from 'vuex'
+
+  const newMenuDish = {
+    id: '',
+    menu: {
+      id: undefined,
+      name: ''
+    },
+    price: '',
+    dish_id: '',
+    menu_id: ''
+  }
 
   export default {
     name: "FormDish",
@@ -86,7 +156,8 @@
         ingredients: [],
         cooking_methods: [],
         previewVisible: false,
-
+        menus: [],
+        result: [],
       };
     },
     components: {AFormModelItem, UploadImage},
@@ -100,6 +171,7 @@
     },
     mounted() {
       this.fetchData()
+      this.fetchMenu()
     },
     watch: {
       visible: {
@@ -114,6 +186,16 @@
       ...mapActions([
         'getRestaurantInfo'
       ]),
+      filterMenus() {
+        const select_ids = this.editItem.menu_dishes_attributes.map(e => e.menu_id)
+        let lastMenus = []
+        this.menus.forEach(menu => {
+          if (select_ids.findIndex(object => object === menu.id) === -1) {
+            lastMenus.push(menu)
+          }
+        })
+        this.result = lastMenus
+      },
       fetchData() {
         this.callDataRestaurant()
       },
@@ -123,7 +205,7 @@
           dish: item
         })
           .then(response => {
-            this.$message.success('Cập nhật thành công');
+            this.$message.success('Tạo món ăn thành công');
             this.$emit('updateListAfterUpdated', this.editItem);
           })
           .catch(error => {
@@ -139,7 +221,7 @@
                 dish: valuesSave
               })
                 .then(response => {
-                  this.$message.success('Updated success')
+                  this.$message.success('Cập nhật thành công')
                   this.$emit('updateListAfterUpdated', this.editItem);
                 })
                 .catch(error => {
@@ -169,6 +251,22 @@
       updateImageList(list) {
         this.editItem.images_ids = list
       },
+      fetchMenu() {
+        return ApiCaller().get(URLS.MENUS())
+          .then(response => {
+            this.menus = response.data
+            this.result = response.data
+          })
+          .catch(e => {
+          });
+      },
+      addMenuDish() {
+        this.editItem.menu_dishes_attributes.push({...newMenuDish})
+      },
+      deleteMenuDish(menu) {
+        const index = this.editItem.menu_dishes_attributes.findIndex(obj => obj === menu)
+        this.editItem.menu_dishes_attributes.splice(index, 1)
+      }
     },
   };
 </script>

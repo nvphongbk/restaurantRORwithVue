@@ -44,4 +44,5 @@ yarn-debug.log*
 /public/uploads/image
 /public/uploads/tmp
 /test
-
+/public/uploads/logo
+/public/uploads/background

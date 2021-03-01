@@ -26,6 +26,9 @@ class Dish < ApplicationRecord
   has_many :categories, through: :category_dishes
   belongs_to :main_ingredient, optional: true
   belongs_to :cooking_method, optional: true
+  has_many :menu_dishes, dependent: :destroy
+  accepts_nested_attributes_for :menu_dishes, allow_destroy: true
+  has_many :menus, through: :menu_dishes
 
   validates :name, :price, presence: false
 

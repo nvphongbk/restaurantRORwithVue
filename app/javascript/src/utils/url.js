@@ -44,6 +44,9 @@ export const URLS = {
   LOGO: (id) => `${getBaseUrl()}/logos/${id}`,
   BACKGROUNDS: () => `${getBaseUrl()}/backgrounds`,
   BACKGROUND: (id) => `${getBaseUrl()}/backgrounds/${id}`,
+  MENUS: () => `${getBaseUrl()}/menus`,
+  MENU: (id) =>`${getBaseUrl()}/menus/${id}`,
+  MENU_CHANGE_ACTIVE: (id) => `${getBaseUrl()}/menus/${id}/change_active`,
 
 //  Methods
   CHANGE_RESTAURANT_DEFAULT: () => `${getBaseUrl()}/users/change_restaurant_default`,
