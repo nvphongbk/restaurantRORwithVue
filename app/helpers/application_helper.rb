@@ -2,11 +2,11 @@
 
 module ApplicationHelper
   def filter_search(params)
-    params.select{ |k, value| value.present? }
+    params.select { |k, value| value.present? }
   end
 
   def format_character(char)
-    char&.strip&.capitalize
+    char&.strip&.downcase
   end
 
   def import_data_from(restaurant, file, import_columns)
@@ -16,6 +16,9 @@ module ApplicationHelper
     return if lines < 1 || import_columns&.blank?
 
     list_categories_name = restaurant.categories.present? ? restaurant.categories.pluck(:name) : []
+    list_menu_name = restaurant.menus.present? ? restaurant.menus.pluck(:name) : []
+    current_menu_name = []
+    list_price = []
     header = data[0].cells.map(&:value)
     (1..lines - 1).each do |i|
       @images = []
@@ -54,6 +57,30 @@ module ApplicationHelper
         when 'main_ingredient'
           main_ingredient_name = value || 'Khác'
           @main_ingredient = restaurant.main_ingredients.find_or_create_by(name: main_ingredient_name)
+        when 'price'
+          price = value.to_s.split(',')
+          price = price.map(&:strip)
+          list_price = price
+        when 'menu'
+          menu_name = if value.blank?
+                        ['Khác']
+                      else
+                        value.split(',')
+                      end
+          menu_name = menu_name.map(&:strip)
+          current_menu_name = menu_name
+          new_menu_name = menu_name - list_menu_name
+
+          if new_menu_name.present?
+
+            new_menu_name.each do |menu|
+              restaurant.menus.create(name: menu)
+              @menu = restaurant.menus.where(name: menu_name)
+              list_menu_name.push(menu)
+            end
+          else
+            @menu = restaurant.menus.where(name: menu_name)
+          end
         else
           current_row.merge!({key => value}) if value.present?
         end
@@ -64,16 +91,44 @@ module ApplicationHelper
              else
                false
              end
-
       if dish.present?
-        dish.update(current_row)
+        if @menu.present?
+          update_menu = @menu - dish.menus
+          if update_menu.present?
+            dish.menus.push(update_menu)
+            update_menu = dish.menus - @menu
+            dish.menus.delete(update_menu)
+          else
+            update_menu = dish.menus - @menu
+            dish.menus.delete(update_menu)
+          end
+          dish.save
+        else
+          dish.menus.destroy_all
+        end
+        if list_price.present?
+          $i = 0
+          $num = dish.menu_dishes.length - 1
+          begin
+            @menu_dishes = dish.menu_dishes.where(menu_id: dish.menus.where(name: current_menu_name[$i]).first.id).update(price: list_price[$i])
+            $i += 1;
+          end until $i > $num
+        end
       else
+        current_row[:name] = format_character(current_row[:name])
         dish = Dish.new(current_row)
+        dish.menus = @menu if @menu.present?
         dish.categories = @categories if @categories.present?
         dish.main_ingredient_id = @main_ingredient.id
         dish.cooking_method_id = @cooking_method.id
         dish.save
         @images.update_all(dish_id: dish.id) if @images.present?
+        $i = 0
+        $num = dish.menu_dishes.length - 1
+        begin
+          @menu_dishes = dish.menu_dishes.where(menu_id: dish.menus.where(name: current_menu_name[$i]).first.id).update(price: list_price[$i])
+          $i += 1;
+        end until $i > $num
       end
     end
     {status: true, message: 'Hoàn thành'}
