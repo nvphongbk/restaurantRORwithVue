@@ -17,8 +17,10 @@
 #  main_ingredient_id :integer
 #
 class Dish < ApplicationRecord
+  before_validation :format_character, on: %i[create update]
   IMPORT_COLUMNS = { name: 'name', image: 'image', category: 'category',
-                     cooking_method: 'cooking_method', main_ingredient: 'main_ingredient', unit: 'unit', quantity: 'quantity' }.freeze
+                     cooking_method: 'cooking_method', main_ingredient: 'main_ingredient', unit: 'unit', quantity:
+                       'quantity', price: 'price', menu: 'menu' }.freeze
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   has_many :category_dishes, dependent: :destroy
@@ -41,5 +43,9 @@ class Dish < ApplicationRecord
 
   def images_attributes
     images.map { |i| { id: i.id, url: i.photo.url, uid: i.id, name: i.photo_identifier } }
+  end
+
+  def format_character
+    self.name = name.strip&.downcase
   end
 end

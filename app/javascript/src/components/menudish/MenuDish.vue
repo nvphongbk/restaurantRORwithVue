@@ -135,7 +135,7 @@
       deleteMenu(item) {
         ApiCaller().delete(URLS.MENU(item.id))
           .then((res) => {
-            this.$message.success('Deleted success')
+            this.$message.success('Xoá thành công')
             this.initialize()
           })
           .catch(error => {

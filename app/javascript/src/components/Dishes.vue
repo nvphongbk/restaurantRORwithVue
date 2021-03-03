@@ -68,7 +68,7 @@
                  :row-key="(record) => record.id"
                  :pagination="false"
         >
-          <template slot="price" slot-scope="text, record">
+          <template slot="menu_dishes_attributes" slot-scope="text, record">
             <div v-for="dish in text" :key="dish.id">
               {{dish.menu.name}}: {{dish.price | currency('', 0)}}
             </div>
@@ -190,7 +190,7 @@
           {
             title: 'Giá bán',
             dataIndex: 'menu_dishes_attributes',
-            scopedSlots: {customRender: 'price'},
+            scopedSlots: {customRender: 'menu_dishes_attributes'},
             width: '200px'
           },
           {

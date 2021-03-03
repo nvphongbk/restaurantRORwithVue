@@ -37,7 +37,7 @@ module Api
       end
 
       def destroy
-        @menu = MenuDish.find(params[:id])
+        @menu = Menu.find(params[:id])
         render json: {status: 'ok deleted'}, status: 200 if @menu.destroy
       end
 

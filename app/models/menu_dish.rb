@@ -11,5 +11,5 @@
 #
 class MenuDish < ApplicationRecord
   belongs_to :menu
-  belongs_to :dish
+  belongs_to :dish, optional: true
 end
