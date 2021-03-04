@@ -1,15 +1,14 @@
 module Api
   module V1
     class BackgroundsController < ApplicationController
-      skip_before_action :authenticate_request!
 
       def index
-        @background = Background.last
+        @background = current_restaurant.background
         render json: @background, status: 200
       end
 
       def create
-        @background = Background.new(photo: params[:file])
+          @background = Background.new(photo: params[:file])
         if @background.save
           render json: @background, status: 200
         else

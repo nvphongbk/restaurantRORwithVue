@@ -11,6 +11,7 @@
           class="avatar-uploader"
           :show-upload-list="false"
           :action="uploadLogo"
+          :headers="header"
           :before-upload="beforeUpload"
           @change="handleChangeLogo"
         >
@@ -35,6 +36,7 @@
           class="avatar-uploader"
           :show-upload-list="false"
           :action="uploadBackground"
+          :headers="header"
           :before-upload="beforeUpload"
           @change="handleChangeBackground"
         >
@@ -60,6 +62,7 @@
     components: {Menu},
     data() {
       return {
+        header: {'Authorization': `Bearer ${localStorage.getItem("hash_js_a")}`},
         loading: false,
         currentLogo: '',
         currentBackground: '',

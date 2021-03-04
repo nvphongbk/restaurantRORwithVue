@@ -9,3 +9,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # user = User.create(email: "phongadmin@gmail.com", password: "123456")
 user = User.create(email: 'tester@ment.vn', password: '123456')
+menu = Menu.create(name: "Mặc định", restaurant_id: 13, is_active: true)
+dishes = Dish.all
+dishes.each do |dish|
+  dish.menu_dishes.create(price: dish.price, menu_id: menu.id)
+end
