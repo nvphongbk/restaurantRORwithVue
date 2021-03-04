@@ -8,7 +8,7 @@ module Api
       end
 
       def create
-          @background = Background.new(photo: params[:file])
+        @background = Background.new(photo: params[:file])
         if @background.save
           render json: @background, status: 200
         else
