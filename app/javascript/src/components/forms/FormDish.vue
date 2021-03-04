@@ -154,7 +154,6 @@
         previewVisible: false,
         menus: [],
         result: [],
-        aaa: 3
       };
     },
     components: {AFormModelItem, UploadImage},
