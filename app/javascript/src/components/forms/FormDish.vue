@@ -78,13 +78,13 @@
           </tr>
           </tbody>
           <tfoot class="center">
-          <tr>
-            <td colspan="3" class="text-center">
-              <a-button @click="addMenuDish">
-                <a-icon type="plus"/>
-              </a-button>
-            </td>
-          </tr>
+            <tr>
+              <td colspan="3" class="text-center">
+                <a-button @click="addMenuDish">
+                  <a-icon type="plus"/>
+                </a-button>
+              </td>
+            </tr>
           </tfoot>
         </table>
       </div>
@@ -154,6 +154,7 @@
         previewVisible: false,
         menus: [],
         result: [],
+        aaa: 3
       };
     },
     components: {AFormModelItem, UploadImage},
@@ -262,15 +263,21 @@
         this.editItem.menu_dishes_attributes.push({...newMenuDish})
       },
       async deleteMenuDish(menu) {
-        let response = await ApiCaller().delete(URLS.MENU(menu.id))
-        if (response.status == 200) {
-          this.$message.success('Xoá thành công');
+        if (menu.id) {
+          let response = await ApiCaller().delete(URLS.MENU_DISH(menu.id))
+          if (response.status == 200) {
+            this.$message.success('Xoá thành công');
+          } else {
+            this.$message.error(response.message);
+          }
+          const index = this.editItem.menu_dishes_attributes.findIndex(obj => obj === menu)
+          this.editItem.menu_dishes_attributes.splice(index, 1)
         } else {
-          this.$message.error(response.message);
+          const index = this.editItem.menu_dishes_attributes.findIndex(obj => obj === menu)
+          this.editItem.menu_dishes_attributes.splice(index, 1)
         }
-        const index = this.editItem.menu_dishes_attributes.findIndex(obj => obj === menu)
-        this.editItem.menu_dishes_attributes.splice(index, 1)
       },
+
       clearMenuDishes() {
         this.editItem.menu_dishes_attributes.splice(0)
       }
