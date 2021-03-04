@@ -8,4 +8,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # user = User.create(email: "phongadmin@gmail.com", password: "123456")
-user = User.create(email: 'tester@ment.vn', password: '123456')
+# user = User.create(email: 'tester@ment.vn', password: '123456')
+
+restaurants = Restaurant.all
+restaurants.each do |restaurant|
+  menu = Menu.create(name: "Mặc định", restaurant_id: restaurant.id, is_active: true)
+  restaurant.dishes.each do |dish|
+    dish.menu_dishes.create(price: dish.price, menu_id: menu.id)
+  end
+end

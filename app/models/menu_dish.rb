@@ -10,6 +10,6 @@
 #  menu_id    :integer
 #
 class MenuDish < ApplicationRecord
-  belongs_to :menu
+  belongs_to :menu, optional: true
   belongs_to :dish, optional: true
 end

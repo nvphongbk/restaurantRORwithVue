@@ -34,7 +34,10 @@ json.dishes do
     json.menu_dishes_attributes dish.menu_dishes do |menu_dish|
       json.id menu_dish.id
       json.menu_id menu_dish.menu_id
-      json.menu menu_dish.menu, :id, :name
+      json.menu do
+        json.id menu_dish.menu&.id
+        json.name menu_dish.menu&.name
+      end
       json.dish_id menu_dish.dish_id
       json.price menu_dish.price
     end

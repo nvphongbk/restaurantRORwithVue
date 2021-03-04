@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_080500) do
     t.string "unit"
     t.integer "cooking_method_id"
     t.integer "main_ingredient_id"
+    t.string "price"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

@@ -1,10 +1,9 @@
 module Api
   module V1
     class LogosController < ApplicationController
-      skip_before_action :authenticate_request!
 
       def index
-        @logos = Logo.last
+        @logos = current_restaurant.logo
         render json: @logos, status: 200
       end
 

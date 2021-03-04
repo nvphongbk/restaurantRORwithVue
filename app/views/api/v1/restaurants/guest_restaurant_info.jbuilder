@@ -37,10 +37,10 @@ json.display_categories do
   end
 end
 json.logo do
-  json.id @logo_restaurant.id
+  json.id @logo_restaurant&.id
   json.url @logo_restaurant.photo&.url
 end
 json.background do
-  json.id @background_menu.id
+  json.id @background_menu&.id
   json.url @background_menu.photo&.url
 end
