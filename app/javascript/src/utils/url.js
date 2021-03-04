@@ -47,6 +47,7 @@ export const URLS = {
   MENUS: () => `${getBaseUrl()}/menus`,
   MENU: (id) =>`${getBaseUrl()}/menus/${id}`,
   MENU_CHANGE_ACTIVE: (id) => `${getBaseUrl()}/menus/${id}/change_active`,
+  MENU_DISH: (id) => `${getBaseUrl()}/menu_dishes/${id}`,
 
 //  Methods
   CHANGE_RESTAURANT_DEFAULT: () => `${getBaseUrl()}/users/change_restaurant_default`,

@@ -9,7 +9,6 @@
 #  is_active          :boolean          default(TRUE)
 #  name               :string
 #  position           :integer
-#  price              :string
 #  quantity           :float            default(0.0)
 #  unit               :string
 #  created_at         :datetime         not null

@@ -59,6 +59,7 @@ Rails.application.routes.draw do
           post :change_active
         end
       end
+      resources :menu_dishes, only: :destroy
     end
   end
 

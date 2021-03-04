@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_080500) do
+ActiveRecord::Schema.define(version: 2021_03_04_043548) do
 
   create_table "backgrounds", force: :cascade do |t|
     t.string "photo"
@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2021_03_01_080500) do
     t.string "unit"
     t.integer "cooking_method_id"
     t.integer "main_ingredient_id"
-    t.string "price"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
